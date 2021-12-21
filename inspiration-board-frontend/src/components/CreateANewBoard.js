@@ -1,3 +1,4 @@
+import SubmitQueryButton from "./SubmitQueryButton";
 import React from "react";
 
 const CreateANewBoard = () => {
@@ -10,6 +11,7 @@ const CreateANewBoard = () => {
       <input type="text" id="owner"></input>
       <br></br>
       <p>Preview: - </p>
+      <SubmitQueryButton />
       <button type="button">Hide New Board Form</button>
     </section>
   );
