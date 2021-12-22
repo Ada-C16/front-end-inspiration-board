@@ -11,7 +11,9 @@ function App() {
       <header>
       </header>
       <body className='grid-layout-container'>
-        <h1 className='site-title-block'>InspoBoard</h1>
+        <section className='site-title-block grid-block'>
+          <p className='site-title'>InspoBoard</p>
+        </section>
         <Boardz />
         <NewCardForm />
         <NewBoardForm />

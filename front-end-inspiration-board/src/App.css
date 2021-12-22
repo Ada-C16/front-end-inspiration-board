@@ -1,9 +1,10 @@
 
 
 .grid-layout-container {
-  padding: 50px;
+  min-height: 50vh;
+  padding: 75px;
   display: grid;
-  grid-template: 1fr 1fr 1fr 1fr/ 1fr 2fr;
+  grid-template: .2fr 1fr 1fr 1fr/ 1fr 2fr;
   row-gap: 30px;
   column-gap: 30px;
   justify-items: stretch;
@@ -14,9 +15,25 @@ section {
   border-color: aqua;
 }
 
+.grid-block {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgb(211, 211, 211);
+}
+
+h1 {
+  font-size: 24pt;
+}
+
 .site-title-block {
   grid-row: 1/2;
   grid-column: 1/2;
+  padding: 0px 0px 0px 20px;
+}
+
+.site-title{
+  font-size: 30pt;
+  font-weight: bold;
 }
 
 .boardz-block {
