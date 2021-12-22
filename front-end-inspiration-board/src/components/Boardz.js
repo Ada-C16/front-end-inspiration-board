@@ -4,8 +4,9 @@ import Board from './Board';
 const Boardz = () => {
 
     return(
-        <section>
+        <section className='boardz-block'>
             This is the boardz container component.
+            <Board />
             <Board />
         </section>
     )
