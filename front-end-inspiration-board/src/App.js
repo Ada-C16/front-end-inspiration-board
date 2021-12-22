@@ -18,6 +18,7 @@ function App() {
     })
   
     setBoardList(newBoardList);
+    console.log(newBoardList)
 
   }
 
@@ -25,7 +26,7 @@ function App() {
     <section>
       <header>
       </header>
-      <body className='grid-layout-container'>
+      <div className='grid-layout-container'>
         <section className='site-title-block grid-block'>
           <p className='site-title'>InspoBoard</p>
         </section>
@@ -33,7 +34,7 @@ function App() {
         <NewCardForm />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay />
-      </body>
+      </div>
     </section>
   );
 }
