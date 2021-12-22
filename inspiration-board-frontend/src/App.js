@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Boards from "./components/Boards";
 import Card from "./components/Card";
@@ -7,15 +6,20 @@ import SelectedBoard from "./components/SelectedBoard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <header>
+      <div>
         <Boards />
+      </div>
+      <div>
         <SelectedBoard />
+      </div>
+      <div>
         <CreateANewBoard />
+      </div>
+      <div>
         <Card />
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 

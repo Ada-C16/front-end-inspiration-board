@@ -1,7 +1,7 @@
 import React from "react";
 
 const Boards = () => {
-  return <h1>I am Boards.</h1>;
+  return <h3>Temporary Header: Boards</h3>;
 };
 
 export default Boards;
