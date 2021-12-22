@@ -2,9 +2,9 @@ import React from "react";
 
 const SelectBoard = () => {
   return (
-    <h1>
+    <p>
       <em>Select a board from the board list!</em>
-    </h1>
+    </p>
   );
 };
 
