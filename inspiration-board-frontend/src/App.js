@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Boards from "./components/Boards";
+import Card from "./components/Card";
 import CreateANewBoard from "./components/CreateANewBoard";
 import SelectedBoard from "./components/SelectedBoard";
 
@@ -12,6 +13,7 @@ function App() {
         <Boards />
         <SelectedBoard />
         <CreateANewBoard />
+        <Card />
       </header>
     </div>
   );
