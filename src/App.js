@@ -6,7 +6,11 @@ import Board from "./components/Board"
 
 const App = () => {
   return (
-    <div className="App"></div>
+    <div className="App">
+      <main>
+        <Board></Board>
+      </main>
+    </div>
   )
 };
 export default App; 
