@@ -83,8 +83,13 @@
   height: 30%;
   background-color: rgb(255, 233, 124);
   margin: 10px;
+  overflow-y: auto;
+}
+
+.sticky-text {
   text-align: center;
-  line-height: 50px;
+  line-height: 1.5;
+  margin: 10px;
 }
 
 

@@ -40,35 +40,83 @@ function App() {
           <div className="stickies-subcontainer">
             {/* eventually add a scrollbar to THIS container */}
             <div className="sticky">
-              I am a sticky 1!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 2!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 3!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 4!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 5!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 6!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
             <div className="sticky">
-              I am a sticky 7!
+              <article className="sticky-text">
+              I am a sticky 1! I have a lot of text in me.
+              This is a really long text that will wrap around to the next line.
+              We are just testing out what a long sticky looks like. 
+              I hope that the text is scrollable.
+              Meep.
+              Honk if you bonk.
+              Stinky stink stinky.
+              </article>
             </div>
-            <div className="sticky">
-              I am a sticky 8!
-            </div>
-            <div className="sticky">
-              I am a sticky 9!
-            </div>
-            <div className="sticky">
-              I am a sticky 10!
-            </div>
+            
             
           </div>
         </section>
