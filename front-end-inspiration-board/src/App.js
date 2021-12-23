@@ -4,6 +4,8 @@ import CardDisplay from './components/CardDisplay';
 import NewCardForm from './components/NewCardForm';
 import NewBoardForm from './components/NewBoardForm';
 import {useState } from 'react';
+import React, { useEffect } from "react";
+import axios from "axios";
 
 function App() {
 
@@ -21,6 +23,24 @@ function App() {
     console.log(newBoardList)
 
   }
+
+  
+
+  ///all of this is an experiment
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "http://localhost:5000/board"
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //       // setBoardList([...response.data.recipes]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+
+///////////////
 
   return (
     <section>
