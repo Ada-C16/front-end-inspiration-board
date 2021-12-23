@@ -8,8 +8,17 @@ const Boardz = () => {
         <section className='boardz-block grid-block'>
             <h1> Boardz List </h1>
             This is the boardz container component.
-            <Board />
-            <Board />
+                <ul>
+                    <li>
+                        <Board />
+                    </li>
+                    <li>
+                        <Board />
+                    </li>
+                    <li>
+                        <Board />
+                    </li>
+                </ul>
         </section>
     )
 }
