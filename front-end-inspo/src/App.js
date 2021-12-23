@@ -52,30 +52,30 @@ function App() {
             </div>
             <div className="sticky">
               <article className="sticky-text">
-              I am a sticky 1! I have a little text in me. 
+              I am a sticky 2! I have a little text in me. 
               No scrolling needed!
               </article>
             </div>
             <div className="sticky">
               <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
+              I am a sticky 3! I have smol text.
               </article>
             </div>
             <div className="sticky">
               <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
+              I am a sticky 4! I have a lot of text in me.
               This is a really long text that will wrap around to the next line.
               We are just testing out what a long sticky looks like. 
               I hope that the text is scrollable.
               Meep.
               Honk if you bonk.
-              Stinky stink stinky.
+              Yeah pretty much just repeating the text.
+              Okay so I'm just going to add a bunch of text to make it scroll.
+              </article>
+            </div>
+            <div className="sticky">
+              <article className="sticky-text">
+                I am sticky 5! I'm being put here to show what happens when you have an odd number of stickies.
               </article>
             </div>
             
