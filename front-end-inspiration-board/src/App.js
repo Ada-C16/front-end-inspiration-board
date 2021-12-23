@@ -8,48 +8,63 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  const boardURL = "https://winspo-board.herokuapp.com/board";
 
-  const [boardList, setBoardList] = useState([])
+  // This is a piece of state. It's a list of all the board objects in our api database
+  const [boardList, setBoardList] = useState([]);
   
+  // This function POSTs the data in form to ther heroku database. and updates the state boardList
   const addNewBoard = newBoard => {
-    const newBoardList = [...boardList]
-
-    newBoardList.push({
-      title: newBoard.boardName,
-      owner: newBoard.boardOwner
+    axios
+    .post(
+      boardURL, 
+      newBoard
+    )
+    .then((response) => {
+      console.log("a new board has been posted");
+      // console.log(response.data);
+      const boards = [...boardList];
+      boards.push(response.data.board);
+      setBoardList(boards);
     })
-  
-    setBoardList(newBoardList);
-    console.log(newBoardList)
-
+    .catch((err) => console.log(err));
   }
+  console.log(boardList);
 
-  ///all of this is an experiment
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "http://localhost:5000/board"
-  //     )
-  //     .then((response) => {
-  //       console.log(response);
-  //       // setBoardList([...response.data.recipes]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  // GET all the boards
+  useEffect(() => {
+    axios
+    .get(
+      "https://winspo-board.herokuapp.com/board"  )
+      .then((response) => {
+        console.log(response);
+        setBoardList([...response.data]);
+      })
+      .catch((err) => console.log(err));
+    }, []);
+  
 
 
-///////////////
+  ///////////////
+
     // This piece of state represents the currently selected board -vange
     const [currentBoard, setCurrentBoard] = useState({
       title: '',
       owner:''
-    })
+    });
 
-    // This function should update the currentBoard state. It is invoked when a use clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
+    // This function should update the currentBoard state. It is invoked when a user clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
     const updateCurrentBoard = () => {
       //use setCurrentBoard here!
       console.log('the board has been updated')
+      // call function to get cards associated with current board
+    };
+
+    // This function takes in a list of board objects. Iterates over each object, makes a <Board /> and gives it an object {name:'', owner: ''} and updateCurrentBoard() function as props
+    const createBoardMenu = (boardList) => {
+
     }
+
 
   return (
     <section>

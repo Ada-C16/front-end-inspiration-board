@@ -14,7 +14,7 @@ const NewBoardForm = (props) => {
             boardName: event.target.value, 
         })
 
-        console.log(formField)
+        // console.log(formField)
     }
 
     const onBoardOwnerChange = (event) => {
@@ -22,7 +22,7 @@ const NewBoardForm = (props) => {
             ...formField,
             boardOwner: event.target.value, 
         })
-        console.log(formField)
+        // console.log(formField)
     }
 
     const onFormSubmit = (event) => {
@@ -33,7 +33,7 @@ const NewBoardForm = (props) => {
             owner: formField.boardOwner
         })
 
-        console.log(formField)
+        // console.log(formField)
     }
 
     return(
