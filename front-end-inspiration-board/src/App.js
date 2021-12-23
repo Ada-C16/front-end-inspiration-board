@@ -24,8 +24,6 @@ function App() {
 
   }
 
-  
-
   ///all of this is an experiment
   // useEffect(() => {
   //   axios
@@ -41,6 +39,17 @@ function App() {
 
 
 ///////////////
+    // This piece of state represents the currently selected board -vange
+    const [currentBoard, setCurrentBoard] = useState({
+      title: '',
+      owner:''
+    })
+
+    // This function should update the currentBoard state. It is invoked when a use clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
+    const updateCurrentBoard = () => {
+      //use setCurrentBoard here!
+      console.log('the board has been updated')
+    }
 
   return (
     <section>
@@ -50,7 +59,7 @@ function App() {
         <section className='site-title-block grid-block'>
           <p className='site-title'>InspoBoard</p>
         </section>
-        <Boardz />
+        <Boardz updateCurrentBoardCallback={updateCurrentBoard}/>
         <NewCardForm />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay />
