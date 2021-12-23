@@ -52,46 +52,8 @@ function App() {
             </div>
             <div className="sticky">
               <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
+              I am a sticky 1! I have a little text in me. 
+              No scrolling needed!
               </article>
             </div>
             <div className="sticky">

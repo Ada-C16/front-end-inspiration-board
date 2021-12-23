@@ -76,6 +76,8 @@
   flex-wrap: wrap;
   flex-direction:row;
   justify-content: space-evenly;
+  /* below keeps rows neat when less than 3 rows */
+  align-content: flex-start;
   overflow-y: auto;
 }
 .sticky {
