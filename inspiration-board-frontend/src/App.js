@@ -33,14 +33,26 @@ useEffect(() => {
   console.log("changes were made")
 }, [] ); 
   return (
+<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
         <Boards boardsData = {boards} />
+=======
+    <header>
+      <div>
+        <Boards />
+      </div>
+      <div>
+>>>>>>> 0f52b90bbfbf998608295f0f44c18abf55a1284b
         <SelectedBoard />
+      </div>
+      <div>
         <CreateANewBoard />
+      </div>
+      <div>
         <Card />
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 
