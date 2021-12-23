@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import Board from './components/Board';
+import Card from './components/Card'; 
 
 function App() {
   return (
-    <div className="App">
+    <div className="app-container container justify-content-center">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Team Lovelace's Inspiration Boards</h1>
       </header>
+      <main>
+        <Board />
+        <Card />
+      </main>
     </div>
   );
 }
