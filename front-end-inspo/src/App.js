@@ -6,18 +6,20 @@ function App() {
       <div className="main-container">
         <section className="sidebar-container">
           <div className="sidebar-header">
-            <h1 className="inspo-header">Inspiration Board</h1>
+            <h1 className="inspo-header">Name of Current Board</h1>
           </div>
           <div className="board-container">
             <div className="submit-board">
+            Submit a new board: 
             <form>
               <input type="text" />
               <input type="submit" />
               </form>
             </div>
             <div className="select-board">
+            Select an existing Board: 
               <form>
-                <label for="boards">Select a Board:</label>
+                <label for="boards"></label>
                 <select name="boards">
                   <option value="board1">Board1</option>
                   <option value="board2">Board2</option>
@@ -27,7 +29,11 @@ function App() {
             </div>
           </div>
           <div className="sticky-submit-container">
-            Placeholder text
+          Submit a new sticky: 
+            <form>
+              <input type="text" />
+              <input type="submit" />
+            </form>
           </div>
         </section>
         <section className="stickies-container">
