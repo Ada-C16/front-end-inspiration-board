@@ -1,8 +1,8 @@
-// import "./App.css";
+import "./App.css";
 import Boards from "./components/Boards";
 import Card from "./components/Card";
 import CreateANewBoard from "./components/CreateANewBoard";
-import SelectedBoard from "./components/SelectedBoard";
+import Board from "./components/Board";
 import {useState, useEffect} from 'react'; 
 import axios from 'axios';
 
@@ -32,27 +32,16 @@ useEffect(() => {
   getBoards()
   console.log("changes were made")
 }, [] ); 
-  return (
-<<<<<<< HEAD
+ 
+return (
     <div className="App">
       <header className="App-header">
-        <Boards boardsData = {boards} />
-=======
-    <header>
-      <div>
-        <Boards />
-      </div>
-      <div>
->>>>>>> 0f52b90bbfbf998608295f0f44c18abf55a1284b
-        <SelectedBoard />
-      </div>
-      <div>
+        <div>  <Boards boardsData = {boards} />
+        <Board /> </div>
         <CreateANewBoard />
-      </div>
-      <div>
-        <Card />
-      </div>
+        <Card/>
     </header>
+    </div>
   );
 }
 
