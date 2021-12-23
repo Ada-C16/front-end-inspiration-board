@@ -22,16 +22,12 @@ const Board = () => {
   const [boards, setBoards] = useState([]);
   const [boardOptions, setBoardOptions] = useState([]);
 
-  const getBoards = () => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
-      .then((response) => {
-        setBoards(response.data);  
-      });
-  };
-
   useEffect(() => {
-    getBoards()
+    axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+    .then((response) => {
+      setBoards(response.data);  
+    });
   }, [])
 
   useEffect(() => {
