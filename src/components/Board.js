@@ -1,59 +1,62 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// update boardlist when board is made
 // dont allow empty title or owner in submission // duplicates?
 // get request onBoardSelect() to display the info
 
 const Board = () => {
+    const [formField, setFormField] = useState({ title: "", owner: "" });
+    const onTitleChange = (e) => {
+        setFormField({
+            ...formField,
+            title: e.target.value,
+      });
+    };
+    const onOwnerChange = (e) => {
+        setFormField({
+            ...formField,
+            owner: e.target.value,
+      });
+    };
+
   const [boards, setBoards] = useState([]);
+  const [boardOptions, setBoardOptions] = useState([]);
+
   const getBoards = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
-        setBoards(response.data);
+        setBoards(response.data);  
       });
   };
 
   useEffect(() => {
-    getBoards();
-  }, []);
+    getBoards()
+  }, [])
 
-  const renderBoards = () => {
+  useEffect(() => {
     const options = boards.map((board, i) => {
-      return (
-        <option value={board} key={i}>
-          {board}
-        </option>
-      );
-    });
-    return options;
-  };
-
-  const [formField, setFormField] = useState({ title: "", owner: "" });
-  const onTitleChange = (e) => {
-    setFormField({
-      ...formField,
-      title: e.target.value,
-    });
-  };
-  const onOwnerChange = (e) => {
-    setFormField({
-      ...formField,
-      owner: e.target.value,
-    });
-  };
+        return (
+          <option value={board} key={i}>
+            {board}
+          </option>
+        );
+      });
+      setBoardOptions(options);
+  }, [boards])
 
   const onBoardSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, formField)
-      .then(() => {
+        .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, formField)
+        .then((response) => {
         setFormField({
-          title: "",
-          owner: "",
+            title: "",
+            owner: "",
         });
-        getBoards();
+        const newBoardOptions = [...boardOptions]
+        newBoardOptions.push(<option value={response.data}>{response.data}</option>);
+        setBoardOptions(newBoardOptions);
       })
       .catch((err) => console.log(err));
   };
@@ -65,7 +68,7 @@ const Board = () => {
   return (
     <div>
       <select name="selectBoard" onChange={onBoardSelect()}>
-        {renderBoards()}
+        {boardOptions}
       </select>
       <form>
         <div>
