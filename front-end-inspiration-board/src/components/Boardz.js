@@ -2,14 +2,14 @@ import React from "react";
 import Board from './Board';
 import './Boardz.css';
 
-const Boardz = () => {
+const Boardz = (props) => {
 
     return(
         <section className='boardz-block grid-block'>
             <h1> Boardz List </h1>
                 <ul>
                     <li>
-                        <Board />
+                        <Board selectNewBoard={props.updateCurrentBoardCallback}/>
                     </li>
                     <li>
                         <Board />
