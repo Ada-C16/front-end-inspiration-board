@@ -39,6 +39,7 @@ h1 {
 .boardz-block {
   grid-row: 2/3;
   grid-column: 1/2;
+  /* max-height: 1fr; */
 }
 
 .new-card-form-block {
