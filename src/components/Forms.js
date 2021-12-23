@@ -4,7 +4,7 @@ import Card from "./Card"
 
 
 const Forms = () => {
-    return (<div></div>)
+    return (<div><Board/></div>)
 };
 
 export default Forms;
