@@ -4,6 +4,18 @@ import './Boardz.css';
 
 const Boardz = (props) => {
 
+    const onClearAllBoards = (event) =>{
+        const confirmBox = window.confirm(
+            'Are you sure?🥺'
+            )
+        if (confirmBox === true){
+            event.preventDefault();
+            // call inhereted function from props like 
+            props.deleteAllBoardsCallback();
+            console.log('delete all the boards!');
+        }
+    }
+
     return(
         <section className='boardz-block grid-block'>
             <h1> Boardz List </h1>
@@ -27,6 +39,13 @@ const Boardz = (props) => {
                         <Board />
                     </li>
                 </ul>
+            <form>
+                <button 
+                    className="deleteAllBoardsButton" 
+                    onClick={onClearAllBoards}>
+                    clear all boards
+                </button>
+            </form>
         </section>
     )
 }

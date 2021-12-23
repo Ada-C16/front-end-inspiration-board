@@ -64,7 +64,25 @@ function App() {
     const createBoardMenu = (boardList) => {
 
     }
+  
+    //This function makes a DELETE http request. It deletes one board by id
+    const deleteABoard = (id) => {
+      axios
+        .delete(
+          boardURL+`/${id}`)
+        .then((response) => {
+          console.log(response.data);
+          // setBoardList([...response.data]);
+        })
+        .catch((err) => console.log(err));
+    }
 
+    //This function iterates thru boardList and deletes every object from the herouku database by calling deleteABoard(). It is passed to Boarz as a prop and invoked in Boardz when a user clicks on the 'clear all boards' button.
+    const deleteAllBoards = () => {
+      boardList.forEach(element => {
+        deleteABoard(element.id);
+      });
+    }
 
   return (
     <section>
@@ -74,7 +92,10 @@ function App() {
         <section className='site-title-block grid-block'>
           <p className='site-title'>InspoBoard</p>
         </section>
-        <Boardz updateCurrentBoardCallback={updateCurrentBoard}/>
+        <Boardz 
+          updateCurrentBoardCallback={updateCurrentBoard}
+          deleteAllBoardsCallback={deleteAllBoards}
+        />
         <NewCardForm />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay />
