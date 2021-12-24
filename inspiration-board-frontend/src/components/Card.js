@@ -1,8 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import "./Card.css";
 
 const Card = () => {
   const [likesCount, setLikesCount] = useState(0);
+  const increaseLikes = () => {
+    setLikesCount(likesCount + 1);
+  };
+  // const decreaseLikes = () => {
+  //   setLikesCount(likesCount - 1);
+  // };
+
   return (
     <div>
       <h3>Temporary Header: This is a card</h3>
@@ -10,8 +18,11 @@ const Card = () => {
         <em>here is the card message</em>
       </h2>
       <p>{likesCount}💕</p>
-      <button>+1</button>
-      <button>Delete</button>
+      {/* // add onDblClick={decreaseLikes}? */}
+      <button className="likes-button" onClick={increaseLikes}>
+        +1
+      </button>
+      <button className="delete-button">Delete</button>
     </div>
   );
 };

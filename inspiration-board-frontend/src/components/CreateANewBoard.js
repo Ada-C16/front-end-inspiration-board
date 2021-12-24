@@ -1,4 +1,5 @@
 import SubmitQueryButton from "./SubmitQueryButton";
+import "./CreateANewBoard.css";
 import React from "react";
 import { useState } from "react";
 
@@ -24,7 +25,9 @@ const CreateANewBoard = () => {
       </div>
       <p>Preview: - </p>
       <SubmitQueryButton />
-      <button type="button">Hide New Board Form</button>
+      <button className="hide-new-board-button" type="button">
+        Hide New Board Form
+      </button>
     </form>
   );
 };
