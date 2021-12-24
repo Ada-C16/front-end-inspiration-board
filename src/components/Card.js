@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState} from 'react';
 
-const NewCardForm = () => {
+const Card = () => {
   const [cardsData, setCardsData] = useState([]);
   const [cardMessage, setCardMessage] = useState("");
 
@@ -37,4 +37,4 @@ const NewCardForm = () => {
   );
 };
 
-export default NewCardForm;
+export default Card;
