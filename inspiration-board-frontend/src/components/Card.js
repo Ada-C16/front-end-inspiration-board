@@ -7,9 +7,9 @@ const Card = () => {
   const increaseLikes = () => {
     setLikesCount(likesCount + 1);
   };
-  // const decreaseLikes = () => {
-  //   setLikesCount(likesCount - 1);
-  // };
+  const decreaseLikes = () => {
+    setLikesCount(likesCount - 1);
+  };
 
   return (
     <div>
@@ -17,7 +17,9 @@ const Card = () => {
       <h2>
         <em>here is the card message</em>
       </h2>
-      <p>{likesCount}💕</p>
+      <button className="hearts-button" onClick={decreaseLikes}>
+        {likesCount}💕
+      </button>
       {/* // add onDblClick={decreaseLikes}? */}
       <button className="likes-button" onClick={increaseLikes}>
         +1
