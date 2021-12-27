@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import NewBoardForm from "./components/NewBoardForm";
 import React, { useState } from "react";
 import axios from "axios";
+import NewCardForm from "./components/NewCardForm";
 
 function App() {
   const [boardsData, setBoardsData] = useState([
@@ -13,6 +14,18 @@ function App() {
     { board_id: 4, owner: "Owner D Test", title: "Board 4 Test" },
     { board_id: 5, owner: "Owner E Test", title: "Board 5 Test" },
   ]);
+
+  // const [isBoardFormVisible, setBoardFormVisible] = useState(true)
+
+  // const toggleNewBoardForm = (!isBoardFormVisible) =>{ 
+  //   if (isBoardFormVisible === true){
+  //     setBoardFormVisible(false); 
+  //   }else if (isBoardFormVisible === false){
+  //     setBoardFormVisible(true);
+  //   }
+  // }
+
+  const [visible, setVisible] = React.useState(false);
 
   const addNewBoard = (newBoard) => {
     const newBoardList = [...boardsData];
@@ -34,8 +47,13 @@ function App() {
         <h1>Team Lovelace's Inspiration Boards</h1>
       </header>
       <main>
-        <h2> Creating a new board</h2>
+        <div>
+      <button onClick={() => setVisible(true)}>Show</button>
+      <button onClick={() => setVisible(false)}>Hide</button>
+      {visible && <div> <h2>Creating a new board</h2>
         <NewBoardForm addBoardCallback={addNewBoard} />
+        <input type="submit" value="submit" /></div>}
+    </div>
       </main>
     </div>
   );
