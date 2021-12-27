@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-// function addBoard passed from app.js
 const NewBoardForm = ({ onAddBoard }) => {
   const [boardInfo, setBoardInfo] = useState({
     title: "",
@@ -18,8 +17,11 @@ const NewBoardForm = ({ onAddBoard }) => {
 
   const submitRequest = (event) => {
     event.preventDefault();
-    // calling addBoard function defined in app.js
     onAddBoard(boardInfo);
+    setBoardInfo({
+      title: "",
+      ownersName: "",
+    });
   };
 
   return (
@@ -41,8 +43,8 @@ const NewBoardForm = ({ onAddBoard }) => {
           value={boardInfo.ownersName}
           onChange={updateInput}
         />
-        <input type="submit" value="Add New Board" />
       </label>
+      <input type="submit" value="Add New Board" />
     </form>
   );
 };
