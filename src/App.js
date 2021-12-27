@@ -12,6 +12,7 @@ const App = () => {
       </header>
       <main>
         <Forms />
+        <Display />
       </main>
     </div>
   )

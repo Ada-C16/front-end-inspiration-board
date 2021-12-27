@@ -6,7 +6,7 @@ const Forms = () => {
   return (
     <div>
       <Board />
-      <Card />
+      {/* <Card /> */}
     </div>
   );
 };
