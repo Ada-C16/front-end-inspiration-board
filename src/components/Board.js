@@ -63,6 +63,7 @@ const Board = () => {
 
   return (
     <div>
+      <h2>Boards</h2>
       <select name="selectBoard" onChange={onBoardSelect()}>
         {boardOptions}
       </select>

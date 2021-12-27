@@ -7,6 +7,9 @@ import Board from "./components/Board"
 const App = () => {
   return (
     <div className="App">
+      <header>
+        <h1>Inspiration Board</h1>
+      </header>
       <main>
         <Forms />
       </main>
