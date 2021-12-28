@@ -1,46 +1,47 @@
 import React from "react";
-import {useState } from 'react';
-
+import { useState } from "react";
 
 const NewCardForm = (props) => {
-    //create formField
+  //create formField
 
-    const [cardFormField, setCardFormField] = useState({
-        cardMessage: ""
-    })
+  const [cardFormField, setCardFormField] = useState({
+    cardMessage: "",
+  });
 
-    const onCardMessageChange = (event) => {
-        setCardFormField({
-            ...cardFormField,
-            cardMessage: event.target.value
-        })
-    }
+  const onCardMessageChange = (event) => {
+    setCardFormField({
+      ...cardFormField,
+      cardMessage: event.target.value,
+    });
+  };
 
-    const onCardFormSubmit = (event) => {
-        event.preventDefault();
+  const onCardFormSubmit = (event) => {
+    event.preventDefault();
 
-        //need to pass in this function as a prop
-        
-        props.addNewCardCallback({
-            message: cardFormField.message
-        })
-    }
+    //need to pass in this function as a prop
 
-    return(
-        <section className='new-card-form-block grid-block'>
-            <h1> New Card Form</h1>
-            This is the New Card Form.
+    props.addNewCardCallback({
+      message: cardFormField.cardMessage,
+    });
+  };
 
-            <form onSubmit={onCardFormSubmit}>
-                <div>
-                    <label>New Card Message:</label>
-                    <input type="text" value={cardFormField.message} onChange={onCardMessageChange}></input>
-                </div>
-                <input type="submit" value="Submit"></input>
-            </form>
-
-        </section>
-    )
-}
+  return (
+    <section className="new-card-form-block grid-block">
+      <h1> New Card Form</h1>
+      This is the New Card Form.
+      <form onSubmit={onCardFormSubmit}>
+        <div>
+          <label>New Card Message:</label>
+          <input
+            type="text"
+            value={cardFormField.message}
+            onChange={onCardMessageChange}
+          ></input>
+        </div>
+        <input type="submit" value="Submit"></input>
+      </form>
+    </section>
+  );
+};
 
 export default NewCardForm;
