@@ -30,11 +30,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  // This piece of state represents the currently selected board -vange
-  // const [currentBoard, setCurrentBoard] = useState(
-  //   {title: "",
-  //   id: "",
-  //   owner: ""});
+  
   const [currentBoard, setCurrentBoard] = useState([]);
 
   //This function POSTs a new card and its message to our db. Also updates the state cardList
@@ -50,7 +46,7 @@ function App() {
           //trying let instead of const
           // const cards = [...cardList];
           let cards = [...cardList];
-          cardList.push(response.data);
+          cards.push(response.data);
           setCardList(cards);
         })
         .catch((err) => console.log(err));
@@ -60,6 +56,7 @@ function App() {
   };
   
   const updateCardDisplay = (cardList) => {
+
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
@@ -77,15 +74,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  // useEffect(() => {
-  //   axios
-  //   .get(`https://winspo-board.herokuapp.com/board/${boardInfo.id}/cards`)
-  //   .then((response) => {
-  //     setCardList([...response.data]);
-  //   })
-  //   .catch((err) => console.log(err));
-  // }, [cardList]);
 
   ///////////////
 
@@ -109,10 +97,7 @@ function App() {
     console.log(`the board has been updated to ${boardInfo.id}`);
     // call function to get cards associated with current board
   };
-  // console.log("hi")
-  // console.log(currentBoard)
-  //state updates after the function is called
-  //but whhYYYYY
+
 
   // This function takes in a list of board objects. Iterates over each object, makes a <Board /> and gives it an object {name:'', owner: ''} and updateCurrentBoard() function as props
   const createBoardMenu = (boardList) => {};
@@ -133,10 +118,7 @@ function App() {
     boardList.forEach((element) => {
       deleteABoard(element.id);
     });
-    //what if we reset state here..
-    //will the component re-render?
     setBoardList([])
-    //YES!!!!!
   };
   return (
     <section>
