@@ -110,7 +110,7 @@ function App() {
         />
         <NewCardForm addNewCardCallback={addNewCard} />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
-        <CardDisplay cardList={cardList} />
+        <CardDisplay cardList={cardList} currentBoard={currentBoard}/>
       </div>
     </section>
   );
