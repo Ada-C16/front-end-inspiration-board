@@ -6,12 +6,13 @@ import SelectedBoard from "./components/SelectedBoard";
 import Board from "./components/Board";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CreateANewCard from "./components/CreateANewCard";
 
 function App() {
   const [boardsData, setBoards] = useState([
     { board_id: 127, owner: "Min.", title: "ATLA Quotes" },
   ]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const getBoards = () => {
     axios
@@ -48,10 +49,16 @@ function App() {
         </div>
         <div className="col">
           <Board />
-        </div>
+          {errorMessage}
+        </div >
+
       </div>
+      
       <div>
         <Card />
+      </div>
+      <div>
+          <CreateANewCard/>
       </div>
     </div>
   );
