@@ -43,8 +43,6 @@ function App() {
         .then((response) => {
           console.log("a new card has been posted");
           console.log(response.data);
-          //trying let instead of const
-          // const cards = [...cardList];
           const cards = [...cardList];
           cards.push(response.data);
           setCardList(cards);
@@ -60,7 +58,7 @@ function App() {
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
-        cardComponents.push(<Card cardMessage={card.message} />);
+        cardComponents.push(<Card cardMessage={card.message} cardLikes={card.likes_count}/>);
     } 
     return cardComponents;
     }}
