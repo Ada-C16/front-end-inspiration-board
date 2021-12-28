@@ -47,7 +47,9 @@ function App() {
         .then((response) => {
           console.log("a new card has been posted");
           console.log(response.data);
-          const cards = [...cardList];
+          //trying let instead of const
+          // const cards = [...cardList];
+          let cards = [...cardList];
           cardList.push(response.data);
           setCardList(cards);
         })
