@@ -52,6 +52,8 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
+    //should we throw a pop-up error if they try to post a card
+    //before they select a board?
   };
 
   // GET all the boards

@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "./Card";
 
+
+//when is this called?
 const CardDisplay = (props) => {
   const cardComponents = [];
   if (props.cardList) {
