@@ -8,6 +8,19 @@ const NewBoardForm = (props) => {
     owner: "",
   });
 
+  const [isBoardFormVisible, setBoardFormVisible] = useState(true);
+  const [buttonText, setButtonText] = useState("hide board form");
+
+  const toggleNewBoardForm = () => {
+    setBoardFormVisible(!isBoardFormVisible);
+
+    if (isBoardFormVisible) {
+      setButtonText("show board form");
+    } else {
+      setButtonText("hide board form");
+    }
+  };
+
   // Every time user types in title or owner, updating state
   const onTitleChange = (event) => {
     setFormFields({
@@ -54,27 +67,33 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <p>
-        Title:
-        <input
-          type="text"
-          name="titleBoard"
-          value={formFields.title}
-          onChange={onTitleChange}
-        />
-      </p>
-      <p>
-        Owner:
-        <input
-          type="text"
-          name="owner"
-          value={formFields.owner}
-          onChange={onOwnerChange}
-        />
-      </p>
-      <input type="submit" value="submit" />
-    </form>
+    <div>
+      <h2>Creating a new board</h2>
+      {isBoardFormVisible ? (
+        <form onSubmit={onFormSubmit}>
+          <p>
+            Title:
+            <input
+              type="text"
+              name="titleBoard"
+              value={formFields.title}
+              onChange={onTitleChange}
+            />
+          </p>
+          <p>
+            Owner:
+            <input
+              type="text"
+              name="owner"
+              value={formFields.owner}
+              onChange={onOwnerChange}
+            />
+          </p>
+          <input type="submit" value="submit" />
+        </form>
+      ) : null}
+      <button onClick={toggleNewBoardForm}>{buttonText}</button>
+    </div>
   );
 };
 
