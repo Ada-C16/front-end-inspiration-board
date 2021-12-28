@@ -18,7 +18,6 @@ const Boardz = (props) => {
   for (let oneBoard of tempBoardList) {
     boardsComponents.push(
       <li>
-        {console.log(oneBoard.id)}
         <Board
           selectNewBoard={props.updateCurrentBoardCallback}
           boardInfo={oneBoard}

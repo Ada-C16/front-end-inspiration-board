@@ -41,6 +41,7 @@ function App() {
         .post(`${boardURL}/${currentBoard}`, newCard)
         .then((response) => {
           console.log("a new card has been posted");
+          console.log(response.data);
           const cards = [...cardList];
           cardList.push(response.data);
           setCardList(cards);
@@ -54,7 +55,6 @@ function App() {
     axios
       .get("https://winspo-board.herokuapp.com/board")
       .then((response) => {
-        console.log(response);
         setBoardList([...response.data]);
       })
       .catch((err) => console.log(err));
@@ -64,7 +64,14 @@ function App() {
 
   // This function should update the currentBoard state. It is invoked when a user clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
   const updateCurrentBoard = (id) => {
-    setCurrentBoard(id);
+    axios
+      .get(`https://winspo-board.herokuapp.com/board/${currentBoard}/cards`)
+      .then((response) => {
+        setCardList([...response.data]);
+        setCurrentBoard(id);
+      })
+      .catch((err) => console.log(err));
+
     console.log(`the board has been updated to ${id}`);
     // call function to get cards associated with current board
   };
@@ -89,7 +96,6 @@ function App() {
       deleteABoard(element.id);
     });
   };
-  console.log(boardList);
   return (
     <section>
       <header></header>
@@ -104,7 +110,7 @@ function App() {
         />
         <NewCardForm addNewCardCallback={addNewCard} />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
-        <CardDisplay currentBoard={currentBoard} />
+        <CardDisplay cardList={cardList} />
       </div>
     </section>
   );

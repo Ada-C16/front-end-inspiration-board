@@ -19,7 +19,6 @@ const NewCardForm = (props) => {
     event.preventDefault();
 
     //need to pass in this function as a prop
-
     props.addNewCardCallback({
       message: cardFormField.cardMessage,
     });
