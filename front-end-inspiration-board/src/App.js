@@ -1,5 +1,6 @@
 import "./App.css";
 import Boardz from "./components/Boardz";
+import Card from "./components/Card";
 import CardDisplay from "./components/CardDisplay";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
@@ -57,8 +58,16 @@ function App() {
     //should we throw a pop-up error if they try to post a card
     //before they select a board?
   };
-
-
+  
+  const updateCardDisplay = (cardList) => {
+    const cardComponents = [];
+    if (cardList) {
+      for (let card of cardList) {
+        cardComponents.push(<Card cardMessage={card.message} />);
+    } 
+    return cardComponents;
+    }}
+  
   // GET all the boards
   useEffect(() => {
     axios
@@ -68,6 +77,15 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //   .get(`https://winspo-board.herokuapp.com/board/${boardInfo.id}/cards`)
+  //   .then((response) => {
+  //     setCardList([...response.data]);
+  //   })
+  //   .catch((err) => console.log(err));
+  // }, [cardList]);
 
   ///////////////
 
@@ -132,9 +150,15 @@ function App() {
           deleteAllBoardsCallback={deleteAllBoards}
           boardList={boardList}
         />
-        <NewCardForm addNewCardCallback={addNewCard} />
+        <NewCardForm 
+          addNewCardCallback={addNewCard}
+          cardList = {cardList}
+          updateCardDisplayCallback = {updateCardDisplay}/>
         <NewBoardForm addNewBoardCallback={addNewBoard} />
-        <CardDisplay cardList={cardList} currentBoard={currentBoard}/>
+        <CardDisplay
+          cardList={cardList}
+          currentBoard={currentBoard}
+          updateCardDisplayCallback = {updateCardDisplay}/>
       </div>
     </section>
   );
