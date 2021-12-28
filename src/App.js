@@ -48,11 +48,18 @@ function App() {
       </header>
       <main>
         <div>
-      <button onClick={() => setVisible(true)}>Show</button>
+      {/* <button onClick={() => setVisible(true)}>Show</button>
       <button onClick={() => setVisible(false)}>Hide</button>
       {visible && <div> <h2>Creating a new board</h2>
         <NewBoardForm addBoardCallback={addNewBoard} />
+        <input type="submit" value="submit" /></div>} */}
+        <div>
+      <button onClick={() => setVisible(!visible)}>
+        {visible ? 'Hide Board Form' : 'Show Board Form'}
+      </button>
+      {visible && <div> <NewBoardForm addBoardCallback={addNewBoard} />
         <input type="submit" value="submit" /></div>}
+    </div>
     </div>
       </main>
     </div>
