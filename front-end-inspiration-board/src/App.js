@@ -74,8 +74,8 @@ function App() {
       id: boardInfo.id,
       owner: boardInfo.owner
     });
-    console.log(boardInfo)
-    console.log(currentBoard)
+    // console.log(boardInfo)
+    // console.log(currentBoard)
     axios
       .get(`https://winspo-board.herokuapp.com/board/${boardInfo.id}/cards`)
       .then((response) => {
@@ -86,9 +86,10 @@ function App() {
     console.log(`the board has been updated to ${boardInfo.id}`);
     // call function to get cards associated with current board
   };
-  console.log("hi")
-  console.log(currentBoard)
+  // console.log("hi")
+  // console.log(currentBoard)
   //state updates after the function is called
+  //but whhYYYYY
 
   // This function takes in a list of board objects. Iterates over each object, makes a <Board /> and gives it an object {name:'', owner: ''} and updateCurrentBoard() function as props
   const createBoardMenu = (boardList) => {};
@@ -109,6 +110,10 @@ function App() {
     boardList.forEach((element) => {
       deleteABoard(element.id);
     });
+    //what if we reset state here..
+    //will the component re-render?
+    setBoardList([])
+    //YES!!!!!
   };
   return (
     <section>
