@@ -17,12 +17,11 @@ const Card = () => {
     .then((response)=> {
         const cards = [...cardsData];
         cards.push(response.data);
-        setCardsData(cards);})
+        setCardsData(cards);
+        setCardMessage("");
+      })
     .catch((error) => {console.log('Error:', error);});
     }
-
-    setCardMessage("");
-
 
   return (
     <section>
