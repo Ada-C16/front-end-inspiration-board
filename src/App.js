@@ -1,10 +1,17 @@
 import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import BoardSelector from "./components/BoardSelector";
+import CurrentBoard from "./components/CurrentBoard";
 
 
 
 function App() {
+  const boards = [
+    { id: 1, title: "Hello World", author: "Pals" },
+    { id: 2, title: "Dinner Tonight", author: "Pals" },
+  ];
+
   // New Board
   const handleAddBoard = (boardInfo) => {
     console.log(boardInfo.title);
@@ -29,6 +36,8 @@ function App() {
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
         <NewBoardForm onAddBoard={handleAddBoard} />
         <NewCardForm onAddCard={handleAddCard} />
+        <BoardSelector boards={boards}></BoardSelector>
+        <CurrentBoard board={boards[0]}></CurrentBoard>
       </main>
     </div>
 
