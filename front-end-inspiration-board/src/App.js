@@ -58,6 +58,14 @@ function App() {
   };
   
   const updateCardDisplay = (cardList) => {
+  
+    axios
+      .get(`https://winspo-board.herokuapp.com/board/${currentBoard.id}/cards`)
+      .then((response) => {
+        setCardList([...response.data]);
+      })
+      .catch((err) => console.log(err));
+    
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
@@ -151,6 +159,7 @@ function App() {
         <NewCardForm 
           addNewCardCallback={addNewCard}
           cardList = {cardList}
+          currentBoard={currentBoard}
           updateCardDisplayCallback = {updateCardDisplay}/>
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay

@@ -14,7 +14,7 @@ const CardDisplay = (props) => {
   return (
     <section className="card-display-block grid-block">
       <h1>{props.currentBoard.title} by {props.currentBoard.owner}</h1>
-      {console.log(props.currentBoard)}
+      {/* {console.log(props.currentBoard)} */}
       {cardComponents}
     </section>
   );
