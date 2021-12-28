@@ -9,6 +9,7 @@ const Display = (props) => {
   // + generate all cards for this board)
   // cards component to structure card (like, delete)
   const [cards, setCards] = useState([]);
+  const [cardsComponents, setCardsComponents] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,17 +19,61 @@ const Display = (props) => {
       });
   }, []);
 
+  // not check yet
+  const likeCard = (id) => {
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/{id}/like`)
+      .then(() => {
+        const newCards = cards.map((card) => {
+          if (card.id === id) {
+            card.likes_count += 1;
+          }
+          return card;
+        });
+        setCards(newCards);
+      });
+  };
+
+  const deleteCard = (id) => {
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/{id}`).then(() => {
+      let newCards = [];
+      cards.forEach((card) => {
+        if (card.id !== id) {
+          newCards.push(card);
+        }
+      });
+      setCards(newCards);
+    });
+  };
+  // further thinking
   useEffect(() => {
-    const cardlist = cards.map((card, i) => {
+    const likeCardFunc = () => {
+      if (cards.length === 0) {
+        return likeCard;
+      } else {
+        return () => {};
+      }
+    };
+
+    const deleteCardFunc = () => {
+      if (cards.length === 0) {
+        return deleteCard;
+      } else {
+        return () => {};
+      }
+    };
+    const cardList = cards.map((card) => {
       return (
         <Cards
           id={card.id}
           message={card.message}
           likes_count={card.likes_count}
+          likeCard={likeCardFunc}
+          deleteCard={deleteCardFunc}
         />
       );
     });
-    setCards(cardlist);
+    setCardsComponents(cardList);
   }, [cards]);
 
   return (
@@ -36,7 +81,7 @@ const Display = (props) => {
       <h2>
         {props.title} - {props.owner}
       </h2>
-      <div className="cards-display">{cards}</div>
+      <div className="cards-display">{cardsComponents}</div>
     </div>
   );
 };
