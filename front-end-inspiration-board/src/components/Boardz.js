@@ -17,7 +17,7 @@ const Boardz = (props) => {
   const tempBoardList = [...props.boardList];
   for (let oneBoard of tempBoardList) {
     boardsComponents.push(
-      <li>
+      <li key={oneBoard.id}>
         <Board
           selectNewBoard={props.updateCurrentBoardCallback}
           boardInfo={oneBoard}
@@ -25,6 +25,14 @@ const Boardz = (props) => {
       </li>
     );
   }
+
+//   <ul>
+//   {["Item1", "Item2", "Item3"].map(item =>
+//   <li key="{item}">{item}</li>
+//   )}
+// </ul>
+
+
   return (
     <section className="boardz-block grid-block">
       <h1> Boardz List </h1>

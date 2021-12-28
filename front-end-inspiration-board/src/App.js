@@ -30,15 +30,19 @@ function App() {
       .catch((err) => console.log(err));
   };
   // This piece of state represents the currently selected board -vange
-  const [currentBoard, setCurrentBoard] = useState();
+  // const [currentBoard, setCurrentBoard] = useState(
+  //   {title: "",
+  //   id: "",
+  //   owner: ""});
+  const [currentBoard, setCurrentBoard] = useState([]);
 
   //This function POSTs a new card and its message to our db. Also updates the state cardList
   //It updates state so that the new card immediately displays.
   const addNewCard = (newCard) => {
     if (currentBoard) {
-      console.log(currentBoard);
+      console.log(currentBoard.id);
       axios
-        .post(`${boardURL}/${currentBoard}`, newCard)
+        .post(`${boardURL}/${currentBoard.id}`, newCard)
         .then((response) => {
           console.log("a new card has been posted");
           console.log(response.data);
@@ -65,9 +69,15 @@ function App() {
   // This function should update the currentBoard state. It is invoked when a user clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
   // const updateCurrentBoard = (id) => {
   const updateCurrentBoard = (boardInfo) => {
-    setCurrentBoard(boardInfo.title);
+    // setCurrentBoard(boardInfo.title);
+    setCurrentBoard({title: boardInfo.title,
+      id: boardInfo.id,
+      owner: boardInfo.owner
+    });
+    console.log(boardInfo)
+    console.log(currentBoard)
     axios
-      .get(`https://winspo-board.herokuapp.com/board/${currentBoard}/cards`)
+      .get(`https://winspo-board.herokuapp.com/board/${boardInfo.id}/cards`)
       .then((response) => {
         setCardList([...response.data]);
       })
@@ -76,6 +86,9 @@ function App() {
     console.log(`the board has been updated to ${boardInfo.id}`);
     // call function to get cards associated with current board
   };
+  console.log("hi")
+  console.log(currentBoard)
+  //state updates after the function is called
 
   // This function takes in a list of board objects. Iterates over each object, makes a <Board /> and gives it an object {name:'', owner: ''} and updateCurrentBoard() function as props
   const createBoardMenu = (boardList) => {};
