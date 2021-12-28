@@ -33,7 +33,12 @@ const NewBoardForm = (props) => {
             owner: formField.boardOwner
         })
 
-        // console.log(formField)
+        //cabebe 12.28.21
+        //resets formfield state on Form Submit button click
+        setFormField({
+            boardName: '',
+            boardOwner: '',
+        });
     }
 
     return(
