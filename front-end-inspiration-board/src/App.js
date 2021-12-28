@@ -30,7 +30,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  
+
   const [currentBoard, setCurrentBoard] = useState([]);
 
   //This function POSTs a new card and its message to our db. Also updates the state cardList
@@ -45,7 +45,7 @@ function App() {
           console.log(response.data);
           //trying let instead of const
           // const cards = [...cardList];
-          let cards = [...cardList];
+          const cards = [...cardList];
           cards.push(response.data);
           setCardList(cards);
         })

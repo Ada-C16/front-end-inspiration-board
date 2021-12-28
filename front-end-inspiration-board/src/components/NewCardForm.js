@@ -29,9 +29,10 @@ const NewCardForm = (props) => {
     //cabebe 12.28.21
     //resets CardFormField state on Form Submit button click
     setCardFormField({
-      cardMessage: ""
+      cardMessage: ''
     });
   };
+  
 
   return (
     <section className="new-card-form-block grid-block">
