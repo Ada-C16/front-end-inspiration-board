@@ -63,8 +63,9 @@ function App() {
   ///////////////
 
   // This function should update the currentBoard state. It is invoked when a user clicks on a board. It should be passed as a prop to Boardz.js, then down to Board.js
-  const updateCurrentBoard = (id) => {
-    setCurrentBoard(id);
+  // const updateCurrentBoard = (id) => {
+  const updateCurrentBoard = (boardInfo) => {
+    setCurrentBoard(boardInfo.title);
     axios
       .get(`https://winspo-board.herokuapp.com/board/${currentBoard}/cards`)
       .then((response) => {
@@ -72,7 +73,7 @@ function App() {
       })
       .catch((err) => console.log(err));
 
-    console.log(`the board has been updated to ${id}`);
+    console.log(`the board has been updated to ${boardInfo.id}`);
     // call function to get cards associated with current board
   };
 

@@ -10,7 +10,8 @@ const Board = (props) => {
   const handleSelectList = (event) => {
     console.log("you clicked on the board you want to display!");
     // invoke callback function from props here.This function should update currentBoard state in App.js.
-    props.selectNewBoard(props.boardInfo.id);
+    // props.selectNewBoard(props.boardInfo.id);
+    props.selectNewBoard(props.boardInfo);
   };
 
   return (
