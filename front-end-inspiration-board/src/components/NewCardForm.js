@@ -5,7 +5,7 @@ const NewCardForm = (props) => {
   //create formField
 
   const [cardFormField, setCardFormField] = useState({
-    cardMessage: "",
+    cardMessage: ''
   });
 
   const onCardMessageChange = (event) => {
@@ -21,6 +21,15 @@ const NewCardForm = (props) => {
     //need to pass in this function as a prop
     props.addNewCardCallback({
       message: cardFormField.cardMessage,
+    });
+
+    console.log("We're in OnCardFormSubmit!")
+
+    props.updateCardDisplayCallback(props.cardList);
+    //cabebe 12.28.21
+    //resets CardFormField state on Form Submit button click
+    setCardFormField({
+      cardMessage: ''
     });
   };
 
