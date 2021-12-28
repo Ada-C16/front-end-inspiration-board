@@ -12,6 +12,10 @@ function App() {
 
   // This is a piece of state. It's a list of all the board objects in our api database
   const [boardList, setBoardList] = useState([]);
+
+  // This is a piece of state. It's a list of all card objects for a specific board.
+  const [cardList, setCardList] = useState([])
+
   
   // This function POSTs the data in form to ther heroku database. and updates the state boardList
   const addNewBoard = newBoard => {
@@ -30,6 +34,33 @@ function App() {
     .catch((err) => console.log(err));
   }
   console.log(boardList);
+
+  //This function POSTs a new card and its message to our db. Also updates the state cardList
+  //It updates state so that the new card immediately displays. 
+  const addNewCard = newCard => {
+    axios
+    .post(
+      //big question mark here
+      //how to we post to a url with the board ID as a variable?
+      //maybe need separate function to do the following:
+      //fetch board_ID by current board name
+      //create new string with that number
+      //pass that into this on next line
+
+      //maybe first, we need a piece of state that holds the current board on display
+      //we have that, vange made it
+      //so maybe i need a way to fetch ID from that piece of state
+      "https://winspo-board.herokuapp.com/board",
+      newCard
+    )
+    .then((response) => {
+      console.log("a new card has been posted");
+      const cards = [...cardList];
+      cardList.push(response.data.card);
+      setCardList(cards);
+    })
+    .catch((err) => console.log(err));
+  }
 
   // GET all the boards
   useEffect(() => {
@@ -96,7 +127,7 @@ function App() {
           updateCurrentBoardCallback={updateCurrentBoard}
           deleteAllBoardsCallback={deleteAllBoards}
         />
-        <NewCardForm />
+        <NewCardForm addNewCardCallback={addNewCard}/>
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay />
       </div>
