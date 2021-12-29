@@ -12,7 +12,8 @@ const Card = (props) => {
   const submitNewCard = (changeEvent) => {
     changeEvent.preventDefault();
     //console.log(props.currentBoard)
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.currentBoard}`, {"message": cardMessage})
+    console.log(cardMessage)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.currentBoard}`, {message: cardMessage})
     .then((response)=> {
         const cards = [...cardsData];
         cards.push(response.data);

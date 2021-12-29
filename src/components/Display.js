@@ -39,8 +39,8 @@ const Display = (props) => {
     });
   };
 
-  if (cards.card) {
-    const cardList = cards.card.map((card) => {
+  if (cards) {
+    const cardList = cards.map((card) => {
       return (
         <Cards
           id={card.id}

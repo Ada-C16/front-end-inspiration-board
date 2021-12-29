@@ -8,7 +8,7 @@ import "./App.css";
 const App = () => {
 
   const [currentBoard, setCurrentBoard] = useState(1);
-  const [display, setDisplay] = useState(<Display title="board" owner = "train-emoji" cards = {[]}/>);
+  const [display, setDisplay] = useState(<Display id = "1" title="board" owner = "train-emoji" cards = {[]}/>);
 
   const onBoardSelect = (e) => {
     const index = e.target.selectedIndex;
@@ -19,6 +19,7 @@ const App = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${option}`)
       .then((response) => {
         setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
+        // sample default cards; [{id: 1, message: "words", likes_count:2}]
       })
   };
 
@@ -27,7 +28,6 @@ const App = () => {
       .then((response) => {
         setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
       })
-    setDisplay()
   }, [])
 
   return (
