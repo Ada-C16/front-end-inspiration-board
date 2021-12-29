@@ -57,7 +57,7 @@ function App() {
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
-        cardComponents.push(<Card cardMessage={card.message} cardLikes={card.likes_count}/>);
+        cardComponents.push(<Card cardMessage={card.message} cardLikes={card.likes_count} currentBoard={currentBoard}/>);
     } 
     return cardComponents;
     }}
