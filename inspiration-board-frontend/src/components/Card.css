@@ -1,3 +1,27 @@
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-body {
+    box-shadow: -10px 0px 10px 1px #aaaaaa;
+    text-decoration:none;
+    color:#000;
+    background: #fff6a6;
+    display:block;
+    height: 15em;
+    width: 15em;
+    padding:1em;
+}
+
+.card-message {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 20px;
+    padding: 2.5px;
+    text-align: center;
+}
+
 .delete-button {
     border-radius: 8px;
     font-size: 16px;

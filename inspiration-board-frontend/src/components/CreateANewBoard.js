@@ -1,4 +1,4 @@
-import SubmitQueryButton from "./SubmitQueryButton";
+import SubmitButton from "./SubmitButton";
 import "./CreateANewBoard.css";
 import React from "react";
 import { useState } from "react";
@@ -42,13 +42,14 @@ const CreateANewBoard = () => {
 
   return (
     <form action="" method="get" className="new-board-form">
-      <h4>Temporary Header: Create A New Board</h4>
+      <h4 className="create-new-board-header">Create A New Board</h4>
       <div className="board-title">
         <label htmlFor="title">Title </label>
         <input
           type="text"
           id="title"
           title="Title"
+          placeholder="give me a title!"
           value={formFields.title}
           onChange={(onTitleChange, showPreview)}
           required
@@ -60,13 +61,14 @@ const CreateANewBoard = () => {
           type="text"
           id="owner"
           title="Owner"
+          placeholder="who are you?"
           value={formFields.owner}
           onChange={(onOwnerChange, showPreview)}
           required
         ></input>
       </div>
       <p>Preview: - </p>
-      <SubmitQueryButton />
+      <SubmitButton />
       <button className="hide-new-board-button" type="button">
         Hide New Board Form
       </button>
