@@ -10,7 +10,7 @@ import { useState } from "react";
 // need a way to update isCollapsed
 
 const CreateANewBoard = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  // const [isCollapsed, setIsCollapsed] = useState(false);
 
   const [formFields, setFormFields] = useState({
     title: "",
@@ -31,6 +31,15 @@ const CreateANewBoard = () => {
     });
   };
 
+  const showPreview = (event) => {
+    console.log(
+      "Details about the element that fired the event:",
+      event.target
+    );
+    console.log("The value of that element:", event.target.value);
+    setFormFields(event.target.value);
+  };
+
   return (
     <form action="" method="get" className="new-board-form">
       <h4>Temporary Header: Create A New Board</h4>
@@ -41,7 +50,7 @@ const CreateANewBoard = () => {
           id="title"
           title="Title"
           value={formFields.title}
-          onChange={onTitleChange}
+          onChange={(onTitleChange, showPreview)}
           required
         ></input>
       </div>
@@ -52,7 +61,7 @@ const CreateANewBoard = () => {
           id="owner"
           title="Owner"
           value={formFields.owner}
-          onChange={onOwnerChange}
+          onChange={(onOwnerChange, showPreview)}
           required
         ></input>
       </div>
