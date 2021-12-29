@@ -6,10 +6,13 @@ import "./App.css";
 
 
 const App = () => {
+  /// TESTING: REMOVE WHEN LINKED CARDS ADDED TO DB
+  const sampleCards = [{id: 1, message: "words", likes_count:2}, {id: 2, message: "words", likes_count:4}, {id: 3, message: "words", likes_count:10}];
+  /// END TESTING
 
   const [currentBoard, setCurrentBoard] = useState(1);
   const [display, setDisplay] = useState(<Display id = "1" title="board" owner = "train-emoji" cards = {[]}/>);
-
+  
   const onBoardSelect = (e) => {
     const index = e.target.selectedIndex;
     const el = e.target.childNodes[index];
@@ -18,8 +21,10 @@ const App = () => {
     setCurrentBoard(option);
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${option}`)
       .then((response) => {
-        setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
-        // sample default cards; [{id: 1, message: "words", likes_count:2}]
+        setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {sampleCards}/>)
+        /// TESTING: REVERT PARAMETER WHEN CARDS WORK ^^^
+        // cards = {response.data.cards}
+        /// END TESTING
       })
   };
 

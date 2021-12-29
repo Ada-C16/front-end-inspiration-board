@@ -56,7 +56,7 @@ const Display = (props) => {
   [cards]);
 
   return (
-    <div>
+    <div className= "display-component">
       <h2>
         "{props.title}" by {props.owner}
       </h2>

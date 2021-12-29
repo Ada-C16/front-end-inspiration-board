@@ -1,5 +1,5 @@
 main {
-    padding: 10px;
+    padding: 1%;
 }
 
 .forms-component {
@@ -19,4 +19,21 @@ h1, h2 {
 
 .submit-button {
     margin: 0 auto;
+}
+
+.cards-display {
+    display: flex;
+    margin: 1%;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: row;
 }
