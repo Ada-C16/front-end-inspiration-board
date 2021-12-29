@@ -58,9 +58,9 @@ const Board = (props) => {
   };
 
   return (
-    <div>
+    <div >
       <h2>Boards</h2>
-      <select name="selectBoard" onChange={props.onBoardSelect()}>
+      <select name="selectBoard" onChange={(e) => props.onBoardSelect(e.target)}>
         {boardOptions}
       </select>
       <form>
