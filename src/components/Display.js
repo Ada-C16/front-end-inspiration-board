@@ -11,49 +11,77 @@ const Display = (props) => {
     setCards(props.cards);
   }, [props])
 
-  useEffect(() => {
+  // const createCardComponents = (cards) => {
+  //   //loop through
+  //   const cardComponentList = cards.map((card) => {
+  //     return (
+  //       <div className = "card-view">
+  //         <div>{card.message}</div>
+  //           <div className="card-buttons" id={card.id}>
+  //           <p>{card.likes_count}</p>
+  //           <button className="like" onClick={likeCard(card.id)}>+1</button> 
+  //          <button className="delete" onClick={deleteCard(card.id)}>delete</button>
+  //         </div>
+  //       </div>
+  //     )
+  //   })
+  //   setCardsComponents(cardComponentList);
+  // }
 
-  const likeCard = (id) => {
-    axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}/like`)
+  // func to convert cards into cardComponents manually 
+  // likeCard which is in the manual card creation
+  // same for deleteCard
+
+
+  useEffect(() => {
+    const likeCard = (id) => {
+      // loop through cards, make modified version
+      // setCards()
+      axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}/like`)
       .then(() => {
         const newCards = cards.map((card) => {
           if (card.id === id) {
-            card.likes_count += 1;
+            card.likes_count += 1
           }
           return card;
-        });
+        })
         setCards(newCards);
-      });
-  };
+      })
+      .catch(()=> setCards([]))
+    };
+  
+    const deleteCard = (id) => {
+      // loop through cards, remove the one, 
+      // setCards
+      axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
+      .then(()=> {
+        const newCards = [];
+        cards.forEach((card) => {
+          if (card.id !== id) {
+            newCards.push(card);
+          }
+        })
+        setCards(newCards);
+      })
+    };
 
-  const deleteCard = (id) => {
-    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`).then(() => {
-      let newCards = [];
-      cards.forEach((card) => {
-        if (card.id !== id) {
-          newCards.push(card);
-        }
-      });
-      setCards(newCards);
-    });
-  };
-
-  if (cards) {
-    const cardList = cards.map((card) => {
+    if (cards) {
+      const cardComponentList = cards.map((card) => {
       return (
-        <Cards
-          id={card.id}
-          message={card.message}
-          likes_count={card.likes_count}
-          likeCard={likeCard}
-          deleteCard={deleteCard}
-        /> );
-    });
-    setCardsComponents(cardList);
-  }
+        <div className = "card-view" key={card.id}>
+          <div>{card.message}</div>
+            <div className="card-buttons" id={card.id}>
+            <p>{card.likes_count}</p>
+            <button className="like" onClick={likeCard(card.id)}>+1</button> 
+           <button className="delete" onClick={deleteCard(card.id)}>delete</button>
+          </div>
+        </div>
+      )
+    })
+    setCardsComponents(cardComponentList);   
+    }
   }, 
-  [cards]);
+    [cards]);
 
   return (
     <div className= "display-component">

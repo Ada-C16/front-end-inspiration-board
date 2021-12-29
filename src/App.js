@@ -21,7 +21,8 @@ const App = () => {
     setCurrentBoard(option);
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${option}`)
       .then((response) => {
-        setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {sampleCards}/>)
+        console.log(response.data)
+        setDisplay(<Display title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
         /// TESTING: REVERT PARAMETER WHEN CARDS WORK ^^^
         // cards = {response.data.cards}
         /// END TESTING
@@ -29,9 +30,10 @@ const App = () => {
   };
 
   useEffect(() => {
+    // get first child element getAttribute(id) from onBoardSelect
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/1`) // what if 1 doesnt exist? catch by going to next avail num
       .then((response) => {
-        setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
+        setDisplay(<Display title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
       })
   }, [])
 
