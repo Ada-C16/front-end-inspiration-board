@@ -10,12 +10,20 @@ const App = () => {
 
   const onBoardSelect = (id) => {
     setCurrentBoard(id);
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${id}`)
       .then((response) => {
         setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
         // send cards as prop 
       })
   };
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/1`) // what if 1 doesnt exist? catch by going to next avail num
+      .then((response) => {
+        setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
+      })
+    setDisplay()
+  }, [])
 
   // if i have posted a card, assign it to the current board specifically.
   // send current board as prop to post so it can use the value in api to assign in post route
