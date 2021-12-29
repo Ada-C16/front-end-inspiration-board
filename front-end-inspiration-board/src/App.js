@@ -57,7 +57,10 @@ function App() {
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
-        cardComponents.push(<Card cardMessage={card.message} cardLikes={card.likes_count}/>);
+        //the key is just something that react needs when it renders elements in a loop
+        //dont use it elsewhere
+        //just for react to distinguish which card is which
+        cardComponents.push(<Card key={card.card_id} cardMessage={card.message} cardLikes={card.likes_count}/>);
     } 
     return cardComponents;
     }}

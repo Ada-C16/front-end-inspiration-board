@@ -4,7 +4,8 @@ const Card = (props) => {
   const [cardLikeCount, setCardLikeCount] = useState(0)
 
   const addLike = () => {
-    setCardLikeCount(cardLikeCount + 1)
+    setCardLikeCount(props.cardLikes + 1)
+    //patch request in here
   }
   
   console.log(cardLikeCount)
