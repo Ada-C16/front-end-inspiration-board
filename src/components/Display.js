@@ -7,8 +7,9 @@ const Display = (props) => {
   const [cards, setCards] = useState([]);
   const [cardsComponents, setCardsComponents] = useState([]);
 
-
-  // when page loads, setCards(props.cards)
+  useEffect(() => {
+    setCards(props.cards);
+  }, [props])
 
   useEffect(() => {
 
