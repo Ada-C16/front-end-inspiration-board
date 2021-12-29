@@ -4,7 +4,7 @@ import Card from "./Card";
 
 const Forms = (props) => {
   return (
-    <div>
+    <div className = "forms-component">
       <Board onBoardSelect={props.onBoardSelect}/>
       <Card currentBoard = {props.currentBoard}/>
     </div>
