@@ -10,8 +10,8 @@ const NewCardForm = (props) => {
 
   const onCardMessageChange = (event) => {
     setCardFormField({
-      ...cardFormField,
-      cardMessage: event.target.value,
+      // ...cardFormField,
+      cardMessage: event.target.value
     });
   };
 
@@ -25,13 +25,14 @@ const NewCardForm = (props) => {
 
     console.log("We're in OnCardFormSubmit!")
 
-    props.updateCardDisplayCallback(props.cardList);
+    // props.updateCardDisplayCallback(props.cardList);
     //cabebe 12.28.21
     //resets CardFormField state on Form Submit button click
     setCardFormField({
       cardMessage: ''
     });
   };
+  
 
   return (
     <section className="new-card-form-block grid-block">
