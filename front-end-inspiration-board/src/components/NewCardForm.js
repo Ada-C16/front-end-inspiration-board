@@ -45,6 +45,7 @@ const NewCardForm = (props) => {
             type="text"
             value={cardFormField.message}
             onChange={onCardMessageChange}
+            maxLength={40}
           ></input>
         </div>
         <input type="submit" value="Submit"></input>
