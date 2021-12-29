@@ -1,7 +1,7 @@
-import React from "react";
+import PropTypes from "prop-types";
 
-function CurrentBoard({ board }) {
+const CurrentBoard = ({ board }) => {
   return <h2>{board.title}</h2>;
-}
+};
 
 export default CurrentBoard;

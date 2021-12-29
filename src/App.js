@@ -5,6 +5,9 @@ import BoardSelector from "./components/BoardSelector";
 import CurrentBoard from "./components/CurrentBoard";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import BoardSelector from "./components/BoardSelector";
+import CurrentBoard from "./components/CurrentBoard";
+import CardList from "./components/CardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -49,14 +52,21 @@ function App() {
     setSelectedBoard(board);
   };
 
+  // here selectedCard is just a placeholder
+  const increaseLikes = (selectedCard) => {
+    console.log(selectedCard);
+  };
   return (
     <div className="App">
       <header className="App-header"></header>
       <main>
+        {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
         <NewBoardForm onAddBoard={handleAddBoard} />
         <NewCardForm onAddCard={handleAddCard} />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
         {selectedBoard && <CurrentBoard board={selectedBoard} />}
+        <CurrentBoard board={boards[0]}></CurrentBoard>
+        <CardList cards={cards} onIncreaseLikes={increaseLikes} />
       </main>
     </div>
   );
