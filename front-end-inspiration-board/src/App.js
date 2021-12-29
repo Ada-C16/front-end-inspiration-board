@@ -17,19 +17,19 @@ function App() {
   // This is a piece of state. It's a list of all card objects for a specific board.
   const [cardList, setCardList] = useState([]);
 
-  const [currentCard, setCurrentCard] = useState([]);
+  // const [currentCard, setCurrentCard] = useState([]);
 
   const [currentBoard, setCurrentBoard] = useState([]);
 
-  //GET one card's info
-  // const selectCurrentCard = (currentBoard, cardInfo) => {
-  //   setCurrentCard({
-  //     id: cardInfo.card_id
-  //   })
-  //   axios
-  //     .get(`${boardURL}/${currentBoard.id}/cards/${currentCard.card_id}`)
-  // }
-
+  const deleteCard = (cardID, currentBoard) => {
+    // console.log('we are in deleteCard!');
+    axios
+      .delete(`${boardURL}/${currentBoard.id}/cards/${cardID}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   // This function POSTs the data in form to ther heroku database. and updates the state boardList
   const addNewBoard = (newBoard) => {
@@ -154,7 +154,8 @@ function App() {
         <CardDisplay
           cardList={cardList}
           currentBoard={currentBoard}
-          setCurrentCardCallback = {setCurrentCard}
+          deleteCardCallback={deleteCard}
+          // setCurrentCardCallback = {setCurrentCard}
         />
       </div>
     </section>

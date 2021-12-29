@@ -5,6 +5,19 @@ import Card from "./Card";
 
 //when is this called?
 const CardDisplay = (props) => {
+  //GET all cards
+  const currentCards = useEffect (() => {
+    axios
+      .get(`https://winspo-board.herokuapp.com/board/${props.currentBoard.id}/cards`)
+      .then((response) => {
+        console.log(`we're getting the cards of this board: ${props.currentBoard.title}`);
+        console.log("current cards are:", response.data);
+        const currentCards = response.data;
+        return currentCards
+      })
+      .catch((err) => console.log(err));
+  }, [props.currentBoard]);
+
   const updateCardDisplay =(cardList, currentBoard)=> {
     const cardComponents = [];
     if (props.cardList) {
@@ -13,33 +26,25 @@ const CardDisplay = (props) => {
         //dont use it elsewhere
         //just for react to distinguish which card is which
         cardComponents.push(
-        <Card 
+          <Card 
           key={card.card_id}
+          id={card.card_id}
           cardMessage={card.message}
           cardLikes={card.likes_count}
           currentBoard={props.currentBoard}
-          setCurrentCardCallback = {props.setCurrentCard}/>
+          cardList={props.cardList}
+          deleteCardCallback={props.deleteCardCallback}
+          updateCardDisplayCallback={updateCardDisplay}
+          // setCurrentCardCallback = {props.setCurrentCard}
+          />
           );
-    } 
+        } 
     return cardComponents;
     }
   }
+  
 
-  const cardComponents = updateCardDisplay(props.cardList, props.currentBoard);
-  
-    //GET all cards
-  useEffect (() => {
-    axios
-      .get(`https://winspo-board.herokuapp.com/board/${props.currentBoard.id}/cards`)
-      .then((response) => {
-        console.log(`we're getting the cards of this board: ${props.currentBoard.title}`);
-        console.log("current cards are:", response.data);
-        const currentCardsAvailable = response.data;
-        return currentCardsAvailable
-      })
-      .catch((err) => console.log(err));
-  }, [props.currentBoard]);
-  
+  const cardComponents = updateCardDisplay(props.cardList, props.currentBoard, currentCards);
 
   return (
     <section className="card-display-block grid-block">
