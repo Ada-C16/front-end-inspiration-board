@@ -2,6 +2,8 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import Display from "./components/Display"; 
 import Forms from "./components/Forms";
+import "./App.css";
+
 
 const App = () => {
 
