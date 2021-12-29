@@ -4,13 +4,31 @@ import NewCardForm from "./components/NewCardForm";
 import BoardSelector from "./components/BoardSelector";
 import CurrentBoard from "./components/CurrentBoard";
 import CardList from "./components/CardList";
+import {useState, useEffect} from "react"
+import axios from "axios"
 
 
 function App() {
-  const boards = [
-    { id: 1, title: "Hello World", author: "Pals" },
-    { id: 2, title: "Dinner Tonight", author: "Pals" },
-  ];
+// useState creating a variable (boards) and function (setBoards)to be used
+  const [boards, setBoards] = useState([])
+  useEffect(()=>{
+    getBoards()
+  },[])
+  const getBoards = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .then((result)=>{
+        console.log(result)
+        setBoards(result.data)
+      })
+  }
+
+  // const boards = [
+  //   { id: 1, title: "Hello World", author: "Pals" },
+  //   { id: 2, title: "Dinner Tonight", author: "Pals" },
+  // ];
+
+
   const cards = [
     {id:1, message: "Hello Ayaka Faith" ,likes:0, boardId:1},
     {id:2, message: "Hello Andrea" ,likes:0, boardId:1},
@@ -45,7 +63,7 @@ function App() {
         <NewBoardForm onAddBoard={handleAddBoard} />
         <NewCardForm onAddCard={handleAddCard} />
         <BoardSelector boards={boards}></BoardSelector>
-        <CurrentBoard board={boards[0]}></CurrentBoard>
+       {/* <CurrentBoard board={boards[0]}></CurrentBoard> */}
         <CardList cards={cards} onIncreaseLikes ={increaseLikes}/>
       </main>
     </div>
