@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const CreateANewCard = () => {
+const CreateANewCard = (props) => {
 
   const [message, setMessage] = useState('')
   
@@ -9,10 +9,14 @@ const CreateANewCard = () => {
       console.log(event)
       setMessage(event.target.value)
   }; 
-  
+  const postCards = (event) =>{
+
+      event.preventDefault();
+      props.postANewCard(message)
+  };
 
   return (
-  <form onSubmit ={() => {console.log(message)}} method = ''>
+  <form onSubmit ={postCards} method = ''>
     <div>
       <h3>Create A New Card</h3>
       <label htmlFor = 'message'>Message</label>
