@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Cards from "./Cards";
 import axios from "axios";
 
 const Display = (props) => {
@@ -11,48 +10,24 @@ const Display = (props) => {
     setCards(props.cards);
   }, [props])
 
-  // const createCardComponents = (cards) => {
-  //   //loop through
-  //   const cardComponentList = cards.map((card) => {
-  //     return (
-  //       <div className = "card-view">
-  //         <div>{card.message}</div>
-  //           <div className="card-buttons" id={card.id}>
-  //           <p>{card.likes_count}</p>
-  //           <button className="like" onClick={likeCard(card.id)}>+1</button> 
-  //          <button className="delete" onClick={deleteCard(card.id)}>delete</button>
-  //         </div>
-  //       </div>
-  //     )
-  //   })
-  //   setCardsComponents(cardComponentList);
-  // }
-
-  // func to convert cards into cardComponents manually 
-  // likeCard which is in the manual card creation
-  // same for deleteCard
-
-
   useEffect(() => {
-    const likeCard = (id) => {
-      // loop through cards, make modified version
-      // setCards()
+    const likeCard = (e) => {
+      const id = e.target.parentNode.parentNode.getAttribute("id")
       axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}/like`)
       .then(() => {
         const newCards = cards.map((card) => {
-          if (card.id === id) {
+          if (card.id === parseInt(id)) {
             card.likes_count += 1
           }
           return card;
         })
         setCards(newCards);
       })
-      .catch(()=> setCards([]))
+      .catch(()=> {}) // maybe just have it superficially update the number // or do nothing
     };
   
-    const deleteCard = (id) => {
-      // loop through cards, remove the one, 
-      // setCards
+    const deleteCard = (e) => {
+      const id = e.target.parentNode.parentNode.getAttribute("id")
       axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
       .then(()=> {
         const newCards = [];
@@ -61,19 +36,19 @@ const Display = (props) => {
             newCards.push(card);
           }
         })
-        setCards(newCards);
+        setCards(newCards); // this does not re-render after the fact
       })
     };
 
     if (cards) {
       const cardComponentList = cards.map((card) => {
       return (
-        <div className = "card-view" key={card.id}>
+        <div className = "card-view" key={card.id} id = {card.id}>
           <div>{card.message}</div>
-            <div className="card-buttons" id={card.id}>
+            <div className="card-buttons" >
             <p>{card.likes_count}</p>
-            <button className="like" onClick={likeCard(card.id)}>+1</button> 
-           <button className="delete" onClick={deleteCard(card.id)}>delete</button>
+            <button className="like"  onClick={likeCard}>+1</button> 
+            <button className="delete"  onClick={deleteCard}>delete</button>
           </div>
         </div>
       )
