@@ -24,8 +24,7 @@ const NewCardForm = (props) => {
     });
 
     console.log("We're in OnCardFormSubmit!")
-
-    // props.updateCardDisplayCallback(props.cardList);
+    
     //cabebe 12.28.21
     //resets CardFormField state on Form Submit button click
     setCardFormField({

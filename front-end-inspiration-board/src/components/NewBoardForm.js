@@ -3,6 +3,16 @@ import {useState } from 'react';
 
 
 const NewBoardForm = (props) => {
+    const [hideToggle, setHideToggle] = useState("Hide");
+
+    const handleHideToggle = () => {
+        if (hideToggle === "Show") {
+            setHideToggle("Hide");
+        } else if (hideToggle === "Hide") {
+            setHideToggle("Show");
+        }
+    }
+
     const [formField, setFormField] = useState({
         boardName: "",
         boardOwner: ""
@@ -41,27 +51,39 @@ const NewBoardForm = (props) => {
         });
     }
 
-    return(
-        <section className='new-board-form-block grid-block'>
-            <h1>New Board Form</h1>
-            This is the New Board Form. New Boardz R us!
-            <form onSubmit={onFormSubmit}>
-                <div>
-                    <label>New Board Name:</label>
-                    <input type="text" 
-                    value={formField.boardName} 
-                    onChange={onBoardNameChange}></input>
-                </div>
-                <div>
-                    <label>New Board Owner:</label>
-                    <input type="text" 
-                            value={formField.boardOwner} 
-                            onChange={onBoardOwnerChange}></input>
-                </div>
-                <input type="submit" value="Submit"></input>
-            </form>
-        </section>
-    )
+    if (hideToggle === "Hide") {
+        return(
+            <section className='new-board-form-block grid-block'>
+                <h1>New Board Form</h1>
+                <section className="can-be-hidden">
+                    This is the New Board Form. New Boardz R us!
+                    <form onSubmit={onFormSubmit}>
+                        <div>
+                            <label>New Board Name:</label>
+                            <input type="text" 
+                            value={formField.boardName} 
+                            onChange={onBoardNameChange}></input>
+                        </div>
+                        <div>
+                            <label>New Board Owner:</label>
+                            <input type="text" 
+                                    value={formField.boardOwner} 
+                                    onChange={onBoardOwnerChange}></input>
+                        </div>
+                        <input type="submit" value="Submit"></input>
+                    </form>
+                </section>
+                <button onClick={handleHideToggle}>{hideToggle} Form</button>
+            </section>
+        )
+    } else if (hideToggle === "Show") {
+        return(
+            <section className='new-board-form-block grid-block'>
+                <h1>New Board Form</h1>
+                <button onClick={handleHideToggle}>{hideToggle} Form</button>
+            </section>
+        )
+    }
 }
 
 export default NewBoardForm;
