@@ -15,7 +15,6 @@ const App = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${id}`)
       .then((response) => {
         setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
-        // send cards as prop 
       })
   };
 
@@ -26,12 +25,6 @@ const App = () => {
       })
     setDisplay()
   }, [])
-
-  // if i have posted a card, assign it to the current board specifically.
-  // send current board as prop to post so it can use the value in api to assign in post route
-  // in App, ,
-  // in Forms currentBoard = {props.currentBoard}
-  //
 
   return (
     <div className="App">
