@@ -7,7 +7,7 @@ const Cards = (props) => {
       <div>{props.message}</div>
       <div className="card-buttons" id={props.id}>
         <p>{props.likes_count}</p>
-        <button className="like" onClick={props.likeCard()}>like +1</button>
+        <button className="like" onClick={props.likeCard()}>+1</button>
         <button className="delete" onClick={props.deleteCard()}>delete card</button>
       </div>
     </div>
