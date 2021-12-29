@@ -3,13 +3,17 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import BoardSelector from "./components/BoardSelector";
 import CurrentBoard from "./components/CurrentBoard";
-
+import CardList from "./components/CardList";
 
 
 function App() {
   const boards = [
     { id: 1, title: "Hello World", author: "Pals" },
     { id: 2, title: "Dinner Tonight", author: "Pals" },
+  ];
+  const cards = [
+    {id:1, message: "Hello Ayaka Faith" ,likes:0, boardId:1},
+    {id:2, message: "Hello Andrea" ,likes:0, boardId:1},
   ];
 
   // New Board
@@ -28,7 +32,11 @@ function App() {
 
     // add newCard to db
   };
-
+  // here selectedCard is just a placeholder
+  const increaseLikes = (selectedCard) =>{
+    console.log(selectedCard)
+  
+  }
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -38,6 +46,7 @@ function App() {
         <NewCardForm onAddCard={handleAddCard} />
         <BoardSelector boards={boards}></BoardSelector>
         <CurrentBoard board={boards[0]}></CurrentBoard>
+        <CardList cards={cards} onIncreaseLikes ={increaseLikes}/>
       </main>
     </div>
 
