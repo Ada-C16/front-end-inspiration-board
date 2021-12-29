@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Cards = (props) => {
-  // useState for likes count
-  // likes post request
-  // method for delete on click
-  // method for like on click 
-  // const [likesCount, setLikesCount] = useState(props.likes_count)
-  
+
   return (
     <div>
       <div>{props.message}message</div>
