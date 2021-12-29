@@ -1,17 +1,24 @@
 import React from "react";
+import { useState } from "react";
 
 const CreateANewCard = () => {
 
+  const [message, setMessage] = useState('')
+  
+  const messageEvent = (event) => {
+      console.log(event)
+      setMessage(event.target.value)
+  }; 
   
 
   return (
-  <form method = "GET">
+  <form onSubmit ={() => {console.log(message)}} method = ''>
     <div>
       <h3>Create A New Card</h3>
-      <label for = 'message'>Message</label>
-      <input type = 'text'name = 'message' id = 'message' placeholder = 'type a cute message...'  maxlength = "40" required></input>
+      <label htmlFor = 'message'>Message</label>
+      <input type = 'text'name = 'message' id = 'message' placeholder = 'type a cute message...'onChange = {messageEvent}  maxLength = "40" required/>
       <div>
-      <button type = ''>Submit</button>
+      <input type = 'submit'value='Submit'/>
       </div>
 
       <div>

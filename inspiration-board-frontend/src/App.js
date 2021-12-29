@@ -9,9 +9,7 @@ import axios from "axios";
 import CreateANewCard from "./components/CreateANewCard";
 
 function App() {
-  const [boardsData, setBoards] = useState([
-    { board_id: 127, owner: "Min.", title: "ATLA Quotes" },
-  ]);
+  const [boardsData, setBoards] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
   const getBoards = () => {
@@ -23,7 +21,7 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage(<section>{error.response.data.message}</section>);
+        setErrorMessage(<section>{error.message}</section>);
       });
   };
 

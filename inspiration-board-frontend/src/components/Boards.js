@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from 'react';
 import axios from 'axios';
 import Board from './Board'
+import "./Boards.css"
 
 
 const Boards = (props) => {
@@ -25,7 +26,7 @@ const Boards = (props) => {
     
     <div className = "timeline">
 
-        <h4>Boards</h4>
+        <h4 className = 'boardsHeader'>Boards</h4>
         <ol>{boards}</ol> 
         
 
