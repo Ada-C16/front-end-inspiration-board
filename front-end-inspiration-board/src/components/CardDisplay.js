@@ -1,10 +1,45 @@
-import React from "react";
+import React, {useEffect} from "react";
+import axios from "axios";
 import Card from "./Card";
 
 
 //when is this called?
 const CardDisplay = (props) => {
-  const cardComponents = props.updateCardDisplayCallback(props.cardList)
+  const updateCardDisplay =(cardList, currentBoard)=> {
+    const cardComponents = [];
+    if (props.cardList) {
+      for (let card of props.cardList) {
+        //the key is just something that react needs when it renders elements in a loop
+        //dont use it elsewhere
+        //just for react to distinguish which card is which
+        cardComponents.push(
+        <Card 
+          key={card.card_id}
+          cardMessage={card.message}
+          cardLikes={card.likes_count}
+          currentBoard={props.currentBoard}
+          setCurrentCardCallback = {props.setCurrentCard}/>
+          );
+    } 
+    return cardComponents;
+    }
+  }
+
+  const cardComponents = updateCardDisplay(props.cardList, props.currentBoard);
+  
+    //GET all cards
+  useEffect (() => {
+    axios
+      .get(`https://winspo-board.herokuapp.com/board/${props.currentBoard.id}/cards`)
+      .then((response) => {
+        console.log(`we're getting the cards of this board: ${props.currentBoard.title}`);
+        console.log("current cards are:", response.data);
+        const currentCardsAvailable = response.data;
+        return currentCardsAvailable
+      })
+      .catch((err) => console.log(err));
+  }, [props.currentBoard]);
+  
 
   return (
     <section className="card-display-block grid-block">

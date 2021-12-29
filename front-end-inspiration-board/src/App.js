@@ -1,6 +1,6 @@
 import "./App.css";
 import Boardz from "./components/Boardz";
-import Card from "./components/Card";
+// import Card from "./components/Card";
 import CardDisplay from "./components/CardDisplay";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
@@ -17,6 +17,20 @@ function App() {
   // This is a piece of state. It's a list of all card objects for a specific board.
   const [cardList, setCardList] = useState([]);
 
+  const [currentCard, setCurrentCard] = useState([]);
+
+  const [currentBoard, setCurrentBoard] = useState([]);
+
+  //GET one card's info
+  // const selectCurrentCard = (currentBoard, cardInfo) => {
+  //   setCurrentCard({
+  //     id: cardInfo.card_id
+  //   })
+  //   axios
+  //     .get(`${boardURL}/${currentBoard.id}/cards/${currentCard.card_id}`)
+  // }
+
+
   // This function POSTs the data in form to ther heroku database. and updates the state boardList
   const addNewBoard = (newBoard) => {
     axios
@@ -31,7 +45,6 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const [currentBoard, setCurrentBoard] = useState([]);
 
   //This function POSTs a new card and its message to our db. Also updates the state cardList
   //It updates state so that the new card immediately displays.
@@ -52,18 +65,6 @@ function App() {
     //should we throw a pop-up error if they try to post a card
     //before they select a board?
   };
-  
-  const updateCardDisplay = (cardList) => {
-    const cardComponents = [];
-    if (cardList) {
-      for (let card of cardList) {
-        //the key is just something that react needs when it renders elements in a loop
-        //dont use it elsewhere
-        //just for react to distinguish which card is which
-        cardComponents.push(<Card key={card.card_id} cardMessage={card.message} cardLikes={card.likes_count}/>);
-    } 
-    return cardComponents;
-    }}
   
   // GET all the boards
   useEffect(() => {
@@ -148,13 +149,13 @@ function App() {
         <NewCardForm 
           addNewCardCallback={addNewCard}
           cardList = {cardList}
-          currentBoard={currentBoard}
-          updateCardDisplayCallback = {updateCardDisplay}/>
+          currentBoard={currentBoard}/>
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay
           cardList={cardList}
           currentBoard={currentBoard}
-          updateCardDisplayCallback = {updateCardDisplay}/>
+          setCurrentCardCallback = {setCurrentCard}
+        />
       </div>
     </section>
   );
