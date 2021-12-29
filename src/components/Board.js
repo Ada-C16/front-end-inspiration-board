@@ -58,7 +58,7 @@ const Board = (props) => {
   };
 
   return (
-    <div >
+    <div className = "form">
       <h2>Boards</h2>
       <select name="selectBoard" onChange={(e) => props.onBoardSelect(e.target)}>
         {boardOptions}
@@ -82,7 +82,7 @@ const Board = (props) => {
             // required="true"
           />
         </div>
-        <input type="submit" value="Make Board" onClick={onBoardSubmit} />
+        <input className = "submit-button" type="submit" value="Make Board" onClick={onBoardSubmit} />
       </form>
     </div>
   );

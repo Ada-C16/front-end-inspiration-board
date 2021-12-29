@@ -11,3 +11,13 @@ main {
 h1, h2 {
     text-align: center;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    {/*text-align: center;*/}
+}
+
+.submit-button {
+    margin: 0 auto;
+}
