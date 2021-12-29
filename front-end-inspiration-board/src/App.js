@@ -57,7 +57,10 @@ function App() {
     const cardComponents = [];
     if (cardList) {
       for (let card of cardList) {
-        cardComponents.push(<Card cardMessage={card.message} cardLikes={card.likes_count} currentBoard={currentBoard}/>);
+        //the key is just something that react needs when it renders elements in a loop
+        //dont use it elsewhere
+        //just for react to distinguish which card is which
+        cardComponents.push(<Card key={card.card_id} cardMessage={card.message} cardLikes={card.likes_count}/>);
     } 
     return cardComponents;
     }}
@@ -97,7 +100,7 @@ function App() {
 
 
   // This function takes in a list of board objects. Iterates over each object, makes a <Board /> and gives it an object {name:'', owner: ''} and updateCurrentBoard() function as props
-  const createBoardMenu = (boardList) => {};
+  // const createBoardMenu = (boardList) => {};
 
   //This function makes a DELETE http request. It deletes one board by id
   const deleteABoard = (id) => {
@@ -117,6 +120,19 @@ function App() {
     });
     setBoardList([])
   };
+
+
+  //This function makes a PATCH http request. It updates card.likes_count by 1.
+  // const addLike = () => {
+  //   axios
+  //     .patch(`${boardURL}/${currentBoard.id}/cards/${}`)
+  //     .then((response) => {
+  //       console.log
+  //     })
+  // }
+
+
+
   return (
     <section>
       <header></header>
