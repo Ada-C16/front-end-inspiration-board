@@ -58,7 +58,7 @@ const Display = (props) => {
   return (
     <div>
       <h2>
-        {props.title} - {props.owner}
+        "{props.title}" by {props.owner}
       </h2>
       <div className="cards-display">{cardsComponents}</div>
     </div>
