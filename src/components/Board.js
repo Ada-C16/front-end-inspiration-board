@@ -31,10 +31,10 @@ const Board = (props) => {
   }, [])
 
   useEffect(() => {
-    const options = boards.map((board, i) => {
+    const options = boards.map((board) => {
         return (
-          <option value={board} key={i}>
-            {board}
+          <option value={board[0]} id = {board[1]} key = {board[1]}>
+            {board[0]}
           </option>
         );
       });
@@ -60,7 +60,7 @@ const Board = (props) => {
   return (
     <div className = "form">
       <h2>Boards</h2>
-      <select name="selectBoard" onChange={(e) => props.onBoardSelect(e.target)}>
+      <select name="selectBoard" onChange={props.onBoardSelect}>
         {boardOptions}
       </select>
       <form>

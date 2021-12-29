@@ -10,9 +10,13 @@ const App = () => {
   const [currentBoard, setCurrentBoard] = useState(1);
   const [display, setDisplay] = useState(<Display title="board" owner = "train-emoji" cards = {[]}/>);
 
-  const onBoardSelect = (id) => {
-    setCurrentBoard(id);
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${id}`)
+  const onBoardSelect = (e) => {
+    const index = e.target.selectedIndex;
+    const el = e.target.childNodes[index];
+    const option = el.getAttribute('id');
+
+    setCurrentBoard(option);
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${option}`)
       .then((response) => {
         setDisplay(<Display  title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
       })
