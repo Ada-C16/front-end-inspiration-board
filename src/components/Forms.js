@@ -2,10 +2,10 @@ import React from "react";
 import Board from "./Board";
 import Card from "./Card";
 
-const Forms = () => {
+const Forms = (props) => {
   return (
     <div>
-      <Board />
+      <Board onBoardSelect={props.onBoardSelect}/>
       <Card />
     </div>
   );

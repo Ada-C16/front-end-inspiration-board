@@ -4,7 +4,7 @@ import axios from "axios";
 // dont allow empty title or owner in submission // duplicates?
 // get request onBoardSelect() to display the info
 
-const Board = () => {
+const Board = (props) => {
     const [formField, setFormField] = useState({ title: "", owner: "" });
     const onTitleChange = (e) => {
         setFormField({
@@ -57,14 +57,10 @@ const Board = () => {
       .catch((err) => console.log(err));
   };
 
-  const onBoardSelect = () => {
-    //getBoards();
-  };
-
   return (
     <div>
       <h2>Boards</h2>
-      <select name="selectBoard" onChange={onBoardSelect()}>
+      <select name="selectBoard" onChange={props.onBoardSelect()}>
         {boardOptions}
       </select>
       <form>

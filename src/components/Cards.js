@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 const Cards = (props) => {
   // useState for likes count
@@ -8,8 +7,6 @@ const Cards = (props) => {
   // method for like on click 
   // const [likesCount, setLikesCount] = useState(props.likes_count)
   
-
-
   return (
     <div>
       <div>{props.message}message</div>
