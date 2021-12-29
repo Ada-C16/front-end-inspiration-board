@@ -11,11 +11,12 @@ const Card = (props) => {
 
   const submitNewCard = (changeEvent) => {
     changeEvent.preventDefault();
-    //console.log(props.currentBoard)
+    console.log('board id', props.currentBoard)
     console.log(cardMessage)
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.currentBoard}`, {message: cardMessage})
     .then((response)=> {
         const cards = [...cardsData];
+        console.log(response.data)
         cards.push(response.data);
         setCardsData(cards);
         setCardMessage("");
@@ -30,7 +31,7 @@ const Card = (props) => {
         <label>Message</label>
         <input type="text" value={cardMessage} onChange={inputCardMessage}></input> 
         <p>Preview: {cardMessage}</p>
-        <input className = "submit-button" onSubmit={submitNewCard} type="submit" value="Submit Query"></input>
+        <input className = "submit-button" onClick={submitNewCard} type="submit" value="Submit Query"></input>
         </form>
     </section>
   );
