@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState} from 'react';
 
-const Card = () => {
+const Card = (props) => {
   const [cardsData, setCardsData] = useState([]);
   const [cardMessage, setCardMessage] = useState("");
 
@@ -13,7 +13,7 @@ const Card = () => {
     changeEvent.preventDefault();
     
     axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {cardMessage})
+    .post(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.currentBoard}`, {cardMessage})
     .then((response)=> {
         const cards = [...cardsData];
         cards.push(response.data);

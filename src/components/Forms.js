@@ -6,7 +6,7 @@ const Forms = (props) => {
   return (
     <div>
       <Board onBoardSelect={props.onBoardSelect}/>
-      <Card />
+      <Card currentBoard = {props.currentBoard}/>
     </div>
   );
 };
