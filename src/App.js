@@ -62,9 +62,7 @@ function App() {
         message,
         board_id: selectedBoard.id,
       })
-      .then((result) => {
-        getCards(selectedBoard.id);
-      })
+      .then((result) => getCards(selectedBoard.id))
       .catch((error) => console.log(error));
   };
 
