@@ -22,7 +22,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    // get first child element getAttribute(id) from onBoardSelect
+    // // get first child element getAttribute(id) from onBoardSelect
+    // const firstBoard = document.getElementById('board-select-menu');
+    // console.log(firstBoard);
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/1`) // what if 1 doesnt exist? catch by going to next avail num
       .then((response) => {
         setDisplay(<Display title = {response.data.title} owner = {response.data.owner} cards = {response.data.cards}/>)
