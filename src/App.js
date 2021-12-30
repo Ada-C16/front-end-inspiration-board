@@ -18,9 +18,21 @@ function App() {
 
   const getBoards = () => {
     axios
+      // this URL was given by Ada in readme, /boards endpoint is specific to which backend enpoint we want to access
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      // result is the object/promise that will come from the backend and that object in this case is
+      // a list of Board objects
       .then((result) => {
+        // setBoards is reassigning the state of boards to whatever came through with the axios/ promise/data
         setBoards(result.data);
+      });
+  };
+  const getCards = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cards`)
+      .then((result) => {
+        console.log(result);
+        setCards(result.data);
       })
       .catch((error) => {
         console.log(error);
