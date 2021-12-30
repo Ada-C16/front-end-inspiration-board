@@ -31,15 +31,6 @@ const CreateANewBoard = () => {
     });
   };
 
-  const showPreview = (event) => {
-    console.log(
-      "Details about the element that fired the event:",
-      event.target
-    );
-    console.log("The value of that element:", event.target.value);
-    setFormFields(event.target.value);
-  };
-
   return (
     <form action="" method="get" className="new-board-form">
       <h4 className="create-new-board-header">Create A New Board</h4>
@@ -52,7 +43,7 @@ const CreateANewBoard = () => {
           placeholder="give me a title!"
           maxLength="40"
           value={formFields.title}
-          onChange={(onTitleChange, showPreview)}
+          onChange={onTitleChange}
           required
         ></input>
       </div>
@@ -65,11 +56,13 @@ const CreateANewBoard = () => {
           placeholder="who are you?"
           maxLength="40"
           value={formFields.owner}
-          onChange={(onOwnerChange, showPreview)}
+          onChange={onOwnerChange}
           required
         ></input>
       </div>
-      <p>Preview: - </p>
+      <p>
+        Preview: {formFields.title} - {formFields.owner}
+      </p>
       <SubmitButton />
       <button className="hide-new-board-button" type="button">
         Hide New Board Form
