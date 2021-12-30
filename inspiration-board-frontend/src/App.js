@@ -69,13 +69,12 @@ function App() {
 
         </div>
       
-        <div>
-          <Card className = 'col' />
+        <div className = 'row'>
+          <div className = 'col'><Card  /></div>
+          <div className = 'col'><CreateANewCard 
+          postANewCard ={postANewCardForm}/> </div>
         </div>
-        <div>
-          <CreateANewCard className = 'col'
-          postANewCard ={postANewCardForm}/>
-        </div>
+    
     </div>
   );
 }

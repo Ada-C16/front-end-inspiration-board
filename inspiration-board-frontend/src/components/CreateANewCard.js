@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './CreateANewCard.css'
 
 const CreateANewCard = (props) => {
 
@@ -11,22 +12,22 @@ const CreateANewCard = (props) => {
   }; 
   const postCards = (event) =>{
 
-      event.preventDefault();
+      event.preventDefault(); // prevents webpage from refresh because it's a single page app
       props.postANewCard(message)
   };
 
   return (
   <form onSubmit ={postCards} method = ''>
     <div>
-      <h3>Create A New Card</h3>
+      <h3 className = 'newCard'>Create A New Card</h3>
       <label htmlFor = 'message'>Message</label>
-      <input type = 'text'name = 'message' id = 'message' placeholder = 'type a cute message...'onChange = {messageEvent}  maxLength = "40" required/>
+      <input type = 'text'name = 'message' id = 'message' placeholder = 'type a cute message...'onChange = {messageEvent}  maxLength = '40' required/>
       <div>
-      <input type = 'submit'value='Submit'/>
+      <input className = 'SubmitButton'type = 'submit'value='Submit'/> 
       </div>
 
       <div>
-      <button type = 'reset'>Reset</button>
+      <button className = 'reset' type = 'reset'>Reset</button>
       </div>
       
     </div>
