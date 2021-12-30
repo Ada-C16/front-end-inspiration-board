@@ -27,7 +27,7 @@ const Card = (props) => {
       <h2>Create a New Card</h2>
         <form>
         <label>Message</label>
-        <input type="text" value={cardMessage} onChange={inputCardMessage}></input> 
+        <input minLength = {0} maxLength = {40} type="text" value={cardMessage} onChange={inputCardMessage}></input> 
         <p>Preview: {cardMessage}</p>
         <input className = "submit-button" onClick={submitNewCard} type="submit" value="Submit Query"></input>
         </form>

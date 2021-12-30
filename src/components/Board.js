@@ -68,6 +68,7 @@ const Board = (props) => {
         <div>
           <label htmlFor="title">title</label>
           <input
+            minLength={1}
             name="title"
             value={formField.title}
             onChange={onTitleChange}
@@ -77,6 +78,7 @@ const Board = (props) => {
         <div>
           <label htmlFor="owner">owner</label>
           <input
+            minLength={1}
             name="owner"
             value={formField.owner}
             onChange={onOwnerChange}
