@@ -1,7 +1,7 @@
-import React from "react";
+import PropTypes from "prop-types";
 
-function BoardSelector({ boards, onSelectBoard }) {
-  const updateCurrentBoard = (event) => {
+const BoardSelector = ({ boards, onSelectBoard }) => {
+  const handleBoardChange = (event) => {
     const id = event.target.value;
     if (id !== "0") {
       onSelectBoard(id);
@@ -9,10 +9,8 @@ function BoardSelector({ boards, onSelectBoard }) {
   };
 
   return (
-    <select onChange={updateCurrentBoard}>
-      <option value="0" default>
-        Select Board
-      </option>
+    <select onChange={handleBoardChange}>
+      <option value="0">Select Board</option>
       {boards.map((board) => {
         return (
           <option key={board.id} value={board.id}>
@@ -22,6 +20,6 @@ function BoardSelector({ boards, onSelectBoard }) {
       })}
     </select>
   );
-}
+};
 
 export default BoardSelector;

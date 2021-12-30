@@ -2,22 +2,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import BoardSelector from "./components/BoardSelector";
+import CardList from "./components/CardList";
 import CurrentBoard from "./components/CurrentBoard";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
-import BoardSelector from "./components/BoardSelector";
-import CurrentBoard from "./components/CurrentBoard";
-import CardList from "./components/CardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
+  const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
 
   useEffect(() => {
-    updateBoards();
+    getBoards();
   }, []);
 
-  const updateBoards = () => {
+  const getBoards = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((result) => {
@@ -36,15 +35,20 @@ function App() {
         title: boardInfo.title,
         author: boardInfo.ownersName,
       })
-      .then((response) => updateBoards())
+      .then((result) => getBoards())
       .catch((error) => console.log(error));
   };
 
   // New Card
   const handleAddCard = (message) => {
-    console.log(message);
-
     // add newCard to db
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
+        message,
+        board_id: selectedBoard.id,
+      })
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
   };
 
   const updateCurrentBoard = (boardId) => {
@@ -62,11 +66,11 @@ function App() {
       <main>
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
         <NewBoardForm onAddBoard={handleAddBoard} />
-        <NewCardForm onAddCard={handleAddCard} />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
+        {selectedBoard && <NewCardForm onAddCard={handleAddCard} />}
         {selectedBoard && <CurrentBoard board={selectedBoard} />}
-        <CurrentBoard board={boards[0]}></CurrentBoard>
-        <CardList cards={cards} onIncreaseLikes={increaseLikes} />
+        {/* <CurrentBoard board={boards[0]}></CurrentBoard> */}
+        {/* <CardList cards={cards} onIncreaseLikes={increaseLikes} /> */}
       </main>
     </div>
   );
