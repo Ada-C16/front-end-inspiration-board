@@ -2,18 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Board.css"
 
-// dont allow empty title or owner in submission // duplicates?
-// get request onBoardSelect() to display the info
-
 const Board = (props) => {
+
+    const toggleBorder = (e, id) => {
+      const inputElement = document.getElementById(id);
+      if (e.target.value.length > 0) {
+        inputElement.style.borderColor = "grey";
+      } else {
+        inputElement.style.borderColor = "red";
+      }
+    };
     const [formField, setFormField] = useState({ title: "", owner: "" });
     const onTitleChange = (e) => {
+        toggleBorder(e, 'board-title');
         setFormField({
             ...formField,
             title: e.target.value,
       });
     };
     const onOwnerChange = (e) => {
+        toggleBorder(e, 'board-owner');
         setFormField({
             ...formField,
             owner: e.target.value,
@@ -44,18 +52,28 @@ const Board = (props) => {
 
   const onBoardSubmit = (e) => {
     e.preventDefault();
-    axios
-        .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, formField)
-        .then((response) => {
-        setFormField({
-            title: "",
-            owner: "",
-        });
-        const newBoardOptions = [...boardOptions]
-        newBoardOptions.push(<option value={response.data}>{response.data}</option>);
-        setBoardOptions(newBoardOptions);
-      })
-      .catch((err) => console.log(err));
+    const boardTitle = document.getElementById('board-title');
+    const boardOwner = document.getElementById('board-owner');
+    if (formField.title.length === 0) {
+      boardTitle.style.borderColor = "red";
+    }
+    if (formField.owner.length === 0) {
+      boardOwner.style.borderColor = "red";
+    }
+    if (formField.title.length > 0 && formField.owner.length > 0) {
+      axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, formField)
+      .then((response) => {
+      setFormField({
+          title: "",
+          owner: "",
+      });
+      const newBoardOptions = [...boardOptions]
+      newBoardOptions.push(<option value={response.data}>{response.data}</option>);
+      setBoardOptions(newBoardOptions);
+    })
+    .catch((err) => console.log(err));
+    }
   };
   const toggleVisibility = () => {
     const boardForm = document.getElementById('board-form');
@@ -80,6 +98,7 @@ const Board = (props) => {
         <div>
           <label htmlFor="title">title</label>
           <input
+            id = "board-title"
             minLength={1}
             name="title"
             value={formField.title}
@@ -89,6 +108,7 @@ const Board = (props) => {
         <div>
           <label htmlFor="owner">owner</label>
           <input
+            id = "board-owner"
             minLength={1}
             name="owner"
             value={formField.owner}
