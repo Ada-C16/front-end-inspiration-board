@@ -58,6 +58,7 @@ function App() {
       </header>
       <main>
         <NewBoardForm addBoardCallback={addNewBoard} />
+
         <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
         <CardsList allCards={cardsData} />
       </main>
