@@ -13,8 +13,6 @@ const Card = (props) => {
     } else {
       messageInput.style.borderColor = "red";
     }
-    // if cardMessage.length == 0
-    // make border of css red
     setCardMessage(changeEvent.target.value)
   };
 
