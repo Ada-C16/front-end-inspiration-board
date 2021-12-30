@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 const NewCardForm = ({ onAddCard }) => {
   const [message, setMessage] = useState("");
 
-  const updateInput = (event) => {
-    setMessage(event.target.value);
-  };
-
   const submitRequest = (event) => {
     event.preventDefault();
     onAddCard(message);
@@ -17,12 +13,12 @@ const NewCardForm = ({ onAddCard }) => {
   return (
     <form onSubmit={submitRequest}>
       <label>
-        Title:
+        Message:
         <input
           type="text"
           name="message"
           value={message}
-          onChange={updateInput}
+          onChange={(event) => setMessage(event.target.value)}
         />
       </label>
       <input type="submit" value="Add New Card" />
