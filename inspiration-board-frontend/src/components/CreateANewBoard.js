@@ -50,6 +50,7 @@ const CreateANewBoard = () => {
           id="title"
           title="Title"
           placeholder="give me a title!"
+          maxLength="40"
           value={formFields.title}
           onChange={(onTitleChange, showPreview)}
           required
@@ -62,6 +63,7 @@ const CreateANewBoard = () => {
           id="owner"
           title="Owner"
           placeholder="who are you?"
+          maxLength="40"
           value={formFields.owner}
           onChange={(onOwnerChange, showPreview)}
           required

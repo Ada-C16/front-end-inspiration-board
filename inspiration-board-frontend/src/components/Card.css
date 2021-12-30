@@ -1,17 +1,21 @@
 .buttons-container {
+    align-self: stretch;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    margin-top: auto;
 }
 
 .card-body {
     box-shadow: -10px 0px 10px 1px #aaaaaa;
-    text-decoration:none;
-    color:#000;
+    color: #000;
     background: #fff6a6;
-    display:block;
+    display: flex;
+    flex-direction: column;
     height: 15em;
     width: 15em;
-    padding:1em;
+    padding: 1em;
+    text-decoration: none;
 }
 
 .card-message {
@@ -23,7 +27,9 @@
 }
 
 .delete-button {
+    align-self: flex-end;
     border-radius: 8px;
+    display: table-cell;
     font-size: 16px;
     margin: 2px;
     padding: 10px;
@@ -31,14 +37,17 @@
 
 .hearts-button {
     border-radius: 8px;
+    display: table-cell;
     font-size: 16px;
     margin: 2px;
     padding: 10px;
 }
 
 .likes-button {
-    background-color: pink;
+    background-color: #f02e9c;
     border-radius: 8px;
+    color: white;
+    display: table-cell;
     font-size: 16px;
     margin: 2px;
     padding: 10px;
