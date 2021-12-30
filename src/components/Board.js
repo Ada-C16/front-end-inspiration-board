@@ -57,14 +57,26 @@ const Board = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  const toggleVisibility = () => {
+    const boardForm = document.getElementById('board-form');
+    const formDisplaySetting = boardForm.style.display;
+    const boardVisibilityButton = document.getElementById('boardVisibilityButton');
 
+    if (formDisplaySetting == 'block') {
+      boardForm.style.display = 'none';
+      boardVisibilityButton.innerHTML = 'Show Board Form';
+    } else {
+      boardForm.style.display = 'block';
+      boardVisibilityButton.innerHTML = 'Hide Board Form';
+    }
+  };
   return (
-    <div className = "form">
+    <div className = "form" >
       <h2>Boards</h2>
       <select name="selectBoard" onChange={props.onBoardSelect}>
         {boardOptions}
       </select>
-      <form>
+      <form id = "board-form">
         <div>
           <label htmlFor="title">title</label>
           <input
@@ -72,7 +84,6 @@ const Board = (props) => {
             name="title"
             value={formField.title}
             onChange={onTitleChange}
-            // required ="true"
           />
         </div>
         <div>
@@ -82,11 +93,11 @@ const Board = (props) => {
             name="owner"
             value={formField.owner}
             onChange={onOwnerChange}
-            // required="true"
           />
         </div>
         <input className = "submit-button" type="submit" value="Make Board" onClick={onBoardSubmit} />
       </form>
+      <button onClick={toggleVisibility} id = "boardVisibilityButton">Hide Board Form</button>
     </div>
   );
 };
