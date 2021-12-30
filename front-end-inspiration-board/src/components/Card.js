@@ -4,13 +4,6 @@ import React, { useState } from "react";
 const Card = (props) => {
   const [cardLikeCount, setCardLikeCount] = useState(0)
 
-  //using this function strictly for testing the currentCard state
-  // const handleClick = () => {
-  //   console.log('You have selected this card');
-  //   console.log('message is "',props.cardMessage, '" at id', props.id);
-  //   console.log("current board is:",props.currentBoard.id);
-  // }
-
   const addLike = () => {
     //add an onclickCallBack here maybe?
     //or the patch request itself in here
@@ -19,16 +12,27 @@ const Card = (props) => {
     //patch request in here
   }
 
+  //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {
-    console.log("bye bye, this card! props.id is:", props.id);
+    console.log("bye bye, this card!", props.cardMessage);
+    // delete card from cardList (state)
+    const currentCards = [...props.cardList];
+    for (let card of currentCards) {
+      if (props.id === card.card_id) {
+        // this gets the index of the card
+        const deletedCardIndex = currentCards.indexOf(card);
+        // and this removes it from the currentCards list
+        currentCards.splice(deletedCardIndex, 1);
+      }
+    }
+    props.setCardList(currentCards);
+    
+    // delete card from backend
     props.deleteCardCallback(props.id, props.currentBoard);
-    //to-dos:
-      // update card display to remove card once deleted
+    
+    //to-do for this function:
       // include logic that allows user to delete a freshly posted card 
-        // without having to refresh the board 
-  
-    //this line below didn't work for updating card display
-    // props.updateCardDisplayCallback(props.cardList, props.currentBoard);
+      // that remains deleted after refreshing the board
   }
   
   // console.log(cardLikeCount)

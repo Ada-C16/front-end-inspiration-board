@@ -21,14 +21,17 @@ function App() {
 
   const [currentBoard, setCurrentBoard] = useState([]);
 
+  // This function deletes a card when it's delete button is clicked
   const deleteCard = (cardID, currentBoard) => {
     // console.log('we are in deleteCard!');
-    axios
-      .delete(`${boardURL}/${currentBoard.id}/cards/${cardID}`)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => console.log(err));
+    if (cardID) {
+      axios
+        .delete(`${boardURL}/${currentBoard.id}/cards/${cardID}`)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   // This function POSTs the data in form to ther heroku database. and updates the state boardList
@@ -149,13 +152,14 @@ function App() {
         <NewCardForm 
           addNewCardCallback={addNewCard}
           cardList = {cardList}
-          currentBoard={currentBoard}/>
+          // currentBoard={currentBoard}
+        />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay
           cardList={cardList}
           currentBoard={currentBoard}
           deleteCardCallback={deleteCard}
-          // setCurrentCardCallback = {setCurrentCard}
+          setCardList={setCardList}
         />
       </div>
     </section>

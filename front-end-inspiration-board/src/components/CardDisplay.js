@@ -1,22 +1,14 @@
 import React, {useEffect} from "react";
-import axios from "axios";
+// import axios from "axios";
 import Card from "./Card";
 
 
 //when is this called?
 const CardDisplay = (props) => {
-  //GET all cards
-  const currentCards = useEffect (() => {
-    axios
-      .get(`https://winspo-board.herokuapp.com/board/${props.currentBoard.id}/cards`)
-      .then((response) => {
-        console.log(`we're getting the cards of this board: ${props.currentBoard.title}`);
-        console.log("current cards are:", response.data);
-        const currentCards = response.data;
-        return currentCards
-      })
-      .catch((err) => console.log(err));
-  }, [props.currentBoard]);
+  // notifies console that cardList state has changed
+  useEffect(()=> {
+    console.log('The cardList has been updated!', props.cardList);
+  }, [props.cardList])
 
   const updateCardDisplay =(cardList, currentBoard)=> {
     const cardComponents = [];
@@ -34,7 +26,8 @@ const CardDisplay = (props) => {
           currentBoard={props.currentBoard}
           cardList={props.cardList}
           deleteCardCallback={props.deleteCardCallback}
-          updateCardDisplayCallback={updateCardDisplay}
+          setCardList={props.setCardList}
+          // updateCardDisplayCallback={updateCardDisplay}
           // setCurrentCardCallback = {props.setCurrentCard}
           />
           );
@@ -43,9 +36,8 @@ const CardDisplay = (props) => {
     }
   }
   
-
-  const cardComponents = updateCardDisplay(props.cardList, props.currentBoard, currentCards);
-
+  const cardComponents = updateCardDisplay(props.cardList, props.currentBoard);
+  
   return (
     <section className="card-display-block grid-block">
       <h1>{props.currentBoard.title} by {props.currentBoard.owner}</h1>
