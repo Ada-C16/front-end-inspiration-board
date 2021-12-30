@@ -14,7 +14,7 @@ function App() {
 
   const getBoards = () => {
     axios
-      .get("https://trm2-inspiration-board.herokuapp.com/boards" )
+      .get('https://trm2-inspiration-board.herokuapp.com/boards' )
       .then((response) => {
         setBoards(response.data);
         // setErrorMessage('');
@@ -33,6 +33,23 @@ function App() {
     getBoards();
     console.log("changes were made");
   }, []);
+  const postANewCardForm = (cardsData) => {
+    console.log(cardsData)
+    const cards = {"message":cardsData}
+    axios
+      .post('https://trm2-inspiration-board.herokuapp.com/boards/3/cards',cards)
+      .then((response) => {
+        console.log(response);
+
+      })
+      .catch((error) => {
+        console.log(error);
+        // setErrorMessage
+
+      }
+
+      )
+  };
   return (
     <div className="container">
       <div className="row">
@@ -50,14 +67,14 @@ function App() {
           {errorMessage}
         </div >
 
-      </div>
+        </div>
       
-      <div>
-        <Card />
-      </div>
-      <div>
-          <CreateANewCard/>
-      </div>
+        <div className = 'row'>
+          <div className = 'col'><Card  /></div>
+          <div className = 'col'><CreateANewCard 
+          postANewCard ={postANewCardForm}/> </div>
+        </div>
+    
     </div>
   );
 }
