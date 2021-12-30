@@ -7,11 +7,23 @@ const Card = (props) => {
   const [cardMessage, setCardMessage] = useState("");
 
   const inputCardMessage = (changeEvent) => {
+    const messageInput = document.getElementById('message-input');
+    if (changeEvent.target.value.length > 0) {
+      messageInput.style.borderColor = "grey";
+    } else {
+      messageInput.style.borderColor = "red";
+    }
+    // if cardMessage.length == 0
+    // make border of css red
     setCardMessage(changeEvent.target.value)
   };
 
   const submitNewCard = (changeEvent) => {
     changeEvent.preventDefault();
+    const messageInput = document.getElementById('message-input');
+    if (cardMessage.length === 0) {
+      messageInput.style.borderColor = "red";
+    } else {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.currentBoard}`, {message: cardMessage})
     .then((response)=> {
         const cards = [...cardsData];
@@ -21,13 +33,13 @@ const Card = (props) => {
       })
     .catch((error) => {console.log('Error:', error);});
     }
-
+  }
   return (
     <section className = "form">
       <h2>Create a New Card</h2>
         <form>
         <label>Message</label>
-        <input minLength = {0} maxLength = {40} type="text" value={cardMessage} onChange={inputCardMessage}></input> 
+        <input id = "message-input" minLength = {0} maxLength = {40} type="text" value={cardMessage} onChange={inputCardMessage}></input> 
         <p>Preview: {cardMessage}</p>
         <input className = "submit-button" onClick={submitNewCard} type="submit" value="Submit Query"></input>
         </form>
