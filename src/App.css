@@ -1,10 +1,14 @@
+html {
+  background-color: rgb(88, 140, 127);
+}
+
 main {
-    padding: 1%;
+  padding: 1%;
 }
 
 button, .submit-button {
   appearance: none;
-  background-color: #000000;
+  background-color: rgba(32,73,135);
   border: none;
   border-radius: 15px;
   box-sizing: border-box;
@@ -57,20 +61,44 @@ h1, h2 {
     margin: 0 auto;
 }
 
+
+.board-title {
+  color: white;
+}
+
 .cards-display {
     display: flex;
-    margin: 1%;
     margin: 10px;
     flex-direction: row;
     flex-basis: 25%;
+    border-radius: 15px 30px 50px 5px ;
+    background-color: black;
 }
 
 .card-view {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
+    margin: 10px;
+    background-color: #f8f7f7;
+    border-radius: 15px;
 }
 
 .card-buttons {
-    display: flex;
-    flex-direction: row;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: auto;
+}
+
+.card-message {
+  width: 100%;
+  inline-size: 100px;
+  overflow-wrap: break-word;
+  margin: 10px;
+}
+
+.like, .delete {
+  margin-top: auto;
+  height: 30%;
+  width: 50%;
 }

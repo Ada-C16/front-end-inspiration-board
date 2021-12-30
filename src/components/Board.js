@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Board.css"
 
 // dont allow empty title or owner in submission // duplicates?
 // get request onBoardSelect() to display the info

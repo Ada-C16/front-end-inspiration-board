@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState} from 'react';
+import "./Card.css"
 
 const Card = (props) => {
   const [cardsData, setCardsData] = useState([]);

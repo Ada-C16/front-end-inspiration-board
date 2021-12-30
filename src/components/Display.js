@@ -1,69 +1,80 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Display.css"
 
 const Display = (props) => {
-
   const [cards, setCards] = useState([]);
   const [cardsComponents, setCardsComponents] = useState([]);
 
   useEffect(() => {
     setCards(props.cards);
-  }, [props])
+  }, [props]);
 
   useEffect(() => {
     const likeCard = (e) => {
-      const id = e.target.parentNode.parentNode.getAttribute("id")
-      axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}/like`)
-      .then(() => {
-        const newCards = cards.map((card) => {
-          if (card.id === parseInt(id)) {
-            card.likes_count += 1
-          }
-          return card;
+      const id = e.target.parentNode.parentNode.getAttribute("id");
+      axios
+        .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}/like`)
+        .then(() => {
+          const newCards = cards.map((card) => {
+            if (card.id === parseInt(id)) {
+              card.likes_count += 1;
+            }
+            return card;
+          });
+          setCards(newCards);
         })
-        setCards(newCards);
-      })
-      .catch(()=> {}) // maybe just have it superficially update the number // or do nothing
+        .catch(() => {}); // maybe just have it superficially update the number // or do nothing
     };
-  
+
     const deleteCard = (e) => {
-      const id = e.target.parentNode.parentNode.getAttribute("id")
-      axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
-      .then(()=> {
-        const newCards = [];
-        cards.forEach((card) => {
-          if (card.id !== id) {
-            newCards.push(card);
-          }
-        })
-        setCards(newCards); // this does not re-render after the fact
-      })
+      const id = e.target.parentNode.parentNode.getAttribute("id");
+      axios
+        .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
+        .then(() => {
+          const newCards = [];
+          cards.forEach((card) => {
+            if (card.id !== id) {
+              newCards.push(card);
+            }
+          });
+          setCards(newCards); // this does not re-render after the fact
+        });
     };
 
     if (cards) {
       const cardComponentList = cards.map((card) => {
-      return (
-        <div className = "card-view" key={card.id} id = {card.id}>
-          <div>{card.message}</div>
-            <div className="card-buttons" >
-            <p>{card.likes_count}</p>
-            <button className="like"  onClick={likeCard}>+1</button> 
-            <button className="delete"  onClick={deleteCard}>delete</button>
+        return (
+          <div
+            className="card-view"
+            key={card.id}
+            id={card.id}
+          >
+            <div class="card-message">{card.message}</div>
+            <div className="card-buttons">
+              <p class="likes-count">🚂{card.likes_count}</p>
+              <button className="like" onClick={likeCard}>
+                +1
+              </button>
+              <button className="delete" onClick={deleteCard}>
+                delete
+              </button>
+            </div>
           </div>
-        </div>
-      )
-    })
-    setCardsComponents(cardComponentList);   
+        );
+      });
+      setCardsComponents(cardComponentList);
     }
-  }, 
-    [cards]);
+  }, [cards]);
 
   return (
-    <div className= "display-component">
-      <h2>
+    <div className="display-component">
+      <h2 className="board-title">
         "{props.title}" by {props.owner}
       </h2>
-      <div className="cards-display">{cardsComponents}</div>
+      <div className="cards-display">
+        {cardsComponents}
+      </div>
     </div>
   );
 };
