@@ -2,10 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import BoardSelector from "./components/BoardSelector";
-import CardList from "./components/CardList";
-import CurrentBoard from "./components/CurrentBoard";
 import NewBoardForm from "./components/NewBoardForm";
-import NewCardForm from "./components/NewCardForm";
+import LowerBody from "./components/LowerBody";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -88,10 +86,14 @@ function App() {
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
         {/* conditional logic to check for condition being satisfied to create NewCardForm
          or CurrentBoard, CardList */}
-        {selectedBoard && <NewCardForm onAddCard={handleAddCard} />}
-        {selectedBoard && <CurrentBoard board={selectedBoard} />}
+
         {selectedBoard && (
-          <CardList cards={cards} onIncreaseLikes={increaseLikes} />
+          <LowerBody
+            onAddCard={handleAddCard}
+            board={selectedBoard}
+            cards={cards}
+            onIncreaseLikes={increaseLikes}
+          ></LowerBody>
         )}
       </main>
     </div>
