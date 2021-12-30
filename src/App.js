@@ -27,11 +27,10 @@ function App() {
         setBoards(result.data);
       });
   };
-  const getCards = () => {
+  const getCards = (boardId) => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/cards`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
       .then((result) => {
-        console.log(result);
         setCards(result.data);
       })
       .catch((error) => {
@@ -59,19 +58,21 @@ function App() {
         message,
         board_id: selectedBoard.id,
       })
-      .then((result) => console.log(result))
+      .then((result) => getCards())
       .catch((error) => console.log(error));
   };
 
   const updateCurrentBoard = (boardId) => {
     const board = boards.filter((board) => board.id === parseInt(boardId))[0];
     setSelectedBoard(board);
+    getCards(board.id);
   };
 
   // here selectedCard is just a placeholder
   const increaseLikes = (selectedCard) => {
     console.log(selectedCard);
   };
+
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -81,8 +82,9 @@ function App() {
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
         {selectedBoard && <NewCardForm onAddCard={handleAddCard} />}
         {selectedBoard && <CurrentBoard board={selectedBoard} />}
-        {/* <CurrentBoard board={boards[0]}></CurrentBoard> */}
-        {/* <CardList cards={cards} onIncreaseLikes={increaseLikes} /> */}
+        {selectedBoard && (
+          <CardList cards={cards} onIncreaseLikes={increaseLikes} />
+        )}
       </main>
     </div>
   );
