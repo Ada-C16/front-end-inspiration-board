@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import TitleBox from './TitleBox';
+import TitleBox from './components/TitleBox';
 import reportWebVitals from './reportWebVitals';
+import CornerTitle from './components/CornerTitle';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <TitleBox />
+    {/* moved this order to show the title box first rather than on the lower half */}
+    <CornerTitle/>
+    <TitleBox/>
+    <App/>
+    
   
   </React.StrictMode>,
   document.getElementById('root')
