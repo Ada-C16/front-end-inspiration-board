@@ -10,11 +10,11 @@ import CreateANewCard from "./components/CreateANewCard";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const getBoards = () => {
     axios
-      .get('https://trm2-inspiration-board.herokuapp.com/boards' )
+      .get("https://trm2-inspiration-board.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
         // setErrorMessage('');
@@ -34,21 +34,20 @@ function App() {
     console.log("changes were made");
   }, []);
   const postANewCardForm = (cardsData) => {
-    console.log(cardsData)
-    const cards = {"message":cardsData}
+    console.log(cardsData);
+    const cards = { message: cardsData };
     axios
-      .post('https://trm2-inspiration-board.herokuapp.com/boards/3/cards',cards)
+      .post(
+        "https://trm2-inspiration-board.herokuapp.com/boards/3/cards",
+        cards
+      )
       .then((response) => {
         console.log(response);
-
       })
       .catch((error) => {
         console.log(error);
         // setErrorMessage
-
-      }
-
-      )
+      });
   };
   return (
     <div className="container">
@@ -65,16 +64,22 @@ function App() {
         <div className="col">
           <Board />
           {errorMessage}
-        </div >
+        </div>
+      </div>
 
+      <div className="row">
+        <div className="col">
+          <Card />
         </div>
-      
-        <div className = 'row'>
-          <div className = 'col'><Card  /></div>
-          <div className = 'col'><CreateANewCard 
-          postANewCard ={postANewCardForm}/> </div>
+        <div className="col">
+          <CreateANewCard postANewCard={postANewCardForm} />{" "}
         </div>
-    
+      </div>
+      <div className="footer">
+        <p></p>
+        <footer className="container text-center">©TRM2 2022</footer>
+        <p></p>
+      </div>
     </div>
   );
 }
