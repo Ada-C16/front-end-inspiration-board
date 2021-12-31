@@ -6,6 +6,7 @@ const Card = () => {
   const [likesCount, setLikesCount] = useState(0);
   const increaseLikes = () => {
     setLikesCount(likesCount + 1);
+
   };
   const decreaseLikes = () => {
     setLikesCount(likesCount - 1);

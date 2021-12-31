@@ -39,12 +39,12 @@ function App() {
     axios
       .post('https://trm2-inspiration-board.herokuapp.com/boards/3/cards',cards)
       .then((response) => {
-        console.log(response);
+        console.log(response, "response");
 
       })
       .catch((error) => {
         console.log(error);
-        // setErrorMessage
+
 
       }
 
@@ -55,6 +55,7 @@ function App() {
       <div className="row">
         <div className="col">
           <Boards boardsData={boardsData} />
+          {errorMessage}
         </div>
         <div className="col">
           <SelectedBoard />
@@ -62,10 +63,6 @@ function App() {
         <div className="col">
           <CreateANewBoard />
         </div>
-        <div className="col">
-          <Board />
-          {errorMessage}
-        </div >
 
         </div>
       

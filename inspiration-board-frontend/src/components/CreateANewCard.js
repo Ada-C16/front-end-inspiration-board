@@ -17,17 +17,30 @@ const CreateANewCard = (props) => {
   };
 
   return (
-  <form onSubmit ={postCards} method = ''>
+    // onSubmit and onChange are event listeners 
+  <form onSubmit ={postCards} method = ''>  
     <div>
       <h3 className = 'newCard'>Create A New Card</h3>
       <label htmlFor = 'message'>Message</label>
-      <input type = 'text'name = 'message' id = 'message' placeholder = 'type a cute message...'onChange = {messageEvent}  maxLength = '40' required/>
+      <input 
+        type = 'text'
+        name = 'message' 
+        id = 'message' 
+        placeholder = 'type a cute message...'
+        onChange = {messageEvent}  
+        maxLength = '40' 
+        required/>
       <div>
-      <input className = 'SubmitButton'type = 'submit'value='Submit'/> 
+      <input 
+        className = 'SubmitButton'
+        type = 'submit'
+        value='Submit'/> 
       </div>
 
       <div>
-      <button className = 'reset' type = 'reset'>Reset</button>
+      <button 
+        className = 'reset' 
+        type = 'reset'>Reset</button>
       </div>
       
     </div>
