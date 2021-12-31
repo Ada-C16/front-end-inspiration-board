@@ -1,12 +1,13 @@
 import "./App.css";
+import axios from "axios";
+import Board from "./components/Board";
 import Boards from "./components/Boards";
 import Card from "./components/Card";
 import CreateANewBoard from "./components/CreateANewBoard";
-import SelectedBoard from "./components/SelectedBoard";
-import Board from "./components/Board";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import CreateANewCard from "./components/CreateANewCard";
+import Header from "./components/Header";
+import SelectedBoard from "./components/SelectedBoard";
+import { useState, useEffect } from "react";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
@@ -53,6 +54,9 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col">
+          <Header />
+        </div>
+        <div className="col">
           <Boards boardsData={boardsData} />
         </div>
         <div className="col">
@@ -66,7 +70,6 @@ function App() {
           {errorMessage}
         </div>
       </div>
-
       <div className="row">
         <div className="col">
           <Card />
