@@ -80,7 +80,7 @@ const Board = (props) => {
     const formDisplaySetting = boardForm.style.display;
     const boardVisibilityButton = document.getElementById('boardVisibilityButton');
 
-    if (formDisplaySetting == 'block') {
+    if (formDisplaySetting === 'block') {
       boardForm.style.display = 'none';
       boardVisibilityButton.innerHTML = 'Show Board Form';
     } else {
@@ -89,13 +89,14 @@ const Board = (props) => {
     }
   };
   return (
-    <div className = "form" >
-      <h2>Boards</h2>
+    <div id ="board-form" className = "form" >
+      <h2 id="select-board-header">Select a Board</h2>
       <select id = "board-select-menu" name="selectBoard" onChange={props.onBoardSelect}>
         {boardOptions}
       </select>
+      <h2 id="board-title">Create a New Board</h2>
       <form id = "board-form">
-        <div>
+        <div id="form-title-div">
           <label htmlFor="title">title</label>
           <input
             id = "board-title"
@@ -105,7 +106,7 @@ const Board = (props) => {
             onChange={onTitleChange}
           />
         </div>
-        <div>
+        <div id="board-form-owner">
           <label htmlFor="owner">owner</label>
           <input
             id = "board-owner"

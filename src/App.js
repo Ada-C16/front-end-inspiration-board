@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import Display from "./components/Display"; 
 import Forms from "./components/Forms";
 import "./App.css";
+import train from './images/train-gif.gif'
 
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>Inspiration Board</h1>
+        <img src={train} alt='blue train with black lettering on teh side that reads "inspiration station"'></img>
       </header>
       <main>
         <Forms onBoardSelect = {onBoardSelect} currentBoard = {currentBoard}/>
