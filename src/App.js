@@ -48,7 +48,7 @@ function App() {
         author: boardInfo.ownersName,
       })
       .then((result) => getBoards())
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   // New Card
@@ -63,7 +63,7 @@ function App() {
         board_id: selectedBoard.id,
       })
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   const updateCurrentBoard = (boardId) => {
@@ -81,14 +81,14 @@ function App() {
       })
       // in order to change one card, all cards state have to be replaced with getCards
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   const deleteOneCard = (selectedCard) => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`)
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
   return (
     <div className="App">
