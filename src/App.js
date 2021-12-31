@@ -57,7 +57,7 @@ function App() {
     axios
       // endpoint matches the endpoint in the backend
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
-        // request body for newCard object, including boardID so the right board gets the card
+        // request body for newCard object, including boardID so the right board gets the cards
         // associated with it
         message,
         board_id: selectedBoard.id,
@@ -72,11 +72,24 @@ function App() {
     getCards(board.id);
   };
 
-  // here selectedCard is just a placeholder
+  // here selectedCard is a reference to what is being passed to it, which is one item from the
+  // state, cards,
   const increaseLikes = (selectedCard) => {
-    console.log(selectedCard);
+    axios
+      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`, {
+        likes: selectedCard.likes + 1,
+      })
+      // in order to change one card, all cards state have to be replaced with getCards
+      .then((result) => getCards(selectedBoard.id))
+      .catch((error) => console.log(error));
   };
 
+  const deleteOneCard = (selectedCard) => {
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`)
+      .then((result) => getCards(selectedBoard.id))
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -84,15 +97,15 @@ function App() {
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
         <NewBoardForm onAddBoard={handleAddBoard} />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
-        {/* conditional logic to check for condition being satisfied to create NewCardForm
-         or CurrentBoard, CardList */}
-
+        {/* conditional logic to check for condition being satisfied to activate LowerBody */}
         {selectedBoard && (
           <LowerBody
+            // this is the list of all the props being assigned that LowerBody will use
             onAddCard={handleAddCard}
             board={selectedBoard}
             cards={cards}
             onIncreaseLikes={increaseLikes}
+            onDeleteOneCard={deleteOneCard}
           ></LowerBody>
         )}
       </main>
