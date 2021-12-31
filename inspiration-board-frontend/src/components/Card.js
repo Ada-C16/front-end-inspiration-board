@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
 import "./Card.css";
+import { useState } from "react";
 
 const Card = () => {
   const [likesCount, setLikesCount] = useState(0);
@@ -12,9 +11,6 @@ const Card = () => {
   };
 
   return (
-    // <header>
-    //   <h3>Temporary Header: This is a card</h3>
-    // </header>
     <div className="card-body">
       <h4 className="card-message">
         <em>here is the card message</em>

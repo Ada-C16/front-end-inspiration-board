@@ -1,6 +1,5 @@
-import SubmitButton from "./SubmitButton";
 import "./CreateANewBoard.css";
-import React from "react";
+import SubmitButton from "./SubmitButton";
 import useCollapse from "react-collapsed";
 import { useState } from "react";
 
@@ -25,6 +24,10 @@ const CreateANewBoard = () => {
       ...formFields,
       owner: event.target.value,
     });
+  };
+
+  const resetFormFields = () => {
+    setFormFields("");
   };
 
   return (
@@ -63,8 +66,14 @@ const CreateANewBoard = () => {
           Preview: {formFields.title} - {formFields.owner}
         </p>
         <p></p>
+        <div>
+          <button className="reset" type="reset" onClick={resetFormFields}>
+            Reset
+          </button>
+        </div>
         <SubmitButton />
       </div>
+
       <button
         className="hide-new-board-button"
         type="button"

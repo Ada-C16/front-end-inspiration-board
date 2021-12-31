@@ -1,7 +1,7 @@
 import React from "react";
 
-const CardsForPickMeUpQuotes = () => {
-  return <h1>I am Boards.</h1>;
+const CardsForSelectedBoard = () => {
+  return <h1>I should only appear after an onClick event</h1>;
 };
 
-export default CardsForPickMeUpQuotes;
+export default CardsForSelectedBoard;
