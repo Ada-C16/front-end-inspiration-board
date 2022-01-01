@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Display.css"
+import "./Display.css";
 
 const Display = (props) => {
   const [cards, setCards] = useState([]);
@@ -45,14 +45,10 @@ const Display = (props) => {
     if (cards) {
       const cardComponentList = cards.map((card) => {
         return (
-          <div
-            className="card-view"
-            key={card.id}
-            id={card.id}
-          >
+          <div className="card-view" key={card.id} id={card.id}>
             <div class="card-message">{card.message}</div>
             <div className="card-buttons">
-              <p class="likes-count">🚂{card.likes_count}</p>
+              <p class="likes-count">&#9734;{card.likes_count}</p>
               <button className="like" onClick={likeCard}>
                 +1
               </button>
@@ -70,11 +66,11 @@ const Display = (props) => {
   return (
     <div className="display-component">
       <h2 className="board-title">
-        "{props.title}" by {props.owner}
+        <span>
+          "{props.title}" by {props.owner}
+        </span>
       </h2>
-      <div className="cards-display">
-        {cardsComponents}
-      </div>
+      <div className="cards-display">{cardsComponents}</div>
     </div>
   );
 };
