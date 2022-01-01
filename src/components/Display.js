@@ -34,11 +34,11 @@ const Display = (props) => {
         .then(() => {
           const newCards = [];
           cards.forEach((card) => {
-            if (card.id !== id) {
+            if (card.id !== parseInt(id)) {
               newCards.push(card);
             }
           });
-          setCards(newCards); // this does not re-render after the fact
+          setCards(newCards); 
         });
     };
 
