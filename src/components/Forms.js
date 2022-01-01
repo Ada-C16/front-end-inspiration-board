@@ -7,7 +7,9 @@ const Forms = (props) => {
   return (
     <div className = "forms-component">
       <Board onBoardSelect={props.onBoardSelect}/>
-      <Card currentBoard = {props.currentBoard}/>
+      <Card cardMessage = {props.cardMessage} 
+            inputCardMessage = {props.inputCardMessage} 
+            submitNewCard = {props.submitNewCard}/>
     </div>
   );
 };
