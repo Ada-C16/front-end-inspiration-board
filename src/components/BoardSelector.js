@@ -22,4 +22,9 @@ const BoardSelector = ({ boards, onSelectBoard }) => {
   );
 };
 
+BoardSelector.propTypes = {
+  boards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSelectBoard: PropTypes.func.isRequired,
+};
+
 export default BoardSelector;

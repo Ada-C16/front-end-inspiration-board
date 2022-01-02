@@ -9,6 +9,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [isNewBoardFormVisible, setIsNewBoardFormVisible] = useState(true);
 
   useEffect(() => {
     getBoards();
@@ -90,12 +91,19 @@ function App() {
       .then((result) => getCards(selectedBoard.id))
       .catch((error) => alert(error.response.data.details));
   };
+
   return (
     <div className="App">
       <header className="App-header"></header>
       <main>
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
-        <NewBoardForm onAddBoard={handleAddBoard} />
+        <NewBoardForm
+          onAddBoard={handleAddBoard}
+          isFormVisible={isNewBoardFormVisible}
+          onToggleVisibility={() =>
+            setIsNewBoardFormVisible(!isNewBoardFormVisible)
+          }
+        />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
         {/* conditional logic to check for condition being satisfied to activate LowerBody */}
         {selectedBoard && (
