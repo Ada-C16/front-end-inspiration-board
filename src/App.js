@@ -9,6 +9,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [isNewBoardFormVisible, setIsNewBoardFormVisible] = useState(true);
 
   useEffect(() => {
     getBoards();
@@ -48,7 +49,7 @@ function App() {
         author: boardInfo.ownersName,
       })
       .then((result) => getBoards())
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   // New Card
@@ -63,7 +64,7 @@ function App() {
         board_id: selectedBoard.id,
       })
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   const updateCurrentBoard = (boardId) => {
@@ -81,21 +82,28 @@ function App() {
       })
       // in order to change one card, all cards state have to be replaced with getCards
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
 
   const deleteOneCard = (selectedCard) => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`)
       .then((result) => getCards(selectedBoard.id))
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error.response.data.details));
   };
+
   return (
     <div className="App">
       <header className="App-header"></header>
       <main>
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
-        <NewBoardForm onAddBoard={handleAddBoard} />
+        <NewBoardForm
+          onAddBoard={handleAddBoard}
+          isFormVisible={isNewBoardFormVisible}
+          onToggleVisibility={() =>
+            setIsNewBoardFormVisible(!isNewBoardFormVisible)
+          }
+        />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
         {/* conditional logic to check for condition being satisfied to activate LowerBody */}
         {selectedBoard && (

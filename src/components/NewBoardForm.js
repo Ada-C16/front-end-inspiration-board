@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const NewBoardForm = ({ onAddBoard }) => {
+const NewBoardForm = ({ onAddBoard, isFormVisible, onToggleVisibility }) => {
   // setting state  for NewBoardForm details, board info is the variable being created and
   // setBoardInfo is the function to change it
   const [boardInfo, setBoardInfo] = useState({
@@ -30,34 +30,43 @@ const NewBoardForm = ({ onAddBoard }) => {
   };
 
   return (
-    <form onSubmit={submitRequest}>
-      <label>
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={boardInfo.title}
-          onChange={updateInput}
-        />
-      </label>
-      <label>
-        Owner's Name:
-        <input
-          type="text"
-          name="ownersName"
-          value={boardInfo.ownersName}
-          onChange={updateInput}
-        />
-        {/* "submit" is a specific type of input, which creates a button "Add New Board",
-    when clicked, will call onSubmit(another form keyword) */}
-      </label>
-      <input type="submit" value="Add New Board" />
-    </form>
+    <div>
+      {isFormVisible && (
+        <form onSubmit={submitRequest}>
+          <label>
+            Title:
+            <input
+              type="text"
+              name="title"
+              value={boardInfo.title}
+              onChange={updateInput}
+            />
+          </label>
+          <label>
+            Owner's Name:
+            <input
+              type="text"
+              name="ownersName"
+              value={boardInfo.ownersName}
+              onChange={updateInput}
+            />
+            {/* "submit" is a specific type of input, which creates a button "Add New Board",
+      when clicked, will call onSubmit(another form keyword) */}
+          </label>
+          <input type="submit" value="Add New Board" />
+        </form>
+      )}
+      <button onClick={onToggleVisibility}>
+        {isFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+      </button>
+    </div>
   );
 };
 
 NewBoardForm.propTypes = {
   onAddBoard: PropTypes.func.isRequired,
+  isFormVisible: PropTypes.bool.isRequired,
+  onToggleVisibility: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;

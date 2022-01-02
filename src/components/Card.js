@@ -15,4 +15,15 @@ const Card = ({ card, onIncreaseLikes, onDeleteOneCard }) => {
     </div>
   );
 };
+
+Card.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    message: PropTypes.string.isRequired,
+    board_id: PropTypes.number.isRequired,
+  }).isRequired,
+  onIncreaseLikes: PropTypes.func.isRequired,
+  onDeleteOneCard: PropTypes.func.isRequired,
+};
+
 export default Card;

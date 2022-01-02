@@ -21,4 +21,10 @@ const CardList = ({ cards, onIncreaseLikes, onDeleteOneCard }) => {
   );
 };
 
+CardList.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onIncreaseLikes: PropTypes.func.isRequired,
+  onDeleteOneCard: PropTypes.func.isRequired,
+};
+
 export default CardList;
