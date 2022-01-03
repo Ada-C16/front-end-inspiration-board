@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import Boards from './components/Boards.js';
+import BoardForm from './components/BoardForm';
 
 const App = () => {
   const BOARDS = [
@@ -25,11 +26,12 @@ const App = () => {
   
   return (
     <div className="App">
-      <header className="App-header">
-        <Boards boards={boards}/>
-      </header>
+      <Boards boards={boards}/>
+      <BoardForm/>  
     </div>
   );
 }
+
+
 
 export default App;
