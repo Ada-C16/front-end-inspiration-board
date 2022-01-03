@@ -33,7 +33,7 @@ function App() {
   // ---------------------------------------------------------------
   // This sets state for the 'Board Selected' value when a board is clicked
   const selectBoard = (id) => { 
-    for (let board of BOARDS) { // I think this should be boards not BOARDS? 
+    for (let board of boards) { // I think this should be boards not BOARDS? 
       if (id===board.id) {
         setSelectedBoard(board.title)
       }}}
