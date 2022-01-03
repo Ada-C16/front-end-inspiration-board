@@ -9,7 +9,8 @@ const Forms = (props) => {
       <Board onBoardSelect={props.onBoardSelect}/>
       <Card cardMessage = {props.cardMessage} 
             inputCardMessage = {props.inputCardMessage} 
-            submitNewCard = {props.submitNewCard}/>
+            submitNewCard = {props.submitNewCard}
+            sortCards = {props.sortCards}/>
     </div>
   );
 };

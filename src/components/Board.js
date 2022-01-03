@@ -94,6 +94,7 @@ const Board = (props) => {
       <select id = "board-select-menu" name="selectBoard" onChange={props.onBoardSelect}>
         {boardOptions}
       </select>
+      
       <h2 id="board-title">Create a New Board</h2>
       <form id = "board-form">
         <div id="form-title-div">

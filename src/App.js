@@ -34,7 +34,9 @@ const App = () => {
       .then((response) => {
         setBoardInfo({title:response.data.title, owner:response.data.owner})
         setCards(response.data.cards)
+        document.getElementById("card-sort").selectedIndex = 0;
       })
+
   };
   
   // CHANGE DISPLAY WHEN CARDS IS EFFECTED
@@ -121,13 +123,22 @@ const App = () => {
     .catch((error) => {console.log('Error:', error);});
     } 
   }
+
+  const sortCards = (e) => {
+    const feature = e.target.selectedIndex;
+    const features = {1: "id", 2: "likes_count", 3: "message"};
+    const sortedCards = [...cards];
+    sortedCards.sort((a,b) => {return a[features[feature]] - b[features[feature]]})
+    setCards(sortedCards);   
+  };
+
   return (
     <div className="App">
       <header>
         <img src={train} alt='blue train with black lettering on teh side that reads "inspiration station"'></img>
       </header>
       <main>
-        <Forms onBoardSelect = {onBoardSelect} cardMessage = {cardMessage} inputCardMessage = {inputCardMessage} submitNewCard = {submitNewCard}/>
+        <Forms sortCards = {sortCards} onBoardSelect = {onBoardSelect} cardMessage = {cardMessage} inputCardMessage = {inputCardMessage} submitNewCard = {submitNewCard}/>
         {display}
       </main>
     </div>
