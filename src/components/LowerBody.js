@@ -10,11 +10,25 @@ const LowerBody = ({
   cards,
   onIncreaseLikes,
   onDeleteOneCard,
+  onSelectSortTypes,
+  sortTypes,
 }) => {
   return (
     <div>
       <NewCardForm onAddCard={onAddCard} />
       <CurrentBoard board={board} />
+
+      {/* sort message option */}
+      <select onChange={(e) => onSelectSortTypes(e.target.value)}>
+        {sortTypes.map((sortType, i) => {
+          return (
+            <option key={i} value={sortType}>
+              Sort by {sortType}
+            </option>
+          );
+        })}
+      </select>
+
       <CardList
         cards={cards}
         onIncreaseLikes={onIncreaseLikes}
@@ -30,6 +44,8 @@ LowerBody.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
   onIncreaseLikes: PropTypes.func.isRequired,
   onDeleteOneCard: PropTypes.func.isRequired,
+  onSelectSortTypes: PropTypes.func.isRequired,
+  sortTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default LowerBody;
