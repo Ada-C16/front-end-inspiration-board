@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import BoardSelector from "./components/BoardSelector";
 import NewBoardForm from "./components/NewBoardForm";
@@ -10,10 +10,37 @@ function App() {
   const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [isNewBoardFormVisible, setIsNewBoardFormVisible] = useState(true);
+  const [sortQuery, setSortQuery] = useState("ID");
+
+  const sortTypes = ["ID", "Alphabetic", "Likes"];
 
   useEffect(() => {
     getBoards();
   }, []);
+
+  // boardId is a parameter for the function to access the specific board
+  const getCards = useCallback(
+    (boardId) => {
+      axios
+        // this axios endpoint mirrors the back-end endpoint for getting all cards for one board
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards?sort=${sortQuery}`
+        )
+        .then((result) => {
+          setCards(result.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [sortQuery]
+  );
+
+  useEffect(() => {
+    if (selectedBoard) {
+      getCards(selectedBoard.id);
+    }
+  }, [selectedBoard, getCards]);
 
   const getBoards = () => {
     axios
@@ -24,18 +51,6 @@ function App() {
       .then((result) => {
         // setBoards is reassigning the state of boards to whatever came through with the axios/ promise/data
         setBoards(result.data);
-      });
-  };
-  // boardId is a parameter for the function to access the specific board
-  const getCards = (boardId) => {
-    axios
-      // this axios endpoint mirrors the back-end endpoint for getting all cards for one board
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
-      .then((result) => {
-        setCards(result.data);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -105,6 +120,7 @@ function App() {
           }
         />
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
+
         {/* conditional logic to check for condition being satisfied to activate LowerBody */}
         {selectedBoard && (
           <LowerBody
@@ -114,6 +130,8 @@ function App() {
             cards={cards}
             onIncreaseLikes={increaseLikes}
             onDeleteOneCard={deleteOneCard}
+            onSelectSortTypes={setSortQuery}
+            sortTypes={sortTypes}
           ></LowerBody>
         )}
       </main>
