@@ -8,10 +8,20 @@ const BoardForm = () => {
       setValues(oldValues => ({ ...oldValues, [name]: value }));
       console.log(values)
     }
+  }; 
+  const saveFormData = () => {
+    console.log(values)
   };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    saveFormData();
+    console.log('success');
+    setValues({title:'', owner:''});
+  };
+
   return (
   <div>BoardForm 
-    <form>
+    <form onSubmit={onSubmit}>
       <label>Title <input type='text' name='title' value={values.title} onChange={onChange('title')}></input></label>
       <label>Owner's Name <input type='text' name='owner' value={values.owner} onChange={onChange('owner')}></input></label>
       <input type="submit"></input>
