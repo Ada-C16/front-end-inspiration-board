@@ -35,4 +35,13 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+
+.App h1 {
+  font-size: 4.0rem;
+}
+
+.App h2 {
+  font-size: 2.0rem;
 }

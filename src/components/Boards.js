@@ -18,7 +18,7 @@ function Boards() {
       id : 3,
       title : "Chores",
       owner :  "Ahmed",
-      cards : [] 
+      cards : []
     }, 
     {
       id : 4,
@@ -57,10 +57,10 @@ function Boards() {
 
   return (
     <div className="App">
-      <h1> Boards </h1>
+      <h2> Boards </h2>
       <select size={boards.length} onChange={handleOptionSelect}>{renderBoardList(boards)}</select>
-      { selectedBoard ? <h1> Board Selected: {selectedBoard}</h1> : <h1> Select a Board </h1>}
-      { selectedOwner && <h1> Owner Selected: {selectedOwner} </h1>}
+      { selectedBoard ? <h2> Board Selected: {selectedBoard}</h2> : <h2> Select a Board </h2>}
+      { selectedOwner && <h2> Owner Selected: {selectedOwner} </h2>}
       <h3> Create A New Board</h3>
       <label> Title </label>
       <input value={newBoardTitle} onInput={event => setNewBoardTitle(event.target.value)}/>
