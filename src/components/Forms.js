@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "./Board";
 import Card from "./Card";
-import "./Forms.css"
+
 
 const Forms = (props) => {
   return (
