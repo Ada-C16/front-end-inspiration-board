@@ -89,7 +89,7 @@ const Board = (props) => {
     }
   };
   return (
-    <div id ="board-form" className = "form" >
+    <div  className = "form" >
       <h2 id="select-board-header">Select a Board</h2>
       <select id = "board-select-menu" name="selectBoard" onChange={props.onBoardSelect}>
         {boardOptions}
