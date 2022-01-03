@@ -45,7 +45,8 @@ function App() {
   const getBoards = () => {
     axios
       // this URL was given by Ada in readme, /boards endpoint is specific to which backend enpoint we want to access
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      // Heroku back end URL hard-coded as environment variable was not working
+      .get(`https://pacific-pals-inspo-back-end.herokuapp.com//boards`)
       // result is the object/promise that will come from the backend and that object in this case is
       // a list of Board objects
       .then((result) => {
@@ -58,7 +59,7 @@ function App() {
   const handleAddBoard = (boardInfo) => {
     // add newBoard to db and display updated board selections
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
+      .post(`https://pacific-pals-inspo-back-end.herokuapp.com/boards`, {
         // this is the request body for the newBoard object
         title: boardInfo.title,
         author: boardInfo.ownersName,
@@ -72,7 +73,7 @@ function App() {
     // add newCard to db
     axios
       // endpoint matches the endpoint in the backend
-      .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
+      .post(`https://pacific-pals-inspo-back-end.herokuapp.com/cards`, {
         // request body for newCard object, including boardID so the right board gets the cards
         // associated with it
         message,
@@ -92,9 +93,12 @@ function App() {
   // state, cards,
   const increaseLikes = (selectedCard) => {
     axios
-      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`, {
-        likes: selectedCard.likes + 1,
-      })
+      .patch(
+        `https://pacific-pals-inspo-back-end.herokuapp.com/cards/${selectedCard.id}`,
+        {
+          likes: selectedCard.likes + 1,
+        }
+      )
       // in order to change one card, all cards state have to be replaced with getCards
       .then((result) => getCards(selectedBoard.id))
       .catch((error) => alert(error.response.data.details));
@@ -102,7 +106,9 @@ function App() {
 
   const deleteOneCard = (selectedCard) => {
     axios
-      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${selectedCard.id}`)
+      .delete(
+        `https://pacific-pals-inspo-back-end.herokuapp.com/cards/${selectedCard.id}`
+      )
       .then((result) => getCards(selectedBoard.id))
       .catch((error) => alert(error.response.data.details));
   };
