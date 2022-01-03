@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewCardForm from "./NewCardForm";
+import PropTypes from 'prop-types';
 
 const Board = (props) => {
   const boardTitle = props.singleBoard.title;

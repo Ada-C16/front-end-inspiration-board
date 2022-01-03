@@ -6,18 +6,18 @@ import axios from "axios";
 // import "./Card.css";
 
 const Card = (props) => {
-  state = {likes_count: 0};
   const card = props.singleCard;
   const deleteCard = props.deleteCardCallback;
   
   const [cardLikeCount, setCardLikeCount] = useState(card.likes_count);
+  setCardLikeCount(0);
 
   const likeCard = (card) => {
     let likeCardsEndpoint =
       "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id + "/like";
-    let newLikesCount = this.state.likes_count + 1;
+    let new_like_count = this.state.likes_count + 1;
     this.setState({
-      likes_count: newLikesCount
+      likes_count: new_like_count
     })
     
 
