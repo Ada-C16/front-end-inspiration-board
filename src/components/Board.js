@@ -30,4 +30,22 @@ const Board = (props) => {
   );
 };
 
+Board.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        card_id: PropTypes.number.isRequired,
+        message: PropTypes.string.isRequired,
+        likes_count: PropTypes.number.isRequired,
+        likeCard: PropTypes.func.isRequired,
+        deleteCard: PropTypes.func.isRequired,
+      })
+    )
+  ),
+  board_id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  onSelectedBoard: PropTypes.func.isRequired,
+};
+
 export default Board;
