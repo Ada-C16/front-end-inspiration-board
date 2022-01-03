@@ -123,16 +123,18 @@ function App() {
         <div className="flex-child-board-list">
           <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
         </div>
-        <div className="flex-child-card-list justify-content-center">
-          <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
-        </div>
-        <div className="flex-child-card-form">
-          <NewCardForm
-            cardFormVisible={showCardForm}
-            onMessageFormSubmit={submitMessageForm}
-            onMessageChange={onMessageChange}
-            messageFormFields={messageFormFields}
-          />
+        <div className="all-the-cards">
+          <div className="flex-child-card-form">
+            <NewCardForm
+              cardFormVisible={showCardForm}
+              onMessageFormSubmit={submitMessageForm}
+              onMessageChange={onMessageChange}
+              messageFormFields={messageFormFields}
+            />
+            <div className="float-child-card-list justify-content-center">
+            <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
+          </div>
+          </div>
         </div>
       </main>
     </div>

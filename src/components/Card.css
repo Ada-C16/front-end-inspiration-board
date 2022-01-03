@@ -11,7 +11,10 @@ margin: 2px;
 } */
 
 .cards{
-    align-items: center;
+    width: 30%;
+    display: inline-block;
+    margin-left: 25px;
+    margin-bottom: 10px;
 }
 
 /* .test{
@@ -19,3 +22,8 @@ margin: 2px;
     height: 15px;
     
 } */ 
+
+.card-content{
+    padding: 5px;
+    margin: 5px;
+}

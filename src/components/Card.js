@@ -24,12 +24,12 @@ const Card = (props) => {
   };
 
   return (
-    <div className="cards bg-info rounded-circle text-center">
-      <h4>{card.message}</h4>
-      <h5>Likes: {cardLikeCount}</h5>
-      <button onClick={() => likeCard(card)}>Like</button>
-      <button onClick={() => deleteCard(card)}>Delete</button>
-    </div>
+    <div className="cards bg-info text-center">
+        <p className="card-content">{card.message}</p>
+        <p className="card-content">Likes: {cardLikeCount}</p>
+        <button className="card-content" onClick={() => likeCard(card)}>Like</button>
+        <button className="card-content" onClick={() => deleteCard(card)}>Delete</button>
+      </div>
   );
 };
 
