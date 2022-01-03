@@ -48,7 +48,11 @@ button:active, .submit-button:active {
   transform: translateY(0);
 }
 
-#boardVisibilityButton, .board-submit-button {
+#boardVisibilityButton{
+  margin: 2px;
+}
+
+.submit-button {
   margin: 2px;
 }
 
@@ -118,7 +122,7 @@ span {
 
 #board-select-menu {
   margin-bottom: 20px;
-}
+} 
 
 #card-form, #board-form {
   margin-top: auto;
