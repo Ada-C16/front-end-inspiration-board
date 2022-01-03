@@ -19,7 +19,7 @@ function App() {
 
   // const [currentCard, setCurrentCard] = useState([]);
 
-  const [currentBoard, setCurrentBoard] = useState([]);
+  const [currentBoard, setCurrentBoard] = useState("");
 
   // This function deletes a card when it's delete button is clicked
   const deleteCard = (cardID, currentBoard) => {
@@ -152,7 +152,7 @@ function App() {
         <NewCardForm 
           addNewCardCallback={addNewCard}
           cardList = {cardList}
-          // currentBoard={currentBoard}
+          currentBoard={currentBoard}
         />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
         <CardDisplay

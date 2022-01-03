@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import {useState} from "react";
 // import axios from "axios";
 import Card from "./Card";
 
@@ -37,10 +38,19 @@ const CardDisplay = (props) => {
   }
   
   const cardComponents = updateCardDisplay(props.cardList, props.currentBoard);
-  
+
+  let cardDisplayHeader = '↙️ select a board!';
+
+  if (props.currentBoard){
+    cardDisplayHeader = `${props.currentBoard.title} by ${props.currentBoard.owner}`;
+  };
+
   return (
     <section className="card-display-block grid-block">
-      <h1>{props.currentBoard.title} by {props.currentBoard.owner}</h1>
+      <h1>
+          {cardDisplayHeader}
+          {/* {props.currentBoard.title} by {props.currentBoard.owner} */}
+      </h1>
       {/* {console.log(props.currentBoard)} */}
       {cardComponents}
     </section>

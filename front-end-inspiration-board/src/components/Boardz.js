@@ -3,6 +3,8 @@ import Board from "./Board";
 import "./Boardz.css";
 
 const Boardz = (props) => {
+
+  // called when user clicks on button to clear all boards
   const onClearAllBoards = (event) => {
     const confirmBox = window.confirm("Are you sure?🥺");
     if (confirmBox === true) {
