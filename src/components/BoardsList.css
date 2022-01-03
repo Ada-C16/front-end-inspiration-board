@@ -1,3 +1,4 @@
-.board{
-    width:500px;
+.boards-list{
+    justify-content: center;
+    padding: 5px;
 }

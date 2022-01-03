@@ -112,23 +112,29 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app container">
+      <header className="app-header">
         <h1>Team Lovelace's Inspiration Boards</h1>
       </header>
-      <main>
-        <NewBoardForm addBoardCallback={addNewBoard} />
-        <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
-        <CardsList
-          allCards={cardsData}
-          deleteCardCallback={deleteCard}
-        />
-        <NewCardForm
+      <main className='flex-container'>
+        <div className="flex-child-board-form">
+          <NewBoardForm addBoardCallback={addNewBoard} />
+        </div>
+        <div className="flex-child-board-list">
+          <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
+        </div>
+        <div className="flex-child-card-list">
+          <CardsList
+            allCards={cardsData}
+            deleteCardCallback={deleteCard}/>
+        </div>
+        <div className="flex-child-card-form">
+          <NewCardForm
           cardFormVisible={showCardForm}
           onMessageFormSubmit={submitMessageForm}
           onMessageChange={onMessageChange}
-          messageFormFields={messageFormFields}
-        />
+          messageFormFields={messageFormFields}/>
+        </div>
       </main>
     </div>
   );

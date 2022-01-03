@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import axios from "axios";
-
-// import "./Card.css";
+import "./Card.css";
 
 const Card = (props) => {
   const card = props.singleCard;
@@ -31,7 +30,7 @@ const Card = (props) => {
   };
 
   return (
-    <div>
+    <div className="cards bg-info test rounded-circle">
       <h4>{card.message}</h4>
       <h5>Likes: {cardLikeCount}</h5>
       <button onClick={() => likeCard(card)}>Like</button>

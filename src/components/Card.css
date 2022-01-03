@@ -1,4 +1,4 @@
-.cardMessage {
+/* .cardMessage {
 border: 4px solid #2c3e50;
 border-radius: 2px;
 font-family: Helvetica;
@@ -8,4 +8,14 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin: 2px;
+} */
+
+.cards{
+    align-items: center;
+}
+
+.test{
+    width: 15px; 
+    height: 15px;
+    
 }
