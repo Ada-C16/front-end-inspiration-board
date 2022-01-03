@@ -5,26 +5,27 @@ const Board = (props) => {
   const boardTitle = props.singleBoard.title;
   const board = props.singleBoard;
   const onSelectedBoard = props.onSelectedBoard;
-  const [cardsData, setCardsData] = useState([]);
-  const addNewCard = (newCard) => {
-    const newCardList = [...cardsData];
+  // const [cardsData, setCardsData] = useState([]);
 
-    const nextCardId = Math.max(...newCardList.map((card) => card.card_id)) + 1;
+  // const addNewCard = (newCard) => {
+  //   const newCardList = [...cardsData];
 
-    newCardList.push({
-      card_id: nextCardId,
-      message: newCard.messageData,
-    });
+  //   const nextCardId = Math.max(...newCardList.map((card) => card.card_id)) + 1;
 
-    setCardsData(newCardList);
-  };
+  //   newCardList.push({
+  //     card_id: nextCardId,
+  //     message: newCard.messageData,
+  //   });
+
+  //   setCardsData(newCardList);
+  // };
 
   return (
     <div onClick={() => onSelectedBoard(board)}>
       <h3>{boardTitle}</h3>
-      <main>
+      {/* <main>
         <NewCardForm addCardCallback={addNewCard} />
-      </main>
+      </main> */}
     </div>
   );
 };

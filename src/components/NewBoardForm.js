@@ -46,7 +46,6 @@ const NewBoardForm = (props) => {
     });
 
     axios
-      // For now, calling local db. TODO: Need to make changes on back-end and push changes onto heroku to use deployed link for API call
       .post(process.env.REACT_APP_BACKEND_URL, {
         title: formFields.title,
         owner: formFields.owner,

@@ -1,18 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import axios from "axios";
 
 // import "./Card.css";
 
 const Card = (props) => {
   const card = props.singleCard;
-  console.log(card);
+  const deleteCard = props.deleteCardCallback;
+
+  const [cardLikeCount, setCardLikeCount] = useState(card.likes_count);
+
+  const likeCard = (card) => {
+    let likeCardsEndpoint =
+      "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id + "/like";
+
+    axios
+      .put(likeCardsEndpoint)
+      .then((response) => {
+        setCardLikeCount(response.data.new_like_count);
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
       <h4>{card.message}</h4>
-      <h5>Likes: {card.likes_count}</h5>
-      <button>Like</button>
-      <button>Delete</button>
+      <h5>Likes: {cardLikeCount}</h5>
+      <button onClick={() => likeCard(card)}>Like</button>
+      <button onClick={() => deleteCard(card)}>Delete</button>
     </div>
   );
 };

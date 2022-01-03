@@ -5,6 +5,8 @@ import Card from "./Card";
 
 const CardsList = (props) => {
   const allCards = props.allCards;
+  const deleteCardCallback = props.deleteCardCallback;
+
   // const [cardsData, setCardsData] = useState([]);
 
   // const selectedBoard = props.selectedBoard;
@@ -25,7 +27,7 @@ const CardsList = (props) => {
     <div>
       <h2>Cards</h2>
       {allCards.map((card) => (
-        <Card singleCard={card} />
+        <Card singleCard={card} deleteCardCallback={deleteCardCallback} />
       ))}
     </div>
   );

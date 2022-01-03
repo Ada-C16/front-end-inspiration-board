@@ -11,17 +11,61 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState([]);
   const [cardsData, setCardsData] = useState([]);
+  const [showCardForm, setShowCardForm] = useState(false);
+  const [messageFormFields, setMessageFormFields] = useState({ message: "" });
+
+  const onMessageChange = (event) => {
+    setMessageFormFields({
+      ...messageFormFields,
+      message: event.target.value,
+    });
+  };
+
+  const submitMessageForm = (event) => {
+    event.preventDefault();
+
+    let cardsEndpoint =
+      process.env.REACT_APP_BACKEND_URL +
+      "/" +
+      selectedBoard.board_id +
+      "/cards";
+    axios
+      .post(cardsEndpoint, {
+        message: messageFormFields.message,
+        likes_count: 0,
+        board_id: selectedBoard.board_id,
+      })
+      .then(function (response) {
+        console.log(response.data);
+
+        const newCardList = [...cardsData];
+        newCardList.push({
+          board_id: response.data.board_id,
+          card_id: response.data.card_id,
+          likes_count: response.data.likes_count,
+          message: response.data.message,
+        });
+
+        setCardsData(newCardList);
+        setMessageFormFields({
+          message: "",
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const selectBoard = (board) => {
-    setSelectedBoard(board);
-    console.log(board);
     let cardsEndpoint =
       process.env.REACT_APP_BACKEND_URL + "/" + board.board_id + "/cards";
+
     axios
       .get(cardsEndpoint)
       .then((response) => {
-        console.log(response.data);
         setCardsData([...response.data]);
+        setSelectedBoard(board);
+        setShowCardForm(true);
       })
       .catch((err) => console.log(err));
   };
@@ -41,11 +85,27 @@ function App() {
     setBoardsData(newBoardList);
   };
 
+  const deleteCard = (card) => {
+    let cardsEndpoint =
+      "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id;
+    console.log(card);
+    axios
+      .delete(cardsEndpoint)
+      .then((response) => {
+        console.log(response.data);
+        const updatedCardsList = cardsData.filter(
+          (singleCard) => singleCard.card_id !== card.card_id
+        );
+
+        setCardsData(updatedCardsList);
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL)
       .then((response) => {
-        console.log(response.data);
         setBoardsData([...response.data]);
       })
       .catch((err) => console.log(err));
@@ -58,9 +118,17 @@ function App() {
       </header>
       <main>
         <NewBoardForm addBoardCallback={addNewBoard} />
-
         <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
-        <CardsList allCards={cardsData} />
+        <CardsList
+          allCards={cardsData}
+          deleteCardCallback={deleteCard}
+        />
+        <NewCardForm
+          cardFormVisible={showCardForm}
+          onMessageFormSubmit={submitMessageForm}
+          onMessageChange={onMessageChange}
+          messageFormFields={messageFormFields}
+        />
       </main>
     </div>
   );
