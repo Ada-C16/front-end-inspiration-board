@@ -50,6 +50,24 @@ function App() {
         // setErrorMessage
       });
   };
+
+  // add new board to the board data
+  const addBoardData = (newBoard) => {
+    // Duplicate the board list
+    const newBoardList = [...boardsData];
+
+    // logic to generate the nest valid board ID
+    const nextID = Math.max(...(newBoardList.map((board) => board.id) + 1));
+
+    newBoardList.push({
+      id: nextID,
+      ownerData: newBoard.ownerData,
+      titleData: newBoard.titleData,
+    });
+
+    setBoards(newBoardList);
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -63,7 +81,10 @@ function App() {
           <SelectedBoard />
         </div>
         <div className="col">
-          <CreateANewBoard />
+          <CreateANewBoard
+            boards={boardsData}
+            addBoardCallback={addBoardData}
+          />
         </div>
         <div className="col">
           <Board />
