@@ -1,5 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import Sticky from './components/Sticky';
+
+
+// We need to create a function that makes an API call to get all the boards from the database to populate the dropdown
+// We need to create a function that makes an API call to get all the stickies from the database for specific selected board
+// Create a function that generates a sticky component for each sticky in the database
+
+const stickyData = {
+  "stickies": [
+    {
+      "text": "This is a sticky",
+      "timestamp": "2019-01-01",
+      "id": "1",
+      "likes": 0
+    },
+    {
+      "text": "This is another sticky",
+      "timestamp": "2019-01-01",
+      "id": "2",
+      "likes": 2
+    },
+    {
+      "text": "This is a third sticky",
+      "timestamp": "2019-01-01",
+      "id": "3",
+      "likes": 3
+    },
+    {
+      "text": "This is a fourth sticky",
+      "timestamp": "2019-01-01",
+      "id": "4",
+      "likes": 4
+    }
+  ]
+};
+
+
+const createStickies = (stickyData) => {
+  return stickyData['stickies'].map(sticky => {
+    return <Sticky key={sticky.id} text={sticky.text} timestamp={sticky.timestamp} id={sticky.id} likes={sticky.likes} onDelete={onDelete} onLike={onLike} />;
+  });
+}
+
+const onDelete = (stickyID) => {
+  // make an API call to DELETE a sticky when clicked
+};
+
+const onLike = (stickyID) => {
+  // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked
+};
 
 function App() {
   return (
@@ -36,50 +85,12 @@ function App() {
             </form>
           </div>
         </section>
+
+        {/* this essentially is the board displayed */}
         <section className="stickies-container">
           <div className="stickies-subcontainer">
-            {/* eventually add a scrollbar to THIS container */}
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 1! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Stinky stink stinky.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 2! I have a little text in me. 
-              No scrolling needed!
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 3! I have smol text.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-              I am a sticky 4! I have a lot of text in me.
-              This is a really long text that will wrap around to the next line.
-              We are just testing out what a long sticky looks like. 
-              I hope that the text is scrollable.
-              Meep.
-              Honk if you bonk.
-              Yeah pretty much just repeating the text.
-              Okay so I'm just going to add a bunch of text to make it scroll.
-              </article>
-            </div>
-            <div className="sticky">
-              <article className="sticky-text">
-                I am sticky 5! I'm being put here to show what happens when you have an odd number of stickies.
-              </article>
-            </div>
-            
-            
+            {/* put sticky components here */}
+              {createStickies(stickyData)}
           </div>
         </section>
       </div>

@@ -56,8 +56,6 @@
   line-height: 2;
 }
 
-
-
 .stickies-container {
   display: flex;
   flex-direction: column;
@@ -80,18 +78,6 @@
   align-content: flex-start;
   overflow-y: auto;
 }
-.sticky {
-  flex: 0 0 30%;
-  height: 30%;
-  background-color: rgb(255, 233, 124);
-  margin: 10px;
-  overflow-y: auto;
-}
 
-.sticky-text {
-  text-align: center;
-  line-height: 1.5;
-  margin: 10px;
-}
 
 
