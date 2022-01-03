@@ -24,7 +24,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="cards bg-info test rounded-circle">
+    <div className="cards bg-info rounded-circle text-center">
       <h4>{card.message}</h4>
       <h5>Likes: {cardLikeCount}</h5>
       <button onClick={() => likeCard(card)}>Like</button>

@@ -27,7 +27,7 @@ const NewBoardForm = (props) => {
   // Every time user types in title or owner, updating state
   const onTitleChange = (event) => {
     let titleValid = event.target.value ? true : false;
-    let submitValid = formFields.titleValid && titleValid;
+    let submitValid = formFields.ownerValid && titleValid;
 
     setFormFields({
       ...formFields,
@@ -39,11 +39,13 @@ const NewBoardForm = (props) => {
 
   const onOwnerChange = (event) => {
     let ownerValid = event.target.value ? true : false;
-    let submitValid = formFields.emailValid && ownerValid;
+    let submitValid = formFields.titleValid && ownerValid;
+
     setFormFields({
       ...formFields,
       owner: event.target.value,
-      subtmitDsiabled: !submitValid,
+      ownerValid: ownerValid,
+      submitDisabled: !submitValid,
     });
   };
 
@@ -64,16 +66,17 @@ const NewBoardForm = (props) => {
 
       .then(function (response) {
         console.log(response);
+        setFormFields({
+          ...formFields,
+          title: "",
+          owner: "",
+          submitDisabled: true,
+        });
       })
 
       .catch(function (error) {
         console.log(error);
       });
-
-    setFormFields({
-      title: "",
-      owner: "",
-    });
   };
 
   return (
