@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewCardForm from "./NewCardForm";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Board = (props) => {
   const boardTitle = props.singleBoard.title;
@@ -24,29 +24,26 @@ const Board = (props) => {
   return (
     <div onClick={() => onSelectedBoard(board)}>
       <h3>{boardTitle}</h3>
-      {/* <main>
-        <NewCardForm addCardCallback={addNewCard} />
-      </main> */}
     </div>
   );
 };
 
-Board.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        card_id: PropTypes.number.isRequired,
-        message: PropTypes.string.isRequired,
-        likes_count: PropTypes.number.isRequired,
-        likeCard: PropTypes.func.isRequired,
-        deleteCard: PropTypes.func.isRequired,
-      })
-    )
-  ),
-  board_id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
-  onSelectedBoard: PropTypes.func.isRequired,
-};
+// Board.propTypes = {
+//   cards: PropTypes.arrayOf(
+//     PropTypes.arrayOf(
+//       PropTypes.shape({
+//         card_id: PropTypes.number.isRequired,
+//         message: PropTypes.string.isRequired,
+//         likes_count: PropTypes.number.isRequired,
+//         likeCard: PropTypes.func.isRequired,
+//         deleteCard: PropTypes.func.isRequired,
+//       })
+//     )
+//   ),
+//   board_id: PropTypes.number.isRequired,
+//   title: PropTypes.string.isRequired,
+//   owner: PropTypes.string.isRequired,
+//   onSelectedBoard: PropTypes.func.isRequired,
+// };
 
 export default Board;

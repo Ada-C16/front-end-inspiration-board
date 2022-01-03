@@ -6,6 +6,9 @@ const NewBoardForm = (props) => {
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
+    titleValid: false,
+    ownerValid: false,
+    submitDisabled: true,
   });
 
   const [isBoardFormVisible, setBoardFormVisible] = useState(true);
@@ -23,16 +26,24 @@ const NewBoardForm = (props) => {
 
   // Every time user types in title or owner, updating state
   const onTitleChange = (event) => {
+    let titleValid = event.target.value ? true : false;
+    let submitValid = formFields.titleValid && titleValid;
+
     setFormFields({
       ...formFields,
       title: event.target.value,
+      titleValid: titleValid,
+      submitDisabled: !submitValid,
     });
   };
 
   const onOwnerChange = (event) => {
+    let ownerValid = event.target.value ? true : false;
+    let submitValid = formFields.emailValid && ownerValid;
     setFormFields({
       ...formFields,
       owner: event.target.value,
+      subtmitDsiabled: !submitValid,
     });
   };
 
@@ -88,7 +99,11 @@ const NewBoardForm = (props) => {
               onChange={onOwnerChange}
             />
           </p>
-          <input type="submit" value="submit" />
+          <input
+            disabled={formFields.submitDisabled}
+            type="submit"
+            value="submit"
+          />
         </form>
       ) : null}
       <button onClick={toggleNewBoardForm}>{buttonText}</button>

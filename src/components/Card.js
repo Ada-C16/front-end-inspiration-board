@@ -7,18 +7,12 @@ import "./Card.css";
 const Card = (props) => {
   const card = props.singleCard;
   const deleteCard = props.deleteCardCallback;
-  
+
   const [cardLikeCount, setCardLikeCount] = useState(card.likes_count);
-  setCardLikeCount(0);
 
   const likeCard = (card) => {
     let likeCardsEndpoint =
       "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id + "/like";
-    let new_like_count = this.state.likes_count + 1;
-    this.setState({
-      likes_count: new_like_count
-    })
-    
 
     axios
       .put(likeCardsEndpoint)
@@ -39,13 +33,13 @@ const Card = (props) => {
   );
 };
 
-Card.propTypes = {
-  card_id: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-  likes_count: PropTypes.number.isRequired,
-  board_id: PropTypes.number.isRequired,
-  likeCard: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,
-};
+// Card.propTypes = {
+//   card_id: PropTypes.number.isRequired,
+//   message: PropTypes.string.isRequired,
+//   likes_count: PropTypes.number.isRequired,
+//   board_id: PropTypes.number.isRequired,
+//   likeCard: PropTypes.func.isRequired,
+//   deleteCard: PropTypes.func.isRequired,
+// };
 
 export default Card;
