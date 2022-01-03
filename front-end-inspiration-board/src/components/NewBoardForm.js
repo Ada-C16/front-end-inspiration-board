@@ -60,13 +60,15 @@ const NewBoardForm = (props) => {
                     <form onSubmit={onFormSubmit}>
                         <div>
                             <label>New Board Name:</label>
-                            <input type="text" 
+                            <input type="text"
+                            required
                             value={formField.boardName} 
                             onChange={onBoardNameChange}></input>
                         </div>
                         <div>
                             <label>New Board Owner:</label>
-                            <input type="text" 
+                            <input type="text"
+                                    required
                                     value={formField.boardOwner} 
                                     onChange={onBoardOwnerChange}></input>
                         </div>

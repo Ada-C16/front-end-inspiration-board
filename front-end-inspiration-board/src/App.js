@@ -77,7 +77,7 @@ function App() {
         setBoardList([...response.data]);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, []); 
 
   ///////////////
 
