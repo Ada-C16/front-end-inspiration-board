@@ -2,15 +2,17 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Board.css";
 
-const Board = ({ boards }) => {
-  const boardDisplay = boards.map((board) => {
-    return (
-      <div className="Board">
-        <div>The title is: {board.title}</div>
-        <div>Select New Board</div>
-      </div>
-    );
+const Board = ({ boardData }) => {
+  const boardsList = boardData.map((board) => {
+    return <li key={board.board_id}>Title of Board: {board.title}</li>;
   });
+
+  return (
+    <div className="Board">
+      <ol>{boardsList}</ol>
+      <div>Select New Board</div>
+    </div>
+  );
 };
 
 Board.propTypes = {
@@ -18,7 +20,7 @@ Board.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
+      board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

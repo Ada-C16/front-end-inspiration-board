@@ -11,17 +11,31 @@ const cardData = {
   likes_count: 1,
   card_id: 1,
 };
-
-const boardFakeData = {
-  title: "title",
-  owner: "tester",
-  id: 1,
-};
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
   // board state
   const [boardData, setBoardData] = useState([]);
-  // const [boardData, setBoardData] = useState(boardFakeData);
+  const getBoard = () => {
+    axios
+      .get(`${URL}/boards`)
+      .then((response) => {
+        console.log(response.data);
+        const newBoards = response.data.map((board) => {
+          return {
+            title: board.title,
+            owner: board.owner,
+            board_id: board.board_id,
+          };
+        });
+        setBoardData(newBoards);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
+  useEffect(getBoard, []);
 
   // state to select board - default to empty
   const [selectBoard, setSelectBoard] = useState({
@@ -34,7 +48,7 @@ function App() {
     <div className="App">
       <header className="App-header">Inspiration Board</header>
       <div className="App-board">
-        <Board {...boardData} />
+        <Board boardData={boardData} />
       </div>
       <div className="App-card">
         <CardList />
