@@ -4,7 +4,6 @@ import Boardz from "./components/Boardz";
 import CardDisplay from "./components/CardDisplay";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
-import SortByLikes from "./components/SortByLikes";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
