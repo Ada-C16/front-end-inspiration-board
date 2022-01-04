@@ -25,11 +25,22 @@ const Card = (props) => {
 
   return (
     <div className="cards bg-info text-center">
-        <p className="card-content">{card.message}</p>
-        <p className="card-content">Likes: {cardLikeCount}</p> 
-        <button className="card-content" cardId={card.card_id} onClick={() => likeCard(card)}>Like</button> 
-        <button className="card-content" onClick={() => deleteCard(card)}>Delete</button>
-      </div>
+      <p className="card-content">{card.message}</p>
+      <p className="card-content">Likes: {cardLikeCount}</p>
+      <button
+        className="card-content btn btn-light"
+        cardId={card.card_id} 
+        onClick={() => likeCard(card)}
+      >
+        Like
+      </button>
+      <button
+        className="card-content btn btn-light"
+        onClick={() => deleteCard(card)}
+      >
+        Delete
+      </button>
+    </div>
   );
   }
 export default Card;

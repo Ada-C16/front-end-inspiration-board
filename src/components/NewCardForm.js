@@ -28,7 +28,7 @@ const NewCardForm = (props) => {
   //   };
 
   return (
-    <div>
+    <div className="text-center">
       {isVisible ? (
         <form onSubmit={submitMessage}>
           <h2> Create a new card</h2>
@@ -36,12 +36,17 @@ const NewCardForm = (props) => {
             Message:
             <input
               type="text"
+              maxlength="40"
               name="messageCard"
               value={messageFormFields.message}
               onChange={onMessageChange}
             />
           </p>
-          <input type="submit" value='submit' />
+          <input
+            disabled={messageFormFields.submitDisabled}
+            type="submit"
+            value="submit"
+          />
         </form>
       ) : null}
     </div>

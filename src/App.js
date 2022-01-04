@@ -12,12 +12,20 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState([]);
   const [cardsData, setCardsData] = useState([]);
   const [showCardForm, setShowCardForm] = useState(false);
-  const [messageFormFields, setMessageFormFields] = useState({ message: "" });
+  const [messageFormFields, setMessageFormFields] = useState({
+    message: "",
+    messageValid: false,
+    submitDisabled: true,
+  });
 
   const onMessageChange = (event) => {
+    let messageValid = event.target.value ? true : false;
+    let submitValid = messageValid;
     setMessageFormFields({
       ...messageFormFields,
       message: event.target.value,
+      messageValid: true,
+      submitDisabled: !submitValid,
     });
   };
 
@@ -49,6 +57,8 @@ function App() {
         setCardsData(newCardList);
         setMessageFormFields({
           message: "",
+          messageValid: false,
+          submitDisabled: true,
         });
       })
       .catch(function (error) {
@@ -116,24 +126,29 @@ function App() {
       <header className="app-header">
         <h1>Team Lovelace's Inspiration Boards</h1>
       </header>
-      <main className="flex-container">
-        <div className="flex-child-board-form">
-          <NewBoardForm addBoardCallback={addNewBoard} />
-        </div>
-        <div className="flex-child-board-list">
-          <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
-        </div>
-        <div className="all-the-cards">
-          <div className="flex-child-card-form">
+      <main className="container">
+        <div className="row">
+          <div className="flex-child-board-form col-6">
+            <NewBoardForm addBoardCallback={addNewBoard} />
+          </div>
+
+          <div className="flex-child-board-list col">
+            <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
+          </div>
+
+          <div className="flex-child-card-form col">
             <NewCardForm
               cardFormVisible={showCardForm}
               onMessageFormSubmit={submitMessageForm}
               onMessageChange={onMessageChange}
               messageFormFields={messageFormFields}
             />
-            <div className="float-child-card-list justify-content-center">
-            <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
           </div>
+        </div>
+
+        <div className="row">
+          <div className="float-child-card-list justify-content-center col">
+            <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
           </div>
         </div>
       </main>

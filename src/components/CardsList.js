@@ -7,22 +7,6 @@ const CardsList = (props) => {
   const allCards = props.allCards;
   const deleteCardCallback = props.deleteCardCallback;
 
-  // const [cardsData, setCardsData] = useState([]);
-
-  // const selectedBoard = props.selectedBoard;
-  // console.log(selectedBoard);
-  // // gives you selected ID board
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://team-lovelace-api.herokuapp.com/boards/1/cards")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setCardsData([...response.data]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [selectedBoard]);
-
   return (
     <div>
       <h2>Cards</h2>
