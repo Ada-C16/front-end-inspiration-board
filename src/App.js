@@ -4,6 +4,7 @@ import BoardForm from './components/BoardForm';
 import CardList from './components/CardList';
 import React, { useState } from 'react';
 import CardForm from './components/CardForm';
+import axios from 'axios';
 
 const CARDS = [{id:1, message:"Hi hello", likes_count: 1}, 
                 {id:2, message:"Howdy", likes_count: 1},
@@ -35,7 +36,7 @@ function App() {
   const selectBoard = (id) => { 
     for (let board of boards) { // I think this should be boards not BOARDS? 
       if (id===board.id) {
-        setSelectedBoard(board.title)
+        setSelectedBoard(board)
       }}}
 
   // This sets the state for the 'Boards', this changes when a new board is added, we will also need to add functionality to delete all?
@@ -71,11 +72,13 @@ function App() {
   
   // This sets the states for 'Cards', this changes when a card is added to the deck
   const addCard = (cardInfo) => {
-    const num = 4 // We can delete this when we link up to database since the id will be generated through that. 
-    const newCard = {id: num, message: cardInfo.message, likes_count: cardInfo.likes_count}
-    const updatedCards = [...cards]
-    updatedCards.push(newCard)
-    setCards(updatedCards)
+    // const num = 4 // We can delete this when we link up to database since the id will be generated through that. 
+    // const newCard = {id: num, message: cardInfo.message, likes_count: cardInfo.likes_count}
+    // creating axios post method
+    // axios.post(`https://inspirandwich-board.herokuapp.com/boards/${}/cards`)
+    // const updatedCards = [...cards]
+    // updatedCards.push(newCard)
+    // setCards(updatedCards)
   }
 
   return (
@@ -92,7 +95,7 @@ function App() {
           <h2>Board Selected</h2>
           <ul>
               <li>
-                {selectedBoard}
+                {selectedBoard.title}
               </li>
           </ul>
         </section>
