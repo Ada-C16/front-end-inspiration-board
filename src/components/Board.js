@@ -11,7 +11,7 @@ const Board = () => {
       store cards in a list
       loop over that list to create the card components */}
       <Card />
-      <NewCardForm/>
+      <NewCardForm />
 
       
     </div> 
