@@ -2,10 +2,9 @@ import './App.css';
 import DropdownItem from './components/DropdownItem';
 import Sticky from './components/Sticky';
 
-
 // We need to create a function that makes an API call to get all the boards from the database to populate the dropdown
 // We need to create a function that makes an API call to get all the stickies from the database for specific selected board
-// Create a function that generates a sticky component for each sticky in the database
+// Create a function that generates a sticky component for each sticky in the chosen board database
 
 const stickyData = {
   "stickies": [
@@ -59,12 +58,6 @@ const createStickies = (stickyData) => {
   });
 }
 
-const createDropdown = (boardData) => {
-  return boardData['boards'].map(board => {
-    return <DropdownItem key={board.id} name={board.name} />;
-  });
-}
-
 const onDelete = (stickyID) => {
   // make an API call to DELETE a sticky when clicked
 };
@@ -73,7 +66,17 @@ const onLike = (stickyID) => {
   // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked
 };
 
-const getStickies = (selectedBoard) => {
+const createDropdown = (boardData) => {
+  return boardData['boards'].map(board => {
+    return <DropdownItem key={board.id} name={board.name} onClick={onBoardClick}/>;
+  });
+}
+
+const onBoardClick = (boardID) => {
+  // call getStickies (we need getStickies bc we need to be able to generate the first set of stickies)
+};
+
+const getStickies = (boardID) => {
   // grab the selected board from the dropdown
   // we are making a GET request to the API to get all stickies for specific board
   // by feeding the data from API into createStickies()
@@ -85,9 +88,9 @@ const makeNewBoard =  () => {
   boardButton.addEventListener('click', (event) => {
     event.preventDefault();
     const boardName = document.getElementById("board-name").value;
-    // make an API call to POST a new board with info below
+    // make an API call to POST a new board with grabbed board name
     // {'name': boardName};
-    // wait for successful API POST, then generate the new dropdown menu
+    // wait for successful API POST, call createDropdown, and automatically redirect to new board "page" (change the title, call getStickies)
   });
 };
 
