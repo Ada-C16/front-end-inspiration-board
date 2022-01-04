@@ -13,8 +13,24 @@ function App() {
   // }
   const onFormSubmit = (e) => {
     e.preventDefault();
+    // create a new board 
+    // make API call to get all boards
+    // boards are in a list
+    // add form data to list of boards
+    // Next send back new list to API
   }
 
+  const addNewBoard = (newBoard) => {
+    let newBoardList = [...allBoards]
+    // const nextId = Math.max(...newBoardList.map(board => board.id)) + 1;
+    newBoardList.push({
+      titleData: newBoard.title,
+      ownerData: newBoard.owner
+    });
+    setBoardData(newBoardList);
+    // Next send back new list to API
+
+  }
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
@@ -28,7 +44,8 @@ function App() {
         <h2>Selected Board</h2>
         <p></p>
       </section>
-     <NewBoardForm onFormSubmit={onFormSubmit}/>
+      
+     <NewBoardForm addNewBoard={addNewBoard} onFormSubmit={onFormSubmit}/>
       <Board />
     </div>
   );

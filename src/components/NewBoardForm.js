@@ -30,7 +30,7 @@ const NewBoardForm = (props) => {
       <label htmlFor="ownerName">Owner's Name</label>
       <input onChange={onOwnerChange} value={formFields.owner} name="ownerName" type="text"></input>
       <p>Preview: -</p>
-      <button type="submit">Submit Query</button>
+      <button onClick={props.addNewBoard(formFields)} type="submit">Submit Query</button>
     </form>
     <span>Hide New Board Form</span>
     {/* <span onClick={}>Hide New Board Form</span> */}
