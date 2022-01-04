@@ -15,9 +15,10 @@ const Card = (props) => {
         setCardLikeCount(card.cardLikes + 1)
         props.addLikeCallback(card.card_id)
       }
-  }
+  }}
+  
   // this function is for debugging purposes
-  const showCardInfo = () => {
+  const logCardInfo = () => {
     console.log({
       key: props.key, 
       id: props.id,
@@ -27,7 +28,6 @@ const Card = (props) => {
     });
   }
   
-}
 
   //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {
@@ -54,10 +54,10 @@ const Card = (props) => {
   
   // console.log(cardLikeCount)
   return (
-    <section onClick={showCardInfo}>
+    <section onClick={logCardInfo}>
       <h3>{props.cardMessage}</h3>
       <button onClick={addOneLike}>🐶 {cardLikeCount}</button>
-3      <button onClick={handleDeleteCard}>delete card</button>
+      <button onClick={handleDeleteCard}>delete card</button>
     </section>
   );
 };
