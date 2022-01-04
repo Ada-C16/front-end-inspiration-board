@@ -52,8 +52,9 @@ function App() {
   const updateCardLikes = (id) => {
       const updatedCards = [...cards]
       for (let card of updatedCards) {
-        if (id === card.id) {
+        if (id === card.card_id) {
           card.likes_count++
+          // axios.put(`https://inspirandwich-board.herokuapp.com/boards/${card.board_id}}/${id}`)
         }
       }
       setCards(updatedCards)
