@@ -1,4 +1,5 @@
 import './App.css';
+import DropdownItem from './components/DropdownItem';
 import Sticky from './components/Sticky';
 
 
@@ -35,10 +36,32 @@ const stickyData = {
   ]
 };
 
+const boardData = {
+  "boards": [
+    {
+      "name": "Board 1",
+      "id": "1"
+    },
+    {
+      "name": "Board 2",
+      "id": "2"
+    },
+    {
+      "name": "Board 3",
+      "id": "3"
+    }
+  ]
+};
 
 const createStickies = (stickyData) => {
   return stickyData['stickies'].map(sticky => {
     return <Sticky key={sticky.id} text={sticky.text} timestamp={sticky.timestamp} id={sticky.id} likes={sticky.likes} onDelete={onDelete} onLike={onLike} />;
+  });
+}
+
+const createDropdown = (boardData) => {
+  return boardData['boards'].map(board => {
+    return <DropdownItem key={board.id} name={board.name} />;
   });
 }
 
@@ -48,6 +71,24 @@ const onDelete = (stickyID) => {
 
 const onLike = (stickyID) => {
   // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked
+};
+
+const getStickies = (selectedBoard) => {
+  // grab the selected board from the dropdown
+  // we are making a GET request to the API to get all stickies for specific board
+  // by feeding the data from API into createStickies()
+};
+
+const makeNewBoard =  () => {
+  // gets the board name from the form
+  const boardButton = document.getElementById("board-button");
+  boardButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    const boardName = document.getElementById("board-name").value;
+    // make an API call to POST a new board with info below
+    // {'name': boardName};
+    // wait for successful API POST, then generate the new dropdown menu
+  });
 };
 
 function App() {
@@ -61,21 +102,24 @@ function App() {
             <div className="submit-board">
             Submit a new board: 
             <form>
-              <input type="text" />
-              <input type="submit" />
+              <input type="text" className="board-name"/>
+              <input type="submit" className="board-button"/>
               </form>
             </div>
+
+
             <div className="select-board">
             Select an existing Board: 
               <form>
                 <label for="boards"></label>
                 <select name="boards">
-                  <option value="board1">Board1</option>
-                  <option value="board2">Board2</option>
-                  <option value="board3">Board3</option>
+                  {/* generate board dropdown items */}
+                  {createDropdown(boardData)}
                 </select>
               </form>
             </div>
+
+
           </div>
           <div className="sticky-submit-container">
           Submit a new sticky: 

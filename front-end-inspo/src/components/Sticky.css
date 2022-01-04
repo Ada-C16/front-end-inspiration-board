@@ -4,13 +4,14 @@
     background-color: rgb(255, 233, 124);
     margin: 10px;
     overflow-y: auto;
-
+    box-shadow: rgba(0, 0, 0, 0.413) 3px 3px 10px;
 }
 
 .sticky-text {
     text-align: center;
     line-height: 1.5;
     margin: 10px;
+    min-height: 140px;
 }
 
 .sticky-footer {
@@ -21,7 +22,6 @@
     align-items: center;
     width: 100%;
     height: 10%;
-    background-color: rgb(124, 255, 222);
 }
 
 .likes-count {
