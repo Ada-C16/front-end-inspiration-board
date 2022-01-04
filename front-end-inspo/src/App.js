@@ -1,10 +1,9 @@
-import './App.css';
-import DropdownItem from './components/DropdownItem';
-import Sticky from './components/Sticky';
-import axios from 'axios';
-import {useState, useEffect} from 'react';
-import React from 'react';
-
+import "./App.css";
+import DropdownItem from "./components/DropdownItem";
+import Sticky from "./components/Sticky";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import React from "react";
 
 // const axios = require('axios');
 
@@ -13,61 +12,60 @@ import React from 'react';
 // Create a function that generates a sticky component for each sticky in the chosen board database
 
 function App() {
-  const [dropDownList, setDropDownList] = useState(['']);
+  const [dropDownList, setDropDownList] = useState([""]);
+  const [currentBoard, setCurrentBoard] = useState({
+    name: "",
+    id: null,
+  });
 
-  useEffect(() => {createDropdown()}, []);
+  useEffect(() => {
+    createDropdown();
+  }, []);
 
   const stickyData = {
-    "stickies": [
+    stickies: [
       {
-        "text": "This is a sticky",
-        "timestamp": "2019-01-01",
-        "id": "1",
-        "likes": 0
+        text: "This is a sticky",
+        timestamp: "2019-01-01",
+        id: "1",
+        likes: 0,
       },
       {
-        "text": "This is another sticky",
-        "timestamp": "2019-01-01",
-        "id": "2",
-        "likes": 2
+        text: "This is another sticky",
+        timestamp: "2019-01-01",
+        id: "2",
+        likes: 2,
       },
       {
-        "text": "This is a third sticky",
-        "timestamp": "2019-01-01",
-        "id": "3",
-        "likes": 3
+        text: "This is a third sticky",
+        timestamp: "2019-01-01",
+        id: "3",
+        likes: 3,
       },
       {
-        "text": "This is a fourth sticky",
-        "timestamp": "2019-01-01",
-        "id": "4",
-        "likes": 4
-      }
-    ]
-  };
-
-  const boardData = {
-    "boards": [
-      {
-        "name": "Board 1",
-        "id": "1"
+        text: "This is a fourth sticky",
+        timestamp: "2019-01-01",
+        id: "4",
+        likes: 4,
       },
-      {
-        "name": "Board 2",
-        "id": "2"
-      },
-      {
-        "name": "Board 3",
-        "id": "3"
-      }
-    ]
+    ],
   };
 
   const createStickies = (stickyData) => {
-    return stickyData['stickies'].map(sticky => {
-      return <Sticky key={sticky.id} text={sticky.text} timestamp={sticky.timestamp} id={sticky.id} likes={sticky.likes} onDelete={onDelete} onLike={onLike} />;
+    return stickyData["stickies"].map((sticky) => {
+      return (
+        <Sticky
+          key={sticky.id}
+          text={sticky.text}
+          timestamp={sticky.timestamp}
+          id={sticky.id}
+          likes={sticky.likes}
+          onDelete={onDelete}
+          onLike={onLike}
+        />
+      );
     });
-  }
+  };
 
   const onDelete = (stickyID) => {
     // make an API call to DELETE a sticky when clicked
@@ -78,19 +76,44 @@ function App() {
   };
 
   const createDropdown = () => {
-    
-    axios.get('http://localhost:5001/board')
+    axios
+      .get("http://localhost:5000/board")
+      .then((response) => {
+        setDropDownList(
+          response.data["boards"].map((board) => {
+            // added boardID as a prop - MB
+            return (
+              <DropdownItem
+                key={board.id}
+                boardId={board.id}
+                name={board.name}
+              />
+            );
+          })
+        );
+        setCurrentBoard({
+          name: document.querySelector("[name=boards]").value,
+          // Sets the id to the current id of the selected option
+          id: document.querySelector("[name=boards]").options[
+            document.querySelector("[name=boards]").selectedIndex
+          ].id,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
-      .then((response)=>{
-        console.log(response.data)
-        setDropDownList(response.data['boards'].map(board => {
-          return <DropdownItem key={board.id} name={board.name}/>;
-        })
-        )})
-      .catch((error) => {console.log(error.message)});
-      };
-
-  const onBoardClick = (boardID) => {
+  // removed board_id from parameters -MB
+  const onBoardClick = () => {
+    var boardId =
+      document.querySelector("[name=boards]").options[
+        document.querySelector("[name=boards]").selectedIndex
+      ].id;
+    setCurrentBoard({
+      name: document.querySelector("[name=boards]").value,
+      id: boardId,
+    });
     // call getStickies (we need getStickies bc we need to be able to generate the first set of stickies)
   };
 
@@ -100,10 +123,10 @@ function App() {
     // by feeding the data from API into createStickies()
   };
 
-  const makeNewBoard =  () => {
+  const makeNewBoard = () => {
     // gets the board name from the form
     const boardButton = document.getElementById("board-button");
-    boardButton.addEventListener('click', (event) => {
+    boardButton.addEventListener("click", (event) => {
       event.preventDefault();
       const boardName = document.getElementById("board-name").value;
       // make an API call to POST a new board with grabbed board name
@@ -112,54 +135,49 @@ function App() {
     });
   };
 
-
-
   return (
-      <div className="main-container">
-        <section className="sidebar-container">
-          <div className="sidebar-header">
-            <h1 className="inspo-header">Name of Current Board</h1>
-          </div>
-          <div className="board-container">
-            <div className="submit-board">
-            Submit a new board: 
+    <div className="main-container">
+      <section className="sidebar-container">
+        <div className="sidebar-header">
+          <h1 className="inspo-header">{currentBoard.name}</h1>
+        </div>
+        <div className="board-container">
+          <div className="submit-board">
+            Submit a new board:
             <form>
-              <input type="text" className="board-name"/>
-              <input type="submit" className="board-button"/>
-              </form>
-            </div>
-
-
-            <div className="select-board">
-            Select an existing Board: 
-              <form>
-                <label for="boards"></label>
-                <select name="boards">
-                  {/* generate board dropdown items */}
-                  {dropDownList}
-                </select>
-              </form>
-            </div>
-
-
-          </div>
-          <div className="sticky-submit-container">
-          Submit a new sticky: 
-            <form>
-              <input type="text" />
-              <input type="submit" />
+              <input type="text" className="board-name" />
+              <input type="submit" className="board-button" />
             </form>
           </div>
-        </section>
 
-        {/* this essentially is the board displayed */}
-        <section className="stickies-container">
-          <div className="stickies-subcontainer">
-            {/* put sticky components here */}
-              {createStickies(stickyData)}
+          <div className="select-board">
+            Select an existing Board:
+            <form>
+              <label for="boards"></label>
+              <select name="boards" onChange={onBoardClick}>
+                {/* generate board dropdown items */}
+                {dropDownList}
+              </select>
+            </form>
           </div>
-        </section>
-      </div>
+        </div>
+        <div className="sticky-submit-container">
+          Submit a new sticky:
+          <form>
+            <input type="text" />
+            <input type="submit" />
+          </form>
+        </div>
+      </section>
+
+      {/* this essentially is the board displayed */}
+      <section className="stickies-container">
+        <div className="stickies-subcontainer">
+          {/* put sticky components here */}
+          {createStickies(stickyData)}
+        </div>
+      </section>
+    </div>
   );
 }
 
