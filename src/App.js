@@ -1,15 +1,26 @@
 import "./App.css";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Board from "./components/Board";
-import Card from "./components/Card";
+import CardList from "./components/CardList";
+import NewBoard from "./components/NewBoard";
+import NewCard from "./components/NewCard";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">Inspiration Board</header>
       <main>
-        <Board />
-        <Card />
+        <div>
+          <Board />
+        </div>
+        <div>
+          <CardList />
+        </div>
+        <div>
+          <NewBoard />
+          <NewCard />
+        </div>
       </main>
     </div>
   );
