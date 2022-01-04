@@ -1,10 +1,18 @@
 import './App.css';
 import DropdownItem from './components/DropdownItem';
 import Sticky from './components/Sticky';
+import axios from 'axios';
+import {useState} from 'react';
+import React from 'react';
+
+
+// const axios = require('axios');
 
 // We need to create a function that makes an API call to get all the boards from the database to populate the dropdown
 // We need to create a function that makes an API call to get all the stickies from the database for specific selected board
 // Create a function that generates a sticky component for each sticky in the chosen board database
+
+
 
 const stickyData = {
   "stickies": [
@@ -66,11 +74,18 @@ const onLike = (stickyID) => {
   // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked
 };
 
-const createDropdown = (boardData) => {
-  return boardData['boards'].map(board => {
-    return <DropdownItem key={board.id} name={board.name} onClick={onBoardClick}/>;
-  });
-}
+const createDropdown = () => {
+  
+  axios.get('http://localhost:5001/board')
+
+    .then((response)=>{
+      console.log(response.data)
+      setDropDownList(response.data['boards'].map(board => {
+        return <DropdownItem key={board.id} name={board.name}/>;
+      })
+      )})
+    .catch((error) => {console.log(error.message)});
+    };
 
 const onBoardClick = (boardID) => {
   // call getStickies (we need getStickies bc we need to be able to generate the first set of stickies)
@@ -95,6 +110,8 @@ const makeNewBoard =  () => {
 };
 
 function App() {
+  const [dropDownList, setDropDownList] = useState(['']);
+
   return (
       <div className="main-container">
         <section className="sidebar-container">
@@ -117,7 +134,7 @@ function App() {
                 <label for="boards"></label>
                 <select name="boards">
                   {/* generate board dropdown items */}
-                  {createDropdown(boardData)}
+                  {createDropdown()}
                 </select>
               </form>
             </div>
