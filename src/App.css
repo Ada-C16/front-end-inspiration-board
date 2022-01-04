@@ -1,11 +1,11 @@
 .App {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 
-    "header header header sidebar"
-    "board board board sidebar"
-    "card card card sidebar"
+    "header sidebar"
+    "board sidebar"
+    "card sidebar"
 }
 
 .App-header {
@@ -22,7 +22,6 @@
 
 .App-board {
   grid-area: board;
-  display: flex;
 }
 
 .App-sidebar {

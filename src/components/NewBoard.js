@@ -1,4 +1,5 @@
 import React from "react";
+import "./NewBoard.css";
 
 const NewBoard = () => {
   return (

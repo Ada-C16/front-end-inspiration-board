@@ -1,4 +1,5 @@
 import React from "react";
+import "./NewCard.css";
 
 const NewCard = () => {
   return (
