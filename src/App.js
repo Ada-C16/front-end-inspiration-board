@@ -32,8 +32,7 @@ function App() {
     event.preventDefault();
 
     let cardsEndpoint =
-      process.env.REACT_APP_BACKEND_URL +
-      "/" +
+      "https://team-lovelace-api.herokuapp.com/boards/" +
       selectedBoard.board_id +
       "/cards";
     axios
@@ -67,7 +66,9 @@ function App() {
 
   const selectBoard = (board) => {
     let cardsEndpoint =
-      process.env.REACT_APP_BACKEND_URL + "/" + board.board_id + "/cards";
+      "https://team-lovelace-api.herokuapp.com/boards/" +
+      board.board_id +
+      "/cards";
 
     axios
       .get(cardsEndpoint)
