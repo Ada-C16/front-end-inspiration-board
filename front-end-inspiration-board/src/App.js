@@ -127,13 +127,14 @@ function App() {
 
 
   //This function makes a PATCH http request. It updates card.likes_count by 1.
-  // const addLike = () => {
-  //   axios
-  //     .patch(`${boardURL}/${currentBoard.id}/cards/${}`)
-  //     .then((response) => {
-  //       console.log
-  //     })
-  // }
+  const addLike = (cardID) => {
+    axios
+      .patch(`${boardURL}/${currentBoard.id}/cards/${cardID}`)
+      .then((response) => {
+        console.log("Like added.")
+      })
+      .catch((err) => console.log(err));
+  }
 
 
 
@@ -160,6 +161,7 @@ function App() {
           currentBoard={currentBoard}
           deleteCardCallback={deleteCard}
           setCardList={setCardList}
+          addLikeCallback={addLike}
         />
       </div>
     </section>

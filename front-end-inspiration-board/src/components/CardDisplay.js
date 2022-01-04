@@ -28,6 +28,7 @@ const CardDisplay = (props) => {
           cardList={props.cardList}
           deleteCardCallback={props.deleteCardCallback}
           setCardList={props.setCardList}
+          addLikeCallback={props.addLikeCallback}
           // updateCardDisplayCallback={updateCardDisplay}
           // setCurrentCardCallback = {props.setCurrentCard}
           />
