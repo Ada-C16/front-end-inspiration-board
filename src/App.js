@@ -11,6 +11,9 @@ function App() {
   // const selectBoard = () => {
     
   // }
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div className="App">
@@ -25,7 +28,7 @@ function App() {
         <h2>Selected Board</h2>
         <p></p>
       </section>
-     <NewBoardForm/>
+     <NewBoardForm onFormSubmit={onFormSubmit}/>
       <Board />
     </div>
   );

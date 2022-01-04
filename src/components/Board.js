@@ -3,6 +3,7 @@ import Card from './Card'
 import NewCardForm from "./NewCardForm";
 
 const Board = () => {
+ 
   return (
     <div>
       <h1>Cards for Board</h1>
