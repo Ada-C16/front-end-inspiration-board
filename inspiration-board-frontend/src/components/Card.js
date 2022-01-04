@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
 import "./Card.css";
+import { useState } from "react";
 
 const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
@@ -13,9 +12,6 @@ const Card = (props) => {
   };
 
   return (
-    // <header>
-    //   <h3>Temporary Header: This is a card</h3>
-    // </header>
     <div className="card-body">
       <h4 className="card-message">
         <em>{props.message}</em>
@@ -27,7 +23,12 @@ const Card = (props) => {
         <button className="likes-button" onClick={increaseLikes}>
           +1
         </button>
-        <button className="delete-button">Delete</button>
+        <button
+          className="delete-button"
+          onClick={() => props.deleteCardItem(props.card)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

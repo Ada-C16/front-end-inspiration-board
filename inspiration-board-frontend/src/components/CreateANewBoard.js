@@ -1,10 +1,9 @@
-import SubmitButton from "./SubmitButton";
 import "./CreateANewBoard.css";
-import React from "react";
+import PropTypes from "prop-types";
 import useCollapse from "react-collapsed";
 import { useState } from "react";
 
-const CreateANewBoard = () => {
+const CreateANewBoard = (props) => {
   const [isExpanded, setExpanded] = useState(true);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
@@ -27,8 +26,31 @@ const CreateANewBoard = () => {
     });
   };
 
+  const resetFormFields = () => {
+    setFormFields("");
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    props.addBoardCallback({
+      title: formFields.title,
+      owner: formFields.owner,
+    });
+
+    setFormFields({
+      title: "",
+      owner: "",
+    });
+  };
+
   return (
-    <form action="" method="get" className="new-board-form">
+    <form
+      onSubmit={onFormSubmit}
+      action=""
+      method="get"
+      className="new-board-form"
+    >
       <h4 className="create-new-board-header">Create A New Board</h4>
       <div {...getCollapseProps()}>
         <div className="board-title">
@@ -57,14 +79,18 @@ const CreateANewBoard = () => {
             onChange={onOwnerChange}
             required
           ></input>
+          <p></p>
+          <p>
+            Preview: {formFields.title} - {formFields.owner}
+          </p>
+          <p></p>
+          <button className="reset" type="reset" onClick={resetFormFields}>
+            Reset
+          </button>
+          <input className="submit-button" type="submit" value="Submit" />
         </div>
-        <p></p>
-        <p>
-          Preview: {formFields.title} - {formFields.owner}
-        </p>
-        <p></p>
-        <SubmitButton />
       </div>
+
       <button
         className="hide-new-board-button"
         type="button"
@@ -76,6 +102,10 @@ const CreateANewBoard = () => {
       </button>
     </form>
   );
+};
+
+CreateANewBoard.propTypes = {
+  addBoardCallback: PropTypes.func.isRequired,
 };
 
 export default CreateANewBoard;

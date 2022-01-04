@@ -1,6 +1,7 @@
 .selected-board-header {
-    border: 2px solid;
+    border: 2px dotted;
     color: black; 
     font-family: "Permanent Marker", cursive;
-    box-shadow: -15px 7px 1px black;
+    box-shadow: -15px 7px 1px #efd0c8;
+    text-align: center;
     }

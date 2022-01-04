@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import  "./CardsForSelectedBoard.css"
 
+<<<<<<< HEAD
 const CardsForPickMeUpQuotes = (props) => {
   
   const cardlist  = props.cardListData.reverse().map((card, key) => {
@@ -20,6 +21,10 @@ const CardsForPickMeUpQuotes = (props) => {
   </div>
 
   );
+=======
+const CardsForSelectedBoard = () => {
+  return <h1>I should only appear after an onClick event</h1>;
+>>>>>>> 1af25dee80774d92236fcd0b991f6afe588903c2
 };
 
-export default CardsForPickMeUpQuotes;
+export default CardsForSelectedBoard;
