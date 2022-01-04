@@ -59,7 +59,7 @@ function App() {
   const handleAddBoard = (boardInfo) => {
     // add newBoard to db and display updated board selections
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/boards/`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
         // this is the request body for the newBoard object
         title: boardInfo.title,
         author: boardInfo.ownersName,
