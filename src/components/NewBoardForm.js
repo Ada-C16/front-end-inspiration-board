@@ -58,7 +58,7 @@ const NewBoardForm = (props) => {
     });
 
     axios
-      .post(process.env.REACT_APP_BACKEND_URL, {
+      .post("https://team-lovelace-api.herokuapp.com/boards", {
         title: formFields.title,
         owner: formFields.owner,
       })
