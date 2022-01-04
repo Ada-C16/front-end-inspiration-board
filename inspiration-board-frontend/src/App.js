@@ -51,16 +51,10 @@ function App() {
       });
   };
 
-  // add new board to the board data
   const addBoardData = (newBoard) => {
-    // Duplicate the board list
     const newBoardList = [...boardsData];
 
-    // logic to generate the nest valid board ID
-    const nextID = Math.max(...(newBoardList.map((board) => board.id) + 1));
-
     newBoardList.push({
-      id: nextID,
       owner: newBoard.owner,
       title: newBoard.title,
     });
