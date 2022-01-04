@@ -1,12 +1,10 @@
 import Card from "./Card";
 import "./CardsForSelectedBoard.css";
 
-const CardsForSelectedBoard = (props) => {
-  const cardlist = props.cardListData.reverse().map((card, key) => {
-    return (
-      <Card key={key} message={card.message} likesCount={card.likesCount} />
-    );
-  });
+const CardsForPickMeUpQuotes = (props) => {
+  
+  const cardlist  = props.cardListData.reverse().map((card, key) => {
+    return <Card key = {key} message ={card.message} likesCount={card.likesCount}  />
 
   return (
     <div>
@@ -16,4 +14,4 @@ const CardsForSelectedBoard = (props) => {
   );
 };
 
-export default CardsForSelectedBoard;
+export default CardsForPickMeUpQuotes;

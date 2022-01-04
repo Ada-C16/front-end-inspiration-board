@@ -3,6 +3,10 @@ border: 2px dotted;
 color: black; 
 font-family: "Permanent Marker", cursive;
 box-shadow: -15px 7px 1px #efd0c8;
+<<<<<<< HEAD
 margin-top: 50px; 
 text-align: center;
+=======
+margin: 50px;
+>>>>>>> 925398b35dbf14dc5d2a54a2ebd55e92c5e8d83f
 }

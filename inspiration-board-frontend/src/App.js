@@ -9,6 +9,7 @@ import CreateANewCard from "./components/CreateANewCard";
 import Logo from "./components/Logo";
 import SelectedBoard from "./components/SelectedBoard";
 import { useState, useEffect } from "react";
+import CardsForPickMeUpQuotes from "./components/CardsForSelectedBoard";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
@@ -66,20 +67,16 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-
-    axios
-      .post(
-        "https://trm2-inspiration-board.herokuapp.com/boards/3/cards",
-        setCards
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        // setErrorMessage
-      });
   };
+  // axios
+  //     .post("https://trm2-inspiration-board.herokuapp.com/boards/3/cards",cards)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       // setErrorMessage
+  //     });
 
   const addBoardData = (newBoard) => {
     const newBoardList = [...boardsData];
@@ -93,29 +90,29 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <Logo />
-          </div>
-          <div className="col">
-            <Boards boardsData={boardsData} />
-            {errorMessage}
-          </div>
-          <div className="col">
-            <SelectedBoard />
-          </div>
-          <div className="col">
-            <CreateANewBoard
-              boards={boardsData}
-              addBoardCallback={addBoardData}
-            />
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <Logo />
         </div>
+        <div className="col">
+          <Boards boardsData={boardsData} />
+          {errorMessage}
+        </div>
+        <div className="col">
+          <SelectedBoard />
+        </div>
+        <div className="col">
+          <CreateANewBoard
+            boards={boardsData}
+            addBoardCallback={addBoardData}
+          />
+        </div>
+
         <div className="row">
           <div className="col">
-            <CardsForSelectedBoard cardListData={cardListData} />
+            <CardsForPickMeUpQuotes cardListData={cardListData} />
+            {/* <Card  /> */}
           </div>
           <div className="col">
             <CreateANewCard postANewCard={postANewCardForm} />{" "}
