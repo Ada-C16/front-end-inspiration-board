@@ -6,9 +6,7 @@ import Card from "./Card";
 const CardList = () => {
   return (
     <div>
-      <div>
-        <Card />
-      </div>
+      <Card />
     </div>
   );
 };

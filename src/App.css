@@ -1,9 +1,15 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header header sidebar"
+    "board board board sidebar"
+    "card card card sidebar"
 }
 
-
 .App-header {
+  grid-area: header;
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
@@ -14,7 +20,11 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-board {
+  grid-area: board;
+  display: flex;
 }
 
+.App-sidebar {
+  grid-area: sidebar;
+}

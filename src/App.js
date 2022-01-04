@@ -10,18 +10,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Inspiration Board</header>
-      <main>
-        <div>
-          <Board />
-        </div>
-        <div>
-          <CardList />
-        </div>
-        <div>
-          <NewBoard />
-          <NewCard />
-        </div>
-      </main>
+      <div className="App-board">
+        <Board />
+      </div>
+      <div className="App-card">
+        <CardList />
+      </div>
+      <div className="App-sidebar">
+        <NewBoard />
+        <NewCard />
+      </div>
     </div>
   );
 }
