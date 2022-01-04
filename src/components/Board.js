@@ -6,7 +6,7 @@ const Board = (props) => {
   const boardTitle = props.singleBoard.title;
   const board = props.singleBoard;
   const onSelectedBoard = props.onSelectedBoard;
-  // const [cardsData, setCardsData] = useState([]);
+  //const [cardsData, setCardsData] = useState([]);
 
   // const addNewCard = (newCard) => {
   //   const newCardList = [...cardsData];

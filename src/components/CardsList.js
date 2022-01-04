@@ -27,7 +27,7 @@ const CardsList = (props) => {
     <div>
       <h2>Cards</h2>
       {allCards.map((card) => (
-        <Card singleCard={card} deleteCardCallback={deleteCardCallback} />
+        <Card key={card.card_id} singleCard={card} deleteCardCallback={deleteCardCallback} />
       ))}
     </div>
   );

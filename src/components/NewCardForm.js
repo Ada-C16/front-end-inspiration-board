@@ -9,6 +9,24 @@ const NewCardForm = (props) => {
   let onMessageChange = props.onMessageChange;
   let messageFormFields = props.messageFormFields;
 
+  // const [cardsData, setCardsData] = useState([]);
+  // const [formFields, setFormFields] = useState({
+  //   id: 0,
+  // });
+
+  // const addNewCard = (newCard) => {
+  //     const newCardList = [...cardsData];
+  
+  //     const nextCardId = Math.max(...newCardList.map((card) => card.id)) + 1;
+  
+  //     newCardList.push({
+  //       id: nextCardId,
+  //       message: newCard.messageData,
+  //     });
+  
+  //     setCardsData(newCardList);
+  //   };
+
   return (
     <div>
       {isVisible ? (
@@ -23,7 +41,7 @@ const NewCardForm = (props) => {
               onChange={onMessageChange}
             />
           </p>
-          <input type="submit" value="submit" />
+          <input type="submit" value='submit' />
         </form>
       ) : null}
     </div>
