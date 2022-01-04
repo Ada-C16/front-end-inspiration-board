@@ -57,7 +57,7 @@ const NewCardForm = (props) => {
           <input
             type="text"
             required
-            value={cardFormField.message}
+            value={cardFormField.cardMessage}
             onChange={onCardMessageChange}
             maxLength={40}
           ></input>
