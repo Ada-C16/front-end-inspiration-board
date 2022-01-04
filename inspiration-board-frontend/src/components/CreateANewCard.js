@@ -24,11 +24,11 @@ const CreateANewCard = (props) => {
       <h3 className = 'newCard'>Create A New Card</h3>
       <label htmlFor = 'message'>Message</label>
       <input 
-        style = {{width: '300px'}}
+        style = {{width: '380px'}}
         type = 'text'
         name = 'message' 
         id = 'message' 
-        placeholder = 'type a cute message...'
+        placeholder = 'type a cute message... 40 characters max'
         onChange = {messageEvent}  
         maxLength = '40' 
         required/>
