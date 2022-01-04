@@ -104,11 +104,9 @@ function App() {
   };
 
   // This sets the state for the 'Cards', this changes when a card is liked
-  const updateCardLikes = (id, likes_count) => {
+  const updateCardLikes = (id) => {
     axios
-      .put(`${URL}/boards/${selectedBoard.id}/${id}`, {
-        likes_count: likes_count,
-      })
+      .put(`${URL}/boards/${selectedBoard.id}/${id}`)
       .then((response) => {
         const updatedCards = [...cards];
         for (let card of updatedCards) {

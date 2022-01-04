@@ -8,7 +8,7 @@ const Card = ({ id, message, likes_count, onClickLike, onClickDelete }) => {
       Card {id}: {message} Likes: {likes_count}{" "}
       <button
         onClick={() => {
-          onClickLike(id, likes_count);
+          onClickLike(id);
         }}
       >
         {" "}
