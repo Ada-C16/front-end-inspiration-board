@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
-import {useState} from "react";
+// import {useState} from "react";
 // import axios from "axios";
 import Card from "./Card";
+import SortByLikes from "./SortByLikes"
 
 
 //when is this called?
@@ -29,7 +30,7 @@ const CardDisplay = (props) => {
           deleteCardCallback={props.deleteCardCallback}
           setCardList={props.setCardList}
           addLikeCallback={props.addLikeCallback}
-          // updateCardDisplayCallback={updateCardDisplay}
+          updateCardDisplayCallback={updateCardDisplay}
           // setCurrentCardCallback = {props.setCurrentCard}
           />
           );
@@ -54,6 +55,13 @@ const CardDisplay = (props) => {
       </h1>
       {/* {console.log(props.currentBoard)} */}
       {cardComponents}
+
+      
+      <SortByLikes 
+        cardList={props.cardList}
+        setCardList={props.setCardList}
+        sortCardsCallback={props.sortCardsCallback}>
+      </SortByLikes>
     </section>
   );
 };

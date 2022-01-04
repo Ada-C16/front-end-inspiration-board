@@ -1,23 +1,24 @@
 // import axios from "axios";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 const Card = (props) => {
   const [cardLikeCount, setCardLikeCount] = useState(props.cardLikes)
-  
-
-
 
   const addOneLike = () => {
+    props.addLikeCallback(props.id)
 
-    const currentCards = [...props.cardList];
-    for (let card of currentCards) {
-      if (props.id === card.card_id) {
-        setCardLikeCount(card.cardLikes + 1)
-        props.addLikeCallback(card.card_id)
-      }
+    setCardLikeCount(cardLikeCount => Number(cardLikeCount) + 1);
+    // props.updateCardDisplayCallback(props.cardList, props.currentBoard)
+
+
+    // const currentCards = [...props.cardList];
+    // for (let card of currentCards) {
+    //   if (props.id === card.card_id) {
+    //     props.addLikeCallback(card.card_id)
+    //   }
   }
   
-}
+
 
   //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {

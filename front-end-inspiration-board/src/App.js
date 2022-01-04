@@ -4,6 +4,7 @@ import Boardz from "./components/Boardz";
 import CardDisplay from "./components/CardDisplay";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
+import SortByLikes from "./components/SortByLikes";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
@@ -21,6 +22,7 @@ function App() {
   // const [currentCard, setCurrentCard] = useState([]);
 
   const [currentBoard, setCurrentBoard] = useState("");
+
 
   // This function deletes a card when it's delete button is clicked
   const deleteCard = (cardID, currentBoard) => {
@@ -137,7 +139,18 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  const sortAllCards = () => {
+    let cardListCopy = [...cardList]
+    let sortedList = []
+    cardListCopy.sort((a, b) => a.likes_count > b.likes_count ? 1 : -1)
+    console.log(cardListCopy)
+    setCardList(cardListCopy)
+    // cardListCopy.map((item, i) => 
+    //   console.log("hi")
+    
+    // )
 
+  }
 
   return (
     <section>
@@ -157,13 +170,16 @@ function App() {
           currentBoard={currentBoard}
         />
         <NewBoardForm addNewBoardCallback={addNewBoard} />
-        <CardDisplay
-          cardList={cardList}
+        <CardDisplay cardList={cardList}
           currentBoard={currentBoard}
           deleteCardCallback={deleteCard}
           setCardList={setCardList}
           addLikeCallback={addLike}
-        />
+          sortCardsCallback={sortAllCards} >
+          
+          </CardDisplay>
+        
+
       </div>
     </section>
   );
