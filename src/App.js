@@ -31,19 +31,19 @@ const App = () => {
       message: 'Message1',
       card_id: 1,
       board_id: 4,
-      votes: 2
+      like_count: 2
     },
     {
       message: 'Message2',
       card_id: 2,
       board_id: 4,
-      votes: 30
+      like_count: 30
     },
     {
       message: 'Message3',
       card_id: 3,
       board_id: 1,
-      votes: 0
+      like_count: 0
     }
   ]
   const [cards, updateCards] = useState(CARDS);

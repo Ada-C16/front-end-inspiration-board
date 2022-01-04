@@ -5,16 +5,16 @@ import Counter from './Counter';
 
 
 const Card = ({card}) => {
-    const [votes, setVotes] = useState(card.votes)
+    const [likeCount, setLikeCount] = useState(card.like_count)
     const onClick = () => {
-        console.log('votes clicked')
-        console.log(typeof(votes))
-        setVotes(votes + 1)
+        console.log('upvoted')
+        const newLikeCount = likeCount + 1
+        setLikeCount(newLikeCount)
     }
 
     return (
         <li key={card.card_id}>{card.message}
-            <Counter onClick={onClick} value={votes}/>
+            <Counter onClick={onClick} value={likeCount}/>
         </li>
     );
 }

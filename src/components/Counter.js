@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 const Counter = ({ onClick, value }) => {
     return (
         <div>
-            Votes: {value}
-            <button onClick={onClick}>upvote
+            Likes: {value}
+            <button onClick={onClick}>&#128077;
             </button>
         </div>
     )
