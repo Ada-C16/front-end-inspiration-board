@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
   const increaseLikes = () => {
     setLikesCount(likesCount + 1);
@@ -18,7 +18,7 @@ const Card = () => {
     // </header>
     <div className="card-body">
       <h4 className="card-message">
-        <em>here is the card message</em>
+        <em>{props.message}</em>
       </h4>
       <div className="buttons-container">
         <button className="hearts-button" onClick={decreaseLikes}>

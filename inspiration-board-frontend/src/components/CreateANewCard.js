@@ -6,13 +6,14 @@ const CreateANewCard = (props) => {
 
   const [message, setMessage] = useState('')
   
+  //messageEvent is the Event handler
   const messageEvent = (event) => {
       console.log(event)
       setMessage(event.target.value)
   }; 
   const postCards = (event) =>{
 
-      event.preventDefault(); // prevents webpage from refresh because it's a single page app
+      event.preventDefault(); // prevents webpage from refreshing because it's a single page app
       props.postANewCard(message)
   };
 
@@ -23,6 +24,7 @@ const CreateANewCard = (props) => {
       <h3 className = 'newCard'>Create A New Card</h3>
       <label htmlFor = 'message'>Message</label>
       <input 
+        style = {{width: '300px'}}
         type = 'text'
         name = 'message' 
         id = 'message' 
