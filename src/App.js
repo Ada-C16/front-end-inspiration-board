@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import Boards from './components/Boards.js';
 import BoardForm from './components/BoardForm';
+import CardForm from './components/CardForm';
 
 const App = () => {
   const BOARDS = [
@@ -27,7 +28,8 @@ const App = () => {
   return (
     <div className="App">
       <Boards boards={boards}/>
-      <BoardForm/>  
+      <BoardForm/>
+      <CardForm/>
     </div>
   );
 }
