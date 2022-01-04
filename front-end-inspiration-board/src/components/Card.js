@@ -11,6 +11,7 @@ const Card = (props) => {
     // props.updateCardDisplayCallback(props.cardList, props.currentBoard)
 
 
+<<<<<<< HEAD
     // const currentCards = [...props.cardList];
     // for (let card of currentCards) {
     //   if (props.id === card.card_id) {
@@ -19,12 +20,36 @@ const Card = (props) => {
   }
   
 
+=======
+    const currentCards = [...props.cardList];
+    for (let card of currentCards) {
+      if (props.id === card.card_id) {
+        setCardLikeCount(card.cardLikes + 1)
+        props.addLikeCallback(card.card_id)
+      }
+  }}
+  
+  // this function is for debugging purposes
+  const logCardInfo = () => {
+    console.log({
+      key: props.key, 
+      id: props.id,
+      cardMessage: props.cardMessage,
+      cardLike: props.cardLikes,
+      cardList: props.cardList,
+    });
+  }
+  
+>>>>>>> c05ac281116e1e43b3cd307a79a8158de5f2acf8
 
   //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {
     console.log("bye bye, this card!", props.cardMessage);
+    // delete card from backend
+    props.deleteCardCallback(props.id, props.currentBoard);
     // delete card from cardList (state)
     const currentCards = [...props.cardList];
+    console.log('Cardslist in deleteCard is', props.cardList);
     for (let card of currentCards) {
       if (props.id === card.card_id) {
         // this gets the index of the card
@@ -35,9 +60,6 @@ const Card = (props) => {
     }
     props.setCardList(currentCards);
     
-    // delete card from backend
-    props.deleteCardCallback(props.id, props.currentBoard);
-    
     //to-do for this function:
       // include logic that allows user to delete a freshly posted card 
       // that remains deleted after refreshing the board
@@ -45,7 +67,7 @@ const Card = (props) => {
   
   // console.log(cardLikeCount)
   return (
-    <section>
+    <section onClick={logCardInfo}>
       <h3>{props.cardMessage}</h3>
       <button onClick={addOneLike}>🐶 {cardLikeCount}</button>
       <button onClick={handleDeleteCard}>delete card</button>

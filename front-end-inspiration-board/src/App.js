@@ -56,7 +56,14 @@ function App() {
   //It updates state so that the new card immediately displays.
   const addNewCard = (newCard) => {
     if (currentBoard) {
-      console.log(currentBoard.id);
+      console.log('We are in addNewCard. newCard:', newCard);
+      // const cards = [...cardList];
+      // cards.push({
+      //   board_id: currentBoard.id,
+      //   message: newCard.message
+      // });
+      // setCardList(cards);
+      // console.log('new card added to state!');
       axios
         .post(`${boardURL}/${currentBoard.id}`, newCard)
         .then((response) => {
