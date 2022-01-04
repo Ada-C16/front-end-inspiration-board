@@ -8,21 +8,12 @@ import CreateANewCard from "./components/CreateANewCard";
 import Logo from "./components/Logo";
 import SelectedBoard from "./components/SelectedBoard";
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
-import axios from "axios";
-import CreateANewCard from "./components/CreateANewCard";
 import CardsForPickMeUpQuotes from "./components/CardsForSelectedBoard";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [activeBoard, setActiveBoard] = useState(2)
-=======
-
-function App() {
-  const [boardsData, setBoards] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
->>>>>>> 1af25dee80774d92236fcd0b991f6afe588903c2
 
   const getBoards = () => {
     axios
@@ -72,19 +63,17 @@ function App() {
         console.log(error);
       }
       )
-  }; 
-      .post(
-        "https://trm2-inspiration-board.herokuapp.com/boards/3/cards",
-        cards
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        // setErrorMessage
-      });
   };
+  // axios
+  //     .post("https://trm2-inspiration-board.herokuapp.com/boards/3/cards",cards)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       // setErrorMessage
+  //     });
+  
 
   const addBoardData = (newBoard) => {
     const newBoardList = [...boardsData];
@@ -116,9 +105,7 @@ function App() {
             addBoardCallback={addBoardData}
           />
         </div>
-<<<<<<< HEAD
 
-        </div>
       
         <div className = 'row'>
           <div className = 'col'>
@@ -127,19 +114,6 @@ function App() {
           </div>
           <div className = 'col'><CreateANewCard 
           postANewCard ={postANewCardForm}/> </div>
-=======
-        <div className="col">
-          <Board />
-          {errorMessage}
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <Card />
-        </div>
-        <div className="col">
-          <CreateANewCard postANewCard={postANewCardForm} />{" "}
->>>>>>> 1af25dee80774d92236fcd0b991f6afe588903c2
         </div>
       </div>
       <div className="footer">
@@ -149,6 +123,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
