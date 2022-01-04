@@ -18,12 +18,17 @@ const NewCardForm = (props) => {
             Message:
             <input
               type="text"
+              maxlength="40"
               name="messageCard"
               value={messageFormFields.message}
               onChange={onMessageChange}
             />
           </p>
-          <input type="submit" value="submit" />
+          <input
+            disabled={messageFormFields.submitDisabled}
+            type="submit"
+            value="submit"
+          />
         </form>
       ) : null}
     </div>

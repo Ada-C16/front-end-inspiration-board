@@ -12,12 +12,20 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState([]);
   const [cardsData, setCardsData] = useState([]);
   const [showCardForm, setShowCardForm] = useState(false);
-  const [messageFormFields, setMessageFormFields] = useState({ message: "" });
+  const [messageFormFields, setMessageFormFields] = useState({
+    message: "",
+    messageValid: false,
+    submitDisabled: true,
+  });
 
   const onMessageChange = (event) => {
+    let messageValid = event.target.value ? true : false;
+    let submitValid = messageValid;
     setMessageFormFields({
       ...messageFormFields,
       message: event.target.value,
+      messageValid: true,
+      submitDisabled: !submitValid,
     });
   };
 
@@ -49,6 +57,8 @@ function App() {
         setCardsData(newCardList);
         setMessageFormFields({
           message: "",
+          messageValid: false,
+          submitDisabled: true,
         });
       })
       .catch(function (error) {
@@ -132,8 +142,8 @@ function App() {
               messageFormFields={messageFormFields}
             />
             <div className="float-child-card-list justify-content-center">
-            <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
-          </div>
+              <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
+            </div>
           </div>
         </div>
       </main>
