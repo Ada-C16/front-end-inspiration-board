@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 
 const Card = (props) => {
-  const [cardLikeCount, setCardLikeCount] = useState(0)
+  const [cardLikeCount, setCardLikeCount] = useState(props.cardLikes)
+  
+
+
 
   const addOneLike = () => {
 

@@ -9,7 +9,8 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const boardURL = "https://winspo-board.herokuapp.com/board";
+  const boardURL = process.env.REACT_APP_BACKEND_URL;
+  console.log(boardURL)
 
   // This is a piece of state. It's a list of all the board objects in our api database
   const [boardList, setBoardList] = useState([]);
@@ -72,7 +73,7 @@ function App() {
   // GET all the boards
   useEffect(() => {
     axios
-      .get("https://winspo-board.herokuapp.com/board")
+      .get(boardURL)
       .then((response) => {
         setBoardList([...response.data]);
       })
@@ -92,7 +93,7 @@ function App() {
     // console.log(boardInfo)
     // console.log(currentBoard)
     axios
-      .get(`https://winspo-board.herokuapp.com/board/${boardInfo.id}/cards`)
+      .get(`${boardURL}/${boardInfo.id}/cards`)
       .then((response) => {
         setCardList([...response.data]);
       })
