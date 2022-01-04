@@ -1,4 +1,4 @@
-.Board {
+.board {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }

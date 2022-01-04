@@ -38,17 +38,17 @@ function App() {
   useEffect(getBoard, []);
 
   // state to select board - default to empty
-  const [selectBoard, setSelectBoard] = useState({
-    title: "",
-    owner: "",
-    id: 1,
-  });
+  const [selectBoard, setSelectBoard] = useState(null);
 
   return (
     <div className="App">
       <header className="App-header">Inspiration Board</header>
       <div className="App-board">
-        <Board boardData={boardData} />
+        <Board
+          boardData={boardData}
+          selectState={selectBoard}
+          selectCallBack={setSelectBoard}
+        />
       </div>
       <div className="App-card">
         <CardList />
