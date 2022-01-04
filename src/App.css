@@ -23,7 +23,11 @@
 .App-board {
   grid-area: board;
 }
-
+.App-card{
+  grid-area: card;
+}
 .App-sidebar {
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
 }
