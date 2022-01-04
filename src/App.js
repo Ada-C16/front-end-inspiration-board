@@ -117,17 +117,12 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <main>
+        <div className="wrapper">
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
-        <NewBoardForm
-          onAddBoard={handleAddBoard}
-          isFormVisible={isNewBoardFormVisible}
-          onToggleVisibility={() =>
-            setIsNewBoardFormVisible(!isNewBoardFormVisible)
-          }
-        />
+        <div className="one">
         <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
-
-        {/* conditional logic to check for condition being satisfied to activate LowerBody */}
+        </div>
+        <div className="two">
         {selectedBoard && (
           <LowerBody
             // this is the list of all the props being assigned that LowerBody will use
@@ -140,7 +135,33 @@ function App() {
             sortTypes={sortTypes}
           ></LowerBody>
         )}
+        </div>
+        <div className="three">
+        <NewBoardForm
+          onAddBoard={handleAddBoard}
+          isFormVisible={isNewBoardFormVisible}
+          onToggleVisibility={() =>
+            setIsNewBoardFormVisible(!isNewBoardFormVisible)
+          }
+        />
+         </div>
+        {/* <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} /> */}
+        {/* conditional logic to check for condition being satisfied to activate LowerBody */}
+        {/* {selectedBoard && (
+          <LowerBody
+            // this is the list of all the props being assigned that LowerBody will use
+            onAddCard={handleAddCard}
+            board={selectedBoard}
+            cards={cards}
+            onIncreaseLikes={increaseLikes}
+            onDeleteOneCard={deleteOneCard}
+            onSelectSortTypes={setSortQuery}
+            sortTypes={sortTypes}
+          ></LowerBody>
+        )} */}
+        </div>
       </main>
+     
     </div>
   );
 }
