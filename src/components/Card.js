@@ -11,8 +11,8 @@ const Card = (props) => {
 
   const likeCard = (card) => {
     let likeCardsEndpoint =
-      "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id + "/like";
-
+      "https://team-lovelace-api.herokuapp.com/cards/" + card.card_id+ "/like";
+    
     axios
       .put(likeCardsEndpoint)
       .then((response) => {
@@ -27,8 +27,13 @@ const Card = (props) => {
       <p className="card-content">{card.message}</p>
       <p className="card-content">Likes: {cardLikeCount}</p>
       <button
+<<<<<<< HEAD
         className="card-content"
         cardId={card.card_id}
+=======
+        className="card-content btn btn-light"
+        cardId={card.card_id} 
+>>>>>>> f1c330c929d10a8361e485dfa26a440262336959
         onClick={() => likeCard(card)}
       >
         Like
@@ -38,5 +43,61 @@ const Card = (props) => {
       </button>
     </div>
   );
+<<<<<<< HEAD
 };
 export default Card;
+=======
+  }
+export default Card;
+
+// // Card.propTypes = {
+// //   card_id: PropTypes.number.isRequired,
+// //   message: PropTypes.string.isRequired,
+// //   likes_count: PropTypes.number.isRequired,
+// //   board_id: PropTypes.number.isRequired,
+// //   likeCard: PropTypes.func.isRequired,
+// //   deleteCard: PropTypes.func.isRequired,
+// // };
+
+
+
+// import React,{ Component } from 'react';
+// import "./Card.css";
+
+// class Card extends Component{
+//   state = {
+//     message: "",
+//     likes: 0
+//   }
+
+//   addLike = () => {
+//     let newCount = this.state.likes + 1;
+//     this.setState({
+//       likes: newCount
+//     });
+//     let likeCardsEndpoint =
+//       "https://team-lovelace-api.herokuapp.com/cards/" + this.id + "/like";
+    
+//     axios
+//       .put(likeCardsEndpoint)
+//       .then((response) => {
+//         //setCardLikeCount(response.data.new_like_count);
+//         console.log(response);
+//       })
+//       .catch((error) => console.log(error));
+//   };
+
+//   render(){
+//     return (
+//           <div className="cards bg-info text-center" key={Card.id}>
+//               <p className="card-content">{this.message}</p>
+//               <p className="card-content">Likes: {this.state.likes}</p>
+//               <button className="card-content" onClick={this.addLike} id={this.props.cardId}>Like</button>
+//               <button className="card-content" onClick={this.props.deleteCardCallback}>Delete</button>
+//             </div>
+//         );
+//   }
+// }
+
+// export default Card;
+>>>>>>> f1c330c929d10a8361e485dfa26a440262336959
