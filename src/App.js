@@ -126,24 +126,29 @@ function App() {
       <header className="app-header">
         <h1>Team Lovelace's Inspiration Boards</h1>
       </header>
-      <main className="flex-container">
-        <div className="flex-child-board-form">
-          <NewBoardForm addBoardCallback={addNewBoard} />
-        </div>
-        <div className="flex-child-board-list">
-          <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
-        </div>
-        <div className="all-the-cards">
-          <div className="flex-child-card-form">
+      <main className="container">
+        <div className="row">
+          <div className="flex-child-board-form col-6">
+            <NewBoardForm addBoardCallback={addNewBoard} />
+          </div>
+
+          <div className="flex-child-board-list col">
+            <BoardsList boards={boardsData} onSelectedBoard={selectBoard} />
+          </div>
+
+          <div className="flex-child-card-form col">
             <NewCardForm
               cardFormVisible={showCardForm}
               onMessageFormSubmit={submitMessageForm}
               onMessageChange={onMessageChange}
               messageFormFields={messageFormFields}
             />
-            <div className="float-child-card-list justify-content-center">
-              <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
-            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="float-child-card-list justify-content-center col">
+            <CardsList allCards={cardsData} deleteCardCallback={deleteCard} />
           </div>
         </div>
       </main>

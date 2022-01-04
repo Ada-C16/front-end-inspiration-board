@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import "./NewBoardForm.css";
 
 const NewBoardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -80,11 +81,11 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <div>
-      <h2>Creating a new board</h2>
+    <div className="text-center">
+      <h2>Create a new board</h2>
       {isBoardFormVisible ? (
         <form onSubmit={onFormSubmit}>
-          <p>
+          <p className="">
             Title:
             <input
               type="text"
@@ -109,7 +110,12 @@ const NewBoardForm = (props) => {
           />
         </form>
       ) : null}
-      <button onClick={toggleNewBoardForm}>{buttonText}</button>
+      <button
+        className="btn btn-outline-info btn-default"
+        onClick={toggleNewBoardForm}
+      >
+        {buttonText}
+      </button>
     </div>
   );
 };

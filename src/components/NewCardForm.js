@@ -10,7 +10,7 @@ const NewCardForm = (props) => {
   let messageFormFields = props.messageFormFields;
 
   return (
-    <div>
+    <div className="text-center">
       {isVisible ? (
         <form onSubmit={submitMessage}>
           <h2> Create a new card</h2>

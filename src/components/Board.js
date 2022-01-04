@@ -22,8 +22,11 @@ const Board = (props) => {
   // };
 
   return (
-    <div onClick={() => onSelectedBoard(board)}>
-      <h3>{boardTitle}</h3>
+    <div
+      class="p-3 mb-2 bg-info text-white"
+      onClick={() => onSelectedBoard(board)}
+    >
+      <h5>{boardTitle}</h5>
     </div>
   );
 };
