@@ -71,8 +71,6 @@ button:active, .submit-button:active {
 }
 
 
-
-
 /* headers and titles */
 
 h2 {
@@ -113,6 +111,7 @@ span {
 .forms-component, .c {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -130,6 +129,8 @@ span {
 
 #preview {
   background-color: rgb(203,218,235);
+  overflow-wrap: break-word;
+  inline-size: 300px;
 }
 
 
@@ -139,6 +140,7 @@ span {
     margin: 10px;
     flex-direction: row;
     flex-basis: 25%;
+    flex-wrap: wrap;
     border-radius: 15px 30px 50px 5px ;
     background-color: black;
     opacity: 90%;
@@ -150,6 +152,7 @@ span {
     margin: 10px;
     background-color: rgb(91,162,242);
     border-radius: 15px;
+    max-width: 150px;
 }
 
 .card-message {
