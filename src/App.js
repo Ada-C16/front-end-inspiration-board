@@ -1,52 +1,74 @@
+import  React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
-import Card from './components/Card';
 import Board from './components/Board';
-import  { useEffect, useState } from 'react';
-import react from 'react';
 import NewBoardForm from './components/NewBoardForm';
 
 function App() {
-  const [selectBoard, setSelectBoard] = useState({title: '', owner: '', board_id: null})
+  const [boardData, setBoardData] = useState([])
+  const [selectBoarded, setSelectedBoard] = useState({title: '', owner: '', board_id: null})
+  const [isFormVisible, setIsFormVisible] = useState(true)
 
-  // const selectBoard = () => {
-    
-  // }
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    // create a new board 
-    // make API call to get all boards
-    // boards are in a list
-    // add form data to list of boards
-    // Next send back new list to API
+  useEffect(() => {
+    axios.get('http://localhost:5000/boards')
+      .then((response) => {
+        // console.log(response.data);
+        setBoardData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:5000/boards')
+  //     .then((response) => {
+  //       // console.log(response.data);
+  //       setBoardData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [boardData]);
+
+  const onBoardSelect = () => {
+    return true
   }
 
   const addNewBoard = (newBoard) => {
-    let newBoardList = [...allBoards]
-    // const nextId = Math.max(...newBoardList.map(board => board.id)) + 1;
-    newBoardList.push({
-      titleData: newBoard.title,
-      ownerData: newBoard.owner
-    });
-    setBoardData(newBoardList);
-    // Next send back new list to API
-
+    axios.post('http://localhost:5000/boards', newBoard)
+    .then(response => {
+      // setBoardData(response.data)
+      console.log(response.data)
+    })
+    .error(error => {
+      console.log(error)
+    })
   }
+
+  const createBoardList = () => {
+    let boardList = []
+    for (let board of boardData) {
+      boardList.push(<li key={board.title}>{board.title}</li>)
+    }
+    return boardList
+  }
+
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
       <section>
         <h2>Boards</h2>
         <ol>
-          {/* <li>Board elements</li> */}
+          {createBoardList()}
         </ol>
       </section>
       <section>
         <h2>Selected Board</h2>
         <p></p>
       </section>
-      
-     <NewBoardForm addNewBoard={addNewBoard} onFormSubmit={onFormSubmit}/>
-      <Board />
+      <NewBoardForm createNewBoard={addNewBoard}/>
+      <Board board={boardData} onBoardSelect={onBoardSelect}/>
     </div>
   );
 }
