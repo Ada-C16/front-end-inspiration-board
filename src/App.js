@@ -1,14 +1,42 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './index.css';
 
+import Board from './components/Board';
+import axios from 'axios';
+import * as ada from 'ada';
+
 function App() {
 
-const getBoards=()=>{
-  //Need a axios call to an api that returns the board information.  Expect a json like:
-  // [{"board_id":"dslk-ds-d-382109", "boardTitle":"Go Grrrls", "ModifiedDateTime":"2021-12-31 12:00 AM", "TotalBoardLikes": 33, "TotalCards": 4, "owner":"Lety"},
-  // {"board_id":"dslk89-dssf-3729", "boardTitle":"Ada Inspires", "ModifiedDateTime":"2021-12-11 12:00 AM", "TotalBoardLikes": 3, "TotalCards": 1, "owner":"Eunice"}]
+// const [cards, setCard] = useState(generateCards());
+const [boards, setBoard] = useState(generateBoards());
 
+
+const generateBoards=()=>{
+  //Call the API and get the list of boards
+  axios.get(ada.api_url + '/boards/')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+
+  GetBoardsAPIResponse = "TEXT OF JSON RESPONSE"
+  responseObject = JSON.parse(GetBoardsAPIResponse)
+  
+  //Now add the boards as links to the boardUnorderedList.
+
+
+}
+const likeCardFunction=(card_id)=>{
 
 }
 
@@ -18,9 +46,8 @@ const getBoards=()=>{
           {/* Navigation */}
           <nav>
               <div className="navhead">Boards</div>
-                  <ul>
-                  <li className='boardlink' id='Board1'><a className="navsublink" href="#">Board 1</a></li>
-                  <li className='boardlink' id='Board2'><a className="navsublink" href="#">Board 2</a></li>         
+                  <ul id="boardUnorderedList">
+                  <li className='boardlink' id='Board1'><a className="navsublink" href="#">Please Wait...</a></li>
                   </ul>
 
 
@@ -38,8 +65,7 @@ const getBoards=()=>{
           </nav>
         </div>
         <div className="col-11 container">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Test</h1>
+          <Board board_id={board_id} onClickCallback={likeCardFunction} />
         </div>
       </div>
   );
