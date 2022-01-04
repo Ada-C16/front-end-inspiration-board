@@ -1,9 +1,7 @@
 import "./App.css";
 import axios from "axios";
-import Board from "./components/Board";
 import Boards from "./components/Boards";
-import Card from "./components/Card";
-import CardsForSelectedBoard from "./components/CardsForSelectedBoard";
+// import CardsForSelectedBoard from "./components/CardsForSelectedBoard";
 import CreateANewBoard from "./components/CreateANewBoard";
 import CreateANewCard from "./components/CreateANewCard";
 import Logo from "./components/Logo";
