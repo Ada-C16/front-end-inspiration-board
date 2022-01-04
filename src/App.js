@@ -1,12 +1,63 @@
 // import logo from './logo.svg';
-import React from 'react';
-import axios from 'axios';
-import Board from './components/Board';
-import NewBoardForm from './components/NewBoardForm';
-import './App.css';
-import { useState } from 'react';
+import React from "react";
+import axios from "axios";
+import Board from "./components/Board";
+import NewBoardForm from "./components/NewBoardForm";
+import "./App.css";
+import { useState } from "react";
+import CardList from "./components/CardList";
 
+const CARDS = [
+  {
+    id: 1,
+    message: "Mow the lawn",
+    likes: 1,
+  },
+  {
+    id: 2,
+    message: "Mow the lawn 2",
+    likes: 2,
+  },
+];
 
+const App = () => {
+  const [cards, setCards] = useState(CARDS);
+
+  const onLike = (id) => {
+    const newCards = cards.map((card) => {
+      if (card.id === id) {
+        return {
+          ...card,
+          likes: (card.likes += 1),
+        };
+      }
+      return card;
+    });
+    setCards(newCards);
+  };
+
+  const onDelete = (id) => {
+    const newCards = cards.filter((card) => card.id !== id);
+    setCards(newCards);
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Card List</h1>
+      </header>
+      <main>
+        <div>
+          <CardList cards={cards} onLike={onLike} onDelete={onDelete} />
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default App;
+
+//---------------------------------------------
 //App is the only piece talking to backend: state is centered in app
 
 //make notes about what should happen in App
@@ -20,10 +71,10 @@ import { useState } from 'react';
 //some event handler to handle likes? maybe the database would just need to be called?
 //event handler for handling deletion of a card
 
-//pass down all of the handlers 
+//pass down all of the handlers
 //lift state from components
 
-
+/*
 function App() {
 
 //Dummy Data
@@ -140,3 +191,4 @@ export default App;
 //     </header>
 //   </div>
 // );
+*/

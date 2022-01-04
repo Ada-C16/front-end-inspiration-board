@@ -1,18 +1,17 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import Card from './Card';
-import './CardList.css';
+import PropTypes from "prop-types";
+import Card from "./Card";
+// import './CardList.css';
 
-const CardList = ({ cards, onLike, onDelete }) =>{
+const CardList = ({ cards, onLike, onDelete }) => {
   //cardlist renders the form
   //some logic to make the form display
   //some logic to read form data?
 
-
   //container for the cards
-  //loop through the cardlist 
-  const cardComponents = cards.map((card) => { 
-    return(
+  //loop through the cardlist
+  const cardComponents = cards.map((card) => {
+    return (
       <Card
         key={card.id}
         id={card.id}
@@ -21,11 +20,10 @@ const CardList = ({ cards, onLike, onDelete }) =>{
         onLike={onLike}
         onDelete={onDelete}
       />
-    )
+    );
   });
-  
-  
-  return (<ul className="cards_list_no_bullets">{cardComponents}</ul>);
+
+  return <ul className="cards_list_no_bullets">{cardComponents}</ul>;
 };
 //create proptypes
 CardList.propTypes = {
@@ -40,7 +38,5 @@ CardList.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 export default CardList;
-
-
 
 //----------------------------------------
