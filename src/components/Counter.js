@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 
-const Counter = () => {
+const Counter = ({ onClick, value }) => {
     return (
         <div>
-            Counter
+            Votes: {value}
+            <button onClick={onClick}>upvote
+            </button>
         </div>
     )
 }
