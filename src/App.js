@@ -1,6 +1,5 @@
 import "./App.css";
 import BoardsList from "./components/BoardsList";
-import Card from "./components/Card";
 import NewBoardForm from "./components/NewBoardForm";
 import React, { useEffect, useState } from "react";
 import axios from "axios";

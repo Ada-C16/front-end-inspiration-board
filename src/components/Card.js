@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useState } from "react";
 import axios from "axios";
 import "./Card.css";
@@ -28,28 +27,16 @@ const Card = (props) => {
       <p className="card-content">{card.message}</p>
       <p className="card-content">Likes: {cardLikeCount}</p>
       <button
-        className="card-content btn btn-light"
+        className="card-content"
+        cardId={card.card_id}
         onClick={() => likeCard(card)}
       >
         Like
       </button>
-      <button
-        className="card-content btn btn-light"
-        onClick={() => deleteCard(card)}
-      >
+      <button className="card-content" onClick={() => deleteCard(card)}>
         Delete
       </button>
     </div>
   );
 };
-
-// Card.propTypes = {
-//   card_id: PropTypes.number.isRequired,
-//   message: PropTypes.string.isRequired,
-//   likes_count: PropTypes.number.isRequired,
-//   board_id: PropTypes.number.isRequired,
-//   likeCard: PropTypes.func.isRequired,
-//   deleteCard: PropTypes.func.isRequired,
-// };
-
 export default Card;

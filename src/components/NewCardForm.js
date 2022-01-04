@@ -1,7 +1,4 @@
 import React from "react";
-import { useState } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
 
 const NewCardForm = (props) => {
   let isVisible = props.cardFormVisible;
@@ -34,9 +31,5 @@ const NewCardForm = (props) => {
     </div>
   );
 };
-
-// NewCardForm.propTypes = {
-//   addCardCallback: PropTypes.func.isRequired,
-// };
 
 export default NewCardForm;

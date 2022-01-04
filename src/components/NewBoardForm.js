@@ -25,7 +25,6 @@ const NewBoardForm = (props) => {
     }
   };
 
-  // Every time user types in title or owner, updating state
   const onTitleChange = (event) => {
     let titleValid = event.target.value ? true : false;
     let submitValid = formFields.ownerValid && titleValid;
@@ -50,7 +49,6 @@ const NewBoardForm = (props) => {
     });
   };
 
-  // When submitting this button, should make a POST, request to /boards to add title and owner info
   const onFormSubmit = (event) => {
     event.preventDefault();
 

@@ -2,8 +2,8 @@
 .app-header{
   width:100%;
   margin-top: 5%;
-  margin-right: 20%;
-  margin-left: 20%;
+  margin-right: 25%;
+  margin-left: 25%;
   justify-content: center;
 }
 
@@ -16,6 +16,7 @@
   border: 2px solid black;
   padding: 2px;
   margin: 5px;
+  margin-left: 100px;
 }
 
 .flex-child-board-list{
@@ -25,12 +26,12 @@
   margin: 5px;
 }
 
-.all-the-cards{
+/* .all-the-cards{
   z-index: 1;
   position: absolute;
   margin-top: 30%;
   width: 77%;
-}
+} */
 
 .flex-child-card-form{
   flex: 1;
@@ -44,5 +45,6 @@
   border: 2px solid black;
   padding: 2px;
   margin: 5px;
+  margin-left: 100px;
 }
 

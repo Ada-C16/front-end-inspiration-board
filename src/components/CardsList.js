@@ -1,6 +1,3 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import Board from "./Board";
 import Card from "./Card";
 
 const CardsList = (props) => {
@@ -11,19 +8,14 @@ const CardsList = (props) => {
     <div>
       <h2>Cards</h2>
       {allCards.map((card) => (
-        <Card singleCard={card} deleteCardCallback={deleteCardCallback} />
+        <Card
+          key={card.card_id}
+          singleCard={card}
+          deleteCardCallback={deleteCardCallback}
+        />
       ))}
     </div>
   );
 };
-
-// const CardsList=(props)=>{
-//     return <div className="container">
-//         {props.cards.map((c)=>{
-//             <Card card={c}/>;
-//         })}
-//         <Card />
-//     </div>;
-// };
 
 export default CardsList;
