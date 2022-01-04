@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 const Card = ({ id, text, likes, onClickLike, onClickDelete}) => {
     return (
     <li>
-        Card {id}: {text} Likes: {likes} <button onClick={()=>{onClickLike(id)}}> +1 </button> <button onClick={()=>{onClickDelete(id)}}>Delete</button>
+        Card {id}: {text} 
+        Likes: {likes} <button onClick={()=>{onClickLike(id)}}> +1 </button> 
+        <button onClick={()=>{onClickDelete(id)}}>Delete</button>
     </li>
     );
 };
@@ -17,3 +19,5 @@ Card.propTypes = {
     onClickLike: PropTypes.func.isRequired, 
     onClickDelete: PropTypes.func.isRequired,
 };
+
+export default Card;
