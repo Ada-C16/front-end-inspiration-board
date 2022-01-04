@@ -6,6 +6,9 @@ import React, { useState } from 'react';
 import CardForm from './components/CardForm';
 import axios from 'axios';
 
+const URL = 'https://inspirandwich-board.herokuapp.com/'
+
+
 const CARDS = [{id:1, message:"Hi hello", likes_count: 1}, 
                 {id:2, message:"Howdy", likes_count: 1},
                 {id:3, message:"Yoohoo", likes_count: 1}]
@@ -41,11 +44,31 @@ function App() {
 
   // This sets the state for the 'Boards', this changes when a new board is added, we will also need to add functionality to delete all?
   const addBoard = (boardInfo) => {
-    const num = 4 // We can delete this when we link up to database since the id will be generated through that. 
-    const newBoard = {id: num, owner: boardInfo.owner, title: boardInfo.title}
-    const updatedBoards = [...boards]
-    updatedBoards.push(newBoard)
-    setBoards(updatedBoards)
+    
+    axios
+    .post(`${URL}/boards`,{
+      "title": boardInfo.title,
+      "owner": boardInfo.owner,
+    })
+    
+    .then((response)=>{
+      
+      const newBoards = [...boards]
+      const newBoard ={id:response.data.id,
+        title:boardInfo.title,
+        owner: boardInfo.owner,
+      }
+        
+      
+      boardInfo.id = response.data.id;
+      newBoards.push(newBoard);
+      setBoards(newBoards)
+
+    })
+    
+    .catch((error)=>{
+      console.log(error.response.data);
+    });
   }
 
   // This sets the state for the 'Cards', this changes when a card is liked
