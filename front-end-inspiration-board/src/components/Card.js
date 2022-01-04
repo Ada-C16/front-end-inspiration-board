@@ -2,14 +2,19 @@
 import React, { useState } from "react";
 
 const Card = (props) => {
-  const [cardLikeCount, setCardLikeCount] = useState(0)
+  const [cardLikeCount, setCardLikeCount] = useState(props.cardLikes)
+  
 
-  const addLike = () => {
-    //add an onclickCallBack here maybe?
-    //or the patch request itself in here
-    
-    setCardLikeCount(props.cardLikes + 1)
-    //patch request in here
+
+
+  const addOneLike = () => {
+
+    const currentCards = [...props.cardList];
+    for (let card of currentCards) {
+      if (props.id === card.card_id) {
+        setCardLikeCount(card.cardLikes + 1)
+        props.addLikeCallback(card.card_id)
+      }
   }
   // this function is for debugging purposes
   const showCardInfo = () => {
@@ -21,6 +26,8 @@ const Card = (props) => {
       cardList: props.cardList,
     });
   }
+  
+}
 
   //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {
@@ -49,8 +56,8 @@ const Card = (props) => {
   return (
     <section onClick={showCardInfo}>
       <h3>{props.cardMessage}</h3>
-      <button onClick={addLike}>🐶 {cardLikeCount}</button>
-      <button onClick={handleDeleteCard}>delete card</button>
+      <button onClick={addOneLike}>🐶 {cardLikeCount}</button>
+3      <button onClick={handleDeleteCard}>delete card</button>
     </section>
   );
 };
