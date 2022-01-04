@@ -1,5 +1,6 @@
 import React from "react";
 import Card from './Card'
+import NewCardForm from "./NewCardForm";
 
 const Board = () => {
   return (
@@ -9,13 +10,8 @@ const Board = () => {
       store cards in a list
       loop over that list to create the card components */}
       <Card />
-      <h2>Create a new Card</h2>
-      <form>
-        <label>message</label>
-        <input type="text"></input>
-        <p>Preview</p>
-        <button type="submit">Submit message</button>
-      </form>
+      <NewCardForm/>
+
       
     </div> 
   )

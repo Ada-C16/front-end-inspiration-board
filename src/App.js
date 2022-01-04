@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Board from './components/Board';
 import  { useEffect, useState } from 'react';
 import react from 'react';
+import NewBoardForm from './components/NewBoardForm';
 
 function App() {
   const [selectBoard, setSelectBoard] = useState({title: '', owner: '', board_id: null})
@@ -24,19 +25,7 @@ function App() {
         <h2>Selected Board</h2>
         <p></p>
       </section>
-      <section>
-        <h2>Create a New Board</h2>
-        <form>
-          <label>Title</label>
-          <input type="text"></input>
-          <label>Owner's Name</label>
-          <input type="text"></input>
-          <p>Preview: -</p>
-          <button type="submit">Submit Query</button>
-        </form>
-        <span>Hide New Board Form</span>
-        {/* <span onClick={}>Hide New Board Form</span> */}
-      </section>
+     <NewBoardForm/>
       <Board />
     </div>
   );
