@@ -5,7 +5,7 @@ import Boards from "./components/Boards";
 import Card from "./components/Card";
 import CreateANewBoard from "./components/CreateANewBoard";
 import CreateANewCard from "./components/CreateANewCard";
-import Header from "./components/Header";
+import Logo from "./components/Logo";
 import SelectedBoard from "./components/SelectedBoard";
 import { useState, useEffect } from "react";
 
@@ -61,8 +61,8 @@ function App() {
 
     newBoardList.push({
       id: nextID,
-      ownerData: newBoard.ownerData,
-      titleData: newBoard.titleData,
+      owner: newBoard.owner,
+      title: newBoard.title,
     });
 
     setBoards(newBoardList);
@@ -72,7 +72,7 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col">
-          <Header />
+          <Logo />
         </div>
         <div className="col">
           <Boards boardsData={boardsData} />

@@ -1,7 +1,7 @@
 import "./Card.css";
 import { useState } from "react";
 
-const Card = () => {
+const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
   const increaseLikes = () => {
     setLikesCount(likesCount + 1);
@@ -22,7 +22,12 @@ const Card = () => {
         <button className="likes-button" onClick={increaseLikes}>
           +1
         </button>
-        <button className="delete-button">Delete</button>
+        <button
+          className="delete-button"
+          onClick={() => props.deleteCardItem(props.card)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import "./Header.css";
+import "./Logo.css";
 import logo from "./logo.png";
 
 console.log(logo);
 
-const Header = () => {
+const Logo = () => {
   return <img className="logo" src={logo} alt="logo" />;
 };
 
-export default Header;
+export default Logo;
