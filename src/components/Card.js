@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 
-const Card = ({ id, text, likes, onClickLike, onClickDelete}) => {
+const Card = ({ id, message, likes, onClickLike, onClickDelete}) => {
     return (
     <li>
-        Card {id}: {text} 
+        Card {id}: {message} 
         Likes: {likes} <button onClick={()=>{onClickLike(id)}}> +1 </button> 
         <button onClick={()=>{onClickDelete(id)}}>Delete</button>
     </li>
@@ -14,7 +14,7 @@ const Card = ({ id, text, likes, onClickLike, onClickDelete}) => {
 
 Card.propTypes = {
     id: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired, 
     onClickLike: PropTypes.func.isRequired, 
     onClickDelete: PropTypes.func.isRequired,

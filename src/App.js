@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Board from './components/Board'
 import axios from 'axios';
+import Card from "./components/Card";
 
-const generateCards = () => {
+//const generateCards = () => {
   //this instantiates a Get request in a useEffect
   //need to format it to the card object in a different function
-  return
-}
+  
+
+  
 
 const fakeBoards = [{
   board_id: 1,
@@ -49,44 +51,74 @@ function App() {
   //const setSelectedBoard = ({boardId}) => {
   //  axios.get(`board/${boardId}/cards`)
   //}
-
   //GET all of boards via /board in useEffect - as soon as you open up application
+  useEffect(() => {
+    axios
+      .get("localhost5000:/board")
+      .then((response) => {
+        console.log(response.data);
+        setBoards([...response.data]);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, []);
+
+  const selectBoard = (board) => {
+    setSelectedBoard(board);
+  };
   //GET all of cards in selected board via /board/boardID/cards - onclickBoard
+  useEffect(() => {
+    axios
+      .get(
+        `https:localhost5000:${selectedBoard.id}/cards`
+      )
+      .then((response) => {
+        console.log(response.data);
+        setCards([...response.data]);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, [selectedBoard]);
+
+  const individualCardComponents = cardsList.map((card) => {
+    return (
+      <Card
+        key={card.id}
+        id={card.id}
+        message={card.message}
+        likes={card.likes}
+      />
+    );
+  });
+
 
   const updateCards = (id) => {
     //create function which updates card data with form submission
     //  creating the form 
-// class NameForm extends React.Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {value: ''};
-  
-//       this.handleChange = this.handleChange.bind(this);
-//       this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-  
-//     handleChange(event) {
-//       this.setState({value: event.target.value});
-//     }
-  
-//     handleSubmit(event) {
-//       alert('A name was submitted: ' + this.state.value);
-//       event.preventDefault();
-//     }
-  
-//     render() {
-//       return (
-//         <form onSubmit={this.handleSubmit}>
-//           <label>
-//             Name:
-//             <input type="text" value={this.state.value} onChange={this.handleChange} />
-//           </label>
-//           <input type="submit" value="Submit" />
-//         </form>
-//       );
-//     }
-//   }
-    return
+    //this basically just means to add a new card.. right?
+    const newCard = {
+      message: card.message,
+    };
+
+    axios
+      .post(
+        `https://localhost5000:${selectedBoard.id}/cards`, 
+        newCard
+      )
+      .then((response) => {
+        console.log(response.data);
+        const newCards = [...cards];
+        newCards.push(response.data);
+        setCards(newCardsList);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
+
+    
   }
 
   return (
@@ -100,6 +132,6 @@ function App() {
       </main>
     </div>
   );
-}
+
 
 export default App;
