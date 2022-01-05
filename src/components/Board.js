@@ -4,15 +4,18 @@ import CardList from './CardList';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-
-const generateCardComponents = (cards, updateCards) => {
-    cards.push(updateCards)
-    //add the most recent change to the list of cards
-    //map?
+const getCards = () => {
+    //return cards from API call
+    return [{text: "text",
+        id: 1},
+        {text: "text1",
+        id: 2}]
 }
 
-const Board = ({cards, updateCards}) => {
-    const cardList = generateCardComponents (cards, updateCards);
+const Board = ({title, id, cards}) => {
+    const cardList = null //the get request (cards, updateCards);
+    //get board/boardId/cards
+    //cards are passed as a prop to the board after GET request in /app
     return <div className="grid">{cardList}</div>;
 }
 
