@@ -18,44 +18,16 @@ function App() {
     id: null,
   });
   const [currentStickies, setCurrentStickies] = useState([]);
+  const URL = "http://localhost:5000/board";
 
   useEffect(() => {
     createDropdown();
     // createStickies();
   }, []);
 
-  const stickyData = {
-    stickies: [
-      {
-        text: "This is a sticky",
-        timestamp: "2019-01-01",
-        id: "1",
-        likes: 0,
-      },
-      {
-        text: "This is another sticky",
-        timestamp: "2019-01-01",
-        id: "2",
-        likes: 2,
-      },
-      {
-        text: "This is a third sticky",
-        timestamp: "2019-01-01",
-        id: "3",
-        likes: 3,
-      },
-      {
-        text: "This is a fourth sticky",
-        timestamp: "2019-01-01",
-        id: "4",
-        likes: 4,
-      },
-    ],
-  };
-
   const createStickies = (board_id) => {
     axios
-      .get(`http://localhost:5001/board/${board_id}`)
+      .get(`${URL}/${board_id}`)
       .then((response) => {
         var stickies = response.data.map((sticky) => {
           return (
@@ -81,31 +53,30 @@ function App() {
   const onDelete = (boardID, stickyID) => {
     // make an API call to DELETE a sticky when clicked
     axios
-      .delete(`http://localhost:5001/board/${boardID}/${stickyID}`)
+      .delete(`${URL}/${boardID}/${stickyID}`)
       .then(() => {
         createStickies(boardID);
       })
-      .catch((error)=>{
-        console.log(error.message)
+      .catch((error) => {
+        console.log(error.message);
       });
   };
 
   const onLike = (boardID, stickyID) => {
     // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked -- I don't think we have a mechanism for subtracting likes right now
     axios
-      .patch(`http://localhost:5001/board/${boardID}/${stickyID}`)
+      .patch(`${URL}/${boardID}/${stickyID}`)
       .then(() => {
         createStickies(boardID);
       })
-      .catch((error)=>{
-        console.log(error.message)
+      .catch((error) => {
+        console.log(error.message);
       });
-
   };
 
   const createDropdown = () => {
     axios
-      .get("http://localhost:5001/board")
+      .get(`${URL}`)
       .then((response) => {
         setDropDownList(
           response.data["boards"].map((board) => {

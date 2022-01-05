@@ -6,7 +6,10 @@ import "./Sticky.css";
 const Sticky = (props) => {
   return (
     <div className="sticky">
-      <button className="sticky-delete" onClick={ (event) => props.onDelete(props.boardID, props.id, event)}>
+      <button
+        className="sticky-delete"
+        onClick={(event) => props.onDelete(props.boardID, props.id, event)}
+      >
         X
       </button>
       <article className="sticky-text">{props.text}</article>
@@ -14,7 +17,10 @@ const Sticky = (props) => {
       <div className="sticky-footer">
         <span className="sticky-timestamp">{props.date}</span>
         <div className="sticky-likes">
-          <button className="like-button" onClick={ (event) => props.onLike(props.boardID, props.id, event)}>
+          <button
+            className="like-button"
+            onClick={(event) => props.onLike(props.boardID, props.id, event)}
+          >
             Like
           </button>
           <span className="likes-count">+ {props.num_likes}</span>
@@ -24,13 +30,13 @@ const Sticky = (props) => {
   );
 };
 
-
-
 Sticky.propTypes = {
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  boardID: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired, updated this to get rid of propTypes warning -MB
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  // boardID: PropTypes.number.isRequired, updated this to get rid of propTypes warning -MB
+  boardID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   num_likes: PropTypes.number.isRequired,
   // onDelete will be a function passed down from App that makes an API call to delete a sticky
   onDelete: PropTypes.func.isRequired,
