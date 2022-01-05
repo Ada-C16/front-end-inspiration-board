@@ -133,6 +133,8 @@ function App() {
       deleteABoard(element.id);
     });
     setBoardList([])
+    setCurrentBoard("")
+    setCardList([])
   };
 
 
