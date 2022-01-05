@@ -19,7 +19,7 @@ const Board = ({ cards, onClickCallback }) => {
 };
 
 Board.propTypes = {
-    squares: PropTypes.arrayOf(
+    cards: PropTypes.arrayOf(
         PropTypes.arrayOf(
             PropTypes.shape({
                 board_id: PropTypes.number.isRequired,
