@@ -157,6 +157,26 @@ function App() {
 
   // This sets the states for 'Cards', this changes when a card is added to the deck
   const addCard = (cardInfo) => {
+    axios
+      .post(`${URL}/boards/${selectedBoard.id}/cards`, {
+        message: cardInfo.message,
+      })
+
+      .then((response) => {
+        const newCards = [...cards];
+        const newCard = {
+          id: response.data.id,
+          message: cardInfo.message,
+          likes_count: 0
+        };
+
+        newCards.push(newCard);
+        setCards(newCards);
+      })
+
+      .catch((error) => {
+        console.log(error.response.data);
+      });
     // const num = 4 // We can delete this when we link up to database since the id will be generated through that.
     // const newCard = {id: num, message: cardInfo.message, likes_count: cardInfo.likes_count}
     // creating axios post method
