@@ -8,11 +8,11 @@ import NewCard from "./components/NewCard";
 
 // testing to make sure this pushed to main.
 
-const cardData = {
-  message: "card message text as string, still unchanged",
-  likes_count: 1,
-  card_id: 1,
-};
+// const cardData = {
+//   message: "card message text as string, still unchanged",
+//   likes_count: 1,
+//   card_id: 1,
+// };
 const URL = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
@@ -43,11 +43,11 @@ function App() {
   // state to select board - default to empty
   const [selectBoard, setSelectBoard] = useState();
 
-  const updateSelectBoard = (event) => {
-    console.log("New board selected!");
-    setSelectBoard(event.target.value);
-    console.log(selectBoard);
-  };
+  // const updateSelectBoard = (event) => {
+  //   setSelectBoard(event.target.value);
+  //   console.log("New board selected!");
+  //   console.log(selectBoard);
+  // };
 
   return (
     <div className="App">
@@ -55,8 +55,8 @@ function App() {
       <div className="App-board">
         <Board
           boardData={boardData}
-          selectState={selectBoard}
-          boardCallBack={updateSelectBoard}
+          selectBoard={selectBoard}
+          boardCallBack={setSelectBoard}
         />
       </div>
       <div className="App-card">

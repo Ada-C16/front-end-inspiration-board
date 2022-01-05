@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes, { useState } from "prop-types";
 import React from "react";
 import "./Board.css";
 
-const Board = ({ boardData, selectState, boardCallBack }) => {
+const Board = ({ boardData, selectBoard, boardCallBack }) => {
   const boardOptions = boardData.map((board) => {
     return (
       <option key={board.board_id} value={board.title}>
@@ -11,16 +11,23 @@ const Board = ({ boardData, selectState, boardCallBack }) => {
     );
   });
 
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    let newState = event.target.value;
+    boardCallBack(newState);
+  };
+
   return (
     <div className="board">
       <div>
         <label>Choose your board: </label>
-        {/* <select value={selectState} onChange={boardCallBack}>
+        {/* <select value={selectBoard} onChange={handleChange}>
           {boardOptions.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
         </select> */}
-        <select value={selectState} onChange={boardCallBack}>
+        {/* value={selectBoard.value} onChange={handleChange} */}
+        <select value={selectBoard} onChange={handleChange}>
           {boardOptions}
         </select>
       </div>
@@ -36,7 +43,7 @@ Board.propTypes = {
       board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  selectState: PropTypes.string.isRequired,
+  selectBoard: PropTypes.string.isRequired,
   boardCallBack: PropTypes.func.isRequired,
 };
 

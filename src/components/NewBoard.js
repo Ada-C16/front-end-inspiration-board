@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import "./NewBoard.css";
 
 const NewBoard = () => {
+  // const [newBoard, setNewBoard] = useState({
+  //   text: "",
+  //   done: false,
+  // });
+
   return (
     <div>
       <div>Make a New Board</div>
@@ -19,15 +24,21 @@ const NewBoard = () => {
         </label>
       </div>
       <button>Submit</button>
-      <span>Preview</span>
+      <p>Preview: </p>
 
       <button>Show New Board Form/Hide New Board Form</button>
     </div>
   );
 };
 
-// board_id
-// title
-// owner
+// NewBoard.propTypes = {
+//   boardData: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       title: PropTypes.string.isRequired,
+//       owner: PropTypes.string.isRequired,
+//       board_id: PropTypes.number.isRequired,
+//     })
+//   ).isRequired,
+// };
 
 export default NewBoard;
