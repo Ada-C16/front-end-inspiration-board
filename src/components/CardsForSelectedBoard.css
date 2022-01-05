@@ -1,7 +1,13 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .cardsFor{
-border: 2px dotted;
-color: rgba(165, 42, 42, 0.377); 
-font-family: "Permanent Marker", cursive;
-box-shadow: -15px 7px 1px #efd0c8;
-margin: 50px;
+    border: 2px dotted;
+    color: black; 
+    font-family: "Permanent Marker", cursive;
+    box-shadow: -15px 7px 1px #efd0c8;
+    margin: 50px;
+    text-align: center;
 }
