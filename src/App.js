@@ -41,7 +41,7 @@ function App() {
       // setBoardData(response.data)
       console.log(response.data)
     })
-    .error(error => {
+    .catch(error => {
       console.log(error)
     })
   }
@@ -60,12 +60,12 @@ function App() {
       <section className="main">
         <section>
           <h2>Boards</h2>
-          <select id="boardSelect" multiple>
+          {/* <select id="boardSelect" multiple>
             <option></option>
-          </select>
-          {/* <ol>
+          </select> */}
+          <ol>
             {createBoardList()}
-          </ol> */}
+          </ol>
         </section>
         <section>
           <h2>Selected Board</h2>
