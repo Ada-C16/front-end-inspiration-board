@@ -13,7 +13,7 @@ const CardsForPickMeUpQuotes = (props) => {
   return (
   <div>
 
-    <h3 className='cardsFor'>Cards For</h3>
+    <h3 className='cardsFor '>Cards For {props.title} </h3>
     <div>{cardlist}</div>
 
   

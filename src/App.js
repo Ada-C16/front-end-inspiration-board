@@ -12,7 +12,10 @@ import CardsForPickMeUpQuotes from "./components/CardsForSelectedBoard";
 function App() {
   const [boardsData, setBoards] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [activeBoard, setActiveBoard] = useState(2);
+  const [activeBoard, setActiveBoard] = useState(0);
+  const [activeBoardTitle, setActiveBoardTitle] = useState('')
+  
+  
 
   const getBoards = () => {
     axios
@@ -30,7 +33,6 @@ function App() {
   useEffect(() => {
     getBoards();
     getCardsfromBoard();
-    console.log("changes were made");
   }, []);
 
   //Create a new Card
@@ -66,27 +68,47 @@ function App() {
         console.log(error);
       });
   };
-  // axios
-  //     .post("https://trm2-inspiration-board.herokuapp.com/boards/3/cards",cards)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       // setErrorMessage
-  //     });
+
 
   const addBoardData = (newBoard) => {
-    const newBoardList = [...boardsData];
 
-    newBoardList.push({
-      owner: newBoard.owner,
-      title: newBoard.title,
-    });
+    axios
+      .post(
+        'https://trm2-inspiration-board.herokuapp.com/boards',
+        newBoard
+      )
+      .then((response) => {
+        console.log(response, "response");
 
-    setBoards(newBoardList);
+        const newBoardList = [...boardsData];
+
+        newBoardList.push({
+          owner: newBoard.owner,
+          title: newBoard.title,
+          id: response.data.board.board_id
+        });
+        console.log(newBoardList, 'NEWWWBoaardLIST');
+        setBoards(newBoardList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+
   };
 
+  const addSetActiveBoard = (Board) => {
+      console.log(Board, "BOARDDDDDDD")
+      setActiveBoard(Board.id)
+      setActiveBoardTitle(Board.title)
+      
+
+  }
+
+  useEffect(() => {
+    getCardsfromBoard()
+  }, [activeBoard]);
+  
   return (
     <div className="container">
       <div className="row">
@@ -94,11 +116,12 @@ function App() {
           <Logo />
         </div>
         <div className="col">
-          <Boards boardsData={boardsData} />
+          <Boards boardsData={boardsData} setActiveBoardCallback={addSetActiveBoard} getCards = {getCardsfromBoard} />
           {errorMessage}
         </div>
         <div className="col">
-          <SelectedBoard />
+          <p><SelectedBoard title = {activeBoardTitle}  /> </p>
+
         </div>
         <div className="col">
           <CreateANewBoard
@@ -109,11 +132,11 @@ function App() {
 
         <div className="row">
           <div className="col">
-            <CardsForPickMeUpQuotes cardListData={cardListData} />
+            <CardsForPickMeUpQuotes title = {activeBoardTitle} cardListData={cardListData} />
             {/* <Card  /> */}
           </div>
           <div className="col">
-            <CreateANewCard postANewCard={postANewCardForm} />{" "}
+            <CreateANewCard postANewCard={postANewCardForm} />
           </div>
         </div>
       </div>

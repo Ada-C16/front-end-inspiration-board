@@ -1,12 +1,12 @@
 import "./SelectedBoard.css";
 
-const SelectBoard = () => {
+const SelectBoard = (props) => {
 
   return (
     <section>
       <h4 className="selected-board-header">Selected Board</h4>
       <p>
-        <em>Select a board from the board list!</em>
+        <em> {props.title}</em>
       </p>
     </section>
   );

@@ -9,7 +9,7 @@ const Board = (props) => {
 
     <div>
       
-          <li>{props.title}</li>
+          <li onClick={()=> {props.setActiveBoardCallback(props)}}> {props.title}</li>
 
     </div>
     

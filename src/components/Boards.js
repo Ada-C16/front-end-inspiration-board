@@ -16,7 +16,7 @@ const Boards = (props) => {
 
   //2. defined board and use the map method to loop through each title and owner 
     const boards = props.boardsData.map((board, key) => {
-      return <Board key = {key} title = {board.title} owner = {board.owner}/> 
+      return <Board key = {key} id ={board.id} title = {board.title} owner = {board.owner} setActiveBoardCallback = {props.setActiveBoardCallback} /> 
   })
 
 

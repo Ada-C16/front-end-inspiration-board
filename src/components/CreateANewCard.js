@@ -31,14 +31,18 @@ const CreateANewCard = (props) => {
           maxLength="40"
           required
         />
-        <div>
-          <input className="SubmitButton" type="submit" value="Submit" />
-        </div>
+        <p>
+            Preview: {message}
+        </p>
 
         <div>
           <button className="reset" type="reset">
             Reset
           </button>
+
+          <div>
+          <input className="SubmitButton" type="submit" value="Submit" />
+        </div>
         </div>
       </div>
     </form>
