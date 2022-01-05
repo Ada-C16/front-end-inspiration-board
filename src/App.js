@@ -40,7 +40,7 @@ function App() {
 
   return (
     <main>
-      <div className="App">
+      <div className="App header-container">
         <h1> Inspiration Board </h1>
         <Boards setCurrentBoard={setCurrentBoard} />
         {currentBoard && (
@@ -61,14 +61,20 @@ function App() {
             }}
           />
         )}
-        {currentBoard && (
-          <CardList
-            currentBoard={currentBoard}
-            currentCards={currentCards}
-            setCurrentCards={setCurrentCards}
-          />
-        )}
-      </div>
+        </div>
+        
+        <div className="card-list-container">   
+          <div>
+            {currentBoard && (
+            <CardList
+              currentBoard={currentBoard}
+              currentCards={currentCards}
+              setCurrentCards={setCurrentCards}
+            />
+          )}
+          </div>
+        </div>
+
     </main>
   );
 }
