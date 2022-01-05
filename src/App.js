@@ -89,12 +89,34 @@ const App = () => {
         // setBoardData(response.data.message);
         console.log("handling the response!");
         console.log(response);
+        const newBoards = response.data.map((board) => {
+          return {
+            board_id: board.id,
+            title: board.title,
+            owner: board.owner,
+          };
+        });
+        setBoardData(newBoards);
       })
       .catch((err) => {
         console.log(err);
         // setErrorMessage(<section>{err.response.data.message}</section>);
       });
   }, []);
+
+  const createNewBoard = (newBoard) => {
+    axios
+      .post("http://localhost:5000/boards", newBoard)
+      .then((response) => {
+        console.log("Response:", response.data);
+        const newBoardList = [...boardData];
+        newBoardList.push(response.data);
+        setBoardData(newBoardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="App">
@@ -113,7 +135,7 @@ const App = () => {
           />
           <NewBoardForm
             id="New-board"
-            addBoardCallback={addBoardData}
+            addBoardCallback={createNewBoard}
           ></NewBoardForm>
         </div>
       </main>
