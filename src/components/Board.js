@@ -1,21 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const Board = (props) =>{
+const Board = (props) => {
   //Id
   //Title
   //Owner
   //Cards
-  return ("");
+  return <div></div>;
 
   //make notes aboout what should happen here based on requirements
-  //board will return form 
-  //board will display list of boards that it gets from app 
-
-
+  //board will return form
+  //board will display list of boards that it gets from app
 };
-
-
-
 
 //create proptypes
 

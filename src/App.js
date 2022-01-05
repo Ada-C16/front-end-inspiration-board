@@ -4,7 +4,7 @@ import axios from "axios";
 import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardList from "./components/CardList";
 
 const CARDS = [
@@ -41,6 +41,22 @@ const App = () => {
     setCards(newCards);
   };
 
+  //---------------------------------------
+  const [boardData, setBoardData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  console.log(boardData);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/boards")
+      .then((response) => {
+        setBoardData(response.data.message);
+      })
+      .catch((err) => {
+        // console.log(err);
+        setErrorMessage(<section>{err.response.data.message}</section>);
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -48,7 +64,11 @@ const App = () => {
       </header>
       <main>
         <div>
+          <h1>My Board List</h1>
+          {errorMessage}
+          <div>{boardData}</div>
           <CardList cards={cards} onLike={onLike} onDelete={onDelete} />
+          <NewBoardForm></NewBoardForm>
         </div>
       </main>
     </div>
