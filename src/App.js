@@ -73,7 +73,7 @@ function App() {
       <div className="App-board">
         <Board
           boardData={boardData}
-          // selectBoard={selectBoard}
+          selectBoard={selectBoard}
           boardCallBack={setSelectBoard}
         />
       </div>

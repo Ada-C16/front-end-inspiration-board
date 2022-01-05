@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Board.css";
 
-const Board = ({ boardData, boardCallBack }) => {
+const Board = ({ boardData, selectBoard, boardCallBack }) => {
   const handleChange = (board_id) => {
     for (let board of boardData) {
       if (board.board_id === board_id) {
@@ -35,6 +35,12 @@ const Board = ({ boardData, boardCallBack }) => {
         <label>Choose your board: </label>
         <ol>{boardOptions}</ol>
       </div>
+      <div>
+        <h2>Selected Board</h2>
+        <p>
+          {selectBoard.owner}: {selectBoard.title}
+        </p>
+      </div>
     </div>
   );
 };
@@ -47,7 +53,7 @@ Board.propTypes = {
       board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  // selectBoard: PropTypes.string.isRequired,
+  selectBoard: PropTypes.string.isRequired,
   boardCallBack: PropTypes.func.isRequired,
 };
 
