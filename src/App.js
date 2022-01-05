@@ -8,28 +8,22 @@ import axios from "axios";
 
 const URL = "https://inspirandwich-board.herokuapp.com/";
 
-// const CARDS = [
-//   { id: 1, message: "Hi hello", likes_count: 1 },
-//   { id: 2, message: "Howdy", likes_count: 1 },
-//   { id: 3, message: "Yoohoo", likes_count: 1 },
-// ];
-
 function App() {
+
   // ---------------------------------------------------------------
   // --------------------- ESTABLISHING STATES ---------------------
   // ---------------------------------------------------------------
+
   // This sets up the state for the 'Board Selected' value
   const [selectedBoard, setSelectedBoard] = useState("");
-
   // This sets up the state for the boards displayed in 'Boards'
   const [boards, setBoards] = useState([]);
-
   // This sets up the state for the cards displayed in 'Cards for Board'
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {  // We use useEffect to render the initial board list when the page first loads
     generateBoards();
-  }, []);
+  }, []); // the empty list signifies this this runs once upon page load, if we were to enter a state, this would reload every time a state is updated
 
   const generateBoards = () => {
     let boards = [];
@@ -49,6 +43,7 @@ function App() {
         console.log(error);
       });
   };
+
   // ---------------------------------------------------------------
   // ------------------- SETTING STATES FUNCTIONS-------------------
   // ---------------------------------------------------------------
@@ -66,16 +61,16 @@ function App() {
                 id: card.id,
                 message: card.message,
                 likes_count: card.likes_count,
-              };
-            });
+                };
+              });
             setCards(cards);
-          })
+            })
           .catch((error) => {
             console.log(error);
-          });
+            });
+        }
       }
-    }
-  };
+    };
 
   // This sets the state for the 'Boards', this changes when a new board is added, we will also need to add functionality to delete all?
   const addBoard = (boardInfo) => {
@@ -83,24 +78,21 @@ function App() {
       .post(`${URL}/boards`, {
         title: boardInfo.title,
         owner: boardInfo.owner,
-      })
-
+        })
       .then((response) => {
         const newBoards = [...boards];
         const newBoard = {
           id: response.data.id,
           title: boardInfo.title,
           owner: boardInfo.owner,
-        };
-
+          };
         boardInfo.id = response.data.id;
         newBoards.push(newBoard);
         setBoards(newBoards);
-      })
-
+        })
       .catch((error) => {
         console.log(error.response.data);
-      });
+        });
   };
 
   // This sets the state for the 'Cards', this changes when a card is liked
@@ -110,32 +102,18 @@ function App() {
       .then((response) => {
         const updatedCards = [...cards];
         for (let card of updatedCards) {
-          
-
           if (id === card.id) {
-            
             card.likes_count = response.data.likes_count;
+            }
           }
-        }
-        
         setCards(updatedCards);
-      })
+        })
       .catch((error) => {
         console.log(error.response.data);
-      });
+        });
   };
 
   // This sets the states for 'Cards', this changes when a card is deleted from the deck
-  // const deleteCard = (id) => {
-  //   const updatedCards = [...cards];
-  //   const newCards = updatedCards.filter((card) => {
-  //     if (card.id !== id) {
-  //       return card;
-  //     }
-  //   });
-  //   setCards(newCards);
-  // };
-
   const deleteCard = (id) => {
     axios
       .delete(`${URL}/boards/${selectedBoard.id}/${id}`)
@@ -152,16 +130,14 @@ function App() {
       .catch((error) => {
         console.log(error.response.data);
       });
-
-  };
+    };
 
   // This sets the states for 'Cards', this changes when a card is added to the deck
   const addCard = (cardInfo) => {
     axios
       .post(`${URL}/boards/${selectedBoard.id}/cards`, {
         message: cardInfo.message,
-      })
-
+        })
       .then((response) => {
         const newCards = [...cards];
         const newCard = {
@@ -169,22 +145,25 @@ function App() {
           message: cardInfo.message,
           likes_count: 0
         };
-
         newCards.push(newCard);
         setCards(newCards);
-      })
-
+        })
       .catch((error) => {
         console.log(error.response.data);
-      });
-    // const num = 4 // We can delete this when we link up to database since the id will be generated through that.
-    // const newCard = {id: num, message: cardInfo.message, likes_count: cardInfo.likes_count}
-    // creating axios post method
-    // axios.post(`https://inspirandwich-board.herokuapp.com/boards/${}/cards`)
-    // const updatedCards = [...cards]
-    // updatedCards.push(newCard)
-    // setCards(updatedCards)
-  };
+        });
+    };
+  
+  // this sets the states for Boards after delete all boards has been clicked
+  const deleteAll = () => {
+    console.log('deleted')
+    // axios
+    // .delete(`${URL}/boards`)
+    // .then((response) => {
+    //   })
+    // .catch((error) => {
+    //   console.log(error.response.data);
+    //   });
+};
 
   return (
     <div className="App">
@@ -224,6 +203,10 @@ function App() {
           <CardForm onClickAddCard={addCard} />
         </section>
       </section>
+      <div className="deleteContainer">
+        <button onClick={deleteAll}>Delete All Boards</button>
+      </div>
+      
     </div>
   );
 }
