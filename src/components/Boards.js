@@ -89,7 +89,7 @@ function Boards({ setCurrentBoard }) {
       {selectedBoard ? (
         <h2> Board Selected: {selectedBoard}</h2>
       ) : (
-        <h2> Select a chart </h2>
+        <h2> Select a Board </h2>
       )}
       {selectedOwner && <h2> Owner Selected: {selectedOwner} </h2>}
       <h3> Create A New Board</h3>
