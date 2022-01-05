@@ -5,7 +5,18 @@ const Board = (props) => {
   //Title
   //Owner
   //Cards
-  return <div></div>;
+  const getBoardListJSX = props.boardData.map((board) => {
+    return (
+      <div>
+        <li>
+          <button>
+            title={board.title} owner={board.owner}
+          </button>
+        </li>
+      </div>
+    );
+  });
+  return <div>{getBoardListJSX}</div>;
 
   //make notes aboout what should happen here based on requirements
   //board will return form

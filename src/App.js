@@ -41,7 +41,44 @@ const App = () => {
     setCards(newCards);
   };
 
+  //--------------------------------------
+  const [boardData, setBoardData] = useState([
+    {
+      title: "board 1",
+      owner: "Ada",
+      //maybe a boolean for isVisible
+    },
+    {
+      title: "board 2",
+      owner: "Ada 2",
+      //maybe a boolean for isVisible
+    },
+    {
+      title: "board 3",
+      owner: "Ada 3",
+      //maybe a boolean for isVisible
+    },
+  ]);
+
+  const addBoardData = (newBoard) => {
+    // Duplicate the board list
+    const newBoardList = [...boardData];
+
+    // Logic to generate the next valid student ID
+    // const nextId = Math.max(...newBoardList.map((board) => board.id)) + 1;
+
+    newBoardList.push({
+      // id: nextId,
+      title: newBoard.title,
+      owner: newBoard.owner,
+      //isPresentData: false,
+    });
+    console.log(newBoardList);
+    setBoardData(newBoardList);
+  };
+
   //---------------------------------------
+  /*
   const [boardData, setBoardData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   console.log(boardData);
@@ -56,19 +93,20 @@ const App = () => {
         setErrorMessage(<section>{err.response.data.message}</section>);
       });
   }, []);
-
+*/
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <h1>Card List</h1>
-      </header>
+      </header> */}
       <main>
         <div>
           <h1>My Board List</h1>
-          {errorMessage}
-          <div>{boardData}</div>
+          {/* {errorMessage} */}
+          {/* <div>{boardData}</div> */}
+          <Board boardData={boardData}></Board>
           <CardList cards={cards} onLike={onLike} onDelete={onDelete} />
-          <NewBoardForm></NewBoardForm>
+          <NewBoardForm addBoardCallback={addBoardData}></NewBoardForm>
         </div>
       </main>
     </div>

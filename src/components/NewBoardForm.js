@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
+import PropTypes from "prop-types";
 //form has the following inputs
 //title
 //owner
@@ -7,50 +8,64 @@ import { useState } from 'react';
 //form has the following buttons:
 //submit button
 
-
-const NewBoardForm = (props) =>{
+const NewBoardForm = (props) => {
   const [formFields, setFormFields] = useState({
-      title: '',
-      owner: ''
+    title: "",
+    owner: "",
   });
 
-//event handler for new title input
-  const onTitleChange = (event) =>{
+  //event handler for new title input
+  const onTitleChange = (event) => {
     setFormFields({
       ...formFields,
-      title: event.target.value
-    })
+      title: event.target.value,
+    });
   };
 
-//event handler for new owner input
-  const onOwnerChange = (event) =>{
+  //event handler for new owner input
+  const onOwnerChange = (event) => {
     setFormFields({
       ...formFields,
-      owner: event.target.value
-    })
+      owner: event.target.value,
+    });
+  };
+
+  //event handler to call supplied addStudentCallback
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    props.addBoardCallback({
+      title: formFields.title,
+      owner: formFields.owner,
+    });
+
+    setFormFields({
+      title: "",
+      owner: "",
+    });
   };
 
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <div>
         <label htmlFor="title">Title:</label>
-        <input name="title" value={formFields.title} onChange={onTitleChange}/>
+        <input name="title" value={formFields.title} onChange={onTitleChange} />
       </div>
       <div>
         <label htmlFor="owner">Owner's Name:</label>
-        <input name="owner" value={formFields.owner} onChange={onOwnerChange}/>
+        <input name="owner" value={formFields.owner} onChange={onOwnerChange} />
       </div>
-      <input
-      type="submit"
-      value="Add Board"/>
+      <input type="submit" value="Add Board" />
     </form>
   );
 };
 
-
 //create form with required input
+NewBoardForm.propTypes = {
+  addBoardCallback: PropTypes.func.isRequired,
+};
 
 export default NewBoardForm;
-
 
 //-------------------------------------------
