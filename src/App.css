@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,46 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.App {
+  text-align: center;
+}
+.App-main {
+  background-color: whitesmoke;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 02fr 1.5fr;
+  grid-template-areas:
+  "header header header"
+  "Boards Selected-boards New-board"
+  "Cards Cards Create-card"
+  ;
+  gap: 1em;
+}
+#header {
+  padding: 15px;
+}
+#Boards {
+  grid-area: Boards;
+  padding: 10px;
+}
+#Selected-boards {
+  grid-area: Selected-boards;
+  padding: 10px;
+  background-color: red;
+}
+#New-board {
+  grid-area: New-board;
+  padding: 10px;
+}
+#Cards {
+  grid-area: Cards;
+  padding: 10px;
+}
+#Create-card {
+  grid-area: Create-card;
+  padding: 10px;
 }

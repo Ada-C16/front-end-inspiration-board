@@ -96,23 +96,44 @@ const App = () => {
 */
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <h1>Card List</h1>
-      </header> */}
-      <main>
+      <header id="header">INSPIRATION BOARD</header>
+      <main className="App-main">
         <div>
           <h1>My Board List</h1>
           {/* {errorMessage} */}
           {/* <div>{boardData}</div> */}
-          <Board boardData={boardData}></Board>
-          <CardList cards={cards} onLike={onLike} onDelete={onDelete} />
-          <NewBoardForm addBoardCallback={addBoardData}></NewBoardForm>
+          <Board id="Boards" boardData={boardData}></Board>
+          <CardList
+            id="Selected-boards"
+            cards={cards}
+            onLike={onLike}
+            onDelete={onDelete}
+          />
+          <NewBoardForm
+            id="New-board"
+            addBoardCallback={addBoardData}
+          ></NewBoardForm>
         </div>
       </main>
     </div>
   );
 };
-
+/*
+function App() {
+  return (
+    <div className="App">
+      <main className="App-main">
+        <header id="header">INSPIRATION BOARD</header>
+        <div id="Boards">Boards</div>
+        <div id="Selected-boards">Selected boards</div>
+        <div id="New-board">New Boards</div>
+        <div id="Cards">Cards For pick-Me-Up Quotes</div>
+        <div id="Create-card">Create New Card</div>
+      </main>
+    </div>
+  );
+}
+*/
 export default App;
 
 //---------------------------------------------
