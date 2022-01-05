@@ -148,7 +148,7 @@ function App() {
 
   const sortAllCards = () => {
     let cardListCopy = [...cardList]
-    let sortedList = []
+    // let sortedList = []
     cardListCopy.sort((a, b) => a.likes_count > b.likes_count ? 1 : -1)
     // Cabebe's experimenting with sort
     // cardListCopy.sort((a, b) => {return a.likes_count - b.likes_count;})
