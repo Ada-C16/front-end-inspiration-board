@@ -6,7 +6,7 @@ import Card from "./Card";
 import "./CardList.css";
 
 // like route --->  /cards/<card_id>/like
-const URL = process.env.REACT_APP_BACKEND_URL;
+const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
 
 const CardList = () => {
   // state for cards

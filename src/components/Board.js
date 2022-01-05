@@ -2,29 +2,38 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Board.css";
 
-const Board = ({ boardData, selectBoard, boardCallBack }) => {
+const Board = ({ boardData, boardCallBack }) => {
+  const handleChange = (board_id) => {
+    for (let board of boardData) {
+      if (board.board_id === board_id) {
+        let newState = board;
+        console.log(newState);
+        boardCallBack(newState);
+      }
+    }
+    // let newState = event.target.id;
+  };
+
   const boardOptions = boardData.map((board) => {
     return (
-      <option key={board.board_id} value={board.title}>
-        {board.title}
-      </option>
+      <li key={board.board_id}>
+        <button
+          id={board.board_id}
+          onClick={() => handleChange(board.board_id)}
+        >
+          {board.title}
+        </button>
+      </li>
     );
   });
 
-  const handleChange = (event) => {
-    let newState = event.target.value;
-    boardCallBack(newState);
-  };
-
-  console.log(selectBoard);
+  // console.log(selectBoard);
 
   return (
     <div className="board">
       <div>
         <label>Choose your board: </label>
-        <select value={selectBoard} onChange={handleChange}>
-          {boardOptions}
-        </select>
+        <ol>{boardOptions}</ol>
       </div>
     </div>
   );
@@ -38,7 +47,7 @@ Board.propTypes = {
       board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  selectBoard: PropTypes.string.isRequired,
+  // selectBoard: PropTypes.string.isRequired,
   boardCallBack: PropTypes.func.isRequired,
 };
 

@@ -13,7 +13,8 @@ import NewCard from "./components/NewCard";
 //   likes_count: 1,
 //   card_id: 1,
 // };
-const URL = process.env.REACT_APP_BACKEND_URL;
+// const URL = process.env.REACT_APP_BACKEND_URL;
+const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
 
 function App() {
   // board state
@@ -41,7 +42,7 @@ function App() {
   useEffect(getBoard, []);
 
   // state to select board - default to empty
-  const [selectBoard, setSelectBoard] = useState();
+  const [selectBoard, setSelectBoard] = useState(null);
 
   const addBoard = (board) => {
     axios
@@ -72,7 +73,7 @@ function App() {
       <div className="App-board">
         <Board
           boardData={boardData}
-          selectBoard={selectBoard}
+          // selectBoard={selectBoard}
           boardCallBack={setSelectBoard}
         />
       </div>
