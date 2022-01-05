@@ -4,42 +4,50 @@ import './App.css';
 import './index.css';
 
 import Board from './components/Board';
+import BoardList from './components/BoardList';
 import axios from 'axios';
-import * as ada from 'ada';
+import * as ada from './ada';
 
-function App() {
+const generateBoards= async ()=>{
+  console.log('in generateBoards');
 
-// const [cards, setCard] = useState(generateCards());
-const [boards, setBoard] = useState(generateBoards());
-
-
-const generateBoards=()=>{
   //Call the API and get the list of boards
-  axios.get(ada.api_url + '/boards/')
-  .then(function (response) {
+  axios.get(ada.api_url + '/boards')
+  .then(response => response.data)
+  .then(function (responseJSON) {
     // handle success
-    console.log(response);
+    console.log(responseJSON);
+    return responseJSON         
   })
   .catch(function (error) {
     // handle error
     console.log(error);
   })
-  .then(function () {
+  .finally(function () {
     // always executed
+
   });
 
+}
 
-  GetBoardsAPIResponse = "TEXT OF JSON RESPONSE"
-  responseObject = JSON.parse(GetBoardsAPIResponse)
+
+const App = () => {
+  const [boards, setBoards] = useState(generateBoards());
   
-  //Now add the boards as links to the boardUnorderedList.
 
 
-}
+
+// const [cards, setCard] = useState(generateCards());
+
+const [board_id, setBoard_ID] = useState();
+
+
 const likeCardFunction=(card_id)=>{
-
+  console.log('likeCardFunction');
 }
-
+const selectBoardFunction=(board_id)=>{
+  console.log('selectBoardFunction');
+}
   return (
       <div className="row">
         <div className="col-1 navigation-col">
@@ -47,7 +55,7 @@ const likeCardFunction=(card_id)=>{
           <nav>
               <div className="navhead">Boards</div>
                   <ul id="boardUnorderedList">
-                  <li className='boardlink' id='Board1'><a className="navsublink" href="#">Please Wait...</a></li>
+                  <BoardList boards={boards} onClickCallback={selectBoardFunction}/>
                   </ul>
 
 

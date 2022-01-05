@@ -1,5 +1,5 @@
 import React from 'react';
-import './Board.css';
+// import './Board.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
@@ -9,11 +9,11 @@ const generateCards = (board_id, onClickCallback) => {
 
 };
 
-const Board = ({ squares, onClickCallback }) => {
-    const squareList = generateSquareComponents(squares, onClickCallback);
+const Board = ({ cards, onClickCallback }) => {
+    const cardList = generateCards(cards, onClickCallback);
     return(
         <div className="grid" >
-            {squareList}
+            {cardList}
         </div>
     );
 };
