@@ -3,7 +3,7 @@ import Card from './Card';
 
 const CardList = () => {
   return (
-    <div className="card">
+    <div className="cardList">
       {/* on a selected board make a get request
       to get cards
       pass card info as props into card components
@@ -12,6 +12,5 @@ const CardList = () => {
     </div> 
   )
 }
-
 
 export default CardList;

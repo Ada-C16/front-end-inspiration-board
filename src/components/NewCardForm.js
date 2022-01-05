@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewCardForm = () => {
+const NewCardForm = (props) => {
   const emptyForm = {
     message: ""
   }
@@ -15,6 +15,8 @@ const NewCardForm = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+
+    // props.createNewCard(board_id, message);
 
     console.log(formFields);
     setFormFields(emptyForm);
