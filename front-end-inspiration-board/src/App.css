@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Sigmar+One");
 
 *{
   font-family: 'Readex Pro', sans-serif;
+  /* font-family: "Sigmar One" */
 }
 
 /*GRIDSPLAINING:
@@ -63,9 +65,9 @@ h1 {
 }
 
 .site-title{
-  font-size: 30pt;
-  font-family: 'Readex Pro', sans-serif;
-  font-weight: bold;
+  font-size: 35pt;
+  /* font-family: 'Readex Pro', sans-serif; */
+  font-family: "Sigmar One";
 }
 
 .boardz-block {
