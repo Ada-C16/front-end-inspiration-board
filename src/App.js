@@ -78,22 +78,24 @@ const App = () => {
   };
 
   //---------------------------------------
-  /*
-  const [boardData, setBoardData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  console.log(boardData);
+
+  // const [boardData, setBoardData] = useState([]);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // console.log(boardData);
   useEffect(() => {
     axios
       .get("http://localhost:5000/boards")
       .then((response) => {
-        setBoardData(response.data.message);
+        // setBoardData(response.data.message);
+        console.log("handling the response!");
+        console.log(response);
       })
       .catch((err) => {
-        // console.log(err);
-        setErrorMessage(<section>{err.response.data.message}</section>);
+        console.log(err);
+        // setErrorMessage(<section>{err.response.data.message}</section>);
       });
   }, []);
-*/
+
   return (
     <div className="App">
       <header id="header">INSPIRATION BOARD</header>
