@@ -2,24 +2,26 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Board.css";
 
-const Board = ({ boardData, selectBoard, selectCallBack }) => {
-  const boardsOptions = boardData.map((board) => {
+const Board = ({ boardData, selectState, boardCallBack }) => {
+  const boardOptions = boardData.map((board) => {
     return (
-      // <li>
-      //   <button key={board.board_id} onClick={selectCallBack}>
-      //     {board.title}
-      //   </button>
-      // </li>
-      <option value={board.title}>{board.title}</option>
+      <option key={board.board_id} value={board.title}>
+        {board.title}
+      </option>
     );
   });
 
   return (
     <div className="board">
       <div>
-        <label for="board">Choose your board: </label>
-        <select name="board" id="board">
-          {boardsOptions}
+        <label>Choose your board: </label>
+        {/* <select value={selectState} onChange={boardCallBack}>
+          {boardOptions.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
+        </select> */}
+        <select value={selectState} onChange={boardCallBack}>
+          {boardOptions}
         </select>
       </div>
     </div>
@@ -27,15 +29,15 @@ const Board = ({ boardData, selectBoard, selectCallBack }) => {
 };
 
 Board.propTypes = {
-  boards: PropTypes.arrayOf(
+  boardData: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
       board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  selectBoard: PropTypes.string.isRequired,
-  selectCallBack: PropTypes.func.isRequired,
+  selectState: PropTypes.string.isRequired,
+  boardCallBack: PropTypes.func.isRequired,
 };
 
 export default Board;

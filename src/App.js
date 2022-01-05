@@ -16,6 +16,7 @@ const URL = process.env.REACT_APP_BACKEND_URL;
 function App() {
   // board state
   const [boardData, setBoardData] = useState([]);
+
   const getBoard = () => {
     axios
       .get(`${URL}/boards`)
@@ -38,7 +39,13 @@ function App() {
   useEffect(getBoard, []);
 
   // state to select board - default to empty
-  const [selectBoard, setSelectBoard] = useState(null);
+  const [selectBoard, setSelectBoard] = useState();
+
+  const updateSelectBoard = (event) => {
+    console.log("New board selected!");
+    setSelectBoard(event.target.value);
+    console.log(selectBoard);
+  };
 
   return (
     <div className="App">
@@ -47,7 +54,7 @@ function App() {
         <Board
           boardData={boardData}
           selectState={selectBoard}
-          selectCallBack={setSelectBoard}
+          boardCallBack={updateSelectBoard}
         />
       </div>
       <div className="App-card">
