@@ -110,7 +110,10 @@ function App() {
       .then((response) => {
         const updatedCards = [...cards];
         for (let card of updatedCards) {
-          if (id === card.card_id) {
+          // console.log()
+
+          if (id === card.id) {
+            console.log("we are here")
             card.likes_count = response.data.likes_count;
           }
         }
