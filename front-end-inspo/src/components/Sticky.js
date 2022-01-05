@@ -14,7 +14,7 @@ const Sticky = (props) => {
       <div className="sticky-footer">
         <span className="sticky-timestamp">{props.date}</span>
         <div className="sticky-likes">
-          <button className="like-button" onClick={props.onLike}>
+          <button className="like-button" onClick={ (event) => props.onLike(props.boardID, props.id, event)}>
             Like
           </button>
           <span className="likes-count">+ {props.num_likes}</span>
@@ -24,10 +24,13 @@ const Sticky = (props) => {
   );
 };
 
+
+
 Sticky.propTypes = {
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  boardID: PropTypes.number.isRequired,
   num_likes: PropTypes.number.isRequired,
   // onDelete will be a function passed down from App that makes an API call to delete a sticky
   onDelete: PropTypes.func.isRequired,

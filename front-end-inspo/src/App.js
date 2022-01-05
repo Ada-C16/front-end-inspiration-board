@@ -55,7 +55,7 @@ function App() {
 
   const createStickies = (board_id) => {
     axios
-      .get(`http://localhost:5000/board/${board_id}`)
+      .get(`http://localhost:5001/board/${board_id}`)
       .then((response) => {
         var stickies = response.data.map((sticky) => {
           return (
@@ -64,6 +64,7 @@ function App() {
               text={sticky.text}
               date={sticky.date}
               id={sticky.id}
+              boardID={board_id}
               num_likes={sticky.num_likes}
               onDelete={onDelete}
               onLike={onLike}
@@ -81,13 +82,23 @@ function App() {
     // make an API call to DELETE a sticky when clicked
   };
 
-  const onLike = (stickyID) => {
-    // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked
+  const onLike = (boardID, stickyID) => {
+    // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked -- I don't think we have a mechanism for subtracting likes right now
+    console.log('I print when clicked')
+    axios
+      .patch(`http://localhost:5001/board/${boardID}/${stickyID}`)
+      .then(() => {
+        createStickies(boardID);
+      })
+      .catch((error)=>{
+        console.log(error.message)
+      });
+
   };
 
   const createDropdown = () => {
     axios
-      .get("http://localhost:5000/board")
+      .get("http://localhost:5001/board")
       .then((response) => {
         setDropDownList(
           response.data["boards"].map((board) => {
