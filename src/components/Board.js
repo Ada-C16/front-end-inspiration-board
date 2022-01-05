@@ -1,15 +1,14 @@
 import React from 'react';
 import './Board.css';
-import CardList from './CardList';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
 const getCards = () => {
     //return cards from API call
     return [{text: "text",
-        id: 1},
+        board_id: 1},
         {text: "text1",
-        id: 2}]
+        board_id: 2}]
 }
 
 const Board = ({title, id, cards}) => {
@@ -21,7 +20,7 @@ const Board = ({title, id, cards}) => {
 
 Board.propTypes = {
     title: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    board_id: PropTypes.number.isRequired
 }
 export default Board
 
