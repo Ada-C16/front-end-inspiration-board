@@ -133,22 +133,30 @@ function App() {
       });
   };
 
+  const makeNewBoard = (event) => {
+    event.preventDefault();
+    const boardName = document.querySelector(".board-name");
+    var request_body = {
+      name: boardName.value,
+    };
+    console.log(boardName.value);
+    axios
+      .post(`${URL}`, request_body)
+      .then((response) => {
+        setCurrentBoard({
+          name: boardName.value,
+          id: response.data.id,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   const getStickies = (boardID) => {
     // grab the selected board from the dropdown
     // we are making a GET request to the API to get all stickies for specific board
     // by feeding the data from API into createStickies()
-  };
-
-  const makeNewBoard = () => {
-    // gets the board name from the form
-    const boardButton = document.getElementById("board-button");
-    boardButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      const boardName = document.getElementById("board-name").value;
-      // make an API call to POST a new board with grabbed board name
-      // {'name': boardName};
-      // wait for successful API POST, call createDropdown, and automatically redirect to new board "page" (change the title, call getStickies)
-    });
   };
 
   return (
@@ -160,7 +168,7 @@ function App() {
         <div className="board-container">
           <div className="submit-board">
             Submit a new board:
-            <form>
+            <form onSubmit={makeNewBoard}>
               <input type="text" className="board-name" />
               <input type="submit" className="board-button" />
             </form>
