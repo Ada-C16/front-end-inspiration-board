@@ -9,8 +9,9 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const boardURL = process.env.REACT_APP_BACKEND_URL;
-  console.log(boardURL)
+  // const boardURL = `${process.env.REACT_APP_BACKEND_URL}/board`;
+  const boardURL = "http://localhost:5000/board"
+  console.log("boardURL is:", boardURL);
 
   // This is a piece of state. It's a list of all the board objects in our api database
   const [boardList, setBoardList] = useState([]);
@@ -149,6 +150,8 @@ function App() {
     let cardListCopy = [...cardList]
     let sortedList = []
     cardListCopy.sort((a, b) => a.likes_count > b.likes_count ? 1 : -1)
+    // Cabebe's experimenting with sort
+    // cardListCopy.sort((a, b) => {return a.likes_count - b.likes_count;})
     console.log(cardListCopy)
     setCardList(cardListCopy)
     // cardListCopy.map((item, i) => 

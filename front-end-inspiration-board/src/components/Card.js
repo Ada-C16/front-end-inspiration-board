@@ -11,13 +11,13 @@ const Card = (props) => {
     // props.updateCardDisplayCallback(props.cardList, props.currentBoard)
 
 
-    const currentCards = [...props.cardList];
-    for (let card of currentCards) {
-      if (props.id === card.card_id) {
-        setCardLikeCount(card.cardLikes + 1)
-        props.addLikeCallback(card.card_id)
-      }
-  }}
+    // const currentCards = [...props.cardList];
+    // for (let card of currentCards) {
+    //   if (props.id === card.card_id) {
+    //     setCardLikeCount(card.cardLikes + 1)
+    //     props.addLikeCallback(card.card_id)
+    //   }}
+  }
   
   // this function is for debugging purposes
   const logCardInfo = () => {

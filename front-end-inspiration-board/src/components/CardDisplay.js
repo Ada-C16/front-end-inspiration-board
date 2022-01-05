@@ -8,9 +8,9 @@ import SortByLikes from "./SortByLikes"
 //when is this called?
 const CardDisplay = (props) => {
   // notifies console that cardList state has changed
-  useEffect(()=> {
-    console.log('The cardList has been updated!', props.cardList);
-  }, [props.cardList])
+  // useEffect(()=> {
+  //   console.log('The cardList has been updated!', props.cardList);
+  // }, [props.cardList])
 
   const updateCardDisplay =(cardList, currentBoard)=> {
     const cardComponents = [];
