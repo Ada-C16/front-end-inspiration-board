@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './NewCardForm.css';
 
 const NewCardForm = (props) => {
   //create formField
@@ -53,8 +54,8 @@ const NewCardForm = (props) => {
       This is the New Card Form.
       <form onSubmit={onCardFormSubmit}>
         <div>
-          <label>New Card Message:</label>
-          <input
+          <label className='new-card-input-label'>New Card Message:</label>
+          <input className='new-card-input'
             type="text"
             required
             value={cardFormField.cardMessage}
