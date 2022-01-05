@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewBoardForm = ({ onSubmitCallback }) => {
+const NewBoardForm = ({ addBoard }) => {
 
   // to do
   // write an onSubmitCallback in App.js and pass it to NewBoardForm
@@ -26,7 +26,7 @@ const NewBoardForm = ({ onSubmitCallback }) => {
     //   return;
     // }
     event.preventDefault();
-    onSubmitCallback(boardState);
+    addBoard(boardState);
     setBoardState({
       title: "",
       owner: "",

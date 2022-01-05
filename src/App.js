@@ -1,24 +1,23 @@
-import './App.css';
-import Board from './components/Board.js';
-import Card from './components/Card.js';
-import NewCard from './components/NewCard.js';
-import NewBoardForm from './components/NewBoardForm.js'
-import CardList from './components/CardList.js';
-
+import "./App.css";
+import Board from "./components/Board.js";
+import Card from "./components/Card.js";
+import NewCard from "./components/NewCard.js";
+import NewBoardForm from "./components/NewBoardForm.js";
+import CardList from "./components/CardList.js";
+import axios from "axios";
 
 function App() {
+  const URL = "https://inspiration-board-backend.herokuapp.com";
 
-  const addTask = (task) => {
-    console.log(task);
+  const addBoard = (board) => {
+    console.log(board);
 
     axios
-      .post(URL + "/tasks", {
-        title: task.text,
-        // eslint-disable-next-line camelcase
-        completed_at: task.done ? new Date() : null,
-        description: "",
-      })
-      .then((response) => getTasks())
+      .post(URL + "/boards", board)
+      .then(
+        (response) => console.log(response.data)
+        // getTasks()
+      )
       .catch((error) => console.log(error.response.data));
   };
 
@@ -28,7 +27,7 @@ function App() {
       <Card />
       <NewCard />
       <CardList />
-      <NewBoardForm />
+      <NewBoardForm addBoard={addBoard}/>
     </div>
   );
 }
