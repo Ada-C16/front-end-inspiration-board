@@ -1,0 +1,8 @@
+.cardsDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.cards {
+    width: 60%;
+}

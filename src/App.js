@@ -56,18 +56,23 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Inspiration Board</h1>
-      <section>
-        <h2>Boards</h2>
-        <ol>
-          {createBoardList()}
-        </ol>
+      <h1 className="boardTitle">Inspiration Board</h1>
+      <section className="main">
+        <section>
+          <h2>Boards</h2>
+          <select id="boardSelect" multiple>
+            <option></option>
+          </select>
+          {/* <ol>
+            {createBoardList()}
+          </ol> */}
+        </section>
+        <section>
+          <h2>Selected Board</h2>
+          <p>Select a Board from the Board List!</p>
+        </section>
+        <NewBoardForm createNewBoard={addNewBoard}/>
       </section>
-      <section>
-        <h2>Selected Board</h2>
-        <p></p>
-      </section>
-      <NewBoardForm createNewBoard={addNewBoard}/>
       <Board board={boardData} onBoardSelect={onBoardSelect}/>
     </div>
   );

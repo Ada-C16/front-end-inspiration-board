@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import './NewBoardForm.css'
 const axios = require('axios')
 
 // const URL = process.env['SQLALCHEMY_DATABASE_URI']
@@ -52,7 +53,7 @@ const NewBoardForm = (props) => {
       {/* <button onClick={props.addNewBoardCallback(formFields)} type="submit">Submit Query</button> */}
       <button type="submit">Submit Query</button>
     </form>
-    <span>Hide New Board Form</span>
+    <button>Hide New Board Form</button>
     {/* <span onClick={}>Hide New Board Form</span> */}
   </section>
   )
