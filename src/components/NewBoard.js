@@ -4,13 +4,18 @@ import "./NewBoard.css";
 
 const NewBoard = ({ onSubmitCallBack }) => {
   const [newBoard, setNewBoard] = useState({
-    text: "",
-    done: false,
+    title: "",
+    owner: "",
   });
 
-  const handleChange = (event) => {
+  const handleTitleChange = (event) => {
     console.log(event.target.value);
-    // setNewBoard(newBoard);
+    setNewBoard({ ...newBoard, title: event.target.value });
+  };
+
+  const handleOwnerChange = (event) => {
+    console.log(event.target.value);
+    setNewBoard({ ...newBoard, owner: event.target.value });
   };
 
   const onSubmit = (event) => {
@@ -18,8 +23,8 @@ const NewBoard = ({ onSubmitCallBack }) => {
 
     onSubmitCallBack(newBoard);
     setNewBoard({
-      text: "",
-      done: false,
+      title: "",
+      owner: "",
     });
   };
 
@@ -32,13 +37,18 @@ const NewBoard = ({ onSubmitCallBack }) => {
           <input
             type="text"
             name="title"
-            value={newBoard.text}
-            onChange={handleChange}
+            value={newBoard.title}
+            onChange={handleTitleChange}
           />
         </div>
         <div>
           Owner:
-          <input type="text" />
+          <input
+            type="text"
+            name="owner"
+            value={newBoard.owner}
+            onChange={handleOwnerChange}
+          />
         </div>
 
         <button>Submit</button>

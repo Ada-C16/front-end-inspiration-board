@@ -37,9 +37,11 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
       </div>
       <div>
         <h2>Selected Board</h2>
-        <p>
-          {selectBoard.owner}: {selectBoard.title}
-        </p>
+        {selectBoard && (
+          <p>
+            {selectBoard.owner}: {selectBoard.title}
+          </p>
+        )}
       </div>
     </div>
   );
