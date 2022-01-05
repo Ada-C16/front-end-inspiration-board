@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import './NewBoardForm.css'
 
 const NewBoardForm = ({ onAddBoard, isFormVisible, onToggleVisibility }) => {
   // setting state  for NewBoardForm details, board info is the variable being created and
@@ -32,7 +33,7 @@ const NewBoardForm = ({ onAddBoard, isFormVisible, onToggleVisibility }) => {
   return (
     <div>
       {isFormVisible && (
-        <form onSubmit={submitRequest}>
+        <form className="form-container" onSubmit={submitRequest}>
           <label>
             Title:
             <input
@@ -53,7 +54,7 @@ const NewBoardForm = ({ onAddBoard, isFormVisible, onToggleVisibility }) => {
             {/* "submit" is a specific type of input, which creates a button "Add New Board",
       when clicked, will call onSubmit(another form keyword) */}
           </label>
-          <input type="submit" value="Add New Board" />
+          <input className="submit-btn" type="submit" value="Add New Board" />
         </form>
       )}
       <button onClick={onToggleVisibility}>

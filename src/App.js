@@ -4,6 +4,7 @@ import "./App.css";
 import BoardSelector from "./components/BoardSelector";
 import NewBoardForm from "./components/NewBoardForm";
 import LowerBody from "./components/LowerBody";
+import CardList from "./components/CardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -114,49 +115,41 @@ function App() {
       <main>
         <div className="wrapper">
         {/* NewBoardForm is used and addBoard function is passed as prop named onAddBoard */}
-        <div className="one">
-        <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
+          <div className="one">
+          <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} />
+          </div>
+          <div className="two">
+          {selectedBoard && (
+            <LowerBody
+              // this is the list of all the props being assigned that LowerBody will use
+              onAddCard={handleAddCard}
+              board={selectedBoard}
+              cards={cards}
+              onIncreaseLikes={increaseLikes}
+              onDeleteOneCard={deleteOneCard}
+              onSelectSortTypes={setSortQuery}
+              sortTypes={sortTypes}
+            ></LowerBody>
+          )}
+          </div>
+          <div className="three">
+          <NewBoardForm
+            onAddBoard={handleAddBoard}
+            isFormVisible={isNewBoardFormVisible}
+            onToggleVisibility={() =>
+              setIsNewBoardFormVisible(!isNewBoardFormVisible)
+            }
+          />
+          </div>
         </div>
-        <div className="two">
-        {selectedBoard && (
-          <LowerBody
-            // this is the list of all the props being assigned that LowerBody will use
-            onAddCard={handleAddCard}
-            board={selectedBoard}
+        <div className="test_grid">
+          <CardList
             cards={cards}
             onIncreaseLikes={increaseLikes}
             onDeleteOneCard={deleteOneCard}
-            onSelectSortTypes={setSortQuery}
-            sortTypes={sortTypes}
-          ></LowerBody>
-        )}
-        </div>
-        <div className="three">
-        <NewBoardForm
-          onAddBoard={handleAddBoard}
-          isFormVisible={isNewBoardFormVisible}
-          onToggleVisibility={() =>
-            setIsNewBoardFormVisible(!isNewBoardFormVisible)
-          }
-        />
-         </div>
-        {/* <BoardSelector boards={boards} onSelectBoard={updateCurrentBoard} /> */}
-        {/* conditional logic to check for condition being satisfied to activate LowerBody */}
-        {/* {selectedBoard && (
-          <LowerBody
-            // this is the list of all the props being assigned that LowerBody will use
-            onAddCard={handleAddCard}
-            board={selectedBoard}
-            cards={cards}
-            onIncreaseLikes={increaseLikes}
-            onDeleteOneCard={deleteOneCard}
-            onSelectSortTypes={setSortQuery}
-            sortTypes={sortTypes}
-          ></LowerBody>
-        )} */}
+          />
         </div>
       </main>
-     
     </div>
   );
 }

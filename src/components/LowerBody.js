@@ -29,11 +29,7 @@ const LowerBody = ({
         })}
       </select>
 
-      <CardList
-        cards={cards}
-        onIncreaseLikes={onIncreaseLikes}
-        onDeleteOneCard={onDeleteOneCard}
-      />
+
     </div>
   );
 };
