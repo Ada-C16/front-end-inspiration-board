@@ -40,6 +40,7 @@ function Boards({ setCurrentBoard }) {
   const [boardList, setBoardList] = useState(boards);
   const [boardOwner, setBoardOwner] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const renderBoardList = (boardList) => {
     return boardList.map((board) => {
@@ -61,22 +62,23 @@ function Boards({ setCurrentBoard }) {
   };
 
   const handleBoardSelect = (event) => {
-    setBoardList([...boardList, {
-      board_id:
-      Math.max(...boardList.map((board) => parseInt(board.board_id))) +
-      1,
-      title: newBoardTitle,
-      owner: boardOwner
-    } ])
-  }
+    setBoardList([
+      ...boardList,
+      {
+        board_id:
+          Math.max(...boardList.map((board) => parseInt(board.board_id))) + 1,
+        title: newBoardTitle,
+        owner: boardOwner,
+      },
+    ]);
+  };
   const checkValidInput = () => {
-    if (newBoardTitle === "" || boardOwner === ""){
-      setCanSubmit(false)
+    if (newBoardTitle === "" || boardOwner === "") {
+      setCanSubmit(false);
+    } else {
+      setCanSubmit(true);
     }
-    else{
-      setCanSubmit(true)
-    }
-  }
+  };
 
   return (
     <div className="App">
@@ -91,27 +93,37 @@ function Boards({ setCurrentBoard }) {
       )}
       {selectedOwner && <h2> Owner Selected: {selectedOwner} </h2>}
       <h3> Create A New Board</h3>
-      <label> Title </label>
-      <input
-        value={newBoardTitle}
-        onInput={(event) => {
-          setNewBoardTitle(event.target.value)
-          checkValidInput()
-          }
-        }
-      />
-      <p>{newBoardTitle}</p>
-      <label> Owner's Name </label>
-      <input 
-        value = {boardOwner}
-        onInput={(event) => {
-          setBoardOwner(event.target.value)
-          checkValidInput()
-          }
-        }
-      >
-      </input>
-      <button onClick={handleBoardSelect} disabled={!canSubmit}> Submit </button>
+      {showForm && (
+        <>
+          <label> Title </label>
+          <input
+            value={newBoardTitle}
+            onInput={(event) => {
+              setNewBoardTitle(event.target.value);
+              checkValidInput();
+            }}
+          />
+          <p>{newBoardTitle}</p>
+          <label> Owner's Name </label>
+          <input
+            value={boardOwner}
+            onInput={(event) => {
+              setBoardOwner(event.target.value);
+              checkValidInput();
+            }}
+          ></input>
+          <button onClick={handleBoardSelect} disabled={!canSubmit}>
+            {" "}
+            Submit{" "}
+          </button>
+        </>
+      )}
+      <br />
+      <br />
+      <br />
+      <button onClick={() => setShowForm(!showForm)}>
+        {showForm ? "Hide New Board Form" : "Show New Board Form"}
+      </button>
     </div>
   );
 }
