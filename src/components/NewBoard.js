@@ -51,7 +51,7 @@ const NewBoard = ({ onSubmitCallBack }) => {
           />
         </div>
 
-        <button>Submit</button>
+        <button onClick={onSubmit}>Submit</button>
         <p>Preview: </p>
 
         <button>Show New Board Form/Hide New Board Form</button>

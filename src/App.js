@@ -46,19 +46,20 @@ function App() {
 
   const addBoard = (board) => {
     axios
-      .post(`${URL}`, {
-        title: board.text,
+      .post(`${URL}/boards`, {
+        title: board.title,
         owner: board.owner,
       })
       .then((response) => {
         console.log(response.data);
-        getBoard();
-        // const newBoard = [...];
+        const newBoard = response.data;
+        const newBoardList = [...boardData, newBoard];
+        setBoardData(newBoardList);
         // task.id = response.data.task.id;
         // newTasks.push(task);
         // updateTaskState(newTasks);
         // Alternative way to update the state
-        // getTasks();
+        // getBoard();
       })
       .catch((error) => {
         console.log(error.response.data);
