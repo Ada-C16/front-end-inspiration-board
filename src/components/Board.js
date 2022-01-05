@@ -8,7 +8,7 @@ const Board = () => {
   return (
     <div className="cardsDisplay">
       <section className="cards">
-        <h2>Cards for Board</h2>
+        <h2>Cards for Name of Board</h2>
         {/* get all cards that belong to a board
         store cards in a list
         loop over that list to create the card components */}

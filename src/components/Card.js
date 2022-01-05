@@ -7,8 +7,8 @@ const Card = () => {
       <p>Insert message here</p>
       <div className="reactions">
         <span>♥️</span>
-        <span>+1</span>
-        <span>delete</span>
+        <a href="">+1</a>
+        <a href="">delete</a>
       </div>
     </div> 
   )
