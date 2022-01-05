@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Boards from "./components/Boards";
-import Card from "./components/Card";
 import Board from "./components/Board";
+import NewCardForm from "./components/NewCardForm";
 
 const CARDS = [
   {
@@ -43,6 +43,24 @@ function App() {
       <div className="App">
         <h1> Inspiration Board </h1>
         <Boards setCurrentBoard={setCurrentBoard} />
+        {currentBoard && (
+          <NewCardForm
+            board={currentBoard}
+            createCard={(message) => {
+              setCurrentCards((prevCards) => [
+                ...prevCards,
+                {
+                  card_id:
+                    Math.max(
+                      ...prevCards.map((card) => parseInt(card.card_id))
+                    ) + 1,
+                  message: message,
+                  likes_count: 0,
+                },
+              ]);
+            }}
+          />
+        )}
         {currentBoard && (
           <Board
             config={currentBoard}
