@@ -3,7 +3,7 @@ import Card from "./Card";
 
 // Will be replaced by API call. Schema from: https://github.com/Ada-C16/full-stack-inspiration-board/blob/main/hints.md
 
-const Board = ({ currentBoard, currentCards, setCurrentCards }) => {
+const CardList = ({ currentBoard, currentCards, setCurrentCards }) => {
   const renderCards = (cards) => {
     return cards.map((card) => (
       <Card
@@ -41,4 +41,4 @@ const Board = ({ currentBoard, currentCards, setCurrentCards }) => {
   );
 };
 
-export default Board;
+export default CardList;

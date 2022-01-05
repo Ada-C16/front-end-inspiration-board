@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Boards from "./components/Boards";
-import Board from "./components/Board";
+import CardList from "./components/CardList";
 import NewCardForm from "./components/NewCardForm";
 
 const CARDS = [
@@ -33,7 +33,7 @@ function App() {
     // TODO make API call instead of using constant CARDS
     if (currentBoard) {
       setCurrentCards(
-        CARDS.filter((card) => card.board_id === currentBoard.id)
+        CARDS.filter((card) => card.board_id === currentBoard.board_id)
       );
     }
   }, [currentBoard]);
@@ -55,14 +55,14 @@ function App() {
                     1,
                   message: message,
                   likes_count: 0,
-                  board_id: currentBoard.id,
+                  board_id: currentBoard.board_id,
                 },
               ]);
             }}
           />
         )}
         {currentBoard && (
-          <Board
+          <CardList
             currentBoard={currentBoard}
             currentCards={currentCards}
             setCurrentCards={setCurrentCards}

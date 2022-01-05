@@ -3,31 +3,31 @@ import React, { useState } from "react";
 function Boards({ setCurrentBoard }) {
   const boards = [
     {
-      id: 1,
+      board_id: 1,
       title: "Inspirational Quotes",
       owner: "Nourhan",
       cards: [],
     },
     {
-      id: 2,
+      board_id: 2,
       title: "Workout Goals",
       owner: "Tanja",
       cards: [],
     },
     {
-      id: 3,
+      board_id: 3,
       title: "Chores",
       owner: "Ahmed",
       cards: [],
     },
     {
-      id: 4,
+      board_id: 4,
       title: "Reminders",
       owner: "Yousef",
       cards: [],
     },
     {
-      id: 5,
+      board_id: 5,
       title: "Meal Plan",
       owner: "Sarah",
       cards: [],
@@ -38,11 +38,13 @@ function Boards({ setCurrentBoard }) {
   const [selectedOwner, setSelectedOwner] = useState(null);
   const [newBoardTitle, setNewBoardTitle] = useState("");
   const [boardList, setBoardList] = useState(boards);
+  const [boardOwner, setBoardOwner] = useState("");
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const renderBoardList = (boardList) => {
     return boardList.map((board) => {
       return (
-        <option key={board.id} value={board.id} label={board.title}>
+        <option key={board.board_id} value={board.board_id} label={board.title}>
           {board.title}
         </option>
       );
@@ -50,19 +52,37 @@ function Boards({ setCurrentBoard }) {
   };
 
   const handleOptionSelect = (event) => {
-    const selectedBoard = boards.find(
-      (board) => board.id === parseInt(event.target.value)
+    const selectedBoard = boardList.find(
+      (board) => board.board_id === parseInt(event.target.value)
     );
     setSelectedBoardTitle(selectedBoard.title);
     setSelectedOwner(selectedBoard.owner);
     setCurrentBoard(selectedBoard);
   };
 
+  const handleBoardSelect = (event) => {
+    setBoardList([...boardList, {
+      board_id:
+      Math.max(...boardList.map((board) => parseInt(board.board_id))) +
+      1,
+      title: newBoardTitle,
+      owner: boardOwner
+    } ])
+  }
+  const checkValidInput = () => {
+    if (newBoardTitle === "" || boardOwner === ""){
+      setCanSubmit(false)
+    }
+    else{
+      setCanSubmit(true)
+    }
+  }
+
   return (
     <div className="App">
       <h2> Boards </h2>
-      <select size={boards.length} onChange={handleOptionSelect}>
-        {renderBoardList(boards)}
+      <select size={boardList.length} onChange={handleOptionSelect}>
+        {renderBoardList(boardList)}
       </select>
       {selectedBoard ? (
         <h2> Board Selected: {selectedBoard}</h2>
@@ -74,12 +94,24 @@ function Boards({ setCurrentBoard }) {
       <label> Title </label>
       <input
         value={newBoardTitle}
-        onInput={(event) => setNewBoardTitle(event.target.value)}
+        onInput={(event) => {
+          setNewBoardTitle(event.target.value)
+          checkValidInput()
+          }
+        }
       />
       <p>{newBoardTitle}</p>
       <label> Owner's Name </label>
-      <input></input>
-      <button> Submit </button>
+      <input 
+        value = {boardOwner}
+        onInput={(event) => {
+          setBoardOwner(event.target.value)
+          checkValidInput()
+          }
+        }
+      >
+      </input>
+      <button onClick={handleBoardSelect} disabled={!canSubmit}> Submit </button>
     </div>
   );
 }
