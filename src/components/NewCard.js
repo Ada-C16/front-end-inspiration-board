@@ -1,29 +1,43 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import "./NewCard.css";
 
 const NewCard = () => {
-  // const [newCard, setNewCard] = useState({
-  //   text: "",
-  //   done: false,
-  // });
+  const emptyForm = {
+    message: "",
+  };
 
-  // const inputValidation = () => {
-  //   return newCard.text.length < 40;
-  // };
+  const [formFields, setFormFields] = useState(emptyForm);
+
+  const addMessage = (e) => {
+    setFormFields({
+      message: e.target.value,
+    });
+    document.getElementById("cardPreview").textContent = e.target.value;
+  };
+  const messageSubmit = (e) => {
+    e.preventDefault();
+    console.log(formFields);
+    setFormFields(emptyForm);
+  };
 
   return (
-    <div>
-      <h2>Make a New Card!</h2>
+    <form onSubmit={messageSubmit}>
       <div>
-        <label>
-          Message:
-          <input type="text" />
-        </label>
+        <div>Make a New Card!</div>
+        <div>
+          <label>Message:</label>
+          <input
+            type="text"
+            name="message"
+            onChange={addMessage}
+            value={formFields.message}
+          ></input>
+        </div>
+        <span>Preview</span>
+        <button>Submit</button>
       </div>
-      <span>Preview</span>
-      <button>Submit</button>
-    </div>
+    </form>
   );
 };
 
