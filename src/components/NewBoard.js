@@ -10,11 +10,12 @@ const NewBoard = ({ onSubmitCallBack }) => {
 
   const handleChange = (event) => {
     console.log(event.target.value);
-    setNewBoard();
+    // setNewBoard(newBoard);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
+
     onSubmitCallBack(newBoard);
     setNewBoard({
       text: "",
