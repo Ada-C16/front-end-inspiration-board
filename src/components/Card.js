@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Card.css";
 
-const Card = ({ message, likes_count, id, addLike }) => {
+const Card = ({ message, likes_count, card_id, setCards }) => {
   return (
     <div className="card">
-      I am a NEW card
+      {message}
       <h6>{likes_count}😻</h6>
-      <button onClick={addLike}>+1</button>
+      <button>+1</button>
       <button>Delete</button>
     </div>
   );
@@ -16,7 +16,8 @@ const Card = ({ message, likes_count, id, addLike }) => {
 Card.propTypes = {
   message: PropTypes.string.isRequired,
   likes_count: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
+  card_id: PropTypes.number.isRequired,
+  setCards: PropTypes.func.isRequired,
 };
 
 export default Card;

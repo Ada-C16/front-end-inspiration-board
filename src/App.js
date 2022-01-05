@@ -55,11 +55,26 @@ function App() {
         const newBoard = response.data;
         const newBoardList = [...boardData, newBoard];
         setBoardData(newBoardList);
-        // task.id = response.data.task.id;
-        // newTasks.push(task);
-        // updateTaskState(newTasks);
-        // Alternative way to update the state
-        // getBoard();
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    if (selectBoard) {
+      getCards(selectBoard.board_id);
+    }
+  }, [selectBoard]);
+
+  const getCards = (board_id) => {
+    axios
+      .get(`${URL}/boards/${board_id}/cards`)
+      .then((response) => {
+        console.log(response.data);
+        const newCards = response.data;
+        setCards(newCards);
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -79,7 +94,13 @@ function App() {
         />
       </div>
       <div className="App-card">
-        <CardList />
+        {/*{selectBoard && (
+          <p>
+            {selectBoard.owner}: {selectBoard.title}
+          </p>
+        )} */}
+
+        <CardList cards={cards} setCards={setCards} />
       </div>
       <div className="App-sidebar">
         <NewBoard onSubmitCallBack={addBoard} />

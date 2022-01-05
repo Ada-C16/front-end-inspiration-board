@@ -55,7 +55,11 @@ Board.propTypes = {
       board_id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  selectBoard: PropTypes.string.isRequired,
+  selectBoard: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    board_id: PropTypes.number.isRequired,
+  }),
   boardCallBack: PropTypes.func.isRequired,
 };
 
