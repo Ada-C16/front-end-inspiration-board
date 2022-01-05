@@ -37,7 +37,7 @@ const App = () => {
   //   setData(result.data);
   // });
   useEffect(async () => {
-    const res = await axios('https://kids-in-covid-board.herokuapp.com/boards',);
+    const res = await axios(GET_ALL_BOARDS_URL,);
     setBoards(res.data)
   }, []);
 
