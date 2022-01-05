@@ -1,0 +1,66 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  height: 150px;
+  min-width: 1065px;
+  color: white;
+  border-width: thick;
+  background-color: #1e55e2;
+  border-color: white;
+  border-style: solid;
+  font-family: "Lato", sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-style {
+  font-size: 75px;
+}
+
+.container {
+  display: grid;
+  min-width: 99%;
+  min-height: 100vh;
+  grid-gap: 5px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: minmax(1px, auto) 1fr;
+  grid-template-areas:
+    "a a a a c c c c c c c c"
+    "b b b b c c c c c c c c";
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.new-board-container {
+  background-color: #e1ef25;
+  min-width: 275px;
+  grid-area: a;
+  font-family: "Lato", sans-serif;
+  font-weight: bolder;
+  padding: 15px;
+  height: 275px;
+}
+
+.boards-list-container {
+  background-color: #ef257c;
+  min-width: 250px;
+  color: white;
+  grid-area: b;
+  padding: 15px;
+  font-family: "Lato", sans-serif;
+}
+
+.cards-container {
+  background-color: #25ef98;
+  min-width: 900px;
+  grid-area: c;
+  padding: 15px;
+  font-family: "Lato", sans-serif;
+}

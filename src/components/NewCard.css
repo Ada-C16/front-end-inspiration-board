@@ -1,0 +1,36 @@
+.create-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.message-label-and-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-new-card-label {
+    font-size: larger;
+    padding-top: 15px;
+}
+
+.message {
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+.red-outline {
+    border: red solid 4px;
+}
+
+.error-message {
+    color: red;
+    padding-top: 10px;
+    font-size: small;
+}

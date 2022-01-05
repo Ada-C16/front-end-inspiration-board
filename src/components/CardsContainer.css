@@ -1,0 +1,56 @@
+/* Overall wrapper for this section*/
+.one-board-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Box for name and owner of board */
+.board-header {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-content: center;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    min-width: 500px;
+}
+
+.board-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.board-owner {
+    display: flex;
+    font-size: medium;
+    justify-content: center;
+}
+
+/* Box for new card submission */
+.new-card-submission-container {
+    background-color: white;
+    margin-left: 30px; 
+    margin-right: 30px; 
+    border-radius: 10px; 
+}
+
+/* Box for cards themselves */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sort {
+    text-align: right;
+    margin-right: 35px;
+}

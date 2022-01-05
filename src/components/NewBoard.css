@@ -1,0 +1,16 @@
+.new-board-style {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.owner-label {
+  padding-top: 10px;
+}
+
+
+.submit-button {
+  display: flex;
+  justify-content: right;
+  padding-top: 20px;
+}

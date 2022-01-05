@@ -1,0 +1,46 @@
+.individual-card-container {
+  display: flex;
+  background-color: white;
+  box-shadow: -5px 7px 7px black;
+  margin: 20px;
+  width: 250px;
+  height: 200px;
+  display: grid;
+
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-areas:
+    ". . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . ."
+    ". . h h h h h h h h h h h . ."
+    ". . h h h h h h h h h h h . ."
+    ". . h h h h h h h h h h h . ."
+    ". . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . ."
+    "q q l l . . . . . . . d d d d";
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.card-message {
+  grid-area: h;
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+.likes-count {
+  grid-area: l;
+}
+
+.heart-button {
+  grid-area: q;
+}
+
+.delete-button {
+  grid-area: d;
+}
