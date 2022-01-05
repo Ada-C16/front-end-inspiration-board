@@ -6,7 +6,7 @@ import "./Sticky.css";
 const Sticky = (props) => {
   return (
     <div className="sticky">
-      <button className="sticky-delete" onClick={props.onDelete}>
+      <button className="sticky-delete" onClick={ (event) => props.onDelete(props.boardID, props.id, event)}>
         X
       </button>
       <article className="sticky-text">{props.text}</article>

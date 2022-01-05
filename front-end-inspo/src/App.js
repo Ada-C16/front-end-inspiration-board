@@ -78,13 +78,20 @@ function App() {
       });
   };
 
-  const onDelete = (stickyID) => {
+  const onDelete = (boardID, stickyID) => {
     // make an API call to DELETE a sticky when clicked
+    axios
+      .delete(`http://localhost:5001/board/${boardID}/${stickyID}`)
+      .then(() => {
+        createStickies(boardID);
+      })
+      .catch((error)=>{
+        console.log(error.message)
+      });
   };
 
   const onLike = (boardID, stickyID) => {
     // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked -- I don't think we have a mechanism for subtracting likes right now
-    console.log('I print when clicked')
     axios
       .patch(`http://localhost:5001/board/${boardID}/${stickyID}`)
       .then(() => {
