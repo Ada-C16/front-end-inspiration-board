@@ -110,14 +110,14 @@ function App() {
       .then((response) => {
         const updatedCards = [...cards];
         for (let card of updatedCards) {
-          // console.log()
+          
 
           if (id === card.id) {
-            console.log("we are here")
+            
             card.likes_count = response.data.likes_count;
           }
         }
-        console.log(`UPDATEDDD CARDDDS`, updatedCards);
+        
         setCards(updatedCards);
       })
       .catch((error) => {
@@ -126,14 +126,33 @@ function App() {
   };
 
   // This sets the states for 'Cards', this changes when a card is deleted from the deck
+  // const deleteCard = (id) => {
+  //   const updatedCards = [...cards];
+  //   const newCards = updatedCards.filter((card) => {
+  //     if (card.id !== id) {
+  //       return card;
+  //     }
+  //   });
+  //   setCards(newCards);
+  // };
+
   const deleteCard = (id) => {
-    const updatedCards = [...cards];
-    const newCards = updatedCards.filter((card) => {
-      if (card.id !== id) {
-        return card;
-      }
-    });
-    setCards(newCards);
+    axios
+      .delete(`${URL}/boards/${selectedBoard.id}/${id}`)
+      .then((response) => {
+        const updatedCards = [...cards];
+        const newCards = updatedCards.filter((card) => {
+          if (card.id !== id) {
+            return card;
+          }
+          return undefined
+        });
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+
   };
 
   // This sets the states for 'Cards', this changes when a card is added to the deck
