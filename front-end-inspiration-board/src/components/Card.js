@@ -11,7 +11,6 @@ const Card = (props) => {
     // props.updateCardDisplayCallback(props.cardList, props.currentBoard)
 
 
-<<<<<<< HEAD
     // const currentCards = [...props.cardList];
     // for (let card of currentCards) {
     //   if (props.id === card.card_id) {
@@ -20,14 +19,13 @@ const Card = (props) => {
   }
   
 
-=======
     const currentCards = [...props.cardList];
     for (let card of currentCards) {
       if (props.id === card.card_id) {
         setCardLikeCount(card.cardLikes + 1)
         props.addLikeCallback(card.card_id)
       }
-  }}
+  }
   
   // this function is for debugging purposes
   const logCardInfo = () => {
@@ -40,7 +38,6 @@ const Card = (props) => {
     });
   }
   
->>>>>>> c05ac281116e1e43b3cd307a79a8158de5f2acf8
 
   //deletes card from state AND from backend seperately (to ensure frontend updates w/o waiting for request to backend)
   const handleDeleteCard = () => {
