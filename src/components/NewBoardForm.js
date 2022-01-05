@@ -49,7 +49,7 @@ const NewBoardForm = (props) => {
       <input onChange={onTitleChange} value={formFields.title} name="title" type="text"></input>
       <label htmlFor="ownerName">Owner's Name</label>
       <input onChange={onOwnerChange} value={formFields.owner} name="ownerName" type="text"></input>
-      <p>Preview: <span id="boardPreview">-</span></p>
+      <p>Preview: <span id="boardPreview"></span></p>
       {/* <button onClick={props.addNewBoardCallback(formFields)} type="submit">Submit Query</button> */}
       <button type="submit">Submit Query</button>
     </form>

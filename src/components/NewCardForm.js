@@ -22,8 +22,8 @@ const NewCardForm = () => {
 
   return (
       <form onSubmit={onFormSubmit}>
-      <h2>Create a new Card</h2>
-        <label htmlFor="message">message</label>
+      <h2>Create New Card</h2>
+        <label htmlFor="message">Message</label>
         <input type="text" name="message" onChange={onMessageChange} value={formFields.message}></input>
         <p>Preview: <span id="cardPreview"></span></p>
         <button type="submit">Submit message</button>
