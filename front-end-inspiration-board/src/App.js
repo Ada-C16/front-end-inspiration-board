@@ -133,6 +133,8 @@ function App() {
       deleteABoard(element.id);
     });
     setBoardList([])
+    setCurrentBoard("")
+    setCardList([])
   };
 
 
@@ -142,6 +144,13 @@ function App() {
       .patch(`${boardURL}/${currentBoard.id}/cards/${cardID}`)
       .then((response) => {
         console.log("Like added.")
+        const cards = [...cardList]
+        for (let card of cards) {
+          if (card.card_id === cardID) {
+            card.likes_count = Number(card.likes_count) + 1
+          }
+        }
+        setCardList(cards)
       })
       .catch((err) => console.log(err));
   }
@@ -149,9 +158,9 @@ function App() {
   const sortAllCards = () => {
     let cardListCopy = [...cardList]
     // let sortedList = []
-    cardListCopy.sort((a, b) => a.likes_count > b.likes_count ? 1 : -1)
+    // cardListCopy.sort((a, b) => Number(a.likes_count) > Number(b.likes_count) ? 1 : -1)
     // Cabebe's experimenting with sort
-    // cardListCopy.sort((a, b) => {return a.likes_count - b.likes_count;})
+    cardListCopy.sort((a, b) => {return Number(a.likes_count) - Number(b.likes_count);})
     console.log(cardListCopy)
     setCardList(cardListCopy)
     // cardListCopy.map((item, i) => 
