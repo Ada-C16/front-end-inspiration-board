@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "./Card";
 
 // Will be replaced by API call. Schema from: https://github.com/Ada-C16/full-stack-inspiration-board/blob/main/hints.md
 
-const Board = ({ config, currentCards, setCurrentCards }) => {
+const Board = ({ currentBoard, currentCards, setCurrentCards }) => {
   const renderCards = (cards) => {
     return cards.map((card) => (
       <Card
@@ -35,7 +35,7 @@ const Board = ({ config, currentCards, setCurrentCards }) => {
 
   return (
     <section>
-      <h1>Cards for {config.title}</h1>
+      <h2>Cards for {currentBoard.title}</h2>
       {renderCards(currentCards)}
     </section>
   );

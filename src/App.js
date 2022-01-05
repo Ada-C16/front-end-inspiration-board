@@ -51,11 +51,11 @@ function App() {
                 ...prevCards,
                 {
                   card_id:
-                    Math.max(
-                      ...prevCards.map((card) => parseInt(card.card_id))
-                    ) + 1,
+                    Math.max(...CARDS.map((card) => parseInt(card.card_id))) +
+                    1,
                   message: message,
                   likes_count: 0,
+                  board_id: currentBoard.id,
                 },
               ]);
             }}
@@ -63,7 +63,7 @@ function App() {
         )}
         {currentBoard && (
           <Board
-            config={currentBoard}
+            currentBoard={currentBoard}
             currentCards={currentCards}
             setCurrentCards={setCurrentCards}
           />
