@@ -43,15 +43,32 @@ function App() {
   // state to select board - default to empty
   const [selectBoard, setSelectBoard] = useState();
 
-  // const updateSelectBoard = (event) => {
-  //   setSelectBoard(event.target.value);
-  //   console.log("New board selected!");
-  //   console.log(selectBoard);
-  // };
+  const addBoard = (board) => {
+    axios
+      .post(`${URL}`, {
+        title: board.text,
+        owner: board.owner,
+      })
+      .then((response) => {
+        console.log(response.data);
+        getBoard();
+        // const newBoard = [...];
+        // task.id = response.data.task.id;
+        // newTasks.push(task);
+        // updateTaskState(newTasks);
+        // Alternative way to update the state
+        // getTasks();
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
 
   return (
     <div className="App">
-      <header className="App-header">Inspiration Board</header>
+      <header className="App-header">
+        <h1>Inspiration Board</h1>
+      </header>
       <div className="App-board">
         <Board
           boardData={boardData}
@@ -63,7 +80,7 @@ function App() {
         <CardList />
       </div>
       <div className="App-sidebar">
-        <NewBoard />
+        <NewBoard onSubmitCallBack={addBoard} />
         <NewCard />
       </div>
     </div>

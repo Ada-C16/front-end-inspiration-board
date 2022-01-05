@@ -14,7 +14,7 @@ const NewCard = () => {
 
   return (
     <div>
-      <div>Make a New Card!</div>
+      <h2>Make a New Card!</h2>
       <div>
         <label>
           Message:

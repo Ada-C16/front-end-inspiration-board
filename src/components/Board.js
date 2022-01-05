@@ -1,4 +1,4 @@
-import PropTypes, { useState } from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 import "./Board.css";
 
@@ -12,21 +12,16 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
   });
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     let newState = event.target.value;
     boardCallBack(newState);
   };
+
+  console.log(selectBoard);
 
   return (
     <div className="board">
       <div>
         <label>Choose your board: </label>
-        {/* <select value={selectBoard} onChange={handleChange}>
-          {boardOptions.map((option) => (
-            <option value={option.value}>{option.label}</option>
-          ))}
-        </select> */}
-        {/* value={selectBoard.value} onChange={handleChange} */}
         <select value={selectBoard} onChange={handleChange}>
           {boardOptions}
         </select>

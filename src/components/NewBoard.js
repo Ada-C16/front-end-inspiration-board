@@ -2,43 +2,55 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import "./NewBoard.css";
 
-const NewBoard = () => {
-  // const [newBoard, setNewBoard] = useState({
-  //   text: "",
-  //   done: false,
-  // });
+const NewBoard = ({ onSubmitCallBack }) => {
+  const [newBoard, setNewBoard] = useState({
+    text: "",
+    done: false,
+  });
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setNewBoard();
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    onSubmitCallBack(newBoard);
+    setNewBoard({
+      text: "",
+      done: false,
+    });
+  };
 
   return (
     <div>
-      <div>Make a New Board</div>
-      <div>
-        <label>
+      <h2>Make a New Board</h2>
+      <form>
+        <div>
           Title:
-          <input type="text" name="title" />
-        </label>
-      </div>
-      <div>
-        <label>
+          <input
+            type="text"
+            name="title"
+            value={newBoard.text}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
           Owner:
           <input type="text" />
-        </label>
-      </div>
-      <button>Submit</button>
-      <p>Preview: </p>
+        </div>
 
-      <button>Show New Board Form/Hide New Board Form</button>
+        <button>Submit</button>
+        <p>Preview: </p>
+
+        <button>Show New Board Form/Hide New Board Form</button>
+      </form>
     </div>
   );
 };
 
-// NewBoard.propTypes = {
-//   boardData: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       title: PropTypes.string.isRequired,
-//       owner: PropTypes.string.isRequired,
-//       board_id: PropTypes.number.isRequired,
-//     })
-//   ).isRequired,
-// };
+NewBoard.propTypes = {
+  onSubmitCallBack: PropTypes.func.isRequired,
+};
 
 export default NewBoard;
