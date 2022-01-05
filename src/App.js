@@ -37,11 +37,11 @@ function App() {
 
   const addNewBoard = (newBoard) => {
     axios.post('http://localhost:5000/boards', newBoard)
-    .then(response => {
+    .then((response) => {
       // setBoardData(response.data)
       console.log(response.data)
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error)
     })
   }
