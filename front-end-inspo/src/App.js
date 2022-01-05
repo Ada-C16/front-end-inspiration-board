@@ -14,7 +14,7 @@ import React from "react";
 function App() {
   const [dropDownList, setDropDownList] = useState([""]);
   const [currentBoard, setCurrentBoard] = useState({
-    name: "State hasn't been set yet",
+    name: "",
     id: null,
   });
   const [currentStickies, setCurrentStickies] = useState([]);
@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     createDropdown();
-    // createStickies();
   }, []);
 
   const createStickies = (board_id) => {
@@ -115,7 +114,23 @@ function App() {
       id: boardId,
     });
     createStickies(boardId);
-    // call getStickies (we need getStickies bc we need to be able to generate the first set of stickies)
+  };
+
+  const createSticky = (event) => {
+    event.preventDefault();
+    const stickyInput = document.querySelector("#new-sticky");
+    var request_body = {
+      text: stickyInput.value,
+    };
+    stickyInput.value = "";
+    axios
+      .post(`${URL}/${currentBoard.id}`, request_body)
+      .then(() => {
+        createStickies(currentBoard.id);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const getStickies = (boardID) => {
@@ -164,8 +179,8 @@ function App() {
         </div>
         <div className="sticky-submit-container">
           Submit a new sticky:
-          <form>
-            <input type="text" />
+          <form onSubmit={createSticky}>
+            <input id="new-sticky" type="text" />
             <input type="submit" />
           </form>
         </div>
