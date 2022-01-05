@@ -14,12 +14,14 @@ import React from "react";
 function App() {
   const [dropDownList, setDropDownList] = useState([""]);
   const [currentBoard, setCurrentBoard] = useState({
-    name: "",
+    name: "State hasn't been set yet",
     id: null,
   });
+  const [currentStickies, setCurrentStickies] = useState([]);
 
   useEffect(() => {
     createDropdown();
+    // createStickies();
   }, []);
 
   const stickyData = {
@@ -51,20 +53,28 @@ function App() {
     ],
   };
 
-  const createStickies = (stickyData) => {
-    return stickyData["stickies"].map((sticky) => {
-      return (
-        <Sticky
-          key={sticky.id}
-          text={sticky.text}
-          timestamp={sticky.timestamp}
-          id={sticky.id}
-          likes={sticky.likes}
-          onDelete={onDelete}
-          onLike={onLike}
-        />
-      );
-    });
+  const createStickies = (board_id) => {
+    axios
+      .get(`http://localhost:5000/board/${board_id}`)
+      .then((response) => {
+        var stickies = response.data.map((sticky) => {
+          return (
+            <Sticky
+              key={sticky.id}
+              text={sticky.text}
+              date={sticky.date}
+              id={sticky.id}
+              num_likes={sticky.num_likes}
+              onDelete={onDelete}
+              onLike={onLike}
+            />
+          );
+        });
+        setCurrentStickies(stickies);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const onDelete = (stickyID) => {
@@ -98,6 +108,7 @@ function App() {
             document.querySelector("[name=boards]").selectedIndex
           ].id,
         });
+        createStickies(response.data.boards[0].id);
       })
       .catch((error) => {
         console.log(error.message);
@@ -114,6 +125,7 @@ function App() {
       name: document.querySelector("[name=boards]").value,
       id: boardId,
     });
+    createStickies(boardId);
     // call getStickies (we need getStickies bc we need to be able to generate the first set of stickies)
   };
 
@@ -174,7 +186,7 @@ function App() {
       <section className="stickies-container">
         <div className="stickies-subcontainer">
           {/* put sticky components here */}
-          {createStickies(stickyData)}
+          {currentStickies}
         </div>
       </section>
     </div>
