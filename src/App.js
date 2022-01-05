@@ -6,7 +6,6 @@ import Boards from './components/Boards.js';
 import BoardForm from './components/BoardForm';
 import CardForm from './components/CardForm';
 import Cards from './components/Cards';
-
 const App = () => {
 
 
@@ -36,10 +35,16 @@ const App = () => {
 
   //   setData(result.data);
   // });
+  // useEffect(async () => {
+  //   const res = await axios.get(`{process.env.REACT_APP_GET_ALL_BOARDS_URL}`);
+  //   setBoards(res.data)
+  // }, []);
+
   useEffect(async () => {
-    const res = await axios(GET_ALL_BOARDS_URL,);
+    const res = await axios.get('https://kids-in-covid-board.herokuapp.com/boards');
     setBoards(res.data)
   }, []);
+  
 
   const CARDS = [
     {
