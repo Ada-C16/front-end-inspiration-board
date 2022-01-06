@@ -17,6 +17,11 @@ function App() {
   
   
 
+  const [selectedBoard, setSelectedBoard] = useState({
+    title: "",
+    owner: "",
+  });
+
   const getBoards = () => {
     axios
       .get("https://trm2-inspiration-board.herokuapp.com/boards")
@@ -52,6 +57,19 @@ function App() {
         console.log(error);
       });
   };
+
+  // SelectedBoard feature
+  const selectBoard = (board) => {
+    setSelectedBoard(board);
+  };
+
+  const boardsElements = boardsData.map((board) => {
+    return (
+      <li>
+        <Boards board={board} onBoardSelect={selectBoard} />
+      </li>
+    );
+  });
 
   //Get cards from Board
   const [cardListData, setCards] = useState([{}]);
@@ -120,8 +138,16 @@ function App() {
           {errorMessage}
         </div>
         <div className="col">
-          <p><SelectedBoard title = {activeBoardTitle}  /> </p>
+          {/* <p><SelectedBoard title = {activeBoardTitle}  /> </p> */}
 
+          <SelectedBoard  title = {activeBoardTitle}/>
+          <p>
+            {selectedBoard.title ? (
+              `${selectedBoard.title} - ${selectedBoard.owner}`
+            ) : (
+              <em>"Select a Board from the Board List!"</em>
+            )}
+          </p>
         </div>
         <div className="col">
           <CreateANewBoard

@@ -1,3 +1,8 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .cardsFor{
 border: 2px dotted;
 color: black; 
