@@ -18,7 +18,7 @@ function App() {
     id: null,
   });
   const [currentStickies, setCurrentStickies] = useState([]);
-  const URL = "http://localhost:5001/board";
+  const URL = "https://inspo-board-memk-back-end.herokuapp.com/board";
 
   useEffect(() => {
     createDropdown();
