@@ -12,9 +12,10 @@
     background: #fff6a6;
     display: flex;
     flex-direction: column;
-    height: 15em;
-    width: 15em;
-    padding: 1em;
+    height: 12em;
+    width: 12em;
+    margin: 1em;
+    /* padding: 1em; */
     text-decoration: none;
 }
 
@@ -30,17 +31,17 @@
     align-self: flex-end;
     border-radius: 8px;
     display: table-cell;
-    font-size: 16px;
+    font-size: 14px;
     margin: 2px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .hearts-button {
     border-radius: 8px;
     display: table-cell;
-    font-size: 16px;
+    font-size: 14px;
     margin: 2px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .likes-button {
@@ -48,7 +49,7 @@
     border-radius: 8px;
     color: white;
     display: table-cell;
-    font-size: 16px;
+    font-size: 14px;
     margin: 2px;
-    padding: 10px;
+    padding: 5px;
 }

@@ -12,14 +12,10 @@ const CardsForPickMeUpQuotes = (props) => {
     .reverse();
 
   return (
-  <div>
-
-    <h3 className='cardsFor '>Cards For {props.title} </h3>
-    <div>{cardlist}</div>
-
-  
-  </div>
-
+    <div>
+      <h3 className="cardsFor ">Cards For {props.title} </h3>
+      <div className="card-container">{cardlist}</div>
+    </div>
   );
 };
 
