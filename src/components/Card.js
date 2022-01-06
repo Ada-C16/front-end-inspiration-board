@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Card = ({card}) => {
     const [likeCount, setLikeCount] = useState(card.like_count)
-    const [thisCard, setThisCard] = useState(card)
+    // const [thisCard, setThisCard] = useState(card)
     const onClick = () => {
         axios.put(`https://kids-in-covid-board.herokuapp.com/cards/${card.id}/like`)
         .then(res => {

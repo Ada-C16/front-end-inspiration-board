@@ -10,24 +10,24 @@ import Cards from './components/Cards';
 
 const App = () => {
 
-  const BOARDS = [
-    {title: "board1",
-    owner: "Sophia",
-    board_id: 1},
+  // const BOARDS = [
+  //   {title: "board1",
+  //   owner: "Sophia",
+  //   board_id: 1},
     
-    {title: "board2",
-    owner: "Jessica",
-    board_id: 2}, 
+  //   {title: "board2",
+  //   owner: "Jessica",
+  //   board_id: 2}, 
     
-    {title: "board3",
-    owner: "Makhabat",
-    board_id: 3}, 
+  //   {title: "board3",
+  //   owner: "Makhabat",
+  //   board_id: 3}, 
     
-    {title: "board4",
-    owner: "Alie",
-    board_id: 4}
-  ]
-  const [boards, setBoards] = useState(BOARDS);
+  //   {title: "board4",
+  //   owner: "Alie",
+  //   board_id: 4}
+  // ]
+  const [boards, setBoards] = useState([]);
   // useEffect(async () => {
   //   const result = await axios(
   //     'https://hn.algolia.com/api/v1/search?query=redux',
@@ -46,31 +46,32 @@ const App = () => {
   }, []);
   
 
-  const CARDS = [
-    {
-      message: 'Message1',
-      card_id: 1,
-      board_id: 4,
-      like_count: 2
-    },
-    {
-      message: 'Message2',
-      card_id: 2,
-      board_id: 4,
-      like_count: 30
-    },
-    {
-      message: 'Message3',
-      card_id: 3,
-      board_id: 1,
-      like_count: 0
-    }
-  ]
+  // const CARDS = [
+  //   {
+  //     message: 'Message1',
+  //     card_id: 1,
+  //     board_id: 4,
+  //     like_count: 2
+  //   },
+  //   {
+  //     message: 'Message2',
+  //     card_id: 2,
+  //     board_id: 4,
+  //     like_count: 30
+  //   },
+  //   {
+  //     message: 'Message3',
+  //     card_id: 3,
+  //     board_id: 1,
+  //     like_count: 0
+  //   }
+  // ]
   
-  const [cards, setCards] = useState(CARDS);
+  const [cards, setCards] = useState([]);
   useEffect(async () => {
     const res = await axios('https://kids-in-covid-board.herokuapp.com/cards');
     setCards(res.data)
+    console.log(res.data)
   }, []);
   
   return (
