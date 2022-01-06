@@ -5,3 +5,12 @@
     box-shadow: -15px 7px 1px #efd0c8;
     text-align: center;
 }
+
+.boardList{
+
+    max-height: 9em;
+    /* overflow: scroll; */
+    border: black solid 1px;
+    scroll-behavior: auto;
+    overflow-y: scroll
+}

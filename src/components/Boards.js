@@ -22,7 +22,10 @@ const Boards = (props) => {
   return (
     <div className="timeline">
       <h4 className="boardsHeader">Boards</h4>
-      <ol>{boards}</ol>
+    <div className = 'boardList'>
+      <ol >{boards}</ol>
+    </div>
+      
     </div>
   );
 };

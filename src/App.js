@@ -14,6 +14,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [activeBoard, setActiveBoard] = useState(0);
   const [activeBoardTitle, setActiveBoardTitle] = useState('')
+  const [activeOwnerName, setActiveOwnerName] = useState ('')
   
   
 
@@ -119,6 +120,7 @@ function App() {
       console.log(Board, "BOARDDDDDDD")
       setActiveBoard(Board.id)
       setActiveBoardTitle(Board.title)
+      setActiveOwnerName(Board.owner)
       
 
   }
@@ -138,9 +140,7 @@ function App() {
           {errorMessage}
         </div>
         <div className="col">
-          {/* <p><SelectedBoard title = {activeBoardTitle}  /> </p> */}
-
-          <SelectedBoard  title = {activeBoardTitle}/>
+          <SelectedBoard  title = {activeBoardTitle} owner = {activeOwnerName}/>
           <p>
             {selectedBoard.title ? (
               `${selectedBoard.title} - ${selectedBoard.owner}`
