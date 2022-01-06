@@ -40,9 +40,13 @@ function App() {
   const readSelectedBoard = (board_id, title) => {
     axios.get(`http://localhost:5000/boards/${board_id}/cards`)
     .then((response) => {
+// find board_id in list of boards 
+// set selected board to that board object
       setSelectedBoard(response.data);
-      console.log(response.data);
+      console.log(response.data, "this is readselectedboard");
       document.getElementById("selectedBoard").textContent = title;
+      // line 47 doc.... is not React-y trying to do something React already does
+      // too many axios calls? We already have the info we need?
     })
     .catch((error) => {
       console.log(error)
@@ -50,6 +54,7 @@ function App() {
   }
 
   const addNewCard = (newCard) => {
+    console.log(selectedBoard, "This is selectedBoard")
     axios.post(`http://localhost:5000/boards/${selectedBoard.board_id}/cards`, newCard)
     .then((response) => {
       // setBoardData(response.data)
