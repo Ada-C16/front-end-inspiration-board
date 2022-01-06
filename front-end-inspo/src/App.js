@@ -18,7 +18,7 @@ function App() {
     id: null,
   });
   const [currentStickies, setCurrentStickies] = useState([]);
-  const URL = "http://localhost:5000/board";
+  const URL = "http://localhost:5001/board";
 
   useEffect(() => {
     createDropdown();
@@ -62,7 +62,7 @@ function App() {
   };
 
   const onLike = (boardID, stickyID) => {
-    // make an API call to PATCH sticky -- adds OR subtracts 1 like when clicked -- I don't think we have a mechanism for subtracting likes right now
+    // make an API call to PATCH sticky -- adds 1 like when clicked
     axios
       .patch(`${URL}/${boardID}/${stickyID}`)
       .then(() => {
@@ -139,7 +139,7 @@ function App() {
     var request_body = {
       name: boardName.value,
     };
-    console.log(boardName.value);
+
     axios
       .post(`${URL}`, request_body)
       .then((response) => {
@@ -147,10 +147,32 @@ function App() {
           name: boardName.value,
           id: response.data.id,
         });
+        boardName.value = ""
+        axios
+          .get(`${URL}`)
+          .then((response) => {
+            setDropDownList(
+              response.data["boards"].map((board) => {
+                // added boardID as a prop - MB
+                return (
+                  <DropdownItem
+                    key={board.id}
+                    boardId={board.id}
+                    name={board.name}
+                  />
+                );
+              }))
+          .catch((error) => {
+            console.log(error.message)
+          });
+          });
+        createStickies(response.data.id);
+
       })
       .catch((error) => {
         console.log(error.message);
       });
+    
   };
 
   const getStickies = (boardID) => {
