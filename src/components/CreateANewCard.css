@@ -1,0 +1,24 @@
+.newCard{
+    border: 2px dotted;
+    color: black; 
+    font-family: "Permanent Marker", cursive;
+    box-shadow: -15px 7px 1px #efd0c8;
+    margin-top: 50px;
+    /* padding: 10px; */
+    text-align: center;
+    }
+
+.SubmitButton  {
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 2px;
+    padding: 10px;
+}
+
+.reset {
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 2px;
+    padding: 10px;
+
+}

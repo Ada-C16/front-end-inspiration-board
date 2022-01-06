@@ -1,0 +1,15 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1em;
+}
+
+.cardsFor{
+border: 2px dotted;
+color: black; 
+font-family: "Permanent Marker", cursive;
+box-shadow: -15px 7px 1px #efd0c8;
+margin: 50px;
+text-align: center;
+}
+

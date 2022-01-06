@@ -1,0 +1,55 @@
+.buttons-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.card-body {
+    box-shadow: -10px 0px 10px 1px #aaaaaa;
+    color: #000;
+    background: #fff6a6;
+    display: flex;
+    flex-direction: column;
+    height: 12em;
+    width: 12em;
+    margin: 1em;
+    /* padding: 1em; */
+    text-decoration: none;
+}
+
+.card-message {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 20px;
+    padding: 2.5px;
+    text-align: center;
+}
+
+.delete-button {
+    align-self: flex-end;
+    border-radius: 8px;
+    display: table-cell;
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.hearts-button {
+    border-radius: 8px;
+    display: table-cell;
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.likes-button {
+    background-color: #f02e9c;
+    border-radius: 8px;
+    color: white;
+    display: table-cell;
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px;
+}

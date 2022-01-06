@@ -1,0 +1,16 @@
+.boardsHeader{
+    border: 2px dotted;
+    color: black; 
+    font-family: "Permanent Marker", cursive;
+    box-shadow: -15px 7px 1px #efd0c8;
+    text-align: center;
+}
+
+.boardList{
+    font-size: medium;
+    max-height: 19vh;
+    /* overflow: scroll; */
+    border: black solid 1px;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+}
