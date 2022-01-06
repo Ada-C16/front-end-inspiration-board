@@ -1,16 +1,20 @@
 // import axios from "axios";
 import React, {useState} from "react";
+import Congrats from "./Congrats";
 
 const Card = (props) => {
   const [cardLikeCount, setCardLikeCount] = useState(props.cardLikes)
 
+  
   const addOneLike = () => {
     props.addLikeCallback(props.id)
-
+    
     setCardLikeCount(cardLikeCount => Number(cardLikeCount) + 1);
+
+    if (props.cardLikes === 9){
+      alert("WOW that's inspiring!")
+    }
     // props.updateCardDisplayCallback(props.cardList, props.currentBoard)
-
-
     // const currentCards = [...props.cardList];
     // for (let card of currentCards) {
     //   if (props.id === card.card_id) {

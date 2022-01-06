@@ -7,6 +7,8 @@ import NewBoardForm from "./components/NewBoardForm";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
+import Congrats from "./components/Congrats";
+
 
 function App() {
   // const boardURL = `${process.env.REACT_APP_BACKEND_URL}/board`;
@@ -196,7 +198,6 @@ function App() {
           sortCardsCallback={sortAllCards} >
           
           </CardDisplay>
-        
 
       </div>
     </section>
