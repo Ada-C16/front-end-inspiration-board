@@ -2,6 +2,9 @@ import React from 'react';
 import './Board.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import axios from 'axios';
+import {useState} from 'react';
 
 const getCards = () => {
     //return cards from API call
@@ -11,21 +14,42 @@ const getCards = () => {
         board_id: 2}]
 }
 
-const Board = ({title, board_id, cards}) => {
-    const cardComponents = cards.map((board) => {
+const Board = ({board_id}) => {
+    const [owner, setOwner] = useState(null);
+    const [title, setTitle] = useState(null);
+    //useState for owner and title
+    useEffect(() => {
+        if (board_id == null) {
+        return
+        }
+        axios
+            .get(
+                `http://localhost:5000/board/${board_id}`
+            )
+            .then((response) => {
+                console.log(response.data);
+                console.log("inside of board")
+                setOwner(response.data["board"]["owner"]);
+                setTitle(response.data["board"]["title"]);
+                //setCards([...response.data]);
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
+}, [board_id]);
+    //const cardComponents = cards.map((board) => {
         return (
-            <Board
-            key={board.board_id}
-            board_id={board.board_id}
-            title={board.title}
-            owner={board.owner}
-        />
+            <section>
+            key={board_id}
+            board_id={board_id}
+            title={title}
+            owner={owner}
+            </section>
         );
-    });
     //the get request (cards, updateCards);
     //get board/boardId/cards
     //cards are passed as a prop to the board after GET request in /app
-    return <div className="board">{cardComponents}</div>;
+    //return <div className="board">{cardComponents}</div>;
 }
 
 Board.propTypes = {

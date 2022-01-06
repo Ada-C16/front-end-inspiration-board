@@ -29,7 +29,7 @@ function App() {
     });
     return (<div><select name ="Select Board" 
     id ='dropdownButton' 
-    onChange={e => setSelectedBoard(e.target.value)}>
+    onChange={e => setSelectedBoard(parseInt(e.target.value, 10))}>
       {titlesDropDown}
       </select></div>)
     //onchange to select a specific Board
@@ -40,8 +40,17 @@ function App() {
     axios
       .get("http://127.0.0.1:5000/board")
       .then((response) => {
-        console.log(response.data);
-        setBoards([...response.data]);
+        const boards = response.data;
+        const newBoards = [];
+        for (let board of boards) {
+          newBoards.push({
+            board_id: board.board_id,
+            title: board.title,
+            owner: board.owner
+          });
+        }
+        setBoards(newBoards);
+        console.log(boards);
       })
       .catch((error) => {
         console.log("Error:", error);
@@ -61,7 +70,7 @@ function App() {
       )
       .then((response) => {
         console.log(response.data);
-        setCards([...response.data]);
+        //setCards([...response.data]);
       })
       .catch((error) => {
         console.log("Error:", error);
@@ -104,8 +113,6 @@ function App() {
       });
   };
 
-    
-
   return (
     <div className="App">
       <header className="App-header">
@@ -114,12 +121,12 @@ function App() {
       </header>
       <main>
       <div>
-        
+        <p>{selectedBoard}</p>
+        <Board board_id = {selectedBoard} />
       </div>
       </main>
     </div>
   );
 }
-
 
 export default App;
