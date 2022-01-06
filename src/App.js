@@ -37,7 +37,7 @@ function App() {
     getBoards();
   }, []);
 
-  const showCards = (board_id) => {
+  const getCards = (board_id) => {
     console.log(`You clicked on board ${board_id}`);
     axios
       .get(URL + `/boards/${board_id}/cards`)
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <BoardList boards={boards} onClick={showCards} />
+      <BoardList boards={boards} getCards={getCards} />
       <Card />
       <NewCard />
       <CardList />

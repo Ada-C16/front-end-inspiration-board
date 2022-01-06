@@ -1,10 +1,10 @@
 import React from "react";
 
-const Board = ({ board, onClick }) => {
+const Board = ({ board, getCards }) => {
   return (
     <li>
       {board.title} by {board.owner}
-      <button onClick={() => onClick(board.board_id)}>See cards</button>
+      <button onClick={() => getCards(board.board_id)}>See cards</button>
     </li>
   );
 };
