@@ -68,7 +68,6 @@ const CardList = ({ cards, setCards }) => {
       if (messageA > messageB) {
         return 1;
       }
-
       return 0;
     });
     setCards(newCards);
