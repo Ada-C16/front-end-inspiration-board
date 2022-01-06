@@ -5,23 +5,24 @@ import { useState, useEffect } from "react";
 import Card from "./Card";
 import "./CardList.css";
 
-// like route --->  /cards/<card_id>/like
 const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
-
-//   const boardOptions = boardData.map((board) => {
-//   return (
-//     <li key={board.board_id}>
-//       <button
-//         id={board.board_id}
-//         onClick={() => handleChange(board.board_id)}
-//       >
-//         {board.title}
-//       </button>
-//     </li>
-//   );
-// });
-
 const CardList = ({ cards, setCards }) => {
+  const addLike = (card_id) => {
+    axios
+      .put(`${URL}/cards/${card_id}/like`)
+      .then((response) => {
+        const newCards = [...cards];
+        for (let card of newCards) {
+          if (card.card_id === response.data.card_id) {
+            card.likes_count = response.data.likes_count;
+            setCards(newCards);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
   const newCards = cards.map((card) => {
     return (
       <Card
@@ -29,7 +30,7 @@ const CardList = ({ cards, setCards }) => {
         card_id={card.card_id}
         likes_count={card.likes_count}
         message={card.message}
-        setCards={setCards}
+        addLike={addLike}
       />
     );
   });

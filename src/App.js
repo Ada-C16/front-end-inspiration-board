@@ -94,12 +94,6 @@ function App() {
         />
       </div>
       <div className="App-card">
-        {/*{selectBoard && (
-          <p>
-            {selectBoard.owner}: {selectBoard.title}
-          </p>
-        )} */}
-
         <CardList cards={cards} setCards={setCards} />
       </div>
       <div className="App-sidebar">

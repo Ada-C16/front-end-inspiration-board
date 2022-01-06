@@ -24,7 +24,7 @@ const NewCard = () => {
   return (
     <form onSubmit={messageSubmit}>
       <div>
-        <div>Make a New Card!</div>
+        <h2>Make a New Card!</h2>
         <div>
           <label>Message:</label>
           <input

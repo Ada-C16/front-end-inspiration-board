@@ -7,7 +7,6 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
     for (let board of boardData) {
       if (board.board_id === board_id) {
         let newState = board;
-        console.log(newState);
         boardCallBack(newState);
       }
     }
