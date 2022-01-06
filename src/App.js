@@ -11,6 +11,7 @@ const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
 function App() {
   // board state
   const [boardData, setBoardData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const getBoard = () => {
     axios
@@ -47,7 +48,7 @@ function App() {
         setBoardData(newBoardList);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        setErrorMessage(error.response.data.error);
       });
   };
 
@@ -63,7 +64,7 @@ function App() {
         setCards(newCardList);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        setErrorMessage(error.response.data.error);
       });
   };
 
@@ -103,6 +104,7 @@ function App() {
       <div className="App-sidebar">
         <NewBoard onSubmitCallBack={addBoard} />
         <NewCard onSubmitCallBack={addCard} />
+        {errorMessage && <p>{errorMessage}</p>}
       </div>
     </div>
   );
