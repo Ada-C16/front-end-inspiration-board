@@ -9,7 +9,7 @@ const NewBoardForm = (props) => {
 
   const submitNewBoard = (e) => {
     e.preventDefault();
-    props.createNewBoard({ title, owner });
+    props.createNewBoard( title, owner );
     setTitle('');
     setOwner('');
   };

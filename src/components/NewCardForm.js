@@ -6,7 +6,7 @@ const NewCardForm = (props) => {
 
   const submitNewCard = (e) => {
     e.preventDefault();
-    props.postNewCard(message);
+    props.postNewCard(message, props.board_id);
     setMessage('');
   };
 

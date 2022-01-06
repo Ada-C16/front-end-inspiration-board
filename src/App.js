@@ -6,6 +6,7 @@ import './index.css';
 import Board from './components/Board';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
 import axios from 'axios';
 import * as ada from './ada';
 
@@ -15,6 +16,7 @@ const App = () => {
   const [board_id, setBoard_ID] = useState('');
   const [title, setTitle] = useState('');
   const [showBoardForm, setShowBoardForm] = useState(false);
+  const [showCardForm, setShowCardForm] = useState(false);
 
   const [renderedContent, setRenderedContent] = useState('');
   
@@ -25,15 +27,65 @@ const App = () => {
     )
   }
 
-  const createNewBoard = (title, owner) => {
+  const createNewBoard = (mytitle, myowner) => {
     console.log('in createNewBoard');
-    //now use axios to post
 
-    //now set rendered content back to blank or a thank you or something
-    setRenderedContent(
-      <div>Thank you, board saved.</div>
-    ) 
+    const postData = {
+      title: mytitle,
+      owner: myowner,
+    };
+    console.log(JSON.stringify(postData))
+    //now use axios to post
+    axios.post(ada.api_url + '/boards', postData) 
+    .then(response => {
+      console.log(response)
+      //now set rendered content back to blank or a thank you or something
+      setRenderedContent(
+        <div>Thank you, board saved.</div>
+      )       
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
   }
+
+  const showCardFormFunction = () =>{
+    setShowCardForm(true);
+    setRenderedContent(
+      <NewCardForm postNewCard={createNewCard} board_id={board_id}/>
+    )
+  }
+
+  const createNewCard = (message, board_id) => {
+    console.log('in createNewCard, board_id:' + board_id);
+
+    const postData = {
+      message: message,
+      likes_count: 0,
+    };
+    console.log(JSON.stringify(postData))
+    //now use axios to post
+    axios.post(ada.api_url + 'boards/' + board_id + '/cards', postData) 
+    .then(response => {
+      console.log(response)
+      //now set rendered content back to blank or a thank you or something
+      setRenderedContent(
+        <div>Thank you, card saved.</div>
+      )       
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+  }
+
+  const deleteBoardFunction = () => {
+    axios.delete(ada.api_url + '/boards/' + board_id)
+    .then(response => {
+        //create a loop through response.data and push to an renderedOutput array the Card elements
+        console.log('response');
+    })   
+}
+
   const likeCard=(card_id)=>{
     console.log('in likeCard');
   }
@@ -48,7 +100,11 @@ const App = () => {
     if (board_obj.board_id !== ''){
       console.log('board_id is not null, it is:' + board_obj.board_id + ' and the title is: ' + board_obj.title);
       setRenderedContent(
-        <Board board={board_obj} onClickCallback={likeCard}/>
+        <Board 
+            board={board_obj} 
+            onClickCallbackLikes={likeCard}
+            onClickCallbackNewCard={showCardFormFunction}
+            onClickCallbackDeleteBoard={deleteBoardFunction}  />
       )
     }else{
       console.log('board_id is null');
@@ -57,7 +113,6 @@ const App = () => {
 
   }
 
-
   useEffect(() => {
     console.log('in generateBoards');
   
@@ -65,23 +120,14 @@ const App = () => {
     axios.get(ada.api_url + '/boards')
     .then(response => {
       setBoards(response.data)
-    
     })
-    .then(function (){
-      // setRenderedContent(
-      //   renderedContent
-      // )
-    
-    })
+
     
     .catch(function (error) {
       // handle error
       console.log(error);
     })
-    .finally(function () {
-      // always executed
-  
-    })
+
   },[])
   
 
