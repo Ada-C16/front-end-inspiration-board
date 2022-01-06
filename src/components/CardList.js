@@ -23,6 +23,17 @@ const CardList = ({ cards, setCards }) => {
         console.log(error.response.data);
       });
   };
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`${URL}/cards/${card_id}`)
+      .then((response) => {
+        const newCards = cards.filter((card) => card.card_id !== card_id);
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
   const newCards = cards.map((card) => {
     return (
       <Card
@@ -31,6 +42,7 @@ const CardList = ({ cards, setCards }) => {
         likes_count={card.likes_count}
         message={card.message}
         addLike={addLike}
+        deleteCard={deleteCard}
       />
     );
   });

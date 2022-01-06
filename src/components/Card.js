@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import "./Card.css";
-// like route --->  /cards/<card_id>/like
 
 const Card = ({ message, likes_count, card_id, addLike, deleteCard }) => {
   return (
@@ -9,7 +8,7 @@ const Card = ({ message, likes_count, card_id, addLike, deleteCard }) => {
       {message}
       <h6>{likes_count}😻</h6>
       <button onClick={() => addLike(card_id)}>+1</button>
-      <button>Delete</button>
+      <button onClick={() => deleteCard(card_id)}>Delete</button>
     </div>
   );
 };
