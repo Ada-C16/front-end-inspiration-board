@@ -95,3 +95,7 @@ h1,h2 {
   font-family: 'Courier New';
 }
 
+
+.no-bullets {
+  list-style-type: none;
+}

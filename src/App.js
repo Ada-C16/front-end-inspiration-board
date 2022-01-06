@@ -42,6 +42,8 @@ const App = () => {
   };
 
   const [boardData, setBoardData] = useState([]);
+  const [selectedBoard, changeSelectedBoard] = useState("test");
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/boards")
@@ -87,7 +89,11 @@ const App = () => {
           <h1>My Board List</h1>
           {/* {errorMessage} */}
           {/* <div>{boardData}</div> */}
-          <Board id="Boards" boardData={boardData}></Board>
+          <Board
+            id="Boards"
+            boardData={boardData}
+            selectBoardCallBack={changeSelectedBoard}
+          ></Board>
           <CardList
             id="Selected-boards"
             cards={cards}
@@ -101,6 +107,7 @@ const App = () => {
         </div>
         <div>
           <h1>SELECTED BOARD</h1>
+          {selectedBoard}
         </div>
         <div>
           <h1>CREATE A NEW BOARD</h1>
