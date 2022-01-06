@@ -4,6 +4,8 @@ import axios from "axios";
 import Card from "./Card";
 import "./CardList.css";
 
+// Jacy, Bailey, Lux and Lizet were here.
+
 const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
 const CardList = ({ cards, setCards }) => {
   const addLike = (card_id) => {
