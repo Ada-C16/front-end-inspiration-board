@@ -53,7 +53,7 @@ const CardList = ({ cards, setCards }) => {
   };
 
   const sortByLikes = () => {
-    const newCards = [...cards].sort((a, b) => a.likes_count - b.likes_count);
+    const newCards = [...cards].sort((a, b) => b.likes_count - a.likes_count);
     setCards(newCards);
   };
 
