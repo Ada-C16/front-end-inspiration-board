@@ -1,6 +1,5 @@
 import "./App.css";
 // import "./index.css";
-import Card from "./components/Card.js";
 import NewCard from "./components/NewCard.js";
 import NewBoardForm from "./components/NewBoardForm.js";
 import BoardList from "./components/BoardList";
@@ -12,6 +11,8 @@ function App() {
   const URL = "https://inspiration-board-backend.herokuapp.com";
 
   const [boards, setBoards] = useState([]);
+
+  const [cards, setCards] = useState([]);
 
   const addBoard = (board) => {
     console.log(board);
@@ -42,7 +43,10 @@ function App() {
     console.log(`You clicked on board ${board_id}`);
     axios
       .get(URL + `/boards/${board_id}/cards`)
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        setCards(response.data);
+      })
       .catch((error) => console.log(error.response.data));
   };
 
@@ -60,17 +64,19 @@ function App() {
 
   return (
     <div className="app-container">
-      <header><h1>Manifestation Station</h1></header>
-      <div className = "List"><BoardList boards={boards} getCards={getCards} /></div>
-      <div>
-        <Card />
-        <CardList />
-        </div>
-      <div className = "Forms">
-        <NewBoardForm addBoard={addBoard} />
-        <NewCard addCard={addCard}/>
+      <header>
+        <h1>Manifestation Station</h1>
+      </header>
+      <div className="List">
+        <BoardList boards={boards} getCards={getCards} />
       </div>
-
+      <div>
+        <CardList cards={cards} />
+      </div>
+      <div className="Forms">
+        <NewBoardForm addBoard={addBoard} />
+        <NewCard addCard={addCard} />
+      </div>
     </div>
   );
 }
