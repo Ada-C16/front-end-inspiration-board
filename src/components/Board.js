@@ -11,30 +11,26 @@ const getCards = () => {
         board_id: 2}]
 }
 
-const Board = ({title, id, cards}) => {
-    const cardList = null //the get request (cards, updateCards);
+const Board = ({title, board_id, cards}) => {
+    const cardComponents = cards.map((board) => {
+        return (
+            <Board
+            key={board.board_id}
+            board_id={board.board_id}
+            title={board.title}
+            owner={board.owner}
+        />
+        );
+    });
+    //the get request (cards, updateCards);
     //get board/boardId/cards
     //cards are passed as a prop to the board after GET request in /app
-    return <div className="grid">{cardList}</div>;
+    return <div className="board">{cardComponents}</div>;
 }
 
 Board.propTypes = {
     title: PropTypes.string.isRequired,
-    board_id: PropTypes.number.isRequired
+    board_id: PropTypes.number.isRequired,
+    owner: PropTypes.string
 }
 export default Board
-
-// create  a function to generate all the cards (like in tic tac toe)
-
-
-// const squaresArray = singleArray.map((square) => {
-//     return (
-//       <Square
-//         key={square.id}
-//         id={square.id}
-//         value={square.value}
-//         updateSquares={updateSquares}
-//       ></Square>
-//     );
-//   });
-//   return squaresArray;

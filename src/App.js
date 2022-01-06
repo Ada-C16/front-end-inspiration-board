@@ -6,24 +6,10 @@ import Board from './components/Board'
 import axios from 'axios';
 import Card from "./components/Card";
 
-//const generateCards = () => {
-  //this instantiates a Get request in a useEffect
-  //need to format it to the card object in a different function
-  
-
-const fakeBoards = [{
-  board_id: 1,
-  title: "title",
-  owner: "owner"
-},
-{board_id: 2,
-title: "title2",
-owner: "owner2"}];
-
 const renderBoard = (board) => {
   return (<Board
     title={board.title}
-    id={board.id}
+    board_id={board.board_id}
     cards={board.cards}></Board>)
   }
 
@@ -32,9 +18,6 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boards, setBoards] = useState([]); //generates all boards
   
-  //const setSelectedBoard = ({boardId}) => {
-  //  axios.get(`board/${boardId}/cards`)
-  //}
   const selectBoard = (boards) => {
     let titlesDropDown = boards.map((board) => {
     return (
@@ -44,12 +27,14 @@ function App() {
       </option>
     );
     });
-    return (<div><select name ="Select Board" id ='dropdownButton'>
+    return (<div><select name ="Select Board" 
+    id ='dropdownButton' 
+    onChange={e => setSelectedBoard(e.target.value)}>
       {titlesDropDown}
       </select></div>)
     //onchange to select a specific Board
     //this should be a component, pass in boards as a prop
-  }
+  };
 
   useEffect(() => {
     axios
@@ -62,13 +47,6 @@ function App() {
         console.log("Error:", error);
       });
   }, []);
-
-  // const selectBoard = (board) => {
-  //   setSelectedBoard(board);
-  // };
-
-
-  //GET all of cards in selected board via /board/boardID/cards - onclickBoard
   
   useEffect(() => {
     if (selectedBoard == null) {
@@ -76,7 +54,10 @@ function App() {
     }
     axios
       .get(
-        `https:localhost:5000/${selectedBoard.board_id}/cards`
+        `http://localhost:5000/board/${selectedBoard}`
+        //this needs to eventually get cards for selected board
+        //like board/boardID/cards
+        //we do not have a GET route for this yet
       )
       .then((response) => {
         console.log(response.data);
@@ -132,7 +113,9 @@ function App() {
         <h2>Available Boards: {selectBoard(boards)}</h2>
       </header>
       <main>
-      
+      <div>
+        
+      </div>
       </main>
     </div>
   );
