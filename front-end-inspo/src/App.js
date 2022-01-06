@@ -18,7 +18,8 @@ function App() {
     id: null,
   });
   const [currentStickies, setCurrentStickies] = useState([]);
-  const URL = "https://inspo-board-memk-back-end.herokuapp.com/board";
+  // const URL = "https://inspo-board-memk-back-end.herokuapp.com/board";
+  const URL = "http://localhost:5000/board";
 
   useEffect(() => {
     createDropdown();
@@ -147,32 +148,28 @@ function App() {
           name: boardName.value,
           id: response.data.id,
         });
-        boardName.value = ""
-        axios
-          .get(`${URL}`)
-          .then((response) => {
-            setDropDownList(
-              response.data["boards"].map((board) => {
-                // added boardID as a prop - MB
-                return (
-                  <DropdownItem
-                    key={board.id}
-                    boardId={board.id}
-                    name={board.name}
-                  />
-                );
-              }))
-          .catch((error) => {
-            console.log(error.message)
+        boardName.value = "";
+        axios.get(`${URL}`).then((response) => {
+          setDropDownList(
+            response.data["boards"].map((board) => {
+              // added boardID as a prop - MB
+              return (
+                <DropdownItem
+                  key={board.id}
+                  boardId={board.id}
+                  name={board.name}
+                />
+              );
+            })
+          ).catch((error) => {
+            console.log(error.message);
           });
-          });
+        });
         createStickies(response.data.id);
-
       })
       .catch((error) => {
         console.log(error.message);
       });
-    
   };
 
   const getStickies = (boardID) => {
@@ -200,7 +197,7 @@ function App() {
             Select an existing Board:
             <form>
               <label for="boards"></label>
-              <select name="boards" onChange={onBoardClick}>
+              <select id="board-name" name="boards" onChange={onBoardClick}>
                 {/* generate board dropdown items */}
                 {dropDownList}
               </select>

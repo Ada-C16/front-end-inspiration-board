@@ -79,5 +79,11 @@
   overflow-y: auto;
 }
 
+#new-sticky {
+  width: 50%;
+  height: 80%;
+}
 
-
+#board-name {
+  width: 60%;
+}

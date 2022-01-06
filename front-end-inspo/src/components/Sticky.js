@@ -33,9 +33,7 @@ const Sticky = (props) => {
 Sticky.propTypes = {
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  // id: PropTypes.number.isRequired, updated this to get rid of propTypes warning -MB
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  // boardID: PropTypes.number.isRequired, updated this to get rid of propTypes warning -MB
   boardID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   num_likes: PropTypes.number.isRequired,
   // onDelete will be a function passed down from App that makes an API call to delete a sticky
