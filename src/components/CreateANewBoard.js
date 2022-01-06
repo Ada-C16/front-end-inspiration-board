@@ -59,7 +59,7 @@ const CreateANewBoard = (props) => {
             type="text"
             id="title"
             title="Title"
-            placeholder="give me a title!"
+            placeholder=" give me a title!"
             maxLength="40"
             value={formFields.title}
             onChange={onTitleChange}
@@ -73,7 +73,7 @@ const CreateANewBoard = (props) => {
             type="text"
             id="owner"
             title="Owner"
-            placeholder="who are you?"
+            placeholder=" who are you?"
             maxLength="40"
             value={formFields.owner}
             onChange={onOwnerChange}

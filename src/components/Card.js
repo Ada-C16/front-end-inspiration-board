@@ -25,7 +25,7 @@ const Card = (props) => {
         </button>
         <button
           className="delete-button"
-          onClick={() => props.deleteCardItem(props.card)}
+          onClick={() => props.deleteCard(props.card)}
         >
           Delete
         </button>

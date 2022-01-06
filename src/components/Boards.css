@@ -7,10 +7,10 @@
 }
 
 .boardList{
-
-    max-height: 9em;
+    font-size: medium;
+    max-height: 19vh;
     /* overflow: scroll; */
     border: black solid 1px;
     scroll-behavior: auto;
-    overflow-y: scroll
+    overflow-y: scroll;
 }

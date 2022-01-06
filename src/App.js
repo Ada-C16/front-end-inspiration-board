@@ -13,11 +13,9 @@ function App() {
   const [boardsData, setBoards] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [activeBoard, setActiveBoard] = useState(0);
-  const [activeBoardTitle, setActiveBoardTitle] = useState('')
-  const [activeOwnerName, setActiveOwnerName] = useState ('')
-  
-  
-
+  const [activeBoardTitle, setActiveBoardTitle] = useState("");
+  const [activeOwnerName, setActiveOwnerName] = useState("");
+  const [cardsData, setCardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
@@ -59,19 +57,6 @@ function App() {
       });
   };
 
-  // SelectedBoard feature
-  const selectBoard = (board) => {
-    setSelectedBoard(board);
-  };
-
-  const boardsElements = boardsData.map((board) => {
-    return (
-      <li>
-        <Boards board={board} onBoardSelect={selectBoard} />
-      </li>
-    );
-  });
-
   //Get cards from Board
   const [cardListData, setCards] = useState([{}]);
   const getCardsfromBoard = () => {
@@ -88,14 +73,27 @@ function App() {
       });
   };
 
+  // delete card
+  const deleteCard = (card) => {
+    axios
+      .delete(
+        `https://trm2-inspiration-board.herokuapp.com/boards/${activeBoard}/cards`
+      )
+      .then((response) => {
+        const newCardsData = cardsData.filter((existingCard) => {
+          return existingCard.card_id !== card.card_id;
+        });
+        setCardsData(newCardsData);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+        alert("Couldn't delete the card.");
+      });
+  };
 
   const addBoardData = (newBoard) => {
-
     axios
-      .post(
-        'https://trm2-inspiration-board.herokuapp.com/boards',
-        newBoard
-      )
+      .post("https://trm2-inspiration-board.herokuapp.com/boards", newBoard)
       .then((response) => {
         console.log(response, "response");
 
@@ -104,31 +102,27 @@ function App() {
         newBoardList.push({
           owner: newBoard.owner,
           title: newBoard.title,
-          id: response.data.board.board_id
+          id: response.data.board.board_id,
         });
-        console.log(newBoardList, 'NEWWWBoaardLIST');
+        console.log(newBoardList, "NEWWWBoaardLIST");
         setBoards(newBoardList);
       })
       .catch((error) => {
         console.log(error);
       });
-    
-
   };
 
   const addSetActiveBoard = (Board) => {
-      console.log(Board, "BOARDDDDDDD")
-      setActiveBoard(Board.id)
-      setActiveBoardTitle(Board.title)
-      setActiveOwnerName(Board.owner)
-      
-
-  }
+    console.log(Board, "BOARDDDDDDD");
+    setActiveBoard(Board.id);
+    setActiveBoardTitle(Board.title);
+    setActiveOwnerName(Board.owner);
+  };
 
   useEffect(() => {
-    getCardsfromBoard()
+    getCardsfromBoard();
   }, [activeBoard]);
-  
+
   return (
     <div className="container">
       <div className="row">
@@ -136,11 +130,15 @@ function App() {
           <Logo />
         </div>
         <div className="col">
-          <Boards boardsData={boardsData} setActiveBoardCallback={addSetActiveBoard} getCards = {getCardsfromBoard} />
+          <Boards
+            boardsData={boardsData}
+            setActiveBoardCallback={addSetActiveBoard}
+            getCards={getCardsfromBoard}
+          />
           {errorMessage}
         </div>
         <div className="col">
-          <SelectedBoard  title = {activeBoardTitle} owner = {activeOwnerName}/>
+          <SelectedBoard title={activeBoardTitle} owner={activeOwnerName} />
           <p>
             {selectedBoard.title ? (
               `${selectedBoard.title} - ${selectedBoard.owner}`
@@ -158,7 +156,10 @@ function App() {
 
         <div className="row">
           <div className="col">
-            <CardsForPickMeUpQuotes title = {activeBoardTitle} cardListData={cardListData} />
+            <CardsForPickMeUpQuotes
+              title={activeBoardTitle}
+              cardListData={cardListData}
+            />
             {/* <Card  /> */}
           </div>
           <div className="col">

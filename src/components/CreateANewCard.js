@@ -20,20 +20,20 @@ const CreateANewCard = (props) => {
     <form onSubmit={postCards} method="">
       <div>
         <h3 className="newCard">Create A New Card</h3>
+        <p></p>
         <label htmlFor="message">Message</label>
         <input
           style={{ width: "380px" }}
           type="text"
           name="message"
           id="message"
-          placeholder="type a cute message... 40 characters max"
+          placeholder=" type a cute message... 40 characters max"
           onChange={messageEvent}
           maxLength="40"
           required
         />
-        <p>
-            Preview: {message}
-        </p>
+        <p></p>
+        <p>Preview: {message}</p>
 
         <div>
           <button className="reset" type="reset">
@@ -41,8 +41,8 @@ const CreateANewCard = (props) => {
           </button>
 
           <div>
-          <input className="SubmitButton" type="submit" value="Submit" />
-        </div>
+            <input className="SubmitButton" type="submit" value="Submit" />
+          </div>
         </div>
       </div>
     </form>
