@@ -12,6 +12,7 @@
     line-height: 1.5;
     margin: 10px;
     min-height: 20vh;
+    overflow-wrap: break-word;
 }
 
 .sticky-footer {

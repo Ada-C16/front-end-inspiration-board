@@ -188,7 +188,7 @@ function App() {
           <div className="submit-board">
             Submit a new board:
             <form onSubmit={makeNewBoard}>
-              <input type="text" className="board-name" />
+              <input type="text" maxLength="22" className="board-name" />
               <input type="submit" className="board-button" />
             </form>
           </div>
@@ -206,8 +206,8 @@ function App() {
         </div>
         <div className="sticky-submit-container">
           Submit a new sticky:
-          <form onSubmit={createSticky}>
-            <input id="new-sticky" type="text" />
+          <form id="new-sticky-form" onSubmit={createSticky}>
+            <input id="new-sticky" contentEditable="true" type="text" />
             <input type="submit" />
           </form>
         </div>

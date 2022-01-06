@@ -24,6 +24,8 @@
 .inspo-header {
   color: white;
   text-align: center;
+  overflow-wrap: break-word;
+  font-size: 30px;
 }
 
 .board-container{
@@ -81,9 +83,21 @@
 
 #new-sticky {
   width: 50%;
-  height: 80%;
+  /* padding: 10px 10px; */
+  /* overflow-y: auto;
+  text-overflow: ;
+  line-height: 28px; */
 }
 
 #board-name {
   width: 60%;
+}
+
+.board-name {
+  width: 50%;
+}
+
+#new-sticky-form {
+  height: 400px;
+  overflow-y: auto;
 }
