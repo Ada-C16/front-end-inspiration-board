@@ -99,6 +99,12 @@ const App = () => {
             addBoardCallback={createNewBoard}
           ></NewBoardForm>
         </div>
+        <div>
+          <h1>SELECTED BOARD</h1>
+        </div>
+        <div>
+          <h1>CREATE A NEW BOARD</h1>
+        </div>
       </main>
     </div>
   );

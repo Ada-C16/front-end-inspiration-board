@@ -78,3 +78,20 @@
   grid-area: Create-card;
   padding: 10px;
 }
+
+body{
+  margin : 3rem;
+  font-family:'open sans', sans-serif;
+  color: black;
+}
+
+h1,h2 {
+  font-family: 'Courier New';
+  padding: 0.6em 1em;
+}
+
+h1,h2 {
+  background-color: rgb(187,217,249);
+  font-family: 'Courier New';
+}
+
