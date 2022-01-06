@@ -1,10 +1,11 @@
 import React from "react";
 
-const Card = ({ card }) => {
+const Card = ({ card, likeCard }) => {
   return (
     <div>
       <li>
-        {card.message}. Likes: {card.likes_count} <button>Like</button>
+        {card.message}. Likes: {card.likes_count}{" "}
+        <button onClick={() => likeCard(card)}>Like</button>
       </li>
     </div>
   );

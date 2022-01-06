@@ -62,6 +62,15 @@ function App() {
       .catch((error) => console.log(error.response.data));
   };
 
+  const likeCard = (card) => {
+    console.log(card);
+
+    axios
+      .patch(URL + "/cards/" + card.card_id)
+      .then(() => getCards(card.board_id))
+      .catch((error) => console.log(error.response.data));
+  };
+
   return (
     <div className="app-container">
       <header>
@@ -71,7 +80,7 @@ function App() {
         <BoardList boards={boards} getCards={getCards} />
       </div>
       <div>
-        <CardList cards={cards} />
+        <CardList cards={cards} likeCard={likeCard} />
       </div>
       <div className="Forms">
         <NewBoardForm addBoard={addBoard} />
