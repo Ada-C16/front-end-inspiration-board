@@ -1,4 +1,5 @@
 import "./App.css";
+// import "./index.css";
 import Card from "./components/Card.js";
 import NewCard from "./components/NewCard.js";
 import NewBoardForm from "./components/NewBoardForm.js";
@@ -58,12 +59,18 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <BoardList boards={boards} getCards={getCards} />
-      <Card />
-      <NewCard addCard={addCard}/>
-      <CardList />
-      <NewBoardForm addBoard={addBoard} />
+    <div className="app-container">
+      <header><h1>Manifestation Station</h1></header>
+      <div className = "List"><BoardList boards={boards} getCards={getCards} /></div>
+      <div>
+        <Card />
+        <CardList />
+        </div>
+      <div className = "Forms">
+        <NewBoardForm addBoard={addBoard} />
+        <NewCard addCard={addCard}/>
+      </div>
+
     </div>
   );
 }

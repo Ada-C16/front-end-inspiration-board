@@ -39,7 +39,8 @@ const NewBoardForm = ({ addBoard }) => {
   // };
 
   return (
-    <div className="NewBoardForm">
+    <div>
+      <h2>Create a new board</h2>
       <form onSubmit={onSubmit} className="new-board__form">
         
         {/* Title input box */}

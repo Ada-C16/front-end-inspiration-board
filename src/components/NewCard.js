@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-const NewCard = ( { addCard }) => {
+const NewCard = ({ addCard }) => {
   const [cardState, setCardState] = useState({
     board_id: "",
-    message: ""
+    message: "",
   });
 
   const handleChange = (event) => {
@@ -25,7 +25,7 @@ const NewCard = ( { addCard }) => {
     addCard(cardState);
     setCardState({
       board_id: "",
-      message: ""
+      message: "",
     });
   };
 
@@ -36,8 +36,8 @@ const NewCard = ( { addCard }) => {
 
   return (
     <div className="NewCardForm">
+      <h2>Create a new card</h2>
       <form onSubmit={onSubmit} className="new-card__form">
-        
         {/* Title input box */}
         <div className="new-card__fields">
           <label htmlFor="title" className="new-card__fields">
@@ -55,7 +55,7 @@ const NewCard = ( { addCard }) => {
 
         <div className="new-card__fields">
           <label htmlFor="board_id" className="new-card__fields">
-            Board ID 
+            Board ID
           </label>
           <input
             name="board_id"
@@ -66,7 +66,7 @@ const NewCard = ( { addCard }) => {
             onChange={handleChange}
           ></input>
         </div>
-        
+
         <div>
           <button
             className="new-board__submit"
@@ -80,6 +80,5 @@ const NewCard = ( { addCard }) => {
     </div>
   );
 };
-
 
 export default NewCard;

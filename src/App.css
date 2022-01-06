@@ -1,4 +1,36 @@
-.App {
+.app-container {
+  height: 100vh;
+  display: grid;
+  grid-template: 15% auto / 1.5fr 2fr 1.5fr;
+  background-color: rgb(255, 255, 255);
+}
+
+header {
+  grid-column-start: 1;
+  text-align: center;
+  background-image: url("https://i.pinimg.com/564x/fb/0d/1c/fb0d1c01744982fecd8e66853cb2a1e8.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-column-end: 4;
+  padding-top: 25px;
+  color: rgb(184, 71, 221);
+}
+
+.Forms {
+  background-color: rgb(222, 197, 230);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.List {
+  background-color: rgb(222, 197, 230);
+  padding: 50px;
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +67,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
