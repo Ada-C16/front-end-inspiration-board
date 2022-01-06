@@ -24,6 +24,7 @@ const CardList = ({cards}) => {
     );}
   return (
     <div className="cardList">
+      <h2>Cards For</h2>
       {cards === undefined ? "" : <ul>{cards.map(displayCard)}</ul>}
     </div>
   );

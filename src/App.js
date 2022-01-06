@@ -29,8 +29,12 @@ function App() {
   const addNewBoard = (newBoard) => {
     axios.post('http://localhost:5000/boards', newBoard)
     .then((response) => {
+      newBoard["id"]=response.data.id
+      let newBoardData = [...boardData]
+      newBoardData.push(newBoard)
+      setBoardData(newBoardData)
       // setBoardData(response.data)
-      console.log(response.data)
+      console.log("response from post newboard", response.data)
     })
     .catch((error) => {
       console.log(error)
