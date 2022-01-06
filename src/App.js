@@ -55,10 +55,7 @@ function App() {
 
     axios
       .post(URL + "/boards/" + card.board_id + "/cards", card)
-      .then(
-        (response) => console.log(response.data)
-        // getTasks()
-      )
+      .then((response) => console.log(response.data))
       .catch((error) => console.log(error.response.data));
   };
 
