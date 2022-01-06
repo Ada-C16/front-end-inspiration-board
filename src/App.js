@@ -41,47 +41,7 @@ const App = () => {
     setCards(newCards);
   };
 
-  //--------------------------------------
-  const [boardData, setBoardData] = useState([
-    {
-      title: "board 1",
-      owner: "Ada",
-      //maybe a boolean for isVisible
-    },
-    {
-      title: "board 2",
-      owner: "Ada 2",
-      //maybe a boolean for isVisible
-    },
-    {
-      title: "board 3",
-      owner: "Ada 3",
-      //maybe a boolean for isVisible
-    },
-  ]);
-
-  const addBoardData = (newBoard) => {
-    // Duplicate the board list
-    const newBoardList = [...boardData];
-
-    // Logic to generate the next valid student ID
-    // const nextId = Math.max(...newBoardList.map((board) => board.id)) + 1;
-
-    newBoardList.push({
-      // id: nextId,
-      title: newBoard.title,
-      owner: newBoard.owner,
-      //isPresentData: false,
-    });
-    console.log(newBoardList);
-    setBoardData(newBoardList);
-  };
-
-  //---------------------------------------
-
-  // const [boardData, setBoardData] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState("");
-  // console.log(boardData);
+  const [boardData, setBoardData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:5000/boards")
@@ -117,6 +77,7 @@ const App = () => {
         console.log(err);
       });
   };
+  console.log(boardData);
 
   return (
     <div className="App">
@@ -295,3 +256,45 @@ export default App;
 //   </div>
 // );
 */
+
+//--------------------------------------
+// const [boardData, setBoardData] = useState([
+//   {
+//     title: "board 1",
+//     owner: "Ada",
+//     //maybe a boolean for isVisible
+//   },
+//   {
+//     title: "board 2",
+//     owner: "Ada 2",
+//     //maybe a boolean for isVisible
+//   },
+//   {
+//     title: "board 3",
+//     owner: "Ada 3",
+//     //maybe a boolean for isVisible
+//   },
+// ]);
+
+// const addBoardData = (newBoard) => {
+//   // Duplicate the board list
+//   const newBoardList = [...boardData];
+
+//   // Logic to generate the next valid student ID
+//   // const nextId = Math.max(...newBoardList.map((board) => board.id)) + 1;
+
+//   newBoardList.push({
+//     // id: nextId,
+//     title: newBoard.title,
+//     owner: newBoard.owner,
+//     //isPresentData: false,
+//   });
+//   console.log(newBoardList);
+//   setBoardData(newBoardList);
+// };
+
+//---------------------------------------
+
+// const [boardData, setBoardData] = useState([]);
+// const [errorMessage, setErrorMessage] = useState("");
+// console.log(boardData);
