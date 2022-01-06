@@ -21,11 +21,23 @@ function App() {
       .catch((error) => console.log(error.response.data));
   };
 
+  const addCard = (card) => {
+    console.log(card);
+
+    axios
+      .post(URL + "/boards/" + card.board_id + "/cards", card)
+      .then(
+        (response) => console.log(response.data)
+        // getTasks()
+      )
+      .catch((error) => console.log(error.response.data));
+  };
+
   return (
     <div className="App">
       <Board />
       <Card />
-      <NewCard />
+      <NewCard addCard={addCard}/>
       <CardList />
       <NewBoardForm addBoard={addBoard}/>
     </div>
