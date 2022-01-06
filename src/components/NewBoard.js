@@ -8,6 +8,12 @@ const NewBoard = ({ onSubmitCallBack }) => {
     owner: "",
   });
 
+  const [hideBoard, setHideBoard] = useState(true);
+
+  const toggleHideBoard = () => {
+    setHideBoard(!hideBoard);
+  };
+
   const handleTitleChange = (event) => {
     setNewBoard({ ...newBoard, title: event.target.value });
   };
@@ -29,28 +35,34 @@ const NewBoard = ({ onSubmitCallBack }) => {
   return (
     <div>
       <h2>Make a New Board</h2>
-      <form>
-        <div>
-          Title:
-          <input
-            type="text"
-            name="title"
-            value={newBoard.title}
-            onChange={handleTitleChange}
-          />
-        </div>
-        <div>
-          Owner:
-          <input
-            type="text"
-            name="owner"
-            value={newBoard.owner}
-            onChange={handleOwnerChange}
-          />
-        </div>
-        <button onClick={onSubmit}>Submit</button>
-        <button>Show New Board Form/Hide New Board Form</button>
-      </form>
+      {hideBoard && (
+        <form>
+          <div>
+            <div>
+              Title:
+              <input
+                type="text"
+                name="title"
+                value={newBoard.title}
+                onChange={handleTitleChange}
+              />
+            </div>
+            <div>
+              Owner:
+              <input
+                type="text"
+                name="owner"
+                value={newBoard.owner}
+                onChange={handleOwnerChange}
+              />
+            </div>
+            <button onClick={onSubmit}>Submit</button>
+          </div>
+        </form>
+      )}
+      <button onClick={toggleHideBoard}>
+        Show New Board Form/Hide New Board Form
+      </button>
     </div>
   );
 };

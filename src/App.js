@@ -16,7 +16,6 @@ function App() {
     axios
       .get(`${URL}/boards`)
       .then((response) => {
-        console.log(response.data);
         const newBoards = response.data.map((board) => {
           return {
             title: board.title,
@@ -43,7 +42,6 @@ function App() {
         owner: board.owner,
       })
       .then((response) => {
-        console.log(response.data);
         const newBoard = response.data;
         const newBoardList = [...boardData, newBoard];
         setBoardData(newBoardList);
@@ -60,7 +58,6 @@ function App() {
         message: card.message,
       })
       .then((response) => {
-        console.log(response.data);
         const newCard = response.data;
         const newCardList = [...cards, newCard];
         setCards(newCardList);
@@ -80,7 +77,6 @@ function App() {
     axios
       .get(`${URL}/boards/${board_id}/cards`)
       .then((response) => {
-        console.log(response.data);
         const newCards = response.data;
         setCards(newCards);
       })
