@@ -3,6 +3,7 @@ import "./App.css";
 import Boards from "./components/Boards";
 import CardList from "./components/CardList";
 import NewCardForm from "./components/NewCardForm";
+import axios from "axios";
 
 const CARDS = [
   {
@@ -29,52 +30,65 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentCards, setCurrentCards] = useState([]);
 
+  const backendURL = process.env["REACT_APP_BACKEND_URL"];
   useEffect(() => {
     // TODO make API call instead of using constant CARDS
     if (currentBoard) {
-      setCurrentCards(
-        CARDS.filter((card) => card.board_id === currentBoard.board_id)
-      );
+      fetchCardsForBoard();
     }
   }, [currentBoard]);
+
+  const createNewCard = (message) => {
+    axios
+      .post(`${backendURL}/cards`, {
+        message: message,
+        likes_count: 0,
+        board_id: currentBoard.id,
+      })
+      .then((response) => {
+        console.log(
+          `Success creating boards: ${JSON.stringify(response.data)}`
+        );
+        fetchCardsForBoard();
+      })
+      .catch((error) => {
+        console.error(`Error getting boards: ${error}`);
+      });
+  };
+
+  function fetchCardsForBoard() {
+    axios
+      .get(`${backendURL}/boards/${currentBoard.id}/cards`)
+      .then((response) => {
+        console.log(`Success getting cards: ${JSON.stringify(response.data)}`);
+        setCurrentCards(response.data.cards);
+      })
+      .catch((error) => {
+        console.error(`Error getting cards: ${error}`);
+      });
+  }
 
   return (
     <main>
       <div className="App header-container">
         <h1> Inspiration Board </h1>
-        <Boards setCurrentBoard={setCurrentBoard} />
+        <Boards currentBoard={currentBoard} setCurrentBoard={setCurrentBoard} />
         {currentBoard && (
-          <NewCardForm
-            board={currentBoard}
-            createCard={(message) => {
-              setCurrentCards((prevCards) => [
-                ...prevCards,
-                {
-                  card_id:
-                    Math.max(...CARDS.map((card) => parseInt(card.card_id))) +
-                    1,
-                  message: message,
-                  likes_count: 0,
-                  board_id: currentBoard.board_id,
-                },
-              ]);
-            }}
-          />
+          <NewCardForm board={currentBoard} createCard={createNewCard} />
         )}
-        </div>
-        
-        <div className="card-list-container">   
-          <div>
-            {currentBoard && (
+      </div>
+
+      <div className="card-list-container">
+        <div>
+          {currentBoard && (
             <CardList
               currentBoard={currentBoard}
               currentCards={currentCards}
-              setCurrentCards={setCurrentCards}
+              fetchCardsForBoard={fetchCardsForBoard}
             />
           )}
-          </div>
         </div>
-
+      </div>
     </main>
   );
 }

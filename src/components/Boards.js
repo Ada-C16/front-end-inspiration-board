@@ -1,51 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function Boards({ setCurrentBoard }) {
-  const boards = [
-    {
-      board_id: 1,
-      title: "Inspirational Quotes",
-      owner: "Nourhan",
-      cards: [],
-    },
-    {
-      board_id: 2,
-      title: "Workout Goals",
-      owner: "Tanja",
-      cards: [],
-    },
-    {
-      board_id: 3,
-      title: "Chores",
-      owner: "Ahmed",
-      cards: [],
-    },
-    {
-      board_id: 4,
-      title: "Reminders",
-      owner: "Yousef",
-      cards: [],
-    },
-    {
-      board_id: 5,
-      title: "Meal Plan",
-      owner: "Sarah",
-      cards: [],
-    },
-  ];
+function Boards({ currentBoard, setCurrentBoard }) {
+  // const boards = [
+  //   {
+  //     board_id: 1,
+  //     title: "Inspirational Quotes",
+  //     owner: "Nourhan",
+  //     cards: [],
+  //   },
+  //   {
+  //     board_id: 2,
+  //     title: "Workout Goals",
+  //     owner: "Tanja",
+  //     cards: [],
+  //   },
+  //   {
+  //     board_id: 3,
+  //     title: "Chores",
+  //     owner: "Ahmed",
+  //     cards: [],
+  //   },
+  //   {
+  //     board_id: 4,
+  //     title: "Reminders",
+  //     owner: "Yousef",
+  //     cards: [],
+  //   },
+  //   {
+  //     board_id: 5,
+  //     title: "Meal Plan",
+  //     owner: "Sarah",
+  //     cards: [],
+  //   },
+  // ];
 
   const [selectedBoard, setSelectedBoardTitle] = useState(null);
   const [selectedOwner, setSelectedOwner] = useState(null);
   const [newBoardTitle, setNewBoardTitle] = useState("");
-  const [boardList, setBoardList] = useState(boards);
+  const [boardList, setBoardList] = useState([]);
   const [boardOwner, setBoardOwner] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
   const [showForm, setShowForm] = useState(true);
 
+  const backendURL = process.env["REACT_APP_BACKEND_URL"];
+  useEffect(() => {
+    fetchBoards();
+  }, []);
+
   const renderBoardList = (boardList) => {
     return boardList.map((board) => {
       return (
-        <option key={board.board_id} value={board.board_id} label={board.title}>
+        <option key={board.id} value={board.id} label={board.title}>
           {board.title}
         </option>
       );
@@ -54,7 +60,7 @@ function Boards({ setCurrentBoard }) {
 
   const handleOptionSelect = (event) => {
     const selectedBoard = boardList.find(
-      (board) => board.board_id === parseInt(event.target.value)
+      (board) => board.id === parseInt(event.target.value)
     );
     setSelectedBoardTitle(selectedBoard.title);
     setSelectedOwner(selectedBoard.owner);
@@ -62,16 +68,31 @@ function Boards({ setCurrentBoard }) {
   };
 
   const handleBoardSelect = (event) => {
-    setBoardList([
-      ...boardList,
-      {
-        board_id:
-          Math.max(...boardList.map((board) => parseInt(board.board_id))) + 1,
+    // setBoardList([
+    //   ...boardList,
+    //   {
+    //     id:
+    //       Math.max(...boardList.map((board) => parseInt(board.id))) + 1,
+    //     title: newBoardTitle,
+    //     owner: boardOwner,
+    //   },
+    // ]);
+    axios
+      .post(`${backendURL}/boards`, {
         title: newBoardTitle,
         owner: boardOwner,
-      },
-    ]);
+      })
+      .then((response) => {
+        console.log(
+          `Success creating boards: ${JSON.stringify(response.data)}`
+        );
+        setBoardList([...boardList, response.data]);
+      })
+      .catch((error) => {
+        console.error(`Error getting boards: ${error}`);
+      });
   };
+
   const checkValidInput = () => {
     if (newBoardTitle === "" || boardOwner === "") {
       setCanSubmit(false);
@@ -80,6 +101,34 @@ function Boards({ setCurrentBoard }) {
     }
   };
 
+  function fetchBoards() {
+    return axios
+      .get(`${backendURL}/boards`)
+      .then((response) => {
+        console.log(`Success getting boards: ${JSON.stringify(response.data)}`);
+        setBoardList(response.data);
+      })
+      .catch((error) => {
+        console.error(`Error getting boards: ${error}`);
+      });
+  }
+
+  function deleteBoard() {
+    axios
+      .delete(`${backendURL}/boards/${currentBoard.id}`)
+      .then((response) => {
+        console.log(`Success deleting board: ${JSON.stringify(response.data)}`);
+        fetchBoards().then(() => {
+          setCurrentBoard(null);
+          setSelectedBoardTitle("");
+          setSelectedOwner("");
+        });
+      })
+      .catch((error) => {
+        console.error(`Error deleting board: ${error}`);
+      });
+  }
+
   return (
     <div className="App">
       <h2> Boards </h2>
@@ -87,7 +136,10 @@ function Boards({ setCurrentBoard }) {
         {renderBoardList(boardList)}
       </select>
       {selectedBoard ? (
-        <h2> Board Selected: {selectedBoard}</h2>
+        <>
+          <h2> Board Selected: {selectedBoard}</h2>
+          <button onClick={deleteBoard}>Delete Board</button>
+        </>
       ) : (
         <h2> Select a Board </h2>
       )}
