@@ -156,10 +156,10 @@ span {
 }
 
 .card-message {
-  width: 100%;
-  inline-size: 100px;
+  inline-size: 120px;
   overflow-wrap: break-word;
   margin: 10px;
+  padding: 5px;
 }
 
 
