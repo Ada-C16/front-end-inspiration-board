@@ -1,14 +1,19 @@
 import React from "react";
 import './Card.css';
 
-const Card = () => {
+const Card = ({message}) => {
   return (
     <div className="card">
-      <p>Insert message here</p>
+      <p>{message}</p>
+      {/* <Card
+        key={card.card_id}
+        id={card.card_id}
+        board_id={card.board_id}
+        message={card.message} */}
       <div className="reactions">
         <span>♥️</span>
-        <a href="">+1</a>
-        <a href="">delete</a>
+        <button>+1</button>
+        <button>delete</button>
       </div>
     </div> 
   )

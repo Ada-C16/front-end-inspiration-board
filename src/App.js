@@ -61,7 +61,12 @@ function App() {
     console.log(selectedBoard, "This is selectedBoard")
     axios.post(`http://localhost:5000/boards/${selectedBoard.id}/cards`, newCard)
     .then((response) => {
-      // setBoardData(response.data)
+
+      let newCardData = [...selectedBoard.cards]
+      let newSelectedBoard = {...selectedBoard}
+      newCardData.push(newCard)
+      newSelectedBoard['cards'] = newCardData
+      setSelectedBoard(newSelectedBoard)
       
       console.log(response.data)
     })
