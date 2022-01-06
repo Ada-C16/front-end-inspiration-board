@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import './Card.css';
+import '../styles/Card.css';
 
 const Card = (props) => {
 
@@ -13,6 +13,7 @@ const Card = (props) => {
     return (
             <div className='Card'>
                 {props.message}
+                {props.likes_count}
             <button
                 className="square"
                 onClick={cardLikeButtonClick}
@@ -26,9 +27,10 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  message: PropTypes.string.isRequired,
-  onClickCallback: PropTypes.func.isRequired,
-  card_id: PropTypes.number.isRequired,
+    onClickCallback: PropTypes.func.isRequired,
+    message: PropTypes.string.isRequired,
+    card_id: PropTypes.number.isRequired,
+    likes_count: PropTypes.number.isRequired,
 };
 
 export default Card;

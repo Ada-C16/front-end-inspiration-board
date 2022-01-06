@@ -6,17 +6,18 @@ import PropTypes from 'prop-types';
 const BoardList = (props) => {
 
 
-    const clickBoard = () =>{
-        props.onClickCallback(props.board_id);
+    const clickBoard = (obj) =>{
+        console.log('in clickBoard, obj is:' + JSON.stringify(obj));
+        // props.onClickCallback(props.board_id, props.title);
+        props.onClickCallback(obj);
     };
 
     let returnArray = [];
     let boards = props.boards;
 
     for (let i=0; i<(props.boards).length; i++){
-        console.log(boards[i].title);
         returnArray.push(
-            <li className='boardlink' id='{boards[i].board_id}'><a className="navsublink" href="#">{boards[i].title}</a></li>
+            <li className='boardlink' id='{boards[i].board_id}'><span className="navsublink" onClick={()=>clickBoard(boards[i])}>{boards[i].title}</span></li>
         )
     }
 
@@ -29,15 +30,13 @@ const BoardList = (props) => {
 
 BoardList.propTypes = {
     onClickCallback: PropTypes.func.isRequired,
-    boards:
-        PropTypes.objectOf(
+    boards:PropTypes.arrayOf(
             PropTypes.shape({
                 board_id: PropTypes.number.isRequired,
                 title: PropTypes.string.isRequired,
                 owner: PropTypes.string.isRequired
             })
-        )
-
+    )
 
 }
 
