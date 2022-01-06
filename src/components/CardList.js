@@ -46,7 +46,45 @@ const CardList = ({ cards, setCards }) => {
       />
     );
   });
-  return <div className="card-container">{newCards}</div>;
+
+  const sortByID = () => {
+    const newCards = [...cards].sort((a, b) => a.card_id - b.card_id);
+    setCards(newCards);
+  };
+
+  const sortByLikes = () => {
+    const newCards = [...cards].sort((a, b) => a.likes_count - b.likes_count);
+    setCards(newCards);
+  };
+
+  const sortByMessage = () => {
+    const newCards = [...cards].sort((a, b) => {
+      const messageA = a.message.toUpperCase();
+      const messageB = b.message.toUpperCase();
+      if (messageA < messageB) {
+        return -1;
+      }
+      if (messageA > messageB) {
+        return 1;
+      }
+
+      return 0;
+    });
+    setCards(newCards);
+  };
+
+  if (cards.length) {
+    return (
+      <div>
+        <div className="card-container">{newCards}</div>
+        <button onClick={sortByID}>Sort By ID</button>
+        <button onClick={sortByLikes}>Sort By Likes</button>
+        <button onClick={sortByMessage}>Sort By Message</button>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 CardList.propTypes = {
