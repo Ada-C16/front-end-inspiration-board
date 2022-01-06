@@ -5,26 +5,26 @@ import CardList from "./components/CardList";
 import NewCardForm from "./components/NewCardForm";
 import axios from "axios";
 
-const CARDS = [
-  {
-    card_id: 1,
-    message: "a message",
-    likes_count: 0,
-    board_id: 1,
-  },
-  {
-    card_id: 2,
-    message: "a message 2",
-    likes_count: 1,
-    board_id: 1,
-  },
-  {
-    card_id: 3,
-    message: "a message 3",
-    likes_count: 2,
-    board_id: 2,
-  },
-];
+// const CARDS = [
+//   {
+//     card_id: 1,
+//     message: "a message",
+//     likes_count: 0,
+//     board_id: 1,
+//   },
+//   {
+//     card_id: 2,
+//     message: "a message 2",
+//     likes_count: 1,
+//     board_id: 1,
+//   },
+//   {
+//     card_id: 3,
+//     message: "a message 3",
+//     likes_count: 2,
+//     board_id: 2,
+//   },
+// ];
 
 function App() {
   const [currentBoard, setCurrentBoard] = useState(null);
