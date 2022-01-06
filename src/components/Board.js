@@ -10,7 +10,6 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
         boardCallBack(newState);
       }
     }
-    // let newState = event.target.id;
   };
 
   const boardOptions = boardData.map((board) => {
@@ -25,8 +24,6 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
       </li>
     );
   });
-
-  // console.log(selectBoard);
 
   return (
     <div className="board">

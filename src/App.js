@@ -6,14 +6,6 @@ import CardList from "./components/CardList";
 import NewBoard from "./components/NewBoard";
 import NewCard from "./components/NewCard";
 
-// testing to make sure this pushed to main.
-
-// const cardData = {
-//   message: "card message text as string, still unchanged",
-//   likes_count: 1,
-//   card_id: 1,
-// };
-// const URL = process.env.REACT_APP_BACKEND_URL;
 const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
 
 function App() {
