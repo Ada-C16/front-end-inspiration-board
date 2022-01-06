@@ -4,8 +4,8 @@ import "./Card.css";
 
 const Card = ({ id, message, likes_count, onClickLike, onClickDelete }) => {
   return (
-    <li className = "card-name">
-      Card {id}: {message} Likes: {likes_count}{" "}
+    <li className="card-name">
+      {message} Likes: {likes_count}{" "}
       <button
         onClick={() => {
           onClickLike(id);
