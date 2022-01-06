@@ -8,7 +8,7 @@ import CardList from './components/CardList';
 
 function App() {
   const [boardData, setBoardData] = useState([])
-  const [selectedBoard, setSelectedBoard] = useState(null)
+  const [selectedBoard, setSelectedBoard] = useState({})
   const [isFormVisible, setIsFormVisible] = useState(true)
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function App() {
 
   const addNewCard = (newCard) => {
     console.log(selectedBoard, "This is selectedBoard")
-    axios.post(`http://localhost:5000/boards/${selectedBoard.board_id}/cards`, newCard)
+    axios.post(`http://localhost:5000/boards/${selectedBoard.id}/cards`, newCard)
     .then((response) => {
       // setBoardData(response.data)
       
@@ -70,7 +70,7 @@ function App() {
     let boardList = []
     for (let board of boardData) {
       // boardList.push(<li key={board.title}>{board.title}</li>)
-      boardList.push(<Board id={board.id} title={board.title} owner_name={board.owner_name} cards={board.cards} onBoardSelect={onBoardSelect} createNewCard={addNewCard} readSelectedBoard={readSelectedBoard}/>)
+      boardList.push(<Board key={board.id} id={board.id} title={board.title} owner_name={board.owner_name} cards={board.cards} onBoardSelect={onBoardSelect} createNewCard={addNewCard} readSelectedBoard={readSelectedBoard}/>)
     }
     return boardList
   }
@@ -91,7 +91,7 @@ function App() {
         </section>
         <NewBoardForm createNewBoard={addNewBoard}/>
       </section>
-      <CardList />
+      {selectedBoard !== undefined ? <CardList cards={selectedBoard.cards} /> : <CardList />}
       <NewCardForm createNewCard={addNewCard} board={boardData} selectedBoard={selectedBoard} />
     </div>
   );
