@@ -9,12 +9,10 @@ const NewBoard = ({ onSubmitCallBack }) => {
   });
 
   const handleTitleChange = (event) => {
-    console.log(event.target.value);
     setNewBoard({ ...newBoard, title: event.target.value });
   };
 
   const handleOwnerChange = (event) => {
-    console.log(event.target.value);
     setNewBoard({ ...newBoard, owner: event.target.value });
   };
 
@@ -50,10 +48,7 @@ const NewBoard = ({ onSubmitCallBack }) => {
             onChange={handleOwnerChange}
           />
         </div>
-
         <button onClick={onSubmit}>Submit</button>
-        <p>Preview: </p>
-
         <button>Show New Board Form/Hide New Board Form</button>
       </form>
     </div>

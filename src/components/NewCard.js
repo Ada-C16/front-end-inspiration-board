@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import "./NewCard.css";
 
-const NewCard = () => {
+const NewCard = ({ onSubmitCallBack }) => {
   const emptyForm = {
     message: "",
   };
@@ -13,11 +14,11 @@ const NewCard = () => {
     setFormFields({
       message: e.target.value,
     });
-    document.getElementById("cardPreview").textContent = e.target.value;
   };
   const messageSubmit = (e) => {
     e.preventDefault();
     console.log(formFields);
+    onSubmitCallBack(formFields);
     setFormFields(emptyForm);
   };
 
@@ -34,11 +35,14 @@ const NewCard = () => {
             value={formFields.message}
           ></input>
         </div>
-        <span>Preview</span>
         <button>Submit</button>
       </div>
     </form>
   );
+};
+
+NewCard.propTypes = {
+  onSubmitCallBack: PropTypes.func.isRequired,
 };
 
 export default NewCard;

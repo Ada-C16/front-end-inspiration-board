@@ -54,6 +54,22 @@ function App() {
   };
 
   const [cards, setCards] = useState([]);
+  const addCard = (card) => {
+    axios
+      .post(`${URL}/boards/${selectBoard.board_id}/cards`, {
+        message: card.message,
+      })
+      .then((response) => {
+        console.log(response.data);
+        const newCard = response.data;
+        const newCardList = [...cards, newCard];
+        setCards(newCardList);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   useEffect(() => {
     if (selectBoard) {
       getCards(selectBoard.board_id);
@@ -90,7 +106,7 @@ function App() {
       </div>
       <div className="App-sidebar">
         <NewBoard onSubmitCallBack={addBoard} />
-        <NewCard />
+        <NewCard onSubmitCallBack={addCard} />
       </div>
     </div>
   );
