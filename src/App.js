@@ -66,7 +66,15 @@ const App = () => {
   //     like_count: 0
   //   }
   // ]
-  
+  const [selectedBoard, setSelectedBoard] = useState(0)
+
+  const onClickSelectBoard = (event) =>{
+    event.preventDefault()
+    console.log('board clicked')
+    const selectedBoardId = event.target.boardId
+    console.log(event.target)
+    console.log(selectedBoardId)
+  }
   const [cards, setCards] = useState([]);
   useEffect(async () => {
     const res = await axios('https://kids-in-covid-board.herokuapp.com/cards');
@@ -76,7 +84,7 @@ const App = () => {
   
   return (
     <div className="App">
-      <Boards boards={boards}/>
+      <Boards boards={boards} onClickSelectBoard={onClickSelectBoard}/>
       <BoardForm/>
       <Cards cards={cards}/>
       <CardForm/>
