@@ -65,7 +65,8 @@ const NewBoardForm = (props) => {
                             type="text"
                             required
                             value={formField.boardName} 
-                            onChange={onBoardNameChange}>   
+                            onChange={onBoardNameChange}
+                            maxLength={40}>   
                         </input>
                         {/* </div> */}
                         {/* <div> */}
@@ -74,7 +75,8 @@ const NewBoardForm = (props) => {
                             type="text"
                             required
                             value={formField.boardOwner} 
-                            onChange={onBoardOwnerChange}>
+                            onChange={onBoardOwnerChange}
+                            maxLength={30}>
                         </input>
                         {/* </div> */}
                         <input className="new-board-submit-button nb-form-child"

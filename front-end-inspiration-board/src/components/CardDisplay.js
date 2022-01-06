@@ -48,6 +48,17 @@ const CardDisplay = (props) => {
     cardDisplayHeader = `${props.currentBoard.title} by ${props.currentBoard.owner}`;
   };
 
+  if(!props.currentBoard) {
+    return (
+      <section className="card-display-block grid-block">
+        <h1>
+            {cardDisplayHeader}
+            {/* {props.currentBoard.title} by {props.currentBoard.owner} */}
+        </h1>
+      </section>
+    );
+  }
+
   return (
     <section className="card-display-block grid-block">
       <h1>
