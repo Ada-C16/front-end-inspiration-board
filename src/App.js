@@ -6,9 +6,9 @@ import Boards from './components/Boards.js';
 import BoardForm from './components/BoardForm';
 import CardForm from './components/CardForm';
 import Cards from './components/Cards';
+
+
 const App = () => {
-
-
 
   const BOARDS = [
     {title: "board1",
@@ -41,7 +41,7 @@ const App = () => {
   // }, []);
 
   useEffect(async () => {
-    const res = await axios.get('https://kids-in-covid-board.herokuapp.com/boards');
+    const res = await axios('https://kids-in-covid-board.herokuapp.com/boards');
     setBoards(res.data)
   }, []);
   
@@ -66,7 +66,12 @@ const App = () => {
       like_count: 0
     }
   ]
-  const [cards, updateCards] = useState(CARDS);
+  
+  const [cards, setCards] = useState(CARDS);
+  useEffect(async () => {
+    const res = await axios('https://kids-in-covid-board.herokuapp.com/cards');
+    setCards(res.data)
+  }, []);
   
   return (
     <div className="App">
