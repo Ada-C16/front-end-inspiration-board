@@ -6,10 +6,12 @@ const Card = ({ message, likes_count, card_id, addLike, deleteCard }) => {
   return (
     <div className="card">
       {message}
-      <div className="card-extras">
+      <div>
         <p className="likes">{likes_count}😻</p>
-        <button onClick={() => addLike(card_id)}>+😻</button>
-        <button onClick={() => deleteCard(card_id)}>Delete</button>
+        <div className="buttons">
+          <button onClick={() => addLike(card_id)}>+😻</button>
+          <button onClick={() => deleteCard(card_id)}>Delete</button>
+        </div>
       </div>
     </div>
   );

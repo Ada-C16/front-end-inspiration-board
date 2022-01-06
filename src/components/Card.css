@@ -6,7 +6,7 @@
   width: 10vw;
   background-color: #44475a;
   padding: 1em;
-  border-radius: 2em;
+  border-radius: 0.75em;
   margin: 1em;
 }
 
@@ -14,4 +14,8 @@
   color: #ff79c6;
   font-weight: bold;
   font-size: 1.5em;
+}
+
+.buttons {
+  display: flex;
 }
