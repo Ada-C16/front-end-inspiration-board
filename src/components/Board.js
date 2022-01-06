@@ -4,7 +4,7 @@ import './Board.css';
 
 const Board = ({ id, owner, title, onClickBoard }) => {
     return (
-    <li onClick={()=>{onClickBoard(id)}}>
+    <li className="board-name" onClick={()=>{onClickBoard(id)}}>
         Board {id}: {title}, created by {owner}
     </li>
     );
