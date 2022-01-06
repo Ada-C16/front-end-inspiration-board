@@ -1,0 +1,10 @@
+.form-container {
+    min-height: 100px;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+}
+
+.submit-btn {
+    align-self: flex-start;
+}
