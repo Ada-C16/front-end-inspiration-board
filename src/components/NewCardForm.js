@@ -16,7 +16,7 @@ const NewCardForm = (props) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    // props.createNewCard(board_id, message);
+    props.createNewCard(formFields);
 
     console.log(formFields);
     setFormFields(emptyForm);

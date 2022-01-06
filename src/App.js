@@ -49,6 +49,18 @@ function App() {
     });
   }
 
+  const addNewCard = (newCard) => {
+    axios.post(`http://localhost:5000/boards/${selectedBoard.board_id}/cards`, newCard)
+    .then((response) => {
+      // setBoardData(response.data)
+      
+      console.log(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
   const createBoardList = () => {
     let boardList = []
     for (let board of boardData) {
@@ -56,17 +68,6 @@ function App() {
       boardList.push(<Board id={board.id} title={board.title} owner_name={board.owner_name} cards={board.cards} onBoardSelect={onBoardSelect} createNewCard={addNewCard} readSelectedBoard={readSelectedBoard}/>)
     }
     return boardList
-  }
-
-  const addNewCard = (board_id, newCard) => {
-    axios.post(`http://localhost:5000/boards/${board_id}/cards`, newCard)
-    .then((response) => {
-      // setBoardData(response.data)
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   }
 
   return (
