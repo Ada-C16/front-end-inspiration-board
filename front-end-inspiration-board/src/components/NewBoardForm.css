@@ -1,0 +1,50 @@
+.new-board-form-block {
+    position: relative;
+}
+
+.new-board-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.nb-form-child {
+    margin: 5px;
+}
+
+.new-board-label {
+    text-align: left;
+    font-size: 12pt;
+    /* margin: px; */
+}
+
+.new-board-input {
+    border: none;
+    width: 75%;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.new-board-input:hover {
+    border: peachpuff ridge;
+}
+
+.new-board-submit-button {
+    color: #22332c;
+    background-color: #BEBF94;
+    border: none;
+    padding: 10px 0px;
+    margin: 10px;
+    width: 30%;
+    border-radius: 50px;
+    box-shadow: -2px 2px #22332c;
+}
+
+.hide-button {
+    background-color: #C1D9DA;
+    width: 40%;
+    /* position: absolute;
+    right: 10%;
+    bottom: 10%; */
+}

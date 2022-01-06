@@ -1,6 +1,7 @@
 // import axios from "axios";
 import React, {useState} from "react";
 import Congrats from "./Congrats";
+import "./Card.css";
 
 const Card = (props) => {
   const [cardLikeCount, setCardLikeCount] = useState(props.cardLikes)
@@ -60,10 +61,10 @@ const Card = (props) => {
   
   // console.log(cardLikeCount)
   return (
-    <section onClick={logCardInfo}>
+    <section className="card" onClick={logCardInfo}>
       <h3>{props.cardMessage}</h3>
-      <button onClick={addOneLike}>🐶 {cardLikeCount}</button>
-      <button onClick={handleDeleteCard}>delete card</button>
+      <button className="like-button" onClick={addOneLike}>{cardLikeCount}🐶</button>
+      <button className="delete-button" onClick={handleDeleteCard}>delete</button>
     </section>
   );
 };

@@ -3,6 +3,7 @@
 
 *{
   font-family: 'Readex Pro', sans-serif;
+  color: #22332C;
   /* font-family: "Sigmar One" */
 }
 
@@ -12,7 +13,7 @@ This rule set makes a div element the container for all our site content*/
   background-image: url('/assets/westies.png');
   /* min-height establishes the element's minimum height will be 50% of the viewport's height*/
   min-height: 50vh;
-  padding: 75px;
+  padding: 50px;
   /* display establishes an element with this class as a grid container */
   display: grid;
   /* grid-template establishes the amount of rows & columns in our grid. */
@@ -24,15 +25,10 @@ This rule set makes a div element the container for all our site content*/
       /* The argument given for row is a measurement for how wide that column will be. */
   grid-template: .2fr 1fr 1fr 1fr / 1fr 2fr;
   /* row-gap and column-gap dictate spacing between rows and columns */
-  row-gap: 30px;
-  column-gap: 30px;
+  row-gap: 20px;
+  column-gap: 25px;
   /* justify-items tells the child elements of the grid container to "stretch out" to fit the grid template*/
   justify-items: stretch;
-}
-
-section {
-  border-style: solid;
-  border-color: aqua;
 }
 
 /* this sets up our styling for each grid element. */
@@ -40,11 +36,15 @@ section {
   /* border-radius creates nicely rounded corners */
   border-radius: 10px;
   padding: 20px;
-  background-color: rgb(211, 211, 211);
+  /* background-color: rgb(211, 211, 211);*/
+  background-color: #E5E8E4;
+  /* background-color: #D4D8D2; */
+  box-shadow: -10px 10px #22332C;
 }
 
 h1 {
-  font-size: 24pt;
+  font-size: 10pt;
+  margin: 10px;
 }
 
 .site-title-block {
@@ -61,36 +61,48 @@ h1 {
   grid-column: 1/2;
   /* grid-row states this element will span from the 1st row border line to the 2nd */
   grid-row: 1/2;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 20px 20px;
+  max-height: 15vh;
+  background-image: url('/assets/sunny_westie.jpg');
+  background-position: top -160px left -300px;
 }
 
 .site-title{
-  font-size: 35pt;
+  font-size: 30pt;
+  color: white;
   /* font-family: 'Readex Pro', sans-serif; */
   font-family: "Sigmar One";
+  text-shadow: -5px 5px #22332c;
 }
 
 .boardz-block {
   grid-row: 2/3;
   grid-column: 1/2;
+  min-height: 10vh;
+  max-height: 40vh;
+  max-width: 30vw;
 }
 
 .new-card-form-block {
   grid-row: 3/4;
   grid-column: 1/2;
+  max-height: 35vh;
+  max-width: 30vw;
 }
 
 .new-board-form-block {
   grid-row: 4/5 ;
   grid-column: 1/2;
+  max-height: 45vh;
+  max-width: 30vw;
 }
 
 .card-display-block {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 50vw;
   grid-row: 2/5;
   grid-column: 2/3;
-}
-
-.site-title-block {
-  /* border-color: tomato; */
-  background-image: url('/assets/westie-steel.png');
 }

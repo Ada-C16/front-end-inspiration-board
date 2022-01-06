@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 // import axios from "axios";
 import Card from "./Card";
 import SortByLikes from "./SortByLikes"
+import "./CardDisplay.css";
 
 
 //when is this called?
@@ -53,15 +54,15 @@ const CardDisplay = (props) => {
           {cardDisplayHeader}
           {/* {props.currentBoard.title} by {props.currentBoard.owner} */}
       </h1>
-      {/* {console.log(props.currentBoard)} */}
-      {cardComponents}
-
-      
       <SortByLikes 
         cardList={props.cardList}
         setCardList={props.setCardList}
         sortCardsCallback={props.sortCardsCallback}>
       </SortByLikes>
+      {/* {console.log(props.currentBoard)} */}
+      <section className="cards-container">
+        {cardComponents}
+      </section>
     </section>
   );
 };

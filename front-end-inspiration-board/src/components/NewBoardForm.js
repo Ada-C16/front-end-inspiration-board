@@ -1,5 +1,6 @@
 import React from "react";
 import {useState } from 'react';
+import './NewBoardForm.css';
 
 
 const NewBoardForm = (props) => {
@@ -54,35 +55,41 @@ const NewBoardForm = (props) => {
     if (hideToggle === "Hide") {
         return(
             <section className='new-board-form-block grid-block'>
-                <h1>New Board Form</h1>
+                <h1>New Boardz R Us!</h1>
+                <button className="hide-button" onClick={handleHideToggle}>{hideToggle} Form</button>
                 <section className="can-be-hidden">
-                    This is the New Board Form. New Boardz R us!
-                    <form onSubmit={onFormSubmit}>
-                        <div>
-                            <label>New Board Name:</label>
-                            <input type="text"
+                    <form className="new-board-form" onSubmit={onFormSubmit}>
+                        {/* <div> */}
+                        <label className="new-board-label nb-form-child">New Board Name:</label>
+                        <input className="new-board-input"
+                            type="text"
                             required
                             value={formField.boardName} 
-                            onChange={onBoardNameChange}></input>
-                        </div>
-                        <div>
-                            <label>New Board Owner:</label>
-                            <input type="text"
-                                    required
-                                    value={formField.boardOwner} 
-                                    onChange={onBoardOwnerChange}></input>
-                        </div>
-                        <input type="submit" value="Submit"></input>
+                            onChange={onBoardNameChange}>   
+                        </input>
+                        {/* </div> */}
+                        {/* <div> */}
+                        <label className="new-board-label nb-form-child">New Board Owner:</label>
+                        <input className="new-board-input nb-form-child"
+                            type="text"
+                            required
+                            value={formField.boardOwner} 
+                            onChange={onBoardOwnerChange}>
+                        </input>
+                        {/* </div> */}
+                        <input className="new-board-submit-button nb-form-child"
+                            type="submit"
+                            value="Submit">
+                        </input>
                     </form>
                 </section>
-                <button onClick={handleHideToggle}>{hideToggle} Form</button>
             </section>
         )
     } else if (hideToggle === "Show") {
         return(
             <section className='new-board-form-block grid-block'>
-                <h1>New Board Form</h1>
-                <button onClick={handleHideToggle}>{hideToggle} Form</button>
+                <h1>New Boardz R Us!</h1>
+                <button className="hide-button" onClick={handleHideToggle}>{hideToggle} Form</button>
             </section>
         )
     }

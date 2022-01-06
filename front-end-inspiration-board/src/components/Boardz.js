@@ -38,32 +38,16 @@ const Boardz = (props) => {
   return (
     <section className="boardz-block grid-block">
       <h1> Boardz List </h1>
-      <ul>
-        {boardsComponents}
-        {/* {
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>
-        <li>
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>
-        <li>
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>
-        <li>
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>
-        <li>
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>
-        <li>
-          <Board selectNewBoard={props.updateCurrentBoardCallback} />
-        </li>  */}
-      </ul>
-      <form>
-        <button className="deleteAllBoardsButton" onClick={onClearAllBoards}>
+      <section className="boardz-content">
+        <ul className="boardz-menu child">
+          {boardsComponents}
+        </ul>
+        {/* <div className="button-container"> */}
+        <button className="deleteAllBoardsButton child" onClick={onClearAllBoards}>
           clear all boards
         </button>
-      </form>
+        {/* </div> */}
+      </section>
     </section>
   );
 };

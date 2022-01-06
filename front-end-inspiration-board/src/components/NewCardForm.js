@@ -51,19 +51,19 @@ const NewCardForm = (props) => {
   return (
     <section className="new-card-form-block grid-block">
       <h1> New Card Form</h1>
-      This is the New Card Form.
-      <form onSubmit={onCardFormSubmit}>
-        <div>
-          <label className='new-card-input-label'>New Card Message:</label>
-          <input className='new-card-input'
-            type="text"
-            required
-            value={cardFormField.cardMessage}
-            onChange={onCardMessageChange}
-            maxLength={40}
-          ></input>
-        </div>
-        <input 
+      <form className="new-card-form" onSubmit={onCardFormSubmit}>
+        {/* <div> */}
+        <label className='new-card-input-label nc-form-child'>New Card Message:</label>
+        <input className='new-card-input nc-form-child'
+          type="text"
+          required
+          value={cardFormField.cardMessage}
+          onChange={onCardMessageChange}
+          maxLength={40}>
+
+        </input>
+        {/* </div> */}
+        <input className="new-card-submit-button nc-form-child"
           type="submit"
           value="Submit">
         </input>
