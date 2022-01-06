@@ -28,14 +28,15 @@ const Board = ({ boardData, selectBoard, boardCallBack }) => {
   return (
     <div className="board">
       <div>
-        <label>Choose your board: </label>
+        <h2>Choose your board: </h2>
         <ol>{boardOptions}</ol>
       </div>
       <div>
         <h2>Selected Board</h2>
         {selectBoard && (
           <p>
-            {selectBoard.owner}: {selectBoard.title}
+            <span className="board-owner">{selectBoard.owner}:</span>
+            <span className="board-title">{selectBoard.title}</span>
           </p>
         )}
       </div>

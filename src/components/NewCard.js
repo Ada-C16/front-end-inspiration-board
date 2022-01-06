@@ -27,7 +27,7 @@ const NewCard = ({ onSubmitCallBack }) => {
       <div>
         <h2>Make a New Card!</h2>
         <div>
-          <label>Message:</label>
+          <label for="message">Message:</label>
           <input
             type="text"
             name="message"

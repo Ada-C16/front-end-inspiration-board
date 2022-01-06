@@ -1,4 +1,15 @@
 .card-container {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cardlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sorting-buttons {
+  display: flex;
 }

@@ -1,5 +1,19 @@
 .board {
-    display: flex;
-    justify-content: space-around;
-    margin: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+}
+
+.board-owner {
+  background-color: #ff79c6;
+  color: #282a36;
+  padding: 0.5em 1em;
+  border-radius: 0.75em;
+  margin: 0.5em;
+  font-weight: bold;
+}
+
+.board-title {
+  color: #ff79c6;
+  font-weight: bold;
 }

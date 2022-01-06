@@ -6,7 +6,7 @@ import CardList from "./components/CardList";
 import NewBoard from "./components/NewBoard";
 import NewCard from "./components/NewCard";
 
-const URL = "https://knee-jerk-reaction-inspiration.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
   // board state
@@ -46,6 +46,7 @@ function App() {
         const newBoard = response.data;
         const newBoardList = [...boardData, newBoard];
         setBoardData(newBoardList);
+        setErrorMessage(null);
       })
       .catch((error) => {
         setErrorMessage(error.response.data.error);
@@ -62,6 +63,7 @@ function App() {
         const newCard = response.data;
         const newCardList = [...cards, newCard];
         setCards(newCardList);
+        setErrorMessage(null);
       })
       .catch((error) => {
         setErrorMessage(error.response.data.error);
@@ -104,7 +106,7 @@ function App() {
       <div className="App-sidebar">
         <NewBoard onSubmitCallBack={addBoard} />
         <NewCard onSubmitCallBack={addCard} />
-        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import Card from "./Card";
 import "./CardList.css";
 
@@ -75,11 +74,13 @@ const CardList = ({ cards, setCards }) => {
 
   if (cards.length) {
     return (
-      <div>
+      <div className="cardlist">
+        <div className="sorting-buttons">
+          <button onClick={sortByID}>Sort By ID</button>
+          <button onClick={sortByLikes}>Sort By 😻</button>
+          <button onClick={sortByMessage}>Sort By Message</button>
+        </div>
         <div className="card-container">{newCards}</div>
-        <button onClick={sortByID}>Sort By ID</button>
-        <button onClick={sortByLikes}>Sort By Likes</button>
-        <button onClick={sortByMessage}>Sort By Message</button>
       </div>
     );
   } else {

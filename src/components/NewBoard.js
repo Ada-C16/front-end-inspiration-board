@@ -34,34 +34,32 @@ const NewBoard = ({ onSubmitCallBack }) => {
 
   return (
     <div>
-      <h2>Make a New Board</h2>
+      <h2>Make a New Board!</h2>
       {hideBoard && (
         <form>
           <div>
-            <div>
-              Title:
-              <input
-                type="text"
-                name="title"
-                value={newBoard.title}
-                onChange={handleTitleChange}
-              />
-            </div>
-            <div>
-              Owner:
-              <input
-                type="text"
-                name="owner"
-                value={newBoard.owner}
-                onChange={handleOwnerChange}
-              />
-            </div>
-            <button onClick={onSubmit}>Submit</button>
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={newBoard.title}
+              onChange={handleTitleChange}
+            />
           </div>
+          <div>
+            <label for="owner">Owner:</label>
+            <input
+              type="text"
+              name="owner"
+              value={newBoard.owner}
+              onChange={handleOwnerChange}
+            />
+          </div>
+          <button onClick={onSubmit}>Submit</button>
         </form>
       )}
       <button onClick={toggleHideBoard}>
-        Show New Board Form/Hide New Board Form
+        {hideBoard ? "Hide New Board Form" : "Show New Board Form"}
       </button>
     </div>
   );
