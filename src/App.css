@@ -32,7 +32,7 @@ button, .submit-button {
   will-change: transform;
 }
 
-.submit-button {
+.delete-button {
   appearance: none;
   background-color: rgb(198, 50, 151);
   border: none;
@@ -52,4 +52,24 @@ button, .submit-button {
   touch-action: manipulation;
   width: 100%;
   will-change: transform;
+}
+
+/* headers and titles */
+
+h1 {
+  text-align: center;
+  font-size: 25px;
+  font-family: Brush Script MT, cursive;
+}
+
+h2 {
+  text-align: center;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header {
+display: flex;
+overflow: hidden;
+justify-content: center;
+margin-left: 50px;
 }
