@@ -14,7 +14,7 @@ const Board = (props) => {
     };
     const [formField, setFormField] = useState({ title: "", owner: "" });
     const onTitleChange = (e) => {
-        toggleBorder(e, 'board-title');
+        toggleBorder(e, 'board-title-input');
         setFormField({
             ...formField,
             title: e.target.value,
@@ -52,7 +52,7 @@ const Board = (props) => {
 
   const onBoardSubmit = (e) => {
     e.preventDefault();
-    const boardTitle = document.getElementById('board-title');
+    const boardTitle = document.getElementById('board-title-input');
     const boardOwner = document.getElementById('board-owner');
     if (formField.title.length === 0) {
       boardTitle.style.borderColor = "red";
@@ -100,7 +100,7 @@ const Board = (props) => {
         <div id="form-title-div">
           <label htmlFor="title">title</label>
           <input
-            id = "board-title"
+            id = "board-title-input"
             minLength={1}
             name="title"
             value={formField.title}
