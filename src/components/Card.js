@@ -3,8 +3,6 @@ import './Card.css';
 
 
 const Card = ({message, deleteCard, id}) => {
-  console.log('*********************')
-  console.log(id)
   return (
     <div className="card">
       <p>{message}</p>

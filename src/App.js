@@ -9,7 +9,6 @@ import CardList from './components/CardList';
 function App() {
   const [boardData, setBoardData] = useState([])
   const [selectedBoard, setSelectedBoard] = useState({})
-  const [isFormVisible, setIsFormVisible] = useState(true)
 
   useEffect(() => {
     axios.get('http://localhost:5000/boards')
@@ -32,7 +31,6 @@ function App() {
       let newBoardData = [...boardData]
       newBoardData.push(newBoard)
       setBoardData(newBoardData)
-      console.log("response from post newboard", response.data)
     })
     .catch((error) => {
       console.log(error)
@@ -44,7 +42,6 @@ function App() {
     .then((response) => {
 
       setSelectedBoard(response.data);
-      console.log(response.data, "this is readselectedboard");
       document.getElementById("selectedBoard").textContent = title;
     })
     .catch((error) => {
@@ -53,7 +50,6 @@ function App() {
   }
 
   const addNewCard = (newCard) => {
-    console.log(selectedBoard, "This is selectedBoard")
     axios.post(`http://localhost:5000/boards/${selectedBoard.id}/cards`, newCard)
     .then((response) => {
       newCard['card_id'] = response.data.response_body.card_id
@@ -63,9 +59,6 @@ function App() {
       newCardData.push(newCard)
       newSelectedBoard['cards'] = newCardData
       setSelectedBoard(newSelectedBoard)
-      console.log('HHHHHHHHHHHHHHHHHHHH')
-      console.log(boardData)
-      console.log(response.data)
     })
     .catch((error) => {
       console.log(error)
@@ -75,7 +68,6 @@ function App() {
   const createBoardList = () => {
     let boardList = []
     for (let board of boardData) {
-      // boardList.push(<li key={board.title}>{board.title}</li>)
       boardList.push(<Board key={board.id} id={board.id} title={board.title} owner_name={board.owner_name} cards={board.cards} onBoardSelect={onBoardSelect} createNewCard={addNewCard} readSelectedBoard={readSelectedBoard}/>)
     }
     return boardList
@@ -105,8 +97,6 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-    // filter takes a func as an arg/ Give us all the tasks except the ones that are equal to that id
-    // const newTasks = tasks.filter((task) => task.id !==id);
   };
   
   

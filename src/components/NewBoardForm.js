@@ -1,8 +1,5 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import './NewBoardForm.css'
-const axios = require('axios')
-
-// const URL = process.env['SQLALCHEMY_DATABASE_URI']
 
 const NewBoardForm = (props) => {
   const emptyForm = {
@@ -27,17 +24,8 @@ const NewBoardForm = (props) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    // Send formFields to callback function
     props.createNewBoard(formFields);
 
-    // props.addNewBoardCallback({
-    //   title: formFields.title,
-    //   owner: formFields.owner
-    // });
-
-    // Use API call that we'll set up in App.js
-
-    console.log(formFields);
     setFormFields(emptyForm);
   }
 
@@ -50,11 +38,8 @@ const NewBoardForm = (props) => {
       <label htmlFor="ownerName">Owner's Name</label>
       <input onChange={onOwnerChange} value={formFields.owner} name="ownerName" type="text"></input>
       <p>Preview: <span id="boardPreview"></span></p>
-      {/* <button onClick={props.addNewBoardCallback(formFields)} type="submit">Submit Query</button> */}
       <button type="submit">Submit Query</button>
     </form>
-    <button>Hide New Board Form</button>
-    {/* <span onClick={}>Hide New Board Form</span> */}
   </section>
   )
 }

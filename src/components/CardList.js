@@ -3,9 +3,6 @@ import Card from "./Card";
 
 const CardList = ({ cards, deleteCard }) => {
   const displayCard = (card) => {
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    console.log(card.card_id);
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     return (
       <Card
         key={card.card_id}
