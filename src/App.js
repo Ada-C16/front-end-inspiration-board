@@ -37,8 +37,8 @@ function App() {
       {titlesDropDown}
       </select>
       <button className = 'delete-button' onClick ={(e) => {
-      deleteBoard(selectedBoard)
       console.log(selectedBoard)
+      deleteBoard(selectedBoard)
     }}>Delete Board</button></div>)
     //onchange to select a specific Board
     //this should be a component, pass in boards as a prop
