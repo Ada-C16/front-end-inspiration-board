@@ -3,9 +3,14 @@ html {
 }
 
 main {
-  padding: 1%;
+  padding: 2%;
 }
-
+header {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  margin-left: 50px;
+}
 .display-component {
   padding-top: 50px;
 }
@@ -50,7 +55,7 @@ button, .submit-button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 100%;
+  width: 75%;
   will-change: transform;
 }
 .dropdown-button {
@@ -71,7 +76,7 @@ button, .submit-button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 100%;
+  width: 50%;
   will-change: transform;
 }
 
