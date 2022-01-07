@@ -1,0 +1,9 @@
+.boardTab {
+    padding: 1px;
+    border: thin;
+    font-size: 11pt;
+}
+
+.boardTab:hover{
+    background-color:peachpuff;
+}

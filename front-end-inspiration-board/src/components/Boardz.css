@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Sigmar+One");
+
+.boardz-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* .child {
+    border: red solid;
+} */
+
+h1 {
+    font-family: "Sigmar One";
+    font-size: 24pt;
+}
+
+ul {
+    border: solid white;
+    background-color: white;
+    list-style-type: none;
+    overflow: scroll;
+    max-height: 15vh;
+    padding-left: 0px;
+}
+
+.deleteAllBoardsButton {
+    width: 50%;
+}
+
+.deleteAllBoardsButton:hover{
+    background-color:peachpuff;
+}

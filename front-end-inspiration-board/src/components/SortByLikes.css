@@ -1,0 +1,19 @@
+button {
+    color: #22332c;
+    background-color: #BEBF94;
+    border: none;
+    padding: 7px 0px;
+    margin: 10px;
+    width: 20%;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: -2px 2px #22332c;
+}
+
+button:hover {
+    background-color: peachpuff;
+}
+
+button:active {
+    transform: translateY(2px);
+}

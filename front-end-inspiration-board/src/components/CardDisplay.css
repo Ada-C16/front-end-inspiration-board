@@ -1,0 +1,27 @@
+.card-display-block {
+    position:relative;
+}
+
+h1 {
+    overflow-wrap: break-word;
+}
+
+.cards-container {
+    overflow: scroll;
+    max-height: 110vh;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0px 20px;
+    min-width: 40vw;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    right: 2%;
+    /* bottom: 5%; */
+    flex-grow: 4;
+    /* align-content: flex-end; */
+    /* border: red solid; */
+}
