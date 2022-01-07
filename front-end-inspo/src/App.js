@@ -7,10 +7,6 @@ import React from "react";
 
 // const axios = require('axios');
 
-// We need to create a function that makes an API call to get all the boards from the database to populate the dropdown
-// We need to create a function that makes an API call to get all the stickies from the database for specific selected board
-// Create a function that generates a sticky component for each sticky in the chosen board database
-
 function App() {
   const [dropDownList, setDropDownList] = useState([""]);
   const [currentBoard, setCurrentBoard] = useState({
@@ -173,12 +169,6 @@ function App() {
       });
   };
 
-  const getStickies = (boardID) => {
-    // grab the selected board from the dropdown
-    // we are making a GET request to the API to get all stickies for specific board
-    // by feeding the data from API into createStickies()
-  };
-
   return (
     <div className="main-container">
       <section className="sidebar-container">
@@ -226,3 +216,5 @@ function App() {
 }
 
 export default App;
+
+// Adding a comment
