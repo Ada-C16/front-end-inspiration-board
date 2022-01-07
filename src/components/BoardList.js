@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 const BoardList = (props) => {
 
 
+
+
     const clickBoard = (obj) =>{
         console.log('in clickBoard, obj is:' + JSON.stringify(obj));
         // props.onClickCallback(props.board_id, props.title);
@@ -30,6 +32,7 @@ const BoardList = (props) => {
 
 BoardList.propTypes = {
     onClickCallback: PropTypes.func.isRequired,
+    showCardListFunction: PropTypes.func.isRequired,
     boards:PropTypes.arrayOf(
             PropTypes.shape({
                 board_id: PropTypes.number.isRequired,

@@ -1,50 +1,31 @@
 import React, { useState, useEffect } from 'react';
 // import './Board.css';
-import Card from './Card';
+import CardList from './CardList';
 import PropTypes from 'prop-types';
-
 import axios from 'axios';
 import * as ada from '../ada';
 
 
 
-
 const Board = ( props ) => {
-
     const newCardFormFunction = () => {
-        props.onClickCallbackNewCard();
+        props.onClickCallbackNewCard(props.board.board_id);
     }
 
-    const onClickLikesFunction = (card_id) => {
-        props.onClickCallbackLikes(card_id);
+    const deleteBoardFunction = (props) => {
+        props.onClickCallbackDeleteBoard(props.board.board_id);
     }
+    
 
-    const deleteBoardFunction = () => {
-        props.onClickCallbackDeleteBoard();
-    }
-    
-    const generateCards = (board_id, onClickFunction) => {
-        // This will call the API to get all of the cards for this board_id
-        console.log('in generateCards');
-    
-        let renderedOutput = [];
-        //Call the API and get the list of boards
-        axios.get(ada.api_url + '/boards/' + board_id + '/cards')
-        .then(response => {
-            //create a loop through response.data and push to an renderedOutput array the Card elements
-            let myObj = response.data;
-            for (let i=0; i<myObj.length; i++){
-                renderedOutput.push(<Card card_id={myObj.card_id} likes_count={myObj.likes_count} message={myObj.message} onClickCallbackLikes={onClickLikesFunction}/>)
-            }
-        })
-    
-        return(
-            renderedOutput
-        )
-    };
         
-    console.log('in Board, props: ' + props)
-    const cardList = generateCards(props.board.board_id, props.onClickCallbackLikes);
+    console.log('in Board, props: ' + JSON.stringify(props));
+
+    let renderedCardList = [];
+
+    if (props.Cards !== []){
+        renderedCardList.push(<CardList Cards={props.Cards} board_id={props.board.board_id} onClickCallbackLikes={props.onClickCallbackLikes} onClickCallbackDeleteCard={props.onClickCallbackDeleteCard} />)
+    }
+
     return(
         <div>
             <div>
@@ -54,7 +35,7 @@ const Board = ( props ) => {
 
             </div>
             <div className="grid">
-                {cardList}
+                {renderedCardList}
             </div>
         </div>
 
@@ -65,11 +46,19 @@ Board.propTypes = {
     onClickCallbackLikes: PropTypes.func.isRequired,
     onClickCallbackNewCard: PropTypes.func.isRequired,
     onClickCallbackDeleteBoard: PropTypes.func.isRequired,
+    onClickCallbackDeleteCard:PropTypes.func.isRequired,
     board:PropTypes.shape({
             board_id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             owner: PropTypes.string.isRequired
-        })
+        }),
+    Cards:PropTypes.arrayOf(
+        PropTypes.shape({
+            Card_id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            owner: PropTypes.string.isRequired
+        })    
+    )
 };
 
 export default Board;

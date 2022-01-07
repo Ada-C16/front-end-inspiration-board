@@ -10,16 +10,30 @@ const Card = (props) => {
         props.onClickCallbackLikes(props.card_id);
     };
 
+    const cardDelete = () =>{
+        props.onClickCallbackDeleteCard(props.card_id);
+    }
+
     return (
             <div className='Card'>
-                {props.message}
-                {props.likes_count}
-            <button
-                className="square"
-                onClick={cardLikeButtonClick}
-                id={props.card_id}
-            > 
-            </button>
+                <p>Message: {props.message}</p>
+                <p># of Likes: {props.likes_count}</p>
+                <button
+                    className="btn"
+                    onClick={cardLikeButtonClick}
+                    id={props.card_id}
+                >
+                    Like
+                </button>
+
+                <button
+                    className="btn"
+                    onClick={cardDelete}
+                    id={props.card_id}
+                >
+                    Delete
+                </button>
+
             </div>
 
     );
@@ -28,6 +42,7 @@ const Card = (props) => {
 
 Card.propTypes = {
     onClickCallbackLikes: PropTypes.func.isRequired,
+    onClickCallbackDeleteCard: PropTypes.func.isRequired,
     message: PropTypes.string.isRequired,
     card_id: PropTypes.number.isRequired,
     likes_count: PropTypes.number.isRequired,
