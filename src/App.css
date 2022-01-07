@@ -1,0 +1,45 @@
+
+.wrapper {
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+   grid-auto-columns: 1fr;
+  grid-auto-flow: column; 
+  gap: 10px;
+  padding: 30px; 
+}
+
+.one {
+  grid-row: 1;
+  border-radius: 20px 10px 50px 30px;
+  -webkit-border-radius: 20px 10px 50px 30px;
+  -moz-border-radius: 20px 10px 50px 30px;
+  border: 10px double;
+  border-color:orange;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.two {
+  grid-row: 1;
+  border-radius: 20px 10px 50px 30px;
+  -webkit-border-radius: 20px 10px 50px 30px;
+  -moz-border-radius: 20px 10px 50px 30px;
+  border: 10px double;
+  border-color:orange;
+  padding:30px;
+}
+
+.three {
+  border-radius: 20px 10px 50px 30px;
+  -webkit-border-radius: 20px 10px 50px 30px;
+  -moz-border-radius: 20px 10px 50px 30px;
+  border: 10px double;
+  border-color:orange;
+  padding: 30px;
+}
+
+
+
+

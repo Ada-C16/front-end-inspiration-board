@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+
+.grid-container{
+ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 30px;
+    
+  }
+  
+.one_t {
+    grid-column: 1 / 1;
+    grid-row: 1;
+    font-size: 40px;
+    border: 3px solid rgb(236, 185, 18);
+    background-color: rgb(220, 93, 188);
+    text-align: center;
+    border-radius: 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+}
+.two_t {
+  grid-column: 2 / 3;
+  grid-row: 1;
+  font-size: 40px;
+  border: 3px solid rgb(236, 185, 18);
+  background-color: rgb(220, 93, 188);
+  text-align: center;
+  border-radius: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+}
+
+.three_t {
+  grid-column: 3 / 3;
+  grid-row: 1;
+  font-size: 40px;
+  border: 3px solid rgb(236, 185, 18);
+  background-color: rgb(220, 93, 188);
+  text-align: center;
+  border-radius: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+}
+ a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: white;
+}
