@@ -14,7 +14,6 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:5000/boards')
       .then((response) => {
-        // console.log(response.data);
         setBoardData(response.data);
       })
       .catch((error) => {
@@ -33,7 +32,6 @@ function App() {
       let newBoardData = [...boardData]
       newBoardData.push(newBoard)
       setBoardData(newBoardData)
-      // setBoardData(response.data)
       console.log("response from post newboard", response.data)
     })
     .catch((error) => {
@@ -44,13 +42,10 @@ function App() {
   const readSelectedBoard = (board_id, title) => {
     axios.get(`http://localhost:5000/boards/${board_id}/cards`)
     .then((response) => {
-// find board_id in list of boards 
-// set selected board to that board object
+
       setSelectedBoard(response.data);
       console.log(response.data, "this is readselectedboard");
       document.getElementById("selectedBoard").textContent = title;
-      // line 47 doc.... is not React-y trying to do something React already does
-      // too many axios calls? We already have the info we need?
     })
     .catch((error) => {
       console.log(error)
@@ -61,13 +56,15 @@ function App() {
     console.log(selectedBoard, "This is selectedBoard")
     axios.post(`http://localhost:5000/boards/${selectedBoard.id}/cards`, newCard)
     .then((response) => {
-
+      newCard['card_id'] = response.data.response_body.card_id
+      newCard['likes'] = response.data.response_body.likes
       let newCardData = [...selectedBoard.cards]
       let newSelectedBoard = {...selectedBoard}
       newCardData.push(newCard)
       newSelectedBoard['cards'] = newCardData
       setSelectedBoard(newSelectedBoard)
-      
+      console.log('HHHHHHHHHHHHHHHHHHHH')
+      console.log(boardData)
       console.log(response.data)
     })
     .catch((error) => {
@@ -84,6 +81,35 @@ function App() {
     return boardList
   }
 
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`http://localhost:5000/cards/${card_id}`)
+      .then((response) => {
+        let newSelectedBoard = {...selectedBoard}
+        let newCardList = [];
+        for (let card of selectedBoard.cards) {
+          if (card.id !== card_id) {
+            newCardList.push(card);
+          }
+        }
+        newSelectedBoard['cards'] = newCardList
+        setSelectedBoard(newSelectedBoard)
+        let newBoardData = [...boardData]
+        for (let board of newBoardData) {
+          if (board.id === newSelectedBoard.id) {
+            board = newSelectedBoard;
+          }
+        }
+        setBoardData(newBoardData)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // filter takes a func as an arg/ Give us all the tasks except the ones that are equal to that id
+    // const newTasks = tasks.filter((task) => task.id !==id);
+  };
+  
+  
   return (
     <div className="App">
       <h1 className="boardTitle">Inspiration Board</h1>
@@ -100,7 +126,7 @@ function App() {
         </section>
         <NewBoardForm createNewBoard={addNewBoard}/>
       </section>
-      {selectedBoard !== undefined ? <CardList cards={selectedBoard.cards} /> : <CardList />}
+      {selectedBoard !== undefined ? <CardList cards={selectedBoard.cards} deleteCard={deleteCard} /> : <CardList />}
       <NewCardForm createNewCard={addNewCard} board={boardData} selectedBoard={selectedBoard} />
     </div>
   );

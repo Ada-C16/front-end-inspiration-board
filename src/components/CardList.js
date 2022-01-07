@@ -1,17 +1,21 @@
 import React from "react";
-import Card from './Card';
+import Card from "./Card";
 
-
-const CardList = ({cards}) => {
+const CardList = ({ cards, deleteCard }) => {
   const displayCard = (card) => {
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    console.log(card.card_id);
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     return (
       <Card
         key={card.card_id}
         id={card.card_id}
         board_id={card.board_id}
         message={card.message}
+        deleteCard={deleteCard}
       />
-    );}
+    );
+  };
 
   return (
     <div className="cardList">
@@ -20,7 +24,5 @@ const CardList = ({cards}) => {
     </div>
   );
 };
-
-
 
 export default CardList;
