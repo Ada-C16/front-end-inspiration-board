@@ -1,0 +1,118 @@
+/* body {
+    background-image: url("https://c1.wallpaperflare.com/preview/907/581/284/backdrop-background-blank-board.jpg");
+} */
+
+/* Main App Container */
+/* .App {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 25% 31.5fr 21.5fr 22fr;  
+    grid-template-rows: 10% 90%; 
+    gap: 20px; 
+    grid-template-areas: 
+        "App-header App-header App-header App-header"
+        "sidepanel board board board"; 
+    padding-left: 20px
+}
+
+.App-header { 
+    grid-area: App-header;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.sidepanel { 
+    grid-area: sidepanel;
+    min-height: 250px;
+    width: 200px
+}
+
+.board { grid-area: board; } */
+
+/* SidePanel Container*/
+/* .sidepanel-main {
+    background-color: #FFCFD2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+}
+
+.board-main {
+    background-color: #F1DCA7;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, .5fr));
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+.card-main {
+    background-color: #CFBAF0;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+/* 
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.board-selector { grid-area: board-selector; }
+
+.create-new-board { 
+    grid-area: create-new-board;
+    display: flex;
+    flex-direction: column;
+
+} */
+
+/* Creating New Card */
+/* .create-card { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+} */
+
+/* textarea {
+    background-color: #F3EC46;
+    border: none;
+    resize: none;
+}
+
+textarea:focus {
+    outline:none;
+} */
+
+/* PickingColor Squares */
+
+
+/* All Buttons */
+/* button {
+    background-color: #B9FBC0;
+    border: none;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #7B2CBF;
+    color: white;
+    font: Helvetica;
+    font-weight: bold;
+} */
+
+

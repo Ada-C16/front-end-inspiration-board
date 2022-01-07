@@ -1,0 +1,293 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+}
+
+body {
+  background-image: url("https://c1.wallpaperflare.com/preview/907/581/284/backdrop-background-blank-board.jpg");
+  color: #006d77
+}
+
+/* Main App Container */
+.App {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 35% 65%; 
+  grid-template-rows: 15% 90%; 
+  gap: 10px; 
+  grid-template-areas: 
+    "App-header App-header"
+    "sidepanel board"; 
+}
+
+.App-header { 
+  grid-area: App-header;
+  display: block;
+  text-align: center;
+  line-height: 10px;
+	font-size: 35px;
+  text-shadow: 3px 3px #c7f9cc;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.sidepanel { 
+  grid-area: sidepanel;
+}
+
+.board { grid-area: board; }
+
+/* SidePanel Container*/
+.sidepanel-main {
+  /* background: #ffdede; */
+  /* gap: 15px; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-main {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, .5fr));
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px
+}
+
+.card-main {
+  background-color: #fffcab;
+  overflow-wrap: break-word;
+  border-radius: 10px;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+  left:0;
+  bottom:0;
+  z-index:2;
+  transform:skewX(.5deg);
+  padding: 1rem;
+	min-height: 170px;
+  max-height: 220px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	white-space: pre-wrap;
+  border-radius:0 0 0 20px/45px;
+  box-shadow:
+    inset 0 -40px 40px rgba(0, 0, 0, 0.105),
+    inset 0 25px 10px rgba(0,0,0,0.105),
+    0 5px 6px 5px rgba(0,0,0,0.105);
+}
+
+/* Creating New Card */
+.card-main.create-card { 
+  background-color: #d8f3dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 250px;
+  background-color: rgb(237, 213, 237);
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.board-selector { 
+  grid-area: board-selector;
+  background-color: rgb(237, 213, 237);
+  display: grid;
+  grid-gap: 10px;
+  text-align: center;
+  width: 250px;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+}
+
+/* Create New Board */
+.create-new-board { 
+  grid-area: create-new-board;
+  text-align: center;
+  align-items: center;
+  width: 250px;
+  background-color: rgb(237, 213, 237);
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+}
+
+.BoardForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+span.error {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: red;
+  margin-bottom: 15px;
+}
+
+.success-message {
+  font-family: "Roboto", sans-serif;
+  background-color: #3f89f8;
+  padding: 15px;
+  color: white;
+}
+
+.error {
+  border-style: solid;
+  border: 2px solid #ffa4a4;
+}
+
+/* inputs */
+input {
+  border-radius: 5px;
+  border: #006d77 solid;
+}
+
+/* Card Colors */
+.card-color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+/* Card Color Options - displayed on buttons */
+/* button#red, .color-change-red{
+  background-color: #ffadad;
+}
+
+button#orange, .color-change-orange{
+  background-color: #ffd6a5;
+}
+
+button#yellow, .color-change-yellow{
+  background-color: #fdffb6;
+}
+
+button#green, .color-change-green{
+  background-color: #d8f3dc;
+}
+
+button#blue, .color-change-blue{
+  background-color: #caf0f8;
+}
+
+button#purple, .color-change-purple {
+  background-color: #dee2ff;
+} */
+
+/* Text Area for CreateCard */
+textarea {
+  background-color: #d8f3dc;
+  color: #006d77;
+  font-weight: bold;
+  border: none;
+  resize: none;
+  overflow: auto;
+  margin-bottom: 10px;
+	padding: 1rem;
+	min-height: 170px;
+  max-height: 220px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	white-space: pre-wrap;
+  left:0;
+  bottom:0;
+  z-index:2;
+  transform:skewX(.5deg);
+  border-radius:0 0 0 20px/45px;
+  box-shadow:
+    inset 0 -40px 40px rgba(0, 0, 0, 0.105),
+    inset 0 25px 10px rgba(0,0,0,0.105),
+    0 5px 6px 5px rgba(0,0,0,0.105);
+  
+}
+
+textarea:focus {
+  outline:none;
+}
+
+/* Select Option Dropdowns */
+.select-style select {
+  border-radius: 3px;
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  appearance: none;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+/* All Buttons */
+button {
+	padding: 5px 10px;
+	border-radius: 50px;
+	color: #006d77;
+  font-weight: bold;
+  border: #006d77 solid;
+	background: #fff;
+	margin-bottom: 10px;
+	box-shadow: 0 3px 20px 0 #0000003b;
+}
+
+button:hover {
+  background-color: #7B2CBF;
+  cursor: pointer;
+  color: white;
+  font: Helvetica;
+}
+
+button.delete-board:hover {
+  background-color: #ffa4a4;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.like-icon {
+  cursor: pointer;
+}
