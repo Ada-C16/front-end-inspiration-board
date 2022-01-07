@@ -6,12 +6,14 @@ import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
 import CardList from './components/CardList';
 
+const REACT_APP_BACKEND_URL = process.env['REACT_APP_BACKEND_URL'];
+
 function App() {
   const [boardData, setBoardData] = useState([])
   const [selectedBoard, setSelectedBoard] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost:5000/boards')
+    axios.get(`${REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
         setBoardData(response.data);
       })
@@ -25,7 +27,7 @@ function App() {
   }
 
   const addNewBoard = (newBoard) => {
-    axios.post('http://localhost:5000/boards', newBoard)
+    axios.post(`${REACT_APP_BACKEND_URL}/boards`, newBoard)
     .then((response) => {
       newBoard["id"]=response.data.id
       let newBoardData = [...boardData]
@@ -38,7 +40,7 @@ function App() {
   }
 
   const readSelectedBoard = (board_id, title) => {
-    axios.get(`http://localhost:5000/boards/${board_id}/cards`)
+    axios.get(`${REACT_APP_BACKEND_URL}/boards/${board_id}/cards`)
     .then((response) => {
 
       setSelectedBoard(response.data);
@@ -50,7 +52,7 @@ function App() {
   }
 
   const addNewCard = (newCard) => {
-    axios.post(`http://localhost:5000/boards/${selectedBoard.id}/cards`, newCard)
+    axios.post(`${REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards`, newCard)
     .then((response) => {
       newCard['card_id'] = response.data.response_body.card_id
       newCard['likes'] = response.data.response_body.likes
@@ -75,7 +77,7 @@ function App() {
 
   const deleteCard = (card_id) => {
     axios
-      .delete(`http://localhost:5000/cards/${card_id}`)
+      .delete(`${REACT_APP_BACKEND_URL}/cards/${card_id}`)
       .then((response) => {
         let newSelectedBoard = {...selectedBoard}
         let newCardList = [];
