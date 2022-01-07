@@ -10,7 +10,7 @@
   flex-direction: column;
   width: 35%;
   height: 100%;
-  background-color: rgb(249, 135, 135);
+  background-color: rgb(130, 130, 231);
   justify-content: center;
   align-items: center;
 }
@@ -18,12 +18,13 @@
 .sidebar-header {
   height: 10%;
   width: 90%;
-  background-color: rgb(170, 216, 170);
+  background-color: rgb(100, 160, 209);
 }
 
 .inspo-header {
   color: white;
   text-align: center;
+  line-height: 10px;
   overflow-wrap: break-word;
   font-size: 30px;
 }
@@ -63,7 +64,9 @@
   flex-direction: column;
   width: 65%;
   height: 100%;
-  background-color: rgb(130, 130, 231);
+  /* background-color: rgb(130, 130, 231); */
+  background-image: url("https://cdn.wallpapersafari.com/98/32/DiOBz1.jpg");
+  background-size: 100% 100%;
   justify-content: center;
   align-items: center;
 }
@@ -71,7 +74,9 @@
 .stickies-subcontainer{
   width:95%;
   height:90%;
-  background-color: rgb(171, 248, 248);
+  /* background-color: rgb(171, 248, 248); */
+  
+  
   display: inline-flex;
   flex-wrap: wrap;
   flex-direction:row;
@@ -83,10 +88,6 @@
 
 #new-sticky {
   width: 50%;
-  /* padding: 10px 10px; */
-  /* overflow-y: auto;
-  text-overflow: ;
-  line-height: 28px; */
 }
 
 #board-name {
@@ -97,7 +98,3 @@
   width: 50%;
 }
 
-#new-sticky-form {
-  height: 400px;
-  overflow-y: auto;
-}
