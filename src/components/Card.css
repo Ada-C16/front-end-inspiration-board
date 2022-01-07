@@ -1,0 +1,29 @@
+.sticky-note{
+    width: 190px;
+    height: 170px;
+    background-color: rgba(255,205,90,1);
+    margin: 8px;
+    border: 0px;
+    resize: none;
+    text-align: left;
+    cursor:move;
+    
+    
+}
+.draggable{
+    /* position: absolute; */
+    background-color: rgba(255,205,90,1);
+    width: 200px;
+    height: 200px;
+    border:2px solid rgba(255,205,90,1);
+    box-shadow: 3px 2px 0px 2px rgba(0,0,0,0.4);
+
+}
+.draggable .title{
+    cursor:move;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    font-size:15px;
+    text-align: center;
+    font: sans-serif;
+    font-weight:500;
+}
