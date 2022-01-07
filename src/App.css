@@ -1,0 +1,111 @@
+.Board-board {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  width: 300px;
+  background-image: url('/src/assets/Paper_pushpin.jpg');
+  background-size:cover;
+  border-style:groove;
+  border-color: gold;
+  border-width: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+}
+
+.Card-board {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  background-image: url('/src/assets/Wide_paper.jpg');
+  background-size:cover;
+  border-style: groove;
+  border-color: gold;
+  border-width: 5px;
+  padding: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+}
+
+.Board fieldset {
+  margin: 20px 0;
+}
+
+div h3 {
+  text-align: center;
+  color:rgb(168, 83, 168);
+}
+
+header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start:1;
+  height: 100px;
+  text-align: center;
+  justify-self: center;
+  font-family: 'Franklin Gothic Medium';
+  font-style: italic;
+  color:rgb(151, 102, 151);
+}
+
+.Display-board-list {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  width: 300px;
+  height: 200px;
+  overflow-y: scroll;
+  background-image: url('/src/assets/Paper.jpg');
+  background-size:contain;
+  border-style: groove;
+  border-color: gold;
+  border-width: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+  align-content: center;
+  padding: 5px 20px;
+  margin:auto;
+}
+
+.board {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  color:rgb(168, 83, 168);
+  border-style:groove;
+  border-color: gold;
+  border-width: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+  text-align: center;
+  padding:5px 20px;
+}
+
+.App-body {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-template-rows: repeat(3, minmax(200px, 1fr));
+  font-family: monospace;
+  font-style: italic;
+  font-size: large;
+  gap:30px;
+  background-color: rgb(206, 238, 220);
+  background-image: radial-gradient(rgba(0,0,255,0.05), rgba(0,0,0,0.025) 25px, rgba(0, 0, 0, 0.2) 26px, transparent 26px),
+  radial-gradient(transparent 25px, rgba(226, 136, 222, 0.4) 25px, rgba(227, 169, 250, 0.4) 26px, transparent 26px),
+  radial-gradient(transparent 50px, rgba(238, 240, 150, 0.25) 50px, rgba(91, 117, 202, 0.25) 51px, transparent 51px),
+  radial-gradient(rgba(176,196,222,0.5), rgba(176,196,222,0) 50px),
+  radial-gradient(transparent 25px, rgba(135,206,250,0.35) 25px, rgba(135,206,250,0.35) 26px, transparent 26px);
+  background-size: 200px 200px;
+  background-position:  -45px, 0, 20px 50px, 25px 55px, 50px 125px;
+}
+
+.Card-display {
+  grid-column-start: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  border-width: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+  overflow-y: scroll;
+  border-style: groove;
+  border-color: gold;
+}
+.card {
+  border-style:groove;
+  border-color: gold;
+  overflow: scroll;
+  background-color: rgb(218, 162, 218);
+  width: 250px;
+  border-width: 5px;
+  box-shadow: 5px 10px rgb(168, 161, 119);
+}
