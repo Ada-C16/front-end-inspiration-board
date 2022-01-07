@@ -104,10 +104,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <header id="header">INSPIRATION BOARD</header>
+      <header id="header">
+        <h1>
+          <span>INSPIRATION BOARD</span>
+        </h1>
+      </header>
       <main className="App-main">
         <div>
-          <h1>My Board List</h1>
+          <h2>My Board List</h2>
           {/* {errorMessage} */}
           {/* <div>{boardData}</div> */}
           <Board
@@ -121,17 +125,17 @@ const App = () => {
             onLike={onLike}
             onDelete={onDelete}
           />
+        </div>
+        <div>
+          <h2>Selected Board</h2>
+          {selectedBoard}
+        </div>
+        <div>
+          <h2>Create New Board</h2>
           <NewBoardForm
             id="New-board"
             addBoardCallback={createNewBoard}
           ></NewBoardForm>
-        </div>
-        <div>
-          <h1>SELECTED BOARD</h1>
-          {selectedBoard}
-        </div>
-        <div>
-          <h1>CREATE A NEW BOARD</h1>
         </div>
       </main>
     </div>
