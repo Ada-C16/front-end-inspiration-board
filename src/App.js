@@ -10,12 +10,12 @@ import CardList from "./components/CardList";
 const CARDS = [
   {
     id: 1,
-    message: "Mow the lawn",
+    message: "Card 1",
     likes: 1,
   },
   {
     id: 2,
-    message: "Mow the lawn 2",
+    message: "Card 2",
     likes: 2,
   },
 ];
@@ -79,7 +79,28 @@ const App = () => {
         console.log(err);
       });
   };
-  console.log(boardData);
+
+  // const getCards = (board_id) => {
+  //   axios
+  //     .get("http://localhost:5000/boards/<board_id>/cards")
+  //     .then((response) => {
+  //       // setBoardData(response.data.message);
+  //       console.log("handling the card response!");
+  //       console.log(response);
+  //       const newCards = response.data.map((card) => {
+  //         return {
+  //           card_id: card.id,
+  //           message: card.message,
+  //           likes_count: card.likes,
+  //         };
+  //       });
+  //       setBoardData(newBoards);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       // setErrorMessage(<section>{err.response.data.message}</section>);
+  //     });
+  // };
 
   return (
     <div className="App">
