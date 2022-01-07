@@ -6,6 +6,8 @@ import Board from './components/Board'
 import axios from 'axios';
 import Card from "./components/Card";
 
+const URL = "http://127.0.0.1:5000/";
+
 const renderBoard = (board) => {
   return (<Board
     title={board.title}
@@ -33,11 +35,14 @@ function App() {
     id ='dropdownButton' 
     onChange={e => setSelectedBoard(parseInt(e.target.value, 10))}>
       {titlesDropDown}
-      </select></div>)
+      </select>
+      <button class = 'delete button' onClick ={(e) => {
+      deleteBoard(selectedBoard)
+      console.log(selectedBoard)
+    }}>Delete Board</button></div>)
     //onchange to select a specific Board
     //this should be a component, pass in boards as a prop
   };
-
 
   useEffect(() => {
     generateBoardList()
@@ -64,7 +69,7 @@ function App() {
   }, [selectedBoard]);
 
   function submitForm() {
-    axios.post(`http://localhost:5000/board`,
+    axios.post(`${URL}/board`,
     {
     "title": titleInput,
     "owner": ownerInput,
@@ -76,7 +81,7 @@ function App() {
 
   function generateBoardList() {
     axios
-    .get("http://127.0.0.1:5000/board")
+    .get(`${URL}/board`)
     .then((response) => {
       const boards = response.data;
       const newBoards = [];
@@ -117,13 +122,21 @@ function App() {
         setOwnerInput(e.target.value);
       }} />
     </label>
-    <button>Submit Test Form</button>
+    <button class = 'submit button'>Submit Board</button>
     </form>
     </div>
     );
   }
   //put this form in another component with generateboard as a prop
 
+  function deleteBoard() {
+    axios.delete(`http://localhost:5000/board/${selectedBoard}`
+    ).then((response) => {
+      console.log(response.data)
+      console.log("we are deleting a board")
+      generateBoardList()
+    });
+  }
   const individualCardComponents = cards.map((card) => {
     return (
       <Card
@@ -146,7 +159,7 @@ function App() {
 
     axios
       .post(
-        `https://localhost5000:${selectedBoard.id}/cards`, 
+        `${URL}:${selectedBoard.id}/cards`, 
         newCard
       )
       .then((response) => {
