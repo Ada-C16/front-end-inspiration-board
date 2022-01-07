@@ -36,7 +36,7 @@ function App() {
     onChange={e => setSelectedBoard(parseInt(e.target.value, 10))}>
       {titlesDropDown}
       </select>
-      <button class = 'delete button' onClick ={(e) => {
+      <button className = 'delete-button' onClick ={(e) => {
       deleteBoard(selectedBoard)
       console.log(selectedBoard)
     }}>Delete Board</button></div>)
