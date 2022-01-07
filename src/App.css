@@ -1,0 +1,70 @@
+.App {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "board sidebar"
+    "card sidebar";
+}
+
+.App-header {
+  grid-area: header;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-board {
+  grid-area: board;
+}
+.App-card {
+  grid-area: card;
+}
+.App-sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+button,
+input,
+.error-message {
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.75em;
+  font-family: inherit;
+  margin: 0.25em;
+  font-weight: bold;
+}
+
+button {
+  color: #44475a;
+  background-color: #bd93f9;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #bd93f9;
+  background-color: #44475a;
+}
+
+input {
+  background-color: #8be9fd;
+  color: #282a36;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #50fa7b;
+}
+
+.error-message {
+  background-color: #ff5555;
+}

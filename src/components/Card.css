@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1em;
+  width: 10vw;
+  background-color: #44475a;
+  padding: 1em;
+  border-radius: 0.75em;
+  margin: 1em;
+}
+
+.likes {
+  color: #ff79c6;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
