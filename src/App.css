@@ -76,7 +76,7 @@ button, .submit-button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 50%;
+  width: 75%;
   will-change: transform;
 }
 
@@ -89,7 +89,7 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
