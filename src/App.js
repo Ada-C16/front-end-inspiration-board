@@ -61,7 +61,9 @@ function App() {
       .get(`${backendURL}/boards/${currentBoard.id}/cards`)
       .then((response) => {
         console.log(`Success getting cards: ${JSON.stringify(response.data)}`);
-        setCurrentCards(response.data.cards);
+        setCurrentCards(
+          response.data.cards.sort((card1, card2) => card1.id - card2.id)
+        );
       })
       .catch((error) => {
         console.error(`Error getting cards: ${error}`);

@@ -4,8 +4,8 @@ const NewCardForm = ({ board, createCard }) => {
   const [message, setMessage] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
 
-  const checkValidInput = () => {
-    if (message === "" || message.length > 40) {
+  const checkValidInput = (newMessage) => {
+    if (newMessage === "" || newMessage.length > 40) {
       setCanSubmit(false);
     } else {
       setCanSubmit(true);
@@ -20,7 +20,7 @@ const NewCardForm = ({ board, createCard }) => {
         placeholder="message"
         onInput={(event) => {
           setMessage(event.target.value);
-          checkValidInput();
+          checkValidInput(event.target.value);
         }}
       />
       <button

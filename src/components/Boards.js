@@ -48,6 +48,14 @@ function Boards({ currentBoard, setCurrentBoard }) {
     fetchBoards();
   }, []);
 
+  useEffect(() => {
+    if (boardList.length >= 1 && !currentBoard) {
+      setSelectedBoardTitle(boardList[0].title);
+      setSelectedOwner(boardList[0].owner);
+      setCurrentBoard(boardList[0]);
+    }
+  }, [boardList, currentBoard]);
+
   const renderBoardList = (boardList) => {
     return boardList.map((board) => {
       return (
