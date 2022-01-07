@@ -27,8 +27,6 @@ const Board = ({board_id}) => {
                 `http://localhost:5000/board/${board_id}`
             )
             .then((response) => {
-                console.log(response.data);
-                console.log("inside of board")
                 setOwner(response.data["board"]["owner"]);
                 setTitle(response.data["board"]["title"]);
                 //setCards([...response.data]);
@@ -53,8 +51,8 @@ const Board = ({board_id}) => {
 }
 
 Board.propTypes = {
-    title: PropTypes.string.isRequired,
+    //title: PropTypes.string,
     board_id: PropTypes.number.isRequired,
-    owner: PropTypes.string
+    //owner: PropTypes.string
 }
 export default Board

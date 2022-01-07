@@ -17,6 +17,8 @@ function App() {
   const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boards, setBoards] = useState([]); //generates all boards
+  const [titleInput, setTitleInput] = useState([]);
+  const [ownerInput, setOwnerInput] = useState([]);
   
   const selectBoard = (boards) => {
     let titlesDropDown = boards.map((board) => {
@@ -36,25 +38,9 @@ function App() {
     //this should be a component, pass in boards as a prop
   };
 
+
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/board")
-      .then((response) => {
-        const boards = response.data;
-        const newBoards = [];
-        for (let board of boards) {
-          newBoards.push({
-            board_id: board.board_id,
-            title: board.title,
-            owner: board.owner
-          });
-        }
-        setBoards(newBoards);
-        console.log(boards);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
+    generateBoardList()
   }, []);
   
   useEffect(() => {
@@ -76,6 +62,67 @@ function App() {
         console.log("Error:", error);
       });
   }, [selectedBoard]);
+
+  function submitForm() {
+    axios.post(`http://localhost:5000/board`,
+    {
+    "title": titleInput,
+    "owner": ownerInput,
+    }).then((response) => {
+      generateBoardList()
+    });
+    
+  };
+
+  function generateBoardList() {
+    axios
+    .get("http://127.0.0.1:5000/board")
+    .then((response) => {
+      const boards = response.data;
+      const newBoards = [];
+      for (let board of boards) {
+        newBoards.push({
+          board_id: board.board_id,
+          title: board.title,
+          owner: board.owner
+        });
+      }
+      setBoards(newBoards);
+      console.log(boards);
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+  };
+
+  const submitBoard = () => {
+    return (<div id = "create-board">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      submitForm();
+    }}>
+    <label htmlFor='Title Input'>
+    <input 
+    id="board-submission" 
+    value = {titleInput}
+    onChange ={(e) => {
+      setTitleInput(e.target.value);
+      }} />
+    </label>
+    <label htmlFor='Owner Input'>
+      <input 
+      id="board-submission-2"
+      value = {ownerInput}
+      onChange = {(e) => {
+        setOwnerInput(e.target.value);
+      }} />
+    </label>
+    <button>Submit Test Form</button>
+    </form>
+    </div>
+    );
+  }
+  //put this form in another component with generateboard as a prop
 
   const individualCardComponents = cards.map((card) => {
     return (
@@ -113,16 +160,19 @@ function App() {
       });
   };
 
+  const isBoardSelected = selectedBoard != null ? 
+  <Board board_id = {selectedBoard} /> : null;
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="Page">
+      <header className="Header">
         <h1>Inspiration Board</h1>
         <h2>Available Boards: {selectBoard(boards)}</h2>
       </header>
       <main>
       <div>
-        <p>{selectedBoard}</p>
-        <Board board_id = {selectedBoard} />
+        {isBoardSelected}
+        {submitBoard()}
       </div>
       </main>
     </div>
