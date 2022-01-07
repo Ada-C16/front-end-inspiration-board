@@ -122,7 +122,7 @@ function App() {
         setOwnerInput(e.target.value);
       }} />
     </label>
-    <button class = 'submit button'>Submit Board</button>
+    <button className = 'submit-button'>Submit Board</button>
     </form>
     </div>
     );
