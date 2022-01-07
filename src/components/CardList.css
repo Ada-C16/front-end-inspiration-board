@@ -1,0 +1,14 @@
+.cards-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+
+.cards-item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin: 2rem;
+}
+
+
