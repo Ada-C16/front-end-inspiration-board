@@ -31,15 +31,11 @@ function App() {
       </option>
     );
     });
-    return (<div><select name ="Select Board" 
+    return (<select name ="Select Board" 
     id ='dropdownButton' 
     onChange={e => setSelectedBoard(parseInt(e.target.value, 10))}>
       {titlesDropDown}
-      </select>
-      <button className = 'delete-button' onClick ={(e) => {
-      console.log(selectedBoard)
-      deleteBoard(selectedBoard)
-    }}>Delete Board</button></div>)
+      </select>)
     //onchange to select a specific Board
     //this should be a component, pass in boards as a prop
   };
@@ -174,7 +170,11 @@ function App() {
   };
 
   const isBoardSelected = selectedBoard != null ? 
-  <Board board_id = {selectedBoard} /> : null;
+  <div><Board board_id = {selectedBoard} />
+  <button className = 'delete-button' onClick ={(e) => {
+      console.log(selectedBoard)
+      deleteBoard(selectedBoard)
+    }}>Delete Board</button></div> : null ;
 
   return (
     <div className="Page">
@@ -183,7 +183,7 @@ function App() {
         <h2>Available Boards: {selectBoard(boards)}</h2>
       </header>
       <main>
-      <div>
+      <div className="dropdown-button">
         {isBoardSelected}
         {submitBoard()}
       </div>
