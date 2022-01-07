@@ -1,0 +1,9 @@
+.app__header {
+  position: sticky;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  background-color: #130202;
+  padding: 30px;
+  color: fuchsia;
+}
