@@ -79,7 +79,8 @@ function App() {
     axios
       .delete(`${REACT_APP_BACKEND_URL}/cards/${card_id}`)
       .then((response) => {
-        let newSelectedBoard = {...selectedBoard}
+        let newSelectedBoard = {...selectedBoard} 
+        // {board_id, Board_name, cards:[{}]}
         let newCardList = [];
         for (let card of selectedBoard.cards) {
           if (card.id !== card_id) {
