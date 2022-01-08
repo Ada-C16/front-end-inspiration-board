@@ -1,0 +1,35 @@
+h2 {
+  text-transform: uppercase;
+}
+
+.board {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+/* why is this affecting all other components? */
+.field-box {
+  width: 381px;
+  height: 69px;
+  font-size: 24px;
+}
+
+.submit-button {
+  background-color: #db1111;
+  border: #db1111;
+  color: white;
+  text-align: center;
+  padding: 20px 44px;
+  font-size: 24px;
+  /* box-shadow: none; */
+  width: 165px;
+}
+
+.select-box {
+  width: 388px;
+  height: 75px;
+}
+
+.board-title {
+  margin-bottom: 43px;
+}

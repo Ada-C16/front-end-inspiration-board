@@ -1,0 +1,51 @@
+.card-note {
+  width: 294px;
+  height: 319px;
+  /* margin-left: 40px; */
+  margin-bottom: 50px;
+  color: white;
+  background: #db1111;
+  /* needs inline-block to get the cards to behaved likes inline */
+  display: inline-block;
+  /* display: none; */
+}
+
+/* .card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+} */
+
+.card-container {
+  margin-right: 10px;
+  margin-left: 40px;
+}
+
+.card-input {
+  display: inline;
+  height: 20px;
+  width: 40px;
+  color: white;
+  background: #db1111;
+  /* border-color: #db1111; */
+  border: none;
+}
+
+p {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.3rem;
+  overflow-wrap: break-word;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-para {
+  /* setting width size somehow affects right margin. */
+  /* width: 260px; */
+  height: 250px;
+}

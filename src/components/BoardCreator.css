@@ -1,0 +1,33 @@
+h2 {
+  text-transform: uppercase;
+}
+
+/* input.hide-show {
+  display: none;
+} */
+
+.new-board {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.board-button-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* .submit-button {
+  background-color: #db1111;
+  color: white;
+  text-align: center;
+  padding: 20px 44px;
+  font-size: 24px;
+} */
