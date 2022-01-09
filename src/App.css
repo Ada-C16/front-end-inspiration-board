@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+}
+.App-main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.6fr 0.5fr ;
+  grid-template-areas:
+  "header header header"
+  "Boards Selected-boards New-board"
+  "Cards Cards Create-card";
+  gap: 1em;
+  position:relative;
+  left:20px;
+  top:2px;
+}
+#header {
+  padding: 30px;
+  position:relative;
+  left:2px;
+  top:2px;
+}
+#Boards {
+  grid-area: Boards;
+  position: absolute;
+  left: 0px;
+}
+#Selected-boards {
+  grid-area: Selected-boards;
+}
+#New-board {
+  grid-area: New-board;
+  padding: 10px;
+}
+#Cards {
+  grid-area: Cards;
+}
+#Create-card {
+  grid-area: Create-card;
+  padding: 10px;
+}
+body{
+  margin : 3rem;
+  color: black;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  padding:10px;
+}
+h1 {
+  font-size: 30px;
+  position:absolute;
+  left:0px;
+  top:-30px;
+  transform: rotate(-5deg);
+}
+h1 span {
+  background-color: yellow;
+}
+h2 {
+  background-color: rgb(249, 251, 252);
+  font-size: 20px;
+  border: 2px solid black;
+  box-sizing:content-box;
+  box-shadow: -10px 10px  black;
+  padding: 0.6em 1em;
+  width: 150px;
+  height: 35px;
+}
+.no-bullets {
+  list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
