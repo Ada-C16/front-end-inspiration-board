@@ -114,7 +114,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://team-lovelace-api.herokuapp.com/boards")
+      .get(process.env.REACT_APP_BACKEND_URL)
       .then((response) => {
         setBoardsData([...response.data]);
       })
