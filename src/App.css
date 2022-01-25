@@ -1,0 +1,32 @@
+.App {
+  margin: 3rem;
+  /* font-family: 'Open Sans'; */
+}
+
+.boardTitle {
+  display: inline-block;
+  padding: 19px 32px;
+  background-color: yellow;
+  transform: skewY(-2deg);
+}
+
+h2 {
+  display: inline-block;
+  border: 2px solid black;
+  box-shadow: -15px 7px 1px black;
+  padding: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.main > * {
+  width: 30%;
+}
+
+select {
+  display: block;
+  width: 90%;
+}
