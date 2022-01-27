@@ -1,0 +1,50 @@
+
+.app-header{
+  width:100%;
+  margin-top: 5%;
+  margin-right: 25%;
+  margin-left: 25%;
+  justify-content: center;
+}
+
+/* .flex-container{
+  display: flex;
+} */
+
+.flex-child-board-form {
+  flex: 1;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 5px;
+  margin-left: 100px;
+}
+
+.flex-child-board-list{
+  flex: 2;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 5px;
+}
+
+/* .all-the-cards{
+  z-index: 1;
+  position: absolute;
+  margin-top: 30%;
+  width: 77%;
+} */
+
+.flex-child-card-form{
+  flex: 1;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 5px;
+}
+
+.float-child-card-list{
+  flex: 2;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 5px;
+  margin-left: 100px;
+}
+
