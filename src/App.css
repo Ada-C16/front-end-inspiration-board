@@ -1,0 +1,163 @@
+.container {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+}
+
+.App {
+  text-align: center;
+  grid-template-columns: 50% 50%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2% 2% 0% 2%;
+  grid-area: 1 / 1 / 2 / 3;
+  font-family: Public Sans;
+  color:black;
+  font-weight: 900;
+  font-size: 92px;
+  line-height: 150%;
+  letter-spacing: -8.5px;
+  text-transform: uppercase;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+main {
+  grid-area: 1 / 2 / 2 / 2;
+  background-color: #F6F6F6;
+  height: 50em;
+  width: auto;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: PublicSans;
+}
+
+html {
+  background-color: #EB8D6C;
+  font-family:Public Sans;
+}
+
+.board-list {
+  grid-area: 2 / 1 / 3 / 2;
+  min-height: 100px;
+}
+
+.new-board-form {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.card-list {
+  grid-area: 3 / 1 / 4 / 3;
+  margin: 0%;
+}
+
+h2 {
+    background-color: #EB8D6C;
+    padding: 2%;
+}
+
+p {
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  margin: 0;
+  font-family: PublicSans;
+  color: #000000;
+}
+
+span {
+  font-weight: 200;
+}
+
+.select-board {
+  font-size: 18px;
+  background-color: #EB8D6C;
+  padding: 16px;
+  width: 1fr;
+  height: 31px;
+  left: 0px;
+  line-height: 150%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: #391204;
+ 
+  margin: 5% 10% 0% 10%;
+  border: 2px solid #e76c42;
+  font-family: PublicSans;
+  min-height: 30px;
+}
+
+.selected-board {
+  font-size: 18px;
+  background-color: #EB8D6C;
+  padding: 16px;
+  width: 1fr;
+  height: 55px;;
+  left: 0px;
+  line-height: 150%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: #391204;
+ 
+  margin: 5% 10% 0% 10%;
+  border-top: 2px solid #e76c42;
+  border-left: 2px solid #e76c42;
+  border-right: 2px solid #e76c42;
+  font-family: PublicSans;
+  min-height: 30px;
+}
+
+@font-face {
+  font-family: PublicSans;
+  src: url('./PublicSans-VariableFont_wght.ttf');
+  font-display: swap;
+}
+
+/* Scroll Bar Styling */
+/* width */
+::-webkit-scrollbar {
+  width: 2em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #EBCAA8; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A7DC9D; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #A7DC9D; 
+}

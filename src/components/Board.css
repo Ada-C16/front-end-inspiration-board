@@ -1,0 +1,26 @@
+
+.ListItem {
+  list-style: none;
+  text-align: left;
+  position: static;
+  color: rgba(0, 0, 0, 0.60);
+  font-family: PublicSans, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight:400;
+  font-size: 18px;
+  line-height: 150%;
+  margin-right: 5vw;
+  padding:5px 10px;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  transition: all 400ms ease-in-out;
+  
+  }
+
+.ListItem:hover {
+  transition: all 200ms ease-in-out;
+  background-color: rgb(248, 194, 172);
+  border-radius: 5px;
+  cursor:pointer;
+}
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,900;1,900&display=swap');

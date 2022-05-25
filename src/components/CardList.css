@@ -1,0 +1,43 @@
+.board-header {
+  margin: 0%;
+  border: 3px solid #e76c42;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* button */
+.card-form-input {
+    background: #F6F6F6;
+    padding: 10px;
+    margin: 2% 10%;
+    border: 0px;
+    color: black;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    height: 48px;
+    left: 0px;
+    top: 56px;
+}
+
+.cards-list-container {
+    margin-bottom: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    background-color: rgb(249, 245, 242);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+  padding: 14px 32px;
+}

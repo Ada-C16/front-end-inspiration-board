@@ -1,0 +1,24 @@
+.BoardListArea {
+    background-color: #FDF6F0;
+    margin: 0% 10%;
+    border: 2px solid #e76c42;
+    box-sizing: border-box;
+    box-shadow: 0px 40px 60px -15px rgba(235, 141, 108, 0.27);
+    padding-top: 22px;
+    padding-bottom: 22px;
+    height: 25em;
+    width: 1fr;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Scroll Bar Styling */
+/* width */
+::-webkit-scrollbar {
+    width: .5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #FDF6F0; 
+}

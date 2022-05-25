@@ -1,0 +1,121 @@
+.form-section {
+    min-height: 35em;
+}
+
+form {
+    width: 79.5%;
+}
+
+.add-board {
+    font-size: 18px;
+    background-color: #A7DC9D;
+    padding: 16px;
+    height: 31px;
+    min-height: 30px;
+    line-height: 150%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+   
+    margin: 5% 10% 0% 10%;
+    border:  2px solid #27671B;
+    font-family: PublicSans;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    overflow: hidden;
+    margin: 0% 10% 0% 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EDF8EB;
+    height: 20em;
+    box-shadow: 0px 40px 60px -15px rgb(235 141 108 / 27%);
+    border-bottom: 2px solid #27671B;
+    border-left: 2px solid #27671B;
+    border-right: 2px solid #27671B;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 36px;
+    padding-bottom: 40px;
+}
+
+.title-input {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+    background: #F6F6F6;
+    margin: 2% 10%;
+    padding: 10px;
+    border: 0px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    color: black;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 48px;
+    left: 0px;
+    top: 56px;
+}
+
+.owner-input {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+    background: #F6F6F6;
+    padding: 10px;
+    margin: 2% 10%;
+    border: 0px;
+    color: black;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    height: 48px;
+    left: 0px;
+    top: 56px;
+}
+
+/* Buttons */
+.submit-button {
+    margin: 2% 10%;
+    background-color: #A7DC9D;
+    color: #27671B;
+    font-weight: bold;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    top: 60%;
+    float: right;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+}  
+
+.hide-button {
+    margin: 0% 10%;
+    padding: 14px;
+    float: right;
+
+    background-color: #A7DC9D;
+    border-top: none;
+    border-bottom: 2px solid #27671B;
+    border-left: 2px solid #27671B;
+    border-right: 2px solid #27671B;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    color: #27671B;
+    font-weight: bold;
+}
+
+.hide-button:hover {
+    cursor: pointer;
+}  
