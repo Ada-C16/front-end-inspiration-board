@@ -1,0 +1,18 @@
+.cardContainer {
+  /* display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;*/
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+h2.cardTitle {
+  margin: 16px;
+  text-transform: capitalize;
+}
+
+.cardContainer-child {
+  width: 280px;
+}

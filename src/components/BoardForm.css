@@ -1,0 +1,23 @@
+.board-form {
+    width: 100%
+}
+
+.invalid {
+    border-color: red;
+    background: rgb(253, 201, 201);
+    color: red;
+}
+
+.hideFormBtn {
+    margin-top: 39px;
+    height: 50px;
+    width: 200px;
+    background: #4778db;
+
+    color: white;
+}
+
+.btn {
+    margin-right: 5px;
+}
+

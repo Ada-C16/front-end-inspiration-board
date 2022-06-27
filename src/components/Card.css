@@ -1,0 +1,38 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: #f1f1f1;
+  padding: 15px;
+  margin: 2em;
+  display: inline-block;
+  justify-content: space-evenly;
+  margin: 1em;
+  max-width: 250px;
+}
+
+#options {
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#like,
+#delete {
+  justify-content: space-evenly;
+  margin: .8em;
+}
+
+.card-text {
+  padding: 25px;
+  font-weight: bold;
+  font-size: 1.25em;
+  text-align: center;
+}
+.card-likes {
+  margin: auto;
+  padding: auto;
+  font-size: 1em;
+}
